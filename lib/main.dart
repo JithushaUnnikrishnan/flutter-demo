@@ -1,5 +1,11 @@
+import 'package:demo/babysitters/babysitters_login.dart';
+import 'package:demo/babysitters/babysitters_signup.dart';
+import 'package:demo/login.dart';
+import 'package:demo/register.dart';
 import 'package:demo/text.dart';
 import 'package:flutter/material.dart';
+
+import 'admin/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Demotext(),
+      home: BabysitterSignup(),
     );
   }
 }
