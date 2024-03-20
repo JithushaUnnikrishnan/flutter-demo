@@ -1,5 +1,7 @@
+import 'package:demo/babysitters/babysitters_signup2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class BabysitterSignup extends StatefulWidget {
@@ -31,7 +33,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
         )),
         backgroundColor: Color.fromRGBO(56, 127, 142, 1),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,38 +55,68 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   labelText: "Address",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(height: 10,),
-
+            SizedBox(
+              height: 10,
+            ),
             TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Qualification",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(height: 20,),
-
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Date Of Birth",
+                  labelStyle: TextStyle(color: Colors.grey)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              minLines: 5,
+              maxLines: 5,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Experiance",
+                  labelStyle: TextStyle(color: Colors.grey)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Id Proof Number",
+                  labelStyle: TextStyle(color: Colors.grey)),
+            ),
+            SizedBox(height: 10,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("Date Of Birth"),
-                Container(
-                  width: 10,
-                  padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>BabysitterSignup2()));
+                      },
+                      child: Text("Next"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromRGBO(94, 91, 255, 1),
+                            foregroundColor: Colors.white,
                       ),
-                     borderRadius: BorderRadius.circular(10.0)
                     ),
+                  ),
                 ),
-
-
               ],
             ),
+            
 
           ],
         ),
-
       ),
     );
   }

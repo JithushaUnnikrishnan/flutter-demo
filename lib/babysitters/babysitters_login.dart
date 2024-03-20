@@ -1,3 +1,4 @@
+import 'package:demo/babysitters/babysitters_signup.dart';
 import 'package:flutter/material.dart';
 
 class BabysitterLogin extends StatefulWidget {
@@ -21,17 +22,18 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
           children: [
             TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: "Email",labelStyle: TextStyle(color: Colors.grey)),
+                  border: OutlineInputBorder(),
+                  labelText: "Email",
+                  labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(
               height: 10,
             ),
             TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: "Password",labelStyle:TextStyle(color: Colors.grey
-
-              )),
-
+                  border: OutlineInputBorder(),
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(
               height: 10,
@@ -46,18 +48,28 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
               ],
             ),
             ElevatedButton(
-              onPressed: () {},
-              child: Text("Login"),
-              style:ElevatedButton.styleFrom(
-                backgroundColor: Color.fromRGBO(94, 91, 255, 1),
-                foregroundColor: Colors.white
-
-              )
-            ),
+                onPressed: () {},
+                child: Text("Login"),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromRGBO(94, 91, 255, 1),
+                    foregroundColor: Colors.white)),
             SizedBox(
               height: 20,
             ),
-            Text("Create account?")
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => BabysitterSignup()));
+              },
+              style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                mouseCursor: MaterialStateProperty.all(SystemMouseCursors.basic),
+              ),
+              child: Text("Create account?"),
+
+            )
           ],
         ),
       ),
