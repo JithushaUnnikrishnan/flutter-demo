@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 
 class BabysitterSignup extends StatefulWidget {
   const BabysitterSignup({super.key});
@@ -96,6 +97,11 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
             SizedBox(height: 10,),
             Row(
               children: [
+                Expanded(child:Container(
+                  child: GestureDetector(
+                    child: Icon(CupertinoIcons.back,color: Colors.black,),
+                  ),
+                )),
                 Expanded(
                   child: Align(
                     alignment: Alignment.bottomRight,
@@ -105,7 +111,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                       },
                       child: Text("Next"),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(94, 91, 255, 1),
+                        backgroundColor: Colors.blue,
                             foregroundColor: Colors.white,
                       ),
                     ),

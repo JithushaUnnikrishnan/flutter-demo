@@ -12,27 +12,56 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text("Login")),
-      ),
+      // appBar: AppBar(
+      //   title: Center(child: Text("Login")),
+      // ),
+
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/login.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
         padding: EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  "Login",
+                  style: TextStyle(
+                    fontSize: 50,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 60,
+            ),
             TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Email",
+                  filled: true,
+                  fillColor: Colors.grey[50],
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Password",
+                  filled: true,
+                  fillColor: Colors.grey[50],
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(
@@ -43,7 +72,10 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                 Expanded(
                     child: Align(
                   alignment: Alignment.bottomRight,
-                  child: Text("Forgot password?"),
+                  child: Text(
+                    "Forgot password?",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 )),
               ],
             ),
@@ -51,7 +83,8 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                 onPressed: () {},
                 child: Text("Login"),
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(94, 91, 255, 1),
+
+                    backgroundColor: Colors.blue,
                     foregroundColor: Colors.white)),
             SizedBox(
               height: 20,
@@ -64,11 +97,15 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                         builder: (context) => BabysitterSignup()));
               },
               style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.all(Colors.transparent),
-                mouseCursor: MaterialStateProperty.all(SystemMouseCursors.basic),
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                mouseCursor:
+                    MaterialStateProperty.all(SystemMouseCursors.basic),
               ),
-              child: Text("Create account?"),
-
+              child: Text(
+                "Create account?",
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             )
           ],
         ),

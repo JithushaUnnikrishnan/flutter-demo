@@ -45,9 +45,9 @@ class _BabysitterSignup2State extends State<BabysitterSignup2> {
                   labelText: "Phone Number",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(height: 400,),
+            SizedBox(height: 550,),
             ElevatedButton(onPressed: (){}, child: Text("Submit"),style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromRGBO(94, 91, 255, 1),
+              backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
             ),)
           ],
