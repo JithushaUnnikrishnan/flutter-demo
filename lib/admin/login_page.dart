@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AdminLogin extends StatefulWidget {
   const AdminLogin({super.key});
@@ -31,10 +32,10 @@ class _AdminLoginState extends State<AdminLogin> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: 80,),
-                Text("Login",style: TextStyle(fontSize: 50,color: Colors.white,fontWeight: FontWeight.bold),),
+                SizedBox(width: 50,),
+                Text("Login",style: GoogleFonts.rubikGlitch(fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold),),
               ],
             ),
             // CircleAvatar(
@@ -51,7 +52,7 @@ class _AdminLoginState extends State<AdminLogin> {
             //   children: [Text("Email")],
             // ),
             SizedBox(
-              height: 140,
+              height: 100,
             ),
             TextFormField(
               decoration: InputDecoration(

@@ -1,5 +1,6 @@
 import 'package:demo/babysitters/babysitters_signup.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BabysitterLogin extends StatefulWidget {
   const BabysitterLogin({super.key});
@@ -35,7 +36,7 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                 ),
                 Text(
                   "Login",
-                  style: TextStyle(
+                  style: GoogleFonts.rubikGlitch(
                     fontSize: 50,
                     color: Colors.white,
                   ),
@@ -81,7 +82,7 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
             ),
             ElevatedButton(
                 onPressed: () {},
-                child: Text("Login"),
+                child: Text("Login",),
                 style: ElevatedButton.styleFrom(
 
                     backgroundColor: Colors.blue,
