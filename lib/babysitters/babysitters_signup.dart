@@ -1,4 +1,4 @@
-import 'package:demo/babysitters/babysitters_signup2.dart';
+import 'package:demo/babysitters/babysitter_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -94,33 +94,42 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   labelText: "Id Proof Number",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Phone Number",
+                labelStyle: TextStyle(color: Colors.grey),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
             Row(
               children: [
-                Expanded(child:Container(
-                  child: GestureDetector(
-                    child: Icon(CupertinoIcons.back,color: Colors.black,),
-                  ),
-                )),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>BabysitterSignup2()));
-                      },
-                      child: Text("Next"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                            foregroundColor: Colors.white,
-                      ),
-                    ),
+                Icon(
+                  CupertinoIcons.back,
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 10,
+                  width: 120,
+                ),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>BabysitterHome()));
+                  },
+                  child: Text("submit"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
                   ),
                 ),
               ],
             ),
-            
-
           ],
         ),
       ),
