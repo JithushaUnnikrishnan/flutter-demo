@@ -48,11 +48,12 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
             ),
             TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Email",
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                  labelStyle: TextStyle(color: Colors.grey)),
+                border: OutlineInputBorder(),
+                labelText: "Email",
+                filled: true,
+                fillColor: Colors.grey[50],
+                labelStyle: TextStyle(color: Colors.grey),
+              ),
             ),
             SizedBox(
               height: 30,
@@ -82,9 +83,10 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
             ),
             ElevatedButton(
                 onPressed: () {},
-                child: Text("Login",),
+                child: Text(
+                  "Login",
+                ),
                 style: ElevatedButton.styleFrom(
-
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white)),
             SizedBox(

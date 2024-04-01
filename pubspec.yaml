@@ -66,6 +66,8 @@ flutter:
      - assets/homebaby.png
      - assets/childb.png
      - assets/childbb.png
+     - assets/parent.png
+     - assets/babysitters.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

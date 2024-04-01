@@ -125,10 +125,19 @@ class _BabysitterHomeState extends State<BabysitterHome> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items:const [
+        items: const [
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home,color: Colors.black, ), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.person_crop_circle_fill,color: Colors.black,), label: 'Profile'),
+              icon: Icon(
+                CupertinoIcons.home,
+                color: Colors.black,
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.person_crop_circle_fill,
+                color: Colors.black,
+              ),
+              label: 'Profile'),
         ],
       ),
     );
