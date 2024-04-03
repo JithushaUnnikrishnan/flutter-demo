@@ -19,7 +19,7 @@ class _AdminParentState extends State<AdminParent> {
             Container(
               width: 360,
               height: 104,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Color.fromRGBO(113, 9, 115, 1)),
               child: Center(
@@ -38,24 +38,24 @@ class _AdminParentState extends State<AdminParent> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Container(
-                        child: Image(
+                        child: const Image(
                           image: AssetImage("assets/parent.png"),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 30.0),
                       child: Text("Aswathi"),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 150.0),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 150.0),
                       child: Icon(
                         CupertinoIcons.delete,
                       ),
                     ),
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: Colors.grey,
                   endIndent: 10,
                   indent: 10,
@@ -66,7 +66,7 @@ class _AdminParentState extends State<AdminParent> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(
                 CupertinoIcons.back,

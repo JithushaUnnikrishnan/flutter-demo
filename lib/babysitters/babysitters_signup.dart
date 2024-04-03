@@ -1,9 +1,6 @@
 import 'package:demo/babysitters/babysitter_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/cupertino.dart';
 
 class BabysitterSignup extends StatefulWidget {
   const BabysitterSignup({super.key});
@@ -24,7 +21,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
             child: Image.asset('assets/logo.png'),
           ),
         ),
-        title: Center(
+        title: const Center(
             child: Text(
           "TinyTots Care",
           style: TextStyle(
@@ -32,101 +29,101 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
             color: Colors.white,
           ),
         )),
-        backgroundColor: Color.fromRGBO(56, 127, 142, 1),
+        backgroundColor: const Color.fromRGBO(56, 127, 142, 1),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Name",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               minLines: 5,
               maxLines: 5,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Address",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Qualification",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Date Of Birth",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               minLines: 5,
               maxLines: 5,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Experiance",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Id Proof Number",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Phone Number",
                 labelStyle: TextStyle(color: Colors.grey),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Row(
               children: [
-                Icon(
+                const Icon(
                   CupertinoIcons.back,
                   color: Colors.black,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                   width: 120,
                 ),
 
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>BabysitterHome()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const BabysitterHome()));
                   },
-                  child: Text("submit"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
                   ),
+                  child: const Text("submit"),
                 ),
               ],
             ),

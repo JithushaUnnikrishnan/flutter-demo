@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AdminLogin extends StatefulWidget {
@@ -14,7 +12,7 @@ class _AdminLoginState extends State<AdminLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+      backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
       // appBar: AppBar(
       //   title: Center(
       //       child: Text(
@@ -25,16 +23,16 @@ class _AdminLoginState extends State<AdminLogin> {
       // ),
 
       body: Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/login.png'),
+        decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/login.png'),
           fit: BoxFit.fill,)),
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: 50,),
+                const SizedBox(width: 50,),
                 Text("Login",style: GoogleFonts.rubikGlitch(fontSize: 40,color: Colors.white,fontWeight: FontWeight.bold),),
               ],
             ),
@@ -51,18 +49,18 @@ class _AdminLoginState extends State<AdminLogin> {
             //   crossAxisAlignment: CrossAxisAlignment.start,
             //   children: [Text("Email")],
             // ),
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: "Email",
                   filled: true,
                   fillColor: Colors.grey[50],
-                  labelStyle: TextStyle(color: Colors.grey)),
+                  labelStyle: const TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 110,
             ),
             // Row(
@@ -71,22 +69,22 @@ class _AdminLoginState extends State<AdminLogin> {
             //     // Text("Password"),
             //   ],
             // ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: "Password",
                 filled: true,
                 fillColor: Colors.grey[50],
-                labelStyle: TextStyle(color: Colors.grey),
+                labelStyle: const TextStyle(color: Colors.grey),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               children: [
                 Expanded(
                     child: Align(
@@ -94,21 +92,21 @@ class _AdminLoginState extends State<AdminLogin> {
                         child: Text("Forgot Password?",style: TextStyle(fontWeight: FontWeight.bold),))),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             ElevatedButton(
               onPressed: () {},
-              child: Text("Login"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
               ),
+              child: const Text("Login"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text("Create account?",style: TextStyle(fontWeight: FontWeight.bold),)
+            const Text("Create account?",style: TextStyle(fontWeight: FontWeight.bold),)
           ],
         ),
       ),

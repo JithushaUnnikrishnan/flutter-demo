@@ -29,18 +29,18 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                   child: TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(215, 240, 62, 1),
-                          minimumSize: Size(100, 150),
+                          backgroundColor: const Color.fromRGBO(215, 240, 62, 1),
+                          minimumSize: const Size(100, 150),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50))),
                       child: Padding(
                         padding: const EdgeInsets.all(10),
                         child: Row(
                           children: [
-                            Column(
+                            const Column(
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 50),
+                                  padding: EdgeInsets.only(left: 50),
                                   child: Image(
                                     image: AssetImage("assets/childb.png"),
                                     height: 72,
@@ -49,7 +49,7 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 25,
                             ),
                             Column(
@@ -69,16 +69,22 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                         ),
                       ))),
             ),
-            SizedBox(height: 80,),
+            const SizedBox(height: 80,),
             Padding(
               padding: const EdgeInsets.all(19.0),
               child: Container(
                 child: TextButton(
                   onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(240, 190, 62, 1),
+                    minimumSize: const Size(100, 150),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
                   child: Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 50),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 50),
                         child: Column(
                           children: [
                             Image(image: AssetImage("assets/childbb.png"),width: 72,height: 49,),
@@ -96,26 +102,20 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                       )
                     ],
                   ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(240, 190, 62, 1),
-                    minimumSize: Size(100, 150),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                  ),
                 ),
               ),
             ),
           ],
         ),
       ),
-      backgroundColor: Color.fromRGBO(255, 252, 250, 1),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon:Icon(
-            CupertinoIcons.home,color: Colors.black,),label: "Home" ),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.person_crop_circle_fill,color: Colors.black,),label: "Profile"),
-        ],
-      ),
+      backgroundColor: const Color.fromRGBO(255, 252, 250, 1),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(icon:Icon(
+      //       CupertinoIcons.home,color: Colors.black,),label: "Home" ),
+      //     BottomNavigationBarItem(icon: Icon(CupertinoIcons.person_crop_circle_fill,color: Colors.black,),label: "Profile"),
+      //   ],
+      // ),
     );
   }
 }

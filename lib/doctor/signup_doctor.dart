@@ -17,94 +17,94 @@ class _DoctorSignupState extends State<DoctorSignup> {
             backgroundColor: Colors.white,
             child: Image.asset("assets/logo.png"),
           ),
-          backgroundColor: Color.fromRGBO(56, 127, 142, 1)),
+          backgroundColor: const Color.fromRGBO(56, 127, 142, 1)),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Name",
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Qualification",
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Specialization",
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
                 minLines: 5,
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Home Address",
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
                 minLines: 5,
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Office Address",
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               TextFormField(
                 minLines: 5,
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Experiance",
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               Row(
                 children: [
-                  IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.back)),
+                  IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.back)),
 
                   Padding(
                     padding: const EdgeInsets.only(left: 85.0),
                     child: TextButton(
                       onPressed: () {},
-                      child: Text(
-                        "Submit",
-                      ),
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.blue,
                           foregroundColor: Colors.white),
+                      child: const Text(
+                        "Submit",
+                      ),
                     ),
                   )
                 ],

@@ -12,50 +12,50 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("TinyTots Care")),
+        title: const Center(child: Text("TinyTots Care")),
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              decoration:InputDecoration(
+              decoration:const InputDecoration(
                 border: OutlineInputBorder(),labelText: 'Name'
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,),
             TextFormField(
-              decoration:InputDecoration(
+              decoration:const InputDecoration(
                   border: OutlineInputBorder(),labelText: 'Address'
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,),
             TextFormField(
-              decoration:InputDecoration(
+              decoration:const InputDecoration(
                   border: OutlineInputBorder(),labelText: 'Pin Code'
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,),
             TextFormField(
-              decoration:InputDecoration(
+              decoration:const InputDecoration(
                   border: OutlineInputBorder(),labelText: 'Phone Number'
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,),
             TextFormField(
-              decoration:InputDecoration(
+              decoration:const InputDecoration(
                   border: OutlineInputBorder(),labelText: 'WhatsApp'
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,),
             TextFormField(
-              decoration:InputDecoration(
+              decoration:const InputDecoration(
                   border: OutlineInputBorder(),labelText: 'Email'
               ),
             ),

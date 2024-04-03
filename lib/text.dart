@@ -12,25 +12,25 @@ class _DemotextState extends State<Demotext> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Jithushaunnikrishnan')),
+        title: const Center(child: Text('Jithushaunnikrishnan')),
         backgroundColor: Colors.blue,
       ),
       body: Container(
-        padding: EdgeInsets.all(100),
-        color: Color.fromARGB(255, 233, 228, 228),
+        padding: const EdgeInsets.all(100),
+        color: const Color.fromARGB(255, 233, 228, 228),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("data",selectionColor: Colors.amber,),
-            SizedBox(height: 10,),
+            const Text("data",selectionColor: Colors.amber,),
+            const SizedBox(height: 10,),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
 
-            ElevatedButton(onPressed:(){}, child: Text("done",selectionColor: Colors.blueGrey))
+            ElevatedButton(onPressed:(){}, child: const Text("done",selectionColor: Colors.blueGrey))
             
           ],
         ),

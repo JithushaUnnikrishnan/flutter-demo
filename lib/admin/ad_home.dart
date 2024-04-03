@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,8 +22,8 @@ class _AdminHomeState extends State<AdminHome> {
                 width: 194,
                 height: 44,
                 decoration:
-                    BoxDecoration(color: Color.fromRGBO(172, 227, 239, 1)),
-                child: Center(
+                    const BoxDecoration(color: Color.fromRGBO(172, 227, 239, 1)),
+                child: const Center(
                     child: Text(
                   "Select Category",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -35,7 +34,7 @@ class _AdminHomeState extends State<AdminHome> {
               padding:
                   const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(
                     232,
                     196,
@@ -62,7 +61,7 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    BoxDecoration(color: Color.fromRGBO(255, 251, 148, 1)),
+                    const BoxDecoration(color: Color.fromRGBO(255, 251, 148, 1)),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -82,7 +81,7 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    BoxDecoration(color: Color.fromRGBO(191, 210, 228, 1)),
+                    const BoxDecoration(color: Color.fromRGBO(191, 210, 228, 1)),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -101,7 +100,7 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    BoxDecoration(color: Color.fromRGBO(97, 237, 220, 1)),
+                    const BoxDecoration(color: Color.fromRGBO(97, 237, 220, 1)),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -122,6 +121,10 @@ class _AdminHomeState extends State<AdminHome> {
               child: Container(
                 child: TextButton(
                   onPressed: () {},
+                  style: TextButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(74, 203, 87, 1),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
                   child: Text(
                     "Logout",
                     style: GoogleFonts.inriaSerif(
@@ -129,10 +132,6 @@ class _AdminHomeState extends State<AdminHome> {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  style: TextButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(74, 203, 87, 1),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
                 ),
               ),
             ),

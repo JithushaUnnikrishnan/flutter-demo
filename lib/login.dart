@@ -13,34 +13,34 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('login')),
+        title: const Center(child: Text('login')),
       ),
       body: Container(
-        padding: EdgeInsets.all(60),
+        padding: const EdgeInsets.all(60),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
+            const CircleAvatar(
               radius: 50,
               backgroundColor: Colors.black12,
               child: Icon(CupertinoIcons.home,color:Colors.black,size: 40,),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), labelText: "Email"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: OutlineInputBorder(), labelText: "Password"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            ElevatedButton(onPressed: () {}, child: Text("Submit"))
+            ElevatedButton(onPressed: () {}, child: const Text("Submit"))
           ],
         ),
       ),

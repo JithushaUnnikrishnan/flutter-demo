@@ -18,20 +18,20 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
       // ),
 
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/login.png'),
             fit: BoxFit.fill,
           ),
         ),
-        padding: EdgeInsets.all(30),
+        padding: const EdgeInsets.all(30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 30,
                 ),
                 Text(
@@ -43,33 +43,33 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 60,
             ),
             TextFormField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: "Email",
                 filled: true,
                 fillColor: Colors.grey[50],
-                labelStyle: TextStyle(color: Colors.grey),
+                labelStyle: const TextStyle(color: Colors.grey),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             TextFormField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: "Password",
                   filled: true,
                   fillColor: Colors.grey[50],
-                  labelStyle: TextStyle(color: Colors.grey)),
+                  labelStyle: const TextStyle(color: Colors.grey)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Row(
+            const Row(
               children: [
                 Expanded(
                     child: Align(
@@ -83,13 +83,13 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
             ),
             ElevatedButton(
                 onPressed: () {},
-                child: Text(
-                  "Login",
-                ),
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white)),
-            SizedBox(
+                    foregroundColor: Colors.white),
+                child: const Text(
+                  "Login",
+                )),
+            const SizedBox(
               height: 20,
             ),
             TextButton(
@@ -97,14 +97,14 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => BabysitterSignup()));
+                        builder: (context) => const BabysitterSignup()));
               },
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 mouseCursor:
                     MaterialStateProperty.all(SystemMouseCursors.basic),
               ),
-              child: Text(
+              child: const Text(
                 "Create account?",
                 style:
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
