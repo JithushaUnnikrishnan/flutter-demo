@@ -1,4 +1,6 @@
-import 'package:demo/babysitters/baby_profile.dart';
+import 'package:demo/babysitters/babysitter_activity.dart';
+import 'package:demo/babysitters/babysitter_edit.dart';
+import 'package:demo/babysitters/babysitter_profile.dart';
 import 'package:demo/babysitters/babysitter_home.dart';
 import 'package:demo/babysitters/bs_bottombutton.dart';
 import 'package:demo/babysitters/childprofileb.dart';
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const TeacherProfile()
+      home: const TeacherActivity()
     );
   }
 }
