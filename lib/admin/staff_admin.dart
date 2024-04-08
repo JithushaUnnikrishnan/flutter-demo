@@ -21,14 +21,29 @@ class _AdminStaffState extends State<AdminStaff> {
               width: 360,
               decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
-                  color: Color.fromRGBO(250, 244, 115, 1)),
+                  color: Color.fromRGBO(250, 244, 115, 1),
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(0, 3),
+                        spreadRadius: 2,
+                        blurRadius: 2,
+                        color: Colors.black45)
+                  ]),
               child: Center(
-                  child: Text(
-                "Babysitters",
-                style: GoogleFonts.inriaSerif(
-                    color: Colors.black,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
+                  child: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios_sharp),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .2,
+                  ),
+                  Text(
+                    "Babysitters",
+                    style: GoogleFonts.inriaSerif(
+                        color: Colors.black,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
               )),
             ),
             Column(
@@ -48,20 +63,27 @@ class _AdminStaffState extends State<AdminStaff> {
                       child: Text("Dayana"),
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(left: 150.0),
-                      child: Icon(CupertinoIcons.delete)),
+                        padding: EdgeInsets.only(left: 150.0),
+                        child: Icon(CupertinoIcons.delete)),
                   ],
                 ),
-                const Divider(endIndent: 10,indent: 10,)
+                const Divider(
+                  endIndent: 10,
+                  indent: 10,
+                )
               ],
             )
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.back),label: "Back"),
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.home),label: "Home")
-      ],),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.back), label: "Back"),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home), label: "Home")
+        ],
+      ),
     );
   }
 }

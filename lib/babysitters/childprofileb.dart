@@ -24,7 +24,7 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.all(19.0),
+              padding: const EdgeInsets.only(top: 90,left: 20,right: 20),
               child: Container(
                   child: TextButton(
                       onPressed: () {},
@@ -42,8 +42,8 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                                 Padding(
                                   padding: EdgeInsets.only(left: 50),
                                   child: Image(
-                                    image: AssetImage("assets/childb.png"),
-                                    height: 72,
+                                    image: AssetImage("assets/kid.png"),
+                                    height: 92,
                                     width: 60,
                                   ),
                                 ),
@@ -87,7 +87,7 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                         padding: EdgeInsets.only(left: 50),
                         child: Column(
                           children: [
-                            Image(image: AssetImage("assets/childbb.png"),width: 72,height: 49,),
+                            Image(image: AssetImage("assets/kid2.png",),width: 82,height: 109,),
                           ],
                         ),
                       ),

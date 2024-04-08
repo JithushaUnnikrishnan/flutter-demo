@@ -23,12 +23,20 @@ class _AdminParentState extends State<AdminParent> {
                   shape: BoxShape.rectangle,
                   color: Color.fromRGBO(113, 9, 115, 1)),
               child: Center(
-                  child: Text(
-                "Parent",
-                style: GoogleFonts.inriaSerif(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40),
+                  child: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios_sharp),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .250,
+                  ),
+                  Text(
+                    "Parent",
+                    style: GoogleFonts.inriaSerif(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 40),
+                  ),
+                ],
               )),
             ),
             Column(
@@ -72,7 +80,8 @@ class _AdminParentState extends State<AdminParent> {
                 CupertinoIcons.back,
               ),
               label: "back"),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.home),label: "Home")
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home), label: "Home")
         ],
       ),
     );

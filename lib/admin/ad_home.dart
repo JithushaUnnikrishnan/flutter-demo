@@ -17,7 +17,7 @@ class _AdminHomeState extends State<AdminHome> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.all(80.0),
+              padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 80),
               child: Container(
                 width: 194,
                 height: 44,
@@ -36,11 +36,10 @@ class _AdminHomeState extends State<AdminHome> {
               child: Container(
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(
-                    232,
-                    196,
-                    233,
-                    1,
-                  ),
+                      232, 196, 233, 1
+                  ),boxShadow: [
+                  BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+                ]
                 ),
                 height: 104,
                 width: 320,
@@ -58,10 +57,13 @@ class _AdminHomeState extends State<AdminHome> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 15.0, right: 15, top: 35, bottom: 0),
+                  left: 15.0, right: 15, top: 25, bottom: 0),
               child: Container(
                 decoration:
-                    const BoxDecoration(color: Color.fromRGBO(255, 251, 148, 1)),
+                    const BoxDecoration(color: Color.fromRGBO(255, 251, 148, 1),boxShadow: [
+                      BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+                    ]
+                     ),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -81,7 +83,9 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    const BoxDecoration(color: Color.fromRGBO(191, 210, 228, 1)),
+                    const BoxDecoration(color: Color.fromRGBO(191, 210, 228, 1),boxShadow: [
+                      BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+                    ]),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -100,7 +104,9 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    const BoxDecoration(color: Color.fromRGBO(97, 237, 220, 1)),
+                    const BoxDecoration(color: Color.fromRGBO(97, 237, 220, 1),boxShadow: [
+                      BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+                    ]),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -117,20 +123,27 @@ class _AdminHomeState extends State<AdminHome> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 145.0, right: 145, top: 100, bottom: 0),
+                  left: 145.0, right: 145, top: 80, bottom: 0),
               child: Container(
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
+                    shadowColor: Colors.black,
+                      elevation: 10,
                       backgroundColor: const Color.fromRGBO(74, 203, 87, 1),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30))),
-                  child: Text(
-                    "Logout",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Logout",
+                        style: GoogleFonts.inriaSerif(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Icon(Icons.exit_to_app,color: Colors.black,)
+                    ],
                   ),
                 ),
               ),

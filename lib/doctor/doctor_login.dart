@@ -1,30 +1,24 @@
-import 'package:demo/babysitters/babysitters_signup.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BabysitterLogin extends StatefulWidget {
-  const BabysitterLogin({super.key});
+class DoctorLogin extends StatefulWidget {
+  const DoctorLogin({super.key});
 
   @override
-  State<BabysitterLogin> createState() => _BabysitterLoginState();
+  State<DoctorLogin> createState() => _DoctorLoginState();
 }
 
-class _BabysitterLoginState extends State<BabysitterLogin> {
+class _DoctorLoginState extends State<DoctorLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Center(child: Text("Login")),
-      // ),
-
       body: Container(
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/output.png'),
-          //   // fit: BoxFit.fill,
+            //   // fit: BoxFit.fill,
           ),
         ),
         padding: const EdgeInsets.all(30),
@@ -96,12 +90,7 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
               height: 20,
             ),
             TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const BabysitterSignup()));
-              },
+              onPressed: () {},
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 mouseCursor:
