@@ -1,5 +1,7 @@
+import 'package:demo/babysitters/babysitter_edit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TeacherProfile extends StatefulWidget {
@@ -13,11 +15,13 @@ class _TeacherProfileState extends State<TeacherProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Container(
         child: Column(
           children: [
             ListTile(
-              leading: Container(
+             leading:  Container(
+
                 child: Image.asset(
                   "assets/teacher.png",
                   height: 49,
@@ -25,7 +29,12 @@ class _TeacherProfileState extends State<TeacherProfile> {
                 ),
               ),
               trailing: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BabysitterEdit()));
+                },
                 child: Container(
                   height: 28,
                   width: 50,
@@ -36,7 +45,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                         style: TextStyle(fontSize: 14),
                       ),
                       Icon(
-                        CupertinoIcons.pen,
+                        Icons.edit,
                         size: 14,
                       )
                     ],

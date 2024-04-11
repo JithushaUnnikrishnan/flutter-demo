@@ -1,3 +1,4 @@
+import 'package:demo/doctor/dr_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,7 +21,7 @@ class _DoctorEditState extends State<DoctorEdit> {
           209,
           1,
         ),
-        title: Icon(Icons.arrow_back_ios_sharp),
+
       ),
       body:SingleChildScrollView(
         child: Padding(
@@ -97,7 +98,12 @@ class _DoctorEditState extends State<DoctorEdit> {
               ),
              SizedBox(height: 15),
              GestureDetector(
-               onTap: (){},
+               onTap: (){
+                 Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) => DoctorProfile()));
+               },
                child: Center(
                  child: Container(
                    height: 50,

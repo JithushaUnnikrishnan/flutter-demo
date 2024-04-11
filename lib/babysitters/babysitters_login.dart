@@ -1,4 +1,9 @@
+
+import 'package:demo/babysitters/babysitter_home.dart';
+import 'package:demo/babysitters/babysitters_forgotpaswrd.dart';
 import 'package:demo/babysitters/babysitters_signup.dart';
+import 'package:demo/babysitters/bs_bottombutton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,11 +26,15 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+
           image: DecorationImage(
-            image: AssetImage('assets/output.png'),
+
+            image: AssetImage('assets/output.png',),
           //   // fit: BoxFit.fill,
+
           ),
+          borderRadius: BorderRadius.circular(90),
         ),
         padding: const EdgeInsets.all(30),
         child: Column(
@@ -72,20 +81,32 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
             const SizedBox(
               height: 10,
             ),
-            const Row(
+            Row(
               children: [
                 Expanded(
                     child: Align(
                   alignment: Alignment.bottomRight,
-                  child: Text(
-                    "Forgot password?",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  child: InkWell(onTap: (){
+                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BabysForgot()));
+                  },
+                    child: Text(
+                      "Forgot password?",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 )),
               ],
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BottomButton()));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white),

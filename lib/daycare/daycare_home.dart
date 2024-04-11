@@ -1,3 +1,8 @@
+import 'package:demo/daycare/Datcare_parent.dart';
+import 'package:demo/daycare/daycare_activity.dart';
+import 'package:demo/daycare/daycare_children.dart';
+import 'package:demo/daycare/daycare_staff.dart';
+import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,16 +27,23 @@ class _DaycareHomeState extends State<DaycareHome> {
         title: Row(
           children: [
             Text("My School",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 40)),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
-            Container(
-              decoration:BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(117, 10, 100, 1),
-                  boxShadow: [
-                    BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                  ]
+            SizedBox(width: MediaQuery.of(context).size.width * 0.06,),
+            InkWell(onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SelectCategoryreg()));
+            },
+              child: Container(
+                decoration:BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(117, 10, 100, 1),
+                    boxShadow: [
+                      BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+                    ]
+                ),
+                height: 50,width: 90,
+                child: Center(child: Text("Logout",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 20))),
               ),
-              height: 50,width: 110,
-              child: Center(child: Text("Logout",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 20))),
             ),
           ],
         ),
@@ -42,7 +54,12 @@ class _DaycareHomeState extends State<DaycareHome> {
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.15),
-              InkWell(onTap: (){},
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DaycareStaff()));
+              },
                 child: Container(
                   height: 72,width: 312,
                   decoration:  BoxDecoration(
@@ -55,7 +72,12 @@ class _DaycareHomeState extends State<DaycareHome> {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-              InkWell(onTap: (){},
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DaycareParent()));
+              },
                 child: Container(
                   height: 72,width: 312,
                   decoration:  BoxDecoration(
@@ -68,7 +90,12 @@ class _DaycareHomeState extends State<DaycareHome> {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-              InkWell(onTap: (){},
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DaycareChildren()));
+              },
                 child: Container(
                   height: 72,width: 312,
                   decoration:  BoxDecoration(
@@ -81,7 +108,12 @@ class _DaycareHomeState extends State<DaycareHome> {
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-              InkWell(onTap: (){},
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DaycareActivity()));
+              },
                 child: Container(
                   height: 72,width: 312,
                   decoration:  BoxDecoration(

@@ -20,10 +20,7 @@ class _ParentActivityState extends State<ParentActivity> {
         shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
         title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Icon(
-            Icons.arrow_back_ios_sharp,
-            color: Colors.black,
-          ),
+
           SizedBox(
             width: MediaQuery.of(context).size.width * .2,
           ),

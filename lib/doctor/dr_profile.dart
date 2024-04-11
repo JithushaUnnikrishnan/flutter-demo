@@ -1,3 +1,5 @@
+import 'package:demo/doctor/doctor_bottombuton.dart';
+import 'package:demo/doctor/dr_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,20 +30,33 @@ class _DoctorProfileState extends State<DoctorProfile> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.arrow_back_ios_sharp),
+                  InkWell(onTap:(){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DBottomButton()));
+                  },
+                      child: Icon(Icons.arrow_back)),
                   Spacer(),
-                  Container(
-                    child: Row(
-                      children: [
-                        Text(
-                          "Edit",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Icon(Icons.edit),
-                      ],
+                  InkWell(onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DoctorEdit()));
+                  },
+                    child: Container(
+                      child: Row(
+                        children: [
+                          Text(
+                            "Edit",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Icon(Icons.edit),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(

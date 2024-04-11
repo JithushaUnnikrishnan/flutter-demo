@@ -1,3 +1,5 @@
+import 'package:demo/doctor/doctor_bottombuton.dart';
+import 'package:demo/doctor/doctor_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +15,16 @@ class _DoctorSignupState extends State<DoctorSignup> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: CircleAvatar(
-            backgroundColor: Colors.white,
-            child: Image.asset("assets/logo.png"),
+        toolbarHeight: 100,
+          elevation: 10,
+          shadowColor: Colors.black,
+          title:  Padding(
+            padding: const EdgeInsets.only(left: 97),
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Image.asset("assets/logo.png"),
+              radius: 35,
+            ),
           ),
           backgroundColor: const Color.fromRGBO(56, 127, 142, 1)),
       body: SingleChildScrollView(
@@ -91,14 +100,17 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 ),
               ),
               const SizedBox(height: 10,),
-              Row(
-                children: [
-                  IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.back)),
+
 
                   Padding(
-                    padding: const EdgeInsets.only(left: 85.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => DBottomButton()));
+                      },
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.blue,
                           foregroundColor: Colors.white),
@@ -107,8 +119,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                       ),
                     ),
                   )
-                ],
-              ),
+
             ],
           ),
         ),

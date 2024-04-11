@@ -1,3 +1,5 @@
+import 'package:demo/admin/login_page.dart';
+import 'package:demo/logo/first_login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,19 +24,48 @@ class _LogoPageState extends State<LogoPage> {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height * .0250,
             ),
 
             Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Text(
-                "Admin",
-                style: GoogleFonts.inriaSerif(fontSize: 20),
+              padding: const EdgeInsets.only(left: 250),
+              child: GestureDetector(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AdminLogin()));
+              },
+                child: Text(
+                  "Admin",
+                  style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold),
+                ),
               ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .0250,
+            ),
+            Image.asset('assets/ellips.png'),
+            Text('TinyTots Care', style: GoogleFonts.ingridDarling(fontSize: 45,fontWeight:FontWeight.bold),),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .20,
+            ),
+            Container(
+              height: 55,width: 150,decoration: BoxDecoration(color: Color.fromRGBO(255, 255, 255, 0.5),
+               borderRadius: BorderRadius.circular(10),boxShadow: [
+                 BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+            ]
+            ),
+              child: Center(child: GestureDetector(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FirstLogin()));
+              },
+                  child: Text('Start' ,style: GoogleFonts.fruktur(fontSize: 45,fontWeight:FontWeight.bold),))),
+            )
           ],
         ),
       ),

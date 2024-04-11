@@ -1,3 +1,5 @@
+import 'package:demo/parents/parent_login.dart';
+import 'package:demo/parents/searchdaycare.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,55 +22,90 @@ class _ParentSignupState extends State<ParentSignup> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 37),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
           child: Column(
             children: [
-              TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                    labelText: "Parent Name",
-                    labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)),
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-              TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                    labelText: "Phone",
-                    labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)),
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+              SizedBox(height: MediaQuery.of(context).size.height*.08,),
               TextFormField(
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-
-                    labelText: "Email",
-                    labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)),
+                        borderRadius: BorderRadius.circular(10)),
+                    labelText: "Parent Name",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.2,),
-              InkWell(onTap: (){},
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    labelText: "Phone",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    labelText: "Email",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.09,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SearchDaycare()));
+                },
                 child: Container(
-                  height: 60,width: 300,
+                  height: 60,
+                  width: 300,
                   child: Center(
-                    child: Text("Register",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 40, ),
-                     ),
+                    child: Text(
+                      "Register",
+                      style: GoogleFonts.inriaSerif(
+                        color: Colors.white,
+                        fontSize: 40,
+                      ),
+                    ),
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(14, 97, 116, 0.99,)
-                  ),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(
+                        14,
+                        97,
+                        116,
+                        0.99,
+                      )),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-              Text("Already have an account?",style:TextStyle(fontSize: 20)),
-
-                    GestureDetector(onTap:(){},
-                        child: Text("Login",style: TextStyle(color: Colors.blueAccent,fontSize: 20),))
-                  ]
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
               ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text("Already have an account?",
+                    style: TextStyle(fontSize: 20)),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ParentLogin()));
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(color: Colors.blueAccent, fontSize: 20),
+                    ))
+              ]),
             ],
           ),
         ),

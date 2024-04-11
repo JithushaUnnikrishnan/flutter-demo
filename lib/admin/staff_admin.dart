@@ -1,3 +1,4 @@
+import 'package:demo/admin/ad_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,16 @@ class _AdminStaffState extends State<AdminStaff> {
               child: Center(
                   child: Row(
                 children: [
-                  Icon(Icons.arrow_back_ios_sharp),
+                  InkWell(onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdminHome()));
+                  },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Icon(Icons.arrow_back_ios_sharp),
+                      )),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .2,
                   ),
@@ -76,14 +86,14 @@ class _AdminStaffState extends State<AdminStaff> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.back), label: "Back"),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home), label: "Home")
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //         icon: Icon(CupertinoIcons.back), label: "Back"),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(CupertinoIcons.home), label: "Home")
+      //   ],
+      // ),
     );
   }
 }

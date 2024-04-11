@@ -1,5 +1,7 @@
+import 'package:demo/admin/ad_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AdminParent extends StatefulWidget {
@@ -18,14 +20,26 @@ class _AdminParentState extends State<AdminParent> {
           children: [
             Container(
               width: 360,
-              height: 104,
+              height: 124,
               decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(offset: Offset(0, 3),spreadRadius: 3,blurRadius: 2,color: Colors.black45)
+                ],
                   shape: BoxShape.rectangle,
                   color: Color.fromRGBO(113, 9, 115, 1)),
               child: Center(
                   child: Row(
                 children: [
-                  Icon(Icons.arrow_back_ios_sharp),
+                  GestureDetector(onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdminHome()));
+                  },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Icon(Icons.arrow_back_ios_sharp),
+                      )),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .250,
                   ),
@@ -73,17 +87,17 @@ class _AdminParentState extends State<AdminParent> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(
-                CupertinoIcons.back,
-              ),
-              label: "back"),
-          BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home), label: "Home")
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //         icon: Icon(
+      //           CupertinoIcons.back,
+      //         ),
+      //         label: "back"),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(CupertinoIcons.home), label: "Home")
+      //   ],
+      // ),
     );
   }
 }

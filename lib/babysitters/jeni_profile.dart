@@ -19,7 +19,7 @@ class _ChildPageState extends State<ChildPage> {
           children: [
             Row(
               children: [
-                Icon(CupertinoIcons.back),
+
                 Container(
                   width: 50,
                   height: 50,

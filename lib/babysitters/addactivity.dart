@@ -1,3 +1,4 @@
+import 'package:demo/babysitters/babysitter_activity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -16,7 +17,7 @@ class _AddActivityState extends State<AddActivity> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(113, 42, 168, 1),
-        title: Icon(CupertinoIcons.back),
+
         toolbarHeight: 104,
       ),
 
@@ -59,11 +60,23 @@ class _AddActivityState extends State<AddActivity> {
               ),
               SizedBox(height: 50,),
               GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TeacherActivity()));
+                },
                 child: Container(
                   height: 48,width: 135,
 
                   decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.withOpacity(0.4),
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: Offset(0, 2))
+                    ],
                     borderRadius: BorderRadius.circular(10),color: Colors.blue,
                   ),
                   child: Center(child: Text("Done",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 20),)),

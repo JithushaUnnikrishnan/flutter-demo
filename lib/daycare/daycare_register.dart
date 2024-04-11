@@ -1,3 +1,5 @@
+import 'package:demo/daycare/daycare_home.dart';
+import 'package:demo/daycare/daycare_login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -56,7 +58,12 @@ class _DaycareRegisterState extends State<DaycareRegister> {
                     labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-              InkWell(onTap: (){},
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>DaycareLogin()));
+              },
                 child: Container(
                   height: 60,width: 300,
                   child: Center(
@@ -74,7 +81,12 @@ class _DaycareRegisterState extends State<DaycareRegister> {
                   children: [
                     Text("Already have an account?",style:TextStyle(fontSize: 20)),
 
-                    GestureDetector(onTap:(){},
+                    GestureDetector(onTap:(){
+                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => DaycareLogin()));
+                    },
                         child: Text("Login",style: TextStyle(color: Colors.blueAccent,fontSize: 20),))
                   ]
               ),

@@ -1,4 +1,6 @@
+import 'package:demo/babysitters/babysitter_activity.dart';
 import 'package:demo/babysitters/childprofileb.dart';
+import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -32,8 +34,11 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       InkWell(
-                        onTap: (){
-
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SelectCategoryreg()));
                         },
                         child: Material(
                           elevation: 4,
@@ -52,10 +57,9 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                                   style: GoogleFonts.tinos(
                                       color: Colors.black,
                                       fontSize: 15,
-                                      fontWeight: FontWeight.bold
-                                  ),
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                Icon(CupertinoIcons.square_arrow_right ),
+                                Icon(CupertinoIcons.square_arrow_right),
                               ],
                             ),
                           ),
@@ -75,31 +79,36 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                   padding: const EdgeInsets.only(left: 20),
                   child: Container(
                       child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Menu",
-                          style: GoogleFonts.robotoSerif(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 40, vertical: 20),
-                            backgroundColor: Color.fromRGBO(95, 213, 239, 1),
-                            elevation: 10,
-                            shadowColor: Colors.black,
-                            minimumSize: Size(150, 100),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28))),
-                      )),
+                    onPressed: () {},
+                    child: Text(
+                      "Menu",
+                      style: GoogleFonts.robotoSerif(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                        backgroundColor: Color.fromRGBO(95, 213, 239, 1),
+                        elevation: 10,
+                        shadowColor: Colors.black,
+                        minimumSize: Size(150, 100),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28))),
+                  )),
                 ),
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Container(
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TeacherActivity()));
+                      },
                       child: Text(
                         "Activity",
                         style: GoogleFonts.inriaSerif(
@@ -108,8 +117,8 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                             fontSize: 20),
                       ),
                       style: ElevatedButton.styleFrom(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 40, vertical: 20),
                           backgroundColor: Color.fromRGBO(211, 134, 64, 1),
                           minimumSize: Size(150, 100),
                           elevation: 10,
@@ -130,7 +139,9 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const TeacherChildprofile()));   },
+                              builder: (context) =>
+                                  const TeacherChildprofile()));
+                    },
                     child: Text(
                       "My Children",
                       style: GoogleFonts.robotoSerif(

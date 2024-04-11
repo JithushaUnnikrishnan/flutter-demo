@@ -1,4 +1,9 @@
 
+import 'package:demo/admin/Admin_parentpage.dart';
+import 'package:demo/admin/admin_daycare.dart';
+import 'package:demo/admin/admin_doctor.dart';
+import 'package:demo/admin/staff_admin.dart';
+import 'package:demo/logo/logo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,14 +24,14 @@ class _AdminHomeState extends State<AdminHome> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 80),
               child: Container(
-                width: 194,
-                height: 44,
-                decoration:
-                    const BoxDecoration(color: Color.fromRGBO(172, 227, 239, 1)),
-                child: const Center(
+                // width: 194,
+                // height: 44,
+                // decoration:
+                //     const BoxDecoration(color: Color.fromRGBO(172, 227, 239, 1)),
+                child: Center(
                     child: Text(
                   "Select Category",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style:GoogleFonts.inriaSerif(fontWeight: FontWeight.bold, fontSize: 20),
                 )),
               ),
             ),
@@ -44,7 +49,12 @@ class _AdminHomeState extends State<AdminHome> {
                 height: 104,
                 width: 320,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdminParent()));
+                  },
                   child: Text(
                     "Parent",
                     style: GoogleFonts.inriaSerif(
@@ -67,7 +77,12 @@ class _AdminHomeState extends State<AdminHome> {
                 height: 104,
                 width: 320,
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AdminStaff()));
+                    },
                     child: Text(
                       "Babysitters",
                       style: GoogleFonts.inriaSerif(
@@ -89,7 +104,12 @@ class _AdminHomeState extends State<AdminHome> {
                 height: 104,
                 width: 320,
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AdminDoctor()));
+                    },
                     child: Text(
                       "Doctors",
                       style: GoogleFonts.inriaSerif(
@@ -110,7 +130,12 @@ class _AdminHomeState extends State<AdminHome> {
                 height: 104,
                 width: 320,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdminDaycare()));
+                  },
                   child: Text(
                     "Daycare",
                     style: GoogleFonts.inriaSerif(
@@ -126,7 +151,12 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 145.0, right: 145, top: 80, bottom: 0),
               child: Container(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LogoPage()));
+                  },
                   style: TextButton.styleFrom(
                     shadowColor: Colors.black,
                       elevation: 10,

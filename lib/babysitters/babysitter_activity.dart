@@ -1,3 +1,6 @@
+import 'package:demo/babysitters/addactivity.dart';
+import 'package:demo/babysitters/babysitter_home.dart';
+import 'package:demo/babysitters/bs_bottombutton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +18,13 @@ class _TeacherActivityState extends State<TeacherActivity> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(
-          child: Icon(CupertinoIcons.arrow_left),
+          child: InkWell(onTap: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BottomButton()));
+          },
+              child: Icon(CupertinoIcons.arrow_left)),
         ),
       ),
       body: Padding(
@@ -155,7 +164,12 @@ class _TeacherActivityState extends State<TeacherActivity> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddActivity()));
+                      },
                       child: Text("Add Activity"),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromRGBO(92, 11, 156, 1),

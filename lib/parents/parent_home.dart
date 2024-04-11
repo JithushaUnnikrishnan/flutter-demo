@@ -1,3 +1,7 @@
+import 'package:demo/logo/select_categoryfor%20reg.dart';
+import 'package:demo/parents/parent_dr.dart';
+import 'package:demo/parents/parent_food.dart';
+import 'package:demo/parents/parent_staff.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,25 +17,32 @@ class _ParentHomeState extends State<ParentHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Icon(Icons.arrow_back_ios_sharp),
+
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
-            child: Container(
-              height: 50,
-              width: 105,
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, 3),
-                    color: Colors.black45,
-                    spreadRadius: 2,
-                    blurRadius: 3),
-              ], borderRadius: BorderRadius.circular(10), color: Colors.black),
-              child: Center(
-                child: Text(
-                  "Logout",
-                  style:
-                      GoogleFonts.inriaSerif(fontSize: 25, color: Colors.white),
+            child: InkWell(onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SelectCategoryreg()));
+            },
+              child: Container(
+                height: 50,
+                width: 105,
+                decoration: BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      offset: Offset(0, 3),
+                      color: Colors.black45,
+                      spreadRadius: 2,
+                      blurRadius: 3),
+                ], borderRadius: BorderRadius.circular(10), color: Colors.black),
+                child: Center(
+                  child: Text(
+                    "Logout",
+                    style:
+                        GoogleFonts.inriaSerif(fontSize: 25, color: Colors.white),
+                  ),
                 ),
               ),
             ),
@@ -44,7 +55,12 @@ class _ParentHomeState extends State<ParentHome> {
         child: Column(
           children: [
             SizedBox( height: MediaQuery.of(context).size.height * .055,),
-            InkWell(onTap: (){},
+            InkWell(onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ParentFood()));
+            },
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -72,7 +88,12 @@ class _ParentHomeState extends State<ParentHome> {
               ),
             ),
             SizedBox( height: MediaQuery.of(context).size.height * .045,),
-            InkWell(onTap: (){},
+            InkWell(onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>  ParentStaff()));
+            },
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -100,7 +121,12 @@ class _ParentHomeState extends State<ParentHome> {
               ),
             ),
             SizedBox( height: MediaQuery.of(context).size.height * .0450,),
-            InkWell(onTap: (){},
+            InkWell(onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ParentBooking()));
+            },
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),

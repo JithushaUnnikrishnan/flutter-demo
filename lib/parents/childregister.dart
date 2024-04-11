@@ -1,3 +1,4 @@
+import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -166,7 +167,12 @@ class _ChildRegisterState extends State<ChildRegister> {
                       labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey))
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .025,),
-              InkWell(onTap: (){},
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PBottomButton()));
+              },
                 child: Container(
                   height:MediaQuery.of(context).size.height * .06,width:MediaQuery.of(context).size.height * .1,
                   decoration: BoxDecoration(

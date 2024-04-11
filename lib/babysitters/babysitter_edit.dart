@@ -1,3 +1,6 @@
+import 'package:demo/babysitters/babysitter_activity.dart';
+import 'package:demo/babysitters/babysitter_profile.dart';
+import 'package:demo/babysitters/bs_bottombutton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -20,7 +23,14 @@ class _BabysitterEditState extends State<BabysitterEdit> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(children: [
-                Icon(Icons.arrow_back_ios_sharp),
+
+                GestureDetector(onTap:(){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TeacherProfile()));
+                },
+                    child: Icon(Icons.arrow_back)),
                 SizedBox(width: MediaQuery.of(context).size.width * .02,),
                 Image.asset("assets/teacher.png"),
                 Column(
@@ -121,7 +131,12 @@ class _BabysitterEditState extends State<BabysitterEdit> {
             Padding(
               padding: const EdgeInsets.all(50.0),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => TeacherProfile()));
+                  },
                   child: Text(
                     "Update",
                     style: GoogleFonts.inriaSerif(

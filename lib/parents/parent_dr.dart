@@ -1,3 +1,4 @@
+import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,13 @@ class _ParentBookingState extends State<ParentBooking> {
             width: MediaQuery.of(context).size.height * .485,
             child: Row(
               children: [
-                Icon(Icons.arrow_back_ios_sharp),
+                InkWell(onTap:(){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PBottomButton()));
+                },
+                    child: Icon(Icons.arrow_back_ios_sharp)),
                 Image.asset("assets/drpic.png"),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .05,

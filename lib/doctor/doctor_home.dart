@@ -1,4 +1,5 @@
 
+import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -41,26 +42,33 @@ class _DoctorHomeState extends State<DoctorHome> {
                     1,
                   ),
                   elevation: 5,
-                  child: Container(
-                    width: 140, height: 50,
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Logout",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        Icon(
-                          Icons.logout,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ],
+                  child: InkWell(onTap: (){
+                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SelectCategoryreg()));
+                  },
+                    child: Container(
+                      width: 140, height: 50,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            "Logout",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          Icon(
+                            Icons.logout,
+                            size: 30,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      // decoration: ,
                     ),
-                    // decoration: ,
                   ),
                 ),
                 SizedBox(width: 10,),
@@ -115,6 +123,8 @@ class _DoctorHomeState extends State<DoctorHome> {
             ),
 
           ),
+
+
           Row(
             children: [
           Padding(
@@ -160,18 +170,27 @@ class _DoctorHomeState extends State<DoctorHome> {
                       height: 25,
                       width:80,
                       child: Center(child: Text("Reject",style: TextStyle(color: Colors.white),)),
-                      decoration: BoxDecoration(
+                      decoration: BoxDecoration(boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius: 2,
+                            blurRadius: 2,
+                            offset: Offset(0, 2))
+                      ],
                         borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(241, 70, 104, 1, )
 
                       ),
                     ),
                     ),
+                    
                   ],
                 ),
 
-              )
+              ),
+
           ]
         ),
+
         ],
       ),
           

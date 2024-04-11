@@ -1,3 +1,5 @@
+import 'package:demo/doctor/doctor_bottombuton.dart';
+import 'package:demo/doctor/doctor_home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -79,7 +81,12 @@ class _DoctorLoginState extends State<DoctorLogin> {
               ],
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DBottomButton()));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white),
@@ -90,7 +97,9 @@ class _DoctorLoginState extends State<DoctorLogin> {
               height: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 mouseCursor:

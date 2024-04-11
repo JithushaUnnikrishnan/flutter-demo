@@ -1,3 +1,4 @@
+import 'package:demo/parents/parent_addhealth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,96 +21,108 @@ class _Parent_healthRecordState extends State<Parent_healthRecord> {
         shadowColor: Colors.grey,
         shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Icon(
-            Icons.arrow_back_ios_sharp,
-            color: Colors.black,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * .05,
-          ),
+        title:
           Text(
             "Health Record",
             style: GoogleFonts.inriaSerif(
                 fontSize: 38, color: Colors.white, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * .05,
-          ),
-        ]),
+
+
       ),
       body: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Height",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .02,
-                  ),
-                  Text(
-                    "Weight",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .02,
-                  ),
-                  Text(
-                    "Growth Rate",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .02,
-                  ),
-                  Text(
-                    "Temperature",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 50, top: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "90cm",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .02,
-                  ),
-                  Text(
-                    "14kg",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .02,
-                  ),
-                  Text(
-                    "Normal",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .02,
-                  ),
-                  Text(
-                    "Normal",
-                    style: GoogleFonts.inriaSerif(fontSize: 20),
-                  ),
-                ],
-              ),
-            ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 50, top: 30, right: 50),
+          child: Column(
 
-          ],
+            children: [
+              Row(
+
+                children: [
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Height",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                      Text(
+                        "Weight",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                      Text(
+                        "Growth Rate ",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                      Text(
+                        "Temperature",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                    ],
+                  ),
+                  Spacer(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "90cm",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                      Text(
+                        " 14.29kg",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                      Text(
+                        "Normal ",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                      Text(
+                        "Normal",
+                        style: GoogleFonts.inriaSerif(fontSize: 20, height: 2),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .30,
+              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     InkWell(
+              //       onTap: () {
+              //         Navigator.push(
+              //             context,
+              //             MaterialPageRoute(
+              //                 builder: (context) => AddhealthRecord()));
+              //       },
+              //       child: Container(
+              //         child: Center(
+              //             child: Text(
+              //           "Add",
+              //           style: GoogleFonts.inriaSerif(
+              //               fontSize: 20, color: Colors.white),
+              //         )),
+              //         height: MediaQuery.of(context).size.height * .050,
+              //         width: MediaQuery.of(context).size.width * .25,
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(10),
+              //             boxShadow: [
+              //               BoxShadow(
+              //                   offset: Offset(0, 4),
+              //                   spreadRadius: 1,
+              //                   blurRadius: 2,
+              //                   color: Colors.grey),
+              //             ],
+              //             color: Colors.blue),
+              //       ),
+              //     ),
+              //   ],
+              // )
+            ],
+          ),
         ),
       ),
     );

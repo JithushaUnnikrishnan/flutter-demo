@@ -1,3 +1,4 @@
+import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,9 +16,8 @@ class _EnrollEditState extends State<EnrollEdit> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(66, 135, 156, 1), toolbarHeight: 122,
-        title: Icon(
-          Icons.arrow_back_ios_sharp
-        ),
+
+
         elevation: 10,
         shadowColor: Colors.black,
         shape: ContinuousRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80)))
@@ -76,7 +76,12 @@ class _EnrollEditState extends State<EnrollEdit> {
               SizedBox(height: MediaQuery.of(context).size.height * .075,),
               Center(
                 child: InkWell(
-                  onTap: (){},
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PBottomButton()));
+                  },
                   child: Container(
                     child: Center(child: Text("Update",style: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.white),)),
                     height: MediaQuery.of(context).size.height * .050,width: MediaQuery.of(context).size.width * .25,

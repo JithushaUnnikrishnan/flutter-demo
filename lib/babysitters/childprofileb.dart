@@ -1,3 +1,4 @@
+import 'package:demo/babysitters/jeni_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,12 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
               padding: const EdgeInsets.only(top: 90,left: 20,right: 20),
               child: Container(
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>  ChildPage()));
+                      },
                       style: TextButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(215, 240, 62, 1),
                           minimumSize: const Size(100, 150),

@@ -1,3 +1,7 @@
+import 'package:demo/parents/parent_bottombuton.dart';
+import 'package:demo/parents/parent_forgot.dart';
+import 'package:demo/parents/searchdaycare.dart';
+import 'package:demo/parents/signup_parent.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -66,20 +70,32 @@ class _ParentLoginState extends State<ParentLogin> {
             const SizedBox(
               height: 10,
             ),
-            const Row(
-              children: [
-                Expanded(
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Text(
-                        "Forgot password?",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    )),
-              ],
+            InkWell(onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ParentForgot()));
+            },
+              child: const Row(
+                children: [
+                  Expanded(
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          "Forgot password?",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      )),
+                ],
+              ),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SearchDaycare()));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white),
@@ -90,7 +106,12 @@ class _ParentLoginState extends State<ParentLogin> {
               height: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ParentSignup()));
+              },
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 mouseCursor:

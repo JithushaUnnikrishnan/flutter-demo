@@ -18,20 +18,17 @@ class _AdminDaycareState extends State<AdminDaycare> {
         shadowColor: Colors.black,
         backgroundColor: Color.fromRGBO(51, 242, 151, 1),
         toolbarHeight: 104,
-        title: Row(
-          children: [
-            Icon(Icons.arrow_back_ios_sharp),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * .170,
-            ),
+        title:
             Container(
-              child: Text("Day Care",style: GoogleFonts.inriaSerif(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40),),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 55),
+                child: Text("Day Care",style: GoogleFonts.inriaSerif(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40),),
+              ),
             )
-          ],
-        ),
+
       ),
       body: Container(
         child: Column(

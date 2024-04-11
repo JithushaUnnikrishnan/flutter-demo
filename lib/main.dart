@@ -9,26 +9,49 @@ import 'package:demo/babysitters/babysitter_activity.dart';
 import 'package:demo/babysitters/babysitter_edit.dart';
 import 'package:demo/babysitters/babysitter_profile.dart';
 import 'package:demo/babysitters/babysitter_home.dart';
+import 'package:demo/babysitters/babysitters_forgotpaswrd.dart';
 import 'package:demo/babysitters/babysitters_login.dart';
+import 'package:demo/babysitters/babysitters_signup.dart';
 import 'package:demo/babysitters/bs_bottombutton.dart';
 import 'package:demo/babysitters/childprofileb.dart';
 import 'package:demo/babysitters/jeni_profile.dart';
+import 'package:demo/daycare/Datcare_parent.dart';
+import 'package:demo/daycare/Daycare_childview.dart';
+import 'package:demo/daycare/daycare_activity.dart';
+import 'package:demo/daycare/daycare_addactivity.dart';
+import 'package:demo/daycare/daycare_addview.dart';
+import 'package:demo/daycare/daycare_children.dart';
+import 'package:demo/daycare/daycare_food.dart';
 import 'package:demo/daycare/daycare_home.dart';
 import 'package:demo/daycare/daycare_login.dart';
 import 'package:demo/daycare/daycare_register.dart';
+import 'package:demo/daycare/daycare_stafadd.dart';
+import 'package:demo/daycare/daycare_staff.dart';
+import 'package:demo/daycare/daycare_update.dart';
+import 'package:demo/daycare/daycare_updated.dart';
+import 'package:demo/daycare/daycare_updatepage.dart';
+import 'package:demo/doctor/doctor_forgot.dart';
 import 'package:demo/doctor/doctor_home.dart';
 import 'package:demo/doctor/doctor_login.dart';
 import 'package:demo/doctor/dr_edit.dart';
 import 'package:demo/doctor/dr_profile.dart';
+import 'package:demo/logo/first_login.dart';
 import 'package:demo/logo/logo_page.dart';
+import 'package:demo/logo/select_categoryfor%20reg.dart';
+import 'package:demo/parents/Parent_babyprofile.dart';
 import 'package:demo/parents/book_page.dart';
 import 'package:demo/parents/childregister.dart';
 import 'package:demo/parents/parent_activity.dart';
 import 'package:demo/parents/parent_addhealth.dart';
+import 'package:demo/parents/parent_bottombuton.dart';
+import 'package:demo/parents/parent_dailytask.dart';
 import 'package:demo/parents/parent_dr.dart';
+import 'package:demo/parents/parent_food.dart';
+import 'package:demo/parents/parent_forgot.dart';
 import 'package:demo/parents/parent_healthrecord.dart';
 import 'package:demo/parents/parent_home.dart';
 import 'package:demo/parents/parent_login.dart';
+import 'package:demo/parents/parent_staff.dart';
 import 'package:demo/parents/pchildprofile.dart';
 import 'package:demo/parents/penroll_edit.dart';
 import 'package:demo/parents/searchdaycare.dart';
@@ -51,7 +74,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DaycareHome()
+      home: const ParentBabyprofile()
     );
   }
 }

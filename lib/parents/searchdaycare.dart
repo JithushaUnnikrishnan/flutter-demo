@@ -1,3 +1,4 @@
+import 'package:demo/parents/childregister.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +14,7 @@ class _SearchDaycareState extends State<SearchDaycare> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Icon(Icons.arrow_back_ios_sharp),
+
         actions: [
           Container(
               height: 42,
@@ -30,11 +31,11 @@ class _SearchDaycareState extends State<SearchDaycare> {
                   ],
                   color: Colors.white),
               child: Padding(
-                padding: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 15,top:  7),
                 child: Text(
-                  "Search",
+                  "Dayare Search",
                   style:
-                      GoogleFonts.inriaSerif(fontSize: 20, color: Colors.grey),
+                      GoogleFonts.inriaSerif(fontSize: 15, color: Colors.grey),
                 ),
               )),
       SizedBox(width: MediaQuery.of(context).size.width * .095,),
@@ -45,7 +46,12 @@ body: Container(
     padding: const EdgeInsets.symmetric(vertical: 50,horizontal: 30),
     child: Column(
       children: [
-        InkWell(onTap: (){},
+        InkWell(onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ChildRegister()));
+        },
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
