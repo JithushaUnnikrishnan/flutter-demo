@@ -99,10 +99,7 @@ class _DoctorEditState extends State<DoctorEdit> {
              SizedBox(height: 15),
              GestureDetector(
                onTap: (){
-                 Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                         builder: (context) => DoctorProfile()));
+                 Navigator.pop(context);
                },
                child: Center(
                  child: Container(

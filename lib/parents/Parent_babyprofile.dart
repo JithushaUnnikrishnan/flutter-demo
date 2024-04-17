@@ -142,6 +142,12 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
                 )),
               ),
             ),
+            // InkWell(onTap: (){
+            //   Navigator.pop(context);
+            // }, child: Padding(
+            //   padding: const EdgeInsets.only(top: 20,left: 15),
+            //   child: Icon(Icons.arrow_back),
+            // )),
             Padding(
               padding: const EdgeInsets.only(left: 35),
               child: Image.asset(
@@ -151,6 +157,7 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
                 fit: BoxFit.cover,
               ),
             ),
+
           ],
         ),
       ),

@@ -76,11 +76,7 @@ class _EnrollEditState extends State<EnrollEdit> {
               SizedBox(height: MediaQuery.of(context).size.height * .075,),
               Center(
                 child: InkWell(
-                  onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PBottomButton()));
+                  onTap: (){Navigator.pop(context);
                   },
                   child: Container(
                     child: Center(child: Text("Update",style: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.white),)),

@@ -12,9 +12,9 @@ class _SuccessPageState extends State<SuccessPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Icon(
-          Icons.arrow_back_ios_sharp,
-        ),
+        // title: Icon(
+        //   Icons.arrow_back_ios_sharp,
+        // ),
       ),
       body: Container(
         child: Padding(

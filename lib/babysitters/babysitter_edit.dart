@@ -132,10 +132,7 @@ class _BabysitterEditState extends State<BabysitterEdit> {
               padding: const EdgeInsets.all(50.0),
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TeacherProfile()));
+                    Navigator.pop(context);
                   },
                   child: Text(
                     "Update",
