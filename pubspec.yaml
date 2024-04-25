@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
   scroll_date_picker: ^3.8.0
+  image_picker: ^1.1.0
+  video_player: ^2.8.6
+  flick_video_player: ^0.7.0
 
 
 dev_dependencies:

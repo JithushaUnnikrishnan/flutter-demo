@@ -17,6 +17,7 @@ class _ParentHomeState extends State<ParentHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
 
         actions: [
           Padding(

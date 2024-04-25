@@ -1,7 +1,13 @@
+
+
+import 'dart:io';
+
+
 import 'package:demo/doctor/doctor_bottombuton.dart';
 import 'package:demo/doctor/dr_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DoctorProfile extends StatefulWidget {
   const DoctorProfile({super.key});
@@ -11,6 +17,20 @@ class DoctorProfile extends StatefulWidget {
 }
 
 class _DoctorProfileState extends State<DoctorProfile> {
+  final picker = ImagePicker();
+
+  File? _imageFile;
+
+  Future<void> getImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _imageFile = File(pickedFile.path);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,20 +50,22 @@ class _DoctorProfileState extends State<DoctorProfile> {
               ),
               child: Row(
                 children: [
-                  InkWell(onTap:(){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DBottomButton()));
-                  },
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DBottomButton()));
+                      },
                       child: Icon(Icons.arrow_back)),
                   Spacer(),
-                  InkWell(onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DoctorEdit()));
-                  },
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DoctorEdit()));
+                    },
                     child: Container(
                       child: Row(
                         children: [
@@ -80,12 +102,22 @@ class _DoctorProfileState extends State<DoctorProfile> {
                       children: [
                         Column(children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.transparent,
-                              child: Image.asset(
-                                "assets/drimage.png",
+                            padding: const EdgeInsets.only(left: 5,top: 15),
+                            child: Container(
+                              height: 79,width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: _imageFile != null
+                                        ? FileImage(_imageFile!)
+                                        : const AssetImage('assets/drimage.png')
+                                    as ImageProvider<Object>,)
+                              ),
+                              child: CircleAvatar(
+                                radius: 50,
+                                backgroundColor: Colors.transparent,
+
                               ),
                             ),
                           ),
@@ -107,11 +139,16 @@ class _DoctorProfileState extends State<DoctorProfile> {
                   ),
                 )),
             Positioned(
-              top: MediaQuery.of(context).size.height * .200,
-              left: MediaQuery.of(context).size.height * .170,
-              child: CircleAvatar(
-                radius: MediaQuery.of(context).size.width * .040,
-                child: Icon(Icons.camera_alt_outlined),
+              top: MediaQuery.of(context).size.height * .210,
+              left: MediaQuery.of(context).size.width * .310,
+              child: Container(
+
+                child: IconButton(
+                  onPressed: () async {
+                    await getImage();
+                  },
+                  icon: Icon(Icons.camera_alt_outlined),
+                ),
               ),
             ),
             Padding(
@@ -121,13 +158,21 @@ class _DoctorProfileState extends State<DoctorProfile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Visiting Time:2:00pm to 6:00pm"),
-                  SizedBox(height:MediaQuery.of(context).size.height * .02,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .02,
+                  ),
                   Text("Qualification"),
-                  SizedBox(height:MediaQuery.of(context).size.height * .02,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .02,
+                  ),
                   Text("Specialization"),
-                  SizedBox(height:MediaQuery.of(context).size.height * .02,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .02,
+                  ),
                   Text("Home Address"),
-                  SizedBox(height:MediaQuery.of(context).size.height * .02,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .02,
+                  ),
                   Text("Office Address"),
                 ],
               ),

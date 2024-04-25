@@ -1,3 +1,4 @@
+import 'package:demo/parents/drBookingdatepicker.dart';
 import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _ParentBookingState extends State<ParentBooking> {
                       MaterialPageRoute(
                           builder: (context) => PBottomButton()));
                 },
-                    child: Icon(Icons.arrow_back_ios_sharp)),
+                    child: Icon(Icons.arrow_back)),
                 Image.asset("assets/drpic.png"),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .05,
@@ -55,11 +56,11 @@ class _ParentBookingState extends State<ParentBooking> {
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey[200]),
               child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 8.0,top: 5),
                 child: Text(
                   "Search",
                   style:
-                      GoogleFonts.inriaSerif(color: Colors.grey, fontSize: 30),
+                      GoogleFonts.inriaSerif(color: Colors.grey, fontSize: 20),
                 ),
               ),
             ),
@@ -80,7 +81,9 @@ class _ParentBookingState extends State<ParentBooking> {
                       child: Row(
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentBookingDr()));
+                            },
                             child: Padding(
                               padding: const EdgeInsets.only(left: 15),
                               child: Container(
@@ -91,10 +94,10 @@ class _ParentBookingState extends State<ParentBooking> {
                                       style: GoogleFonts.jomhuria(fontSize: 20),
                                     ),
                                   ),
-                                  height: MediaQuery.of(context).size.height * .021,
-                                  width: MediaQuery.of(context).size.width * .09,
+                                  height: MediaQuery.of(context).size.height * .031,
+                                  width: MediaQuery.of(context).size.width * .1,
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
+                                      borderRadius: BorderRadius.circular(4),
                                       color: Colors.blue)),
                             ),
                           ),
@@ -109,8 +112,8 @@ class _ParentBookingState extends State<ParentBooking> {
                                     style: GoogleFonts.jomhuria(fontSize: 20),
                                   ),
                                 ),
-                                height: MediaQuery.of(context).size.height * .021,
-                                width: MediaQuery.of(context).size.width * .09,
+                                height: MediaQuery.of(context).size.height * .031,
+                                width: MediaQuery.of(context).size.width * .1,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                     color: Colors.green[400])),
@@ -200,8 +203,8 @@ class _ParentBookingState extends State<ParentBooking> {
                                       style: GoogleFonts.jomhuria(fontSize: 20),
                                     ),
                                   ),
-                                  height: MediaQuery.of(context).size.height * .021,
-                                  width: MediaQuery.of(context).size.width * .09,
+                                  height: MediaQuery.of(context).size.height * .031,
+                                  width: MediaQuery.of(context).size.width * .1,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       color: Colors.blue)),
@@ -218,8 +221,8 @@ class _ParentBookingState extends State<ParentBooking> {
                                     style: GoogleFonts.jomhuria(fontSize: 20),
                                   ),
                                 ),
-                                height: MediaQuery.of(context).size.height * .021,
-                                width: MediaQuery.of(context).size.width * .09,
+                                height: MediaQuery.of(context).size.height * .031,
+                                width: MediaQuery.of(context).size.width * .1,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                     color: Colors.green[400])),

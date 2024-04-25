@@ -1,6 +1,9 @@
+
+
 import 'package:demo/parents/penroll_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class EnrollChild extends StatefulWidget {
   const EnrollChild({super.key});
@@ -10,10 +13,13 @@ class EnrollChild extends StatefulWidget {
 }
 
 class _EnrollChildState extends State<EnrollChild> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 122,
         backgroundColor: Color.fromRGBO(66, 135, 156, 1),
         shadowColor: Colors.grey,
@@ -82,11 +88,13 @@ class _EnrollChildState extends State<EnrollChild> {
                     children: [
 
                       Image.asset("assets/rectgirl.png"),
+
+
                       Text(
                         "Jeni",
                         style: GoogleFonts.inriaSerif(fontSize: 20,),
                       ),
-                      SizedBox(height: 25,),
+                      SizedBox(height:MediaQuery.of(context).size.height*.035,),
                       Icon(Icons.home,),
                       Text(
                         "DOB",
@@ -107,7 +115,7 @@ class _EnrollChildState extends State<EnrollChild> {
                 ),
                 Column(
                   children: [
-                    SizedBox(height: 130,),
+                    SizedBox(height:MediaQuery.of(context).size.height*.15,),
                     Text(":"),Text(":",style: TextStyle(height: 12.5),),Text(":"),
                   ],
                 ),
@@ -119,7 +127,7 @@ class _EnrollChildState extends State<EnrollChild> {
 
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-SizedBox(height: 125,),
+                      SizedBox(height:MediaQuery.of(context).size.height*.155,),
 
                       Text(
                         "Palaparamba House,",

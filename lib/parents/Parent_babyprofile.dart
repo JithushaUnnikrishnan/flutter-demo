@@ -43,6 +43,7 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
                       child: Column(
                         children: [
                           Image.asset('assets/rectgirl.png'),
+
                           Text('Jeni',
                               style: GoogleFonts.inriaSerif(
                                   fontSize: 15, fontWeight: FontWeight.bold)),

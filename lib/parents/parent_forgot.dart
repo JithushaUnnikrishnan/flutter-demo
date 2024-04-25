@@ -18,7 +18,7 @@ class _ParentForgotState extends State<ParentForgot> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 90,left: 150),
+                padding: const EdgeInsets.only(top: 110,left: 150),
                 child: CircleAvatar(
                   child: Image.asset(
                     'assets/ellips.png',
@@ -40,7 +40,7 @@ class _ParentForgotState extends State<ParentForgot> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height*.09,),
+              SizedBox(height: MediaQuery.of(context).size.height*.02,),
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text("Confirm Password",style: GoogleFonts.inriaSerif(fontSize: 20,),),
@@ -53,39 +53,35 @@ class _ParentForgotState extends State<ParentForgot> {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ParentLogin()));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 170,top: 90),
-                  child: Container(
-                      height: 50,
-                      width: 75,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45)
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Done",
-                          style: GoogleFonts.inriaSerif(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                      )),
+              SizedBox(height:MediaQuery.of(context).size.height*.10,),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ParentLogin()));
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    overlayColor: MaterialStateProperty.all(Colors.black.withOpacity(0.2)),
+                    elevation: MaterialStateProperty.all(5),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Done",
+                      style: GoogleFonts.inriaSerif(
+                          fontSize: 20, color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
-
             ]
         ),
       ),

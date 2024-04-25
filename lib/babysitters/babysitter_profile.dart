@@ -16,92 +16,94 @@ class _TeacherProfileState extends State<TeacherProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Container(
-        child: Column(
-          children: [
-            ListTile(
-             leading:  Container(
-
-                child: Image.asset(
-                  "assets/teacher.png",
-                  height: 49,
-                  width: 35,
-                ),
-              ),
-              trailing: InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => BabysitterEdit()));
-                },
-                child: Container(
-                  height: 28,
-                  width: 50,
-                  child: Row(
-                    children: [
-                      Text(
-                        "Edit",
-                        style: TextStyle(fontSize: 14),
-                      ),
-                      Icon(
-                        Icons.edit,
-                        size: 14,
-                      )
-                    ],
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: [
+              ListTile(
+               leading:  Container(
+        
+                  child: Image.asset(
+                    "assets/teacher.png",
+                    height: 49,
+                    width: 35,
                   ),
                 ),
+                trailing: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BabysitterEdit()));
+                  },
+                  child: Container(
+                    height: 28,
+                    width: 50,
+                    child: Row(
+                      children: [
+                        Text(
+                          "Edit",
+                          style: TextStyle(fontSize: 14),
+                        ),
+                        Icon(
+                          Icons.edit,
+                          size: 14,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                title: Text(
+                  "Dayana",
+                  style: GoogleFonts.inriaSerif(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(
+                  "Female",
+                  style: GoogleFonts.inriaSerif(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
-              title: Text(
-                "Dayana",
-                style: GoogleFonts.inriaSerif(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+              SizedBox(
+                height: 40,
               ),
-              subtitle: Text(
-                "Female",
-                style: GoogleFonts.inriaSerif(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Row(
+                  children: [
+                    Text("Address"),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Row(
-                children: [
-                  Text("Address"),
-                ],
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Row(
+                  children: [
+                    Text("Occupation"),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Row(
-                children: [
-                  Text("Occupation"),
-                ],
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Row(
+                  children: [
+                    Text("Phone Number"),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Row(
-                children: [
-                  Text("Phone Number"),
-                ],
-              ),
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Row(
-                children: [
-                  Text("Whatsapp Number",style: TextStyle(fontSize: 14),),
-                ],
-              ),
-            )
-          ],
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Row(
+                  children: [
+                    Text("Whatsapp Number",style: TextStyle(fontSize: 14),),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -23,120 +23,120 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
       //   title: Center(child: Text("Login")),
       // ),
 
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-
-          image: DecorationImage(
-
-            image: AssetImage('assets/output.png',),
-          //   // fit: BoxFit.fill,
-
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
+        child: Container(
+          height:MediaQuery.of(context).size.height*.7,
+          width: MediaQuery.of(context).size.width*.9,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(50)),
+            image: DecorationImage(
+              image: AssetImage('assets/output.png'),
+              fit: BoxFit.fill,
+            ),
           ),
-          borderRadius: BorderRadius.circular(90),
-        ),
-        padding: const EdgeInsets.all(30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Login",
-                  style: GoogleFonts.rubikGlitch(
-                    fontSize: 50,
-                    color: Colors.white,
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    width: 10,
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: "Email",
-                filled: true,
-                fillColor: Colors.grey[50],
-                labelStyle: const TextStyle(color: Colors.grey),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: "Password",
-                  filled: true,
-                  fillColor: Colors.grey[50],
-                  labelStyle: const TextStyle(color: Colors.grey)),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: InkWell(onTap: (){
-                    Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => BabysForgot()));
-                  },
-                    child: Text(
-                      "Forgot password?",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  Text(
+                    "Login",
+                    style: GoogleFonts.rubikGlitch(
+                      fontSize: 50,
+                      color: Colors.white,
                     ),
                   ),
-                )),
-              ],
-            ),
-            ElevatedButton(
+                ],
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: "Email",
+                  filled: true,
+                  fillColor: Colors.grey[50],
+                  labelStyle: const TextStyle(color: Colors.grey),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: "Password",
+                    filled: true,
+                    fillColor: Colors.grey[50],
+                    labelStyle: const TextStyle(color: Colors.grey)),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: InkWell(onTap: (){
+                      Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => BabysForgot()));
+                    },
+                      child: Text(
+                        "Forgot password?",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  )),
+                ],
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BottomButton()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white),
+                  child: const Text(
+                    "Login",
+                  )),
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BottomButton()));
+                          builder: (context) => const BabysitterSignup()));
                 },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white),
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  mouseCursor:
+                      MaterialStateProperty.all(SystemMouseCursors.basic),
+                ),
                 child: const Text(
-                  "Login",
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const BabysitterSignup()));
-              },
-              style: ButtonStyle(
-                overlayColor: MaterialStateProperty.all(Colors.transparent),
-                mouseCursor:
-                    MaterialStateProperty.all(SystemMouseCursors.basic),
-              ),
-              child: const Text(
-                "Create account?",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-            )
-          ],
+                  "Create account?",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

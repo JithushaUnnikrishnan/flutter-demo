@@ -1,4 +1,6 @@
 import 'package:demo/parents/childregister.dart';
+import 'package:demo/parents/parent_bottombuton.dart';
+import 'package:demo/parents/parent_home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,11 +33,17 @@ class _SearchDaycareState extends State<SearchDaycare> {
                   ],
                   color: Colors.white),
               child: Padding(
-                padding: const EdgeInsets.only(left: 15,top:  7),
-                child: Text(
-                  "Dayare Search",
-                  style:
-                      GoogleFonts.inriaSerif(fontSize: 15, color: Colors.grey),
+                padding: const EdgeInsets.only(left: 15,),
+                child: Row(
+                  children: [
+                    Icon(Icons.search,color: Colors.grey,),
+                    SizedBox(width: MediaQuery.of(context).size.width*.02,),
+                    Text(
+                      "Daycare Search",
+                      style:
+                          GoogleFonts.inriaSerif(fontSize: 15, color: Colors.grey),
+                    ),
+                  ],
                 ),
               )),
       SizedBox(width: MediaQuery.of(context).size.width * .095,),
@@ -124,6 +132,20 @@ body: Container(
               Icon(Icons.star,color: Colors.yellow,size: 50,),
               Icon(Icons.star,color: Colors.yellow,size: 50),
               Icon(Icons.star,color: Colors.white,size: 50)
+            ],
+          ),
+        ),
+        SizedBox(height: MediaQuery.of(context).size.height*.5,),
+
+        Padding(
+          padding: const EdgeInsets.only(left: 30),
+          child: Row(
+            children: [
+              Text('Already have an account?',style: GoogleFonts.inriaSerif(fontSize: 15),),
+              InkWell(onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>PBottomButton()));
+              },
+                  child: Text('Go to home',style: GoogleFonts.inriaSerif(fontSize: 15,color: Colors.blue),))
             ],
           ),
         )

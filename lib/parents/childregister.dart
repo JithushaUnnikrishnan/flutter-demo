@@ -48,6 +48,7 @@ class _ChildRegisterState extends State<ChildRegister> {
         ),
       ),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
 
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -61,6 +62,7 @@ class _ChildRegisterState extends State<ChildRegister> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .025,),
               TextFormField(
+                keyboardType: TextInputType.streetAddress,
                 minLines: 3,
                 maxLines: 3,
                 decoration: InputDecoration(
@@ -70,6 +72,7 @@ class _ChildRegisterState extends State<ChildRegister> {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .025,),
               TextFormField(
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Pincode",
@@ -159,14 +162,8 @@ class _ChildRegisterState extends State<ChildRegister> {
                     labelText: "Parent's Occupation",
                     labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey))
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * .025,),
-              TextFormField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Image",
-                      labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey))
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * .025,),
+
+              SizedBox(height: MediaQuery.of(context).size.height * .045,),
               InkWell(onTap: (){
                 Navigator.push(
                     context,

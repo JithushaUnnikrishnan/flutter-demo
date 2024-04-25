@@ -1,3 +1,4 @@
+import 'package:demo/daycare/daybottombutn.dart';
 import 'package:demo/daycare/daycare_addview.dart';
 import 'package:demo/daycare/daycare_stafadd.dart';
 import 'package:demo/daycare/daycarestafview.dart';
@@ -17,23 +18,30 @@ class _DaycareStaffState extends State<DaycareStaff> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(117, 10, 100, 1),
-        toolbarHeight: 122,
-        elevation: 6,
-        shadowColor: Colors.grey,
-        shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
-        title:
-
-          Text(
-            "My Staff",
-            style: GoogleFonts.inriaSerif(
-              fontSize: 38,
-              color: Colors.white,
-            ),
-          ),
-
-      ),
+          automaticallyImplyLeading: false,
+          backgroundColor: Color.fromRGBO(117, 10, 100, 1),
+          toolbarHeight: 122,
+          elevation: 6,
+          shadowColor: Colors.grey,
+          shape: ContinuousRectangleBorder(
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
+          title: Row(
+            children: [
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>DayBottomButton()));
+              }, child: Icon(Icons.arrow_back)),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .1,
+              ),
+              Text(
+                "My Staff",
+                style: GoogleFonts.inriaSerif(
+                  fontSize: 38,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          )),
       body: Container(
         child: Column(
           children: [
@@ -171,10 +179,8 @@ class _DaycareStaffState extends State<DaycareStaff> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DaycareStafadd()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DaycareStafadd()));
               },
               child: Container(
                 height: 60,

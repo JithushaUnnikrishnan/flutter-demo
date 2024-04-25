@@ -1,3 +1,6 @@
+import 'package:demo/daycare/daycare_login.dart';
+import 'package:demo/doctor/doctor_login.dart';
+import 'package:demo/doctor/login_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,7 +15,7 @@ class _DoctorForgotState extends State<DoctorForgot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -39,7 +42,7 @@ class _DoctorForgotState extends State<DoctorForgot> {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height*.09,),
+              SizedBox(height: MediaQuery.of(context).size.height*.05,),
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text("Confirm Password",style: GoogleFonts.inriaSerif(fontSize: 20,),),
@@ -52,31 +55,33 @@ class _DoctorForgotState extends State<DoctorForgot> {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {},
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 170,top: 90),
-                  child: Container(
-                      height: 50,
-                      width: 75,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45)
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Done",
-                          style: GoogleFonts.inriaSerif(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                      )),
+              SizedBox(height: MediaQuery.of(context).size.height*.2,),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DoctorLogin()));
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    overlayColor: MaterialStateProperty.all(Colors.black.withOpacity(0.2)),
+                    elevation: MaterialStateProperty.all(5),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Done",
+                      style: GoogleFonts.inriaSerif(
+                          fontSize: 20, color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
 

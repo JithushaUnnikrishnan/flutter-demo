@@ -13,6 +13,7 @@ class _ParentActivityState extends State<ParentActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color.fromRGBO(66, 135, 156, 1),
         toolbarHeight: 122,
         elevation: 6,
@@ -22,7 +23,7 @@ class _ParentActivityState extends State<ParentActivity> {
         title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
 
           SizedBox(
-            width: MediaQuery.of(context).size.width * .2,
+            width: MediaQuery.of(context).size.width * .25,
           ),
           Text(
             "ACTIVITY",

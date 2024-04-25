@@ -1,6 +1,7 @@
 import 'package:demo/babysitters/babysitters_signup.dart';
 import 'package:demo/daycare/daycare_register.dart';
 import 'package:demo/doctor/signup_doctor.dart';
+import 'package:demo/logo/first_login.dart';
 import 'package:demo/logo/logo_page.dart';
 import 'package:demo/parents/signup_parent.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +22,21 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
         child: ListView(
           children: [
             Padding(
+              padding: const EdgeInsets.fromLTRB(0, 20, 350, 0),
+              child: InkWell(onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>FirstLogin()));
+              },
+                  child: Icon(Icons.arrow_back)),
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 80),
               child: Container(
+
                 // width: 194,
                 // height: 44,
                 // decoration:
                 // const BoxDecoration(color: Color.fromRGBO(172, 227, 239, 1)),
-                child: const Center(
+                child:  Center(
                     child: Text(
                       "Select Category",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),

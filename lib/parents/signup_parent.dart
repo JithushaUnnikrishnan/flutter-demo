@@ -21,12 +21,14 @@ class _ParentSignupState extends State<ParentSignup> {
         title: Center(child: Image.asset("assets/pregister.png")),
       ),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height*.08,),
               TextFormField(
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -38,6 +40,7 @@ class _ParentSignupState extends State<ParentSignup> {
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
               TextFormField(
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -49,6 +52,7 @@ class _ParentSignupState extends State<ParentSignup> {
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),

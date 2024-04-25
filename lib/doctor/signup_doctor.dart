@@ -1,5 +1,7 @@
 import 'package:demo/doctor/doctor_bottombuton.dart';
 import 'package:demo/doctor/doctor_home.dart';
+import 'package:demo/doctor/doctor_login.dart';
+import 'package:demo/doctor/login_doctor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +21,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
           elevation: 10,
           shadowColor: Colors.black,
           title:  Padding(
-            padding: const EdgeInsets.only(left: 97),
+            padding: const EdgeInsets.only(left: 157),
             child: CircleAvatar(
               backgroundColor: Colors.white,
               child: Image.asset("assets/logo.png"),
@@ -67,9 +69,12 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 height: 10,
               ),
               TextFormField(
+                // keyboardType: TextInputType.streetAddress,
                 minLines: 5,
                 maxLines: 5,
+
                 decoration: const InputDecoration(
+
                   border: OutlineInputBorder(),
                   labelText: "Home Address",
                   labelStyle: TextStyle(color: Colors.grey),
@@ -109,7 +114,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                         Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => DBottomButton()));
+                                            builder: (context) => DoctorLogin()));
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.blue,

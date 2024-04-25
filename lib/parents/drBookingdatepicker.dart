@@ -83,7 +83,9 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
-              child: InkWell(onTap: (){},
+              child: InkWell(onTap: (){
+                Navigator.pop(context);
+              },
                   child: Icon(Icons.arrow_back)),
             ),
             SingleChildScrollView(

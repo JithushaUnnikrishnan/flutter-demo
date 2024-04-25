@@ -37,7 +37,7 @@ class _ParentFoodState extends State<ParentFood> {
                               builder: (context) => PBottomButton()));
                     },
                       child: Icon(
-                        Icons.arrow_back_ios_sharp,
+                        Icons.arrow_back,
                         color: Colors.white,
                       ),
                     ),

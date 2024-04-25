@@ -1,3 +1,4 @@
+import 'package:demo/daycare/daycare_parent%20viewpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -68,70 +69,50 @@ class _DaycareParentState extends State<DaycareParent> {
               color: Color.fromRGBO(245, 245, 245, 1),
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .05,
                 ),
                 Text(
-                  "Jishnu",
+                  "Jeni",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 30,
                     color: Colors.black,
                   ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * .08,
+                  width: MediaQuery.of(context).size.width * .2,
                 ),
+
                 InkWell(
-                  onTap: () {},
-                  child: Container(
-                      height: 40,
-                      width: 74,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45)
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.red),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Reject",
-                          style: GoogleFonts.inriaSerif(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                      )),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .05,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                      height: 40,
-                      width: 74,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45)
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Accept",
-                          style: GoogleFonts.inriaSerif(
-                              fontSize: 20, color: Colors.white),
-                        ),
-                      )),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>RequestAccept()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Container(
+                        height: 40,
+                        width: 74,
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 3),
+                                  spreadRadius: 2,
+                                  blurRadius: 2,
+                                  color: Colors.black45)
+                            ],
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "View",
+                            style: GoogleFonts.inriaSerif(
+                                fontSize: 20, color: Colors.white),
+                          ),
+                        )),
+                  ),
                 ),
               ],
             ),

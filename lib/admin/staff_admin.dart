@@ -41,7 +41,7 @@ class _AdminStaffState extends State<AdminStaff> {
                   },
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: Icon(Icons.arrow_back_ios_sharp),
+                        child: Icon(Icons.arrow_back),
                       )),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .2,

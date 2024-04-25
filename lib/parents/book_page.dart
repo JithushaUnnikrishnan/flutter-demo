@@ -1,3 +1,4 @@
+import 'package:demo/parents/parent_dr.dart';
 import 'package:flutter/material.dart';
 
 class SuccessPage extends StatefulWidget {
@@ -12,9 +13,14 @@ class _SuccessPageState extends State<SuccessPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: Icon(
-        //   Icons.arrow_back_ios_sharp,
-        // ),
+        automaticallyImplyLeading: false,
+        title: InkWell(onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentBooking()));
+        },
+          child: Icon(
+            Icons.arrow_back,
+          ),
+        ),
       ),
       body: Container(
         child: Padding(
