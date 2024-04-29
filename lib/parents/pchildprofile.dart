@@ -87,7 +87,9 @@ class _EnrollChildState extends State<EnrollChild> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
-                      Image.asset("assets/rectgirl.png"),
+                      Container(
+                        height: 75,width: 60,
+                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),image: DecorationImage(image: AssetImage("assets/rectgirl.png"))),),
 
 
                       Text(
@@ -115,7 +117,7 @@ class _EnrollChildState extends State<EnrollChild> {
                 ),
                 Column(
                   children: [
-                    SizedBox(height:MediaQuery.of(context).size.height*.15,),
+                    SizedBox(height:MediaQuery.of(context).size.height*.165,),
                     Text(":"),Text(":",style: TextStyle(height: 12.5),),Text(":"),
                   ],
                 ),

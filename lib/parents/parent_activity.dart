@@ -48,6 +48,7 @@ class _ParentActivityState extends State<ParentActivity> {
                 height: 82,
                 width: 316,
                 decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
                           offset: Offset(0, 3),
@@ -81,7 +82,9 @@ class _ParentActivityState extends State<ParentActivity> {
               Container(
                 height: 82,
                 width: 316,
-                decoration: BoxDecoration(boxShadow: [
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 3),
                       spreadRadius: 2,
@@ -108,7 +111,7 @@ class _ParentActivityState extends State<ParentActivity> {
               Container(
                 height: 82,
                 width: 316,
-                decoration: BoxDecoration(boxShadow: [
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),boxShadow: [
                   BoxShadow(
                       offset: Offset(0, 3),
                       spreadRadius: 2,

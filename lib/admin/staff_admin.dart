@@ -14,48 +14,27 @@ class _AdminStaffState extends State<AdminStaff> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          elevation: 10,
+          shadowColor: Colors.black,
+          backgroundColor: Color.fromRGBO(250, 244, 115, 1),
+          toolbarHeight: 104,
+          title:
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 55),
+              child: Text("Babysitters",style: GoogleFonts.inriaSerif(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40),),
+            ),
+          )
+
+      ),
       body: Container(
         child: ListView(
           children: [
-            Container(
-              height: 104,
-              width: 360,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Color.fromRGBO(250, 244, 115, 1),
-                  boxShadow: [
-                    BoxShadow(
-                        offset: Offset(0, 3),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        color: Colors.black45)
-                  ]),
-              child: Center(
-                  child: Row(
-                children: [
-                  InkWell(onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdminHome()));
-                  },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Icon(Icons.arrow_back),
-                      )),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .2,
-                  ),
-                  Text(
-                    "Babysitters",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              )),
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height*.02,),
             Column(
               children: [
                 Row(
@@ -68,18 +47,21 @@ class _AdminStaffState extends State<AdminStaff> {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 30.0),
-                      child: Text("Dayana"),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Dayana", style: GoogleFonts.inriaSerif(fontSize: 20),),
+                        Text('Daycare Name:Little kids', style: GoogleFonts.inriaSerif(fontSize: 15),),
+                        Text('No of students:10', style: GoogleFonts.inriaSerif(fontSize: 15),),
+                        Text('Phone No:90785610', style: GoogleFonts.inriaSerif(fontSize: 15),),
+                      ],
                     ),
-                    const Padding(
-                        padding: EdgeInsets.only(left: 150.0),
-                        child: Icon(CupertinoIcons.delete)),
+                    SizedBox(width: MediaQuery.of(context).size.width*.15,),
+                    Icon(CupertinoIcons.delete),
                   ],
                 ),
-                const Divider(
-                  endIndent: 10,
-                  indent: 10,
+                 Divider(
+
                 )
               ],
             )

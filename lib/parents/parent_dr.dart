@@ -15,26 +15,14 @@ class _ParentBookingState extends State<ParentBooking> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            color: Color.fromRGBO(
-              119,
-              164,
-              204,
-              1,
-            ),
-            height: MediaQuery.of(context).size.height * .175,
-            width: MediaQuery.of(context).size.height * .485,
+      appBar: AppBar(
+          elevation: 20,
+          shadowColor: Colors.black,
+          backgroundColor: Color.fromRGBO(119, 164, 204, 1,),
+          toolbarHeight: 104,
+          title: Container(
             child: Row(
               children: [
-                InkWell(onTap:(){
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => PBottomButton()));
-                },
-                    child: Icon(Icons.arrow_back)),
                 Image.asset("assets/drpic.png"),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .05,
@@ -42,86 +30,95 @@ class _ParentBookingState extends State<ParentBooking> {
                 Text(
                   "DOCTOR",
                   style: GoogleFonts.irishGrover(
-                      fontSize: 60, color: Colors.white),
+                      fontSize: 40, color: Colors.white),
                 )
               ],
             ),
-          ),
+          )),
+
+      body: ListView(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height*.025,),
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 10),
+  child: TextField(decoration: InputDecoration( filled: true,
+  fillColor: Colors.grey.withOpacity(0.1),border: OutlineInputBorder(),hintText: 'Search' ),),
+),
+
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Container(
-              height: 42,
-              width: 312,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey[200]),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0,top: 5),
-                child: Text(
-                  "Search",
-                  style:
-                      GoogleFonts.inriaSerif(color: Colors.grey, fontSize: 20),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Container(
               child: Row(
                 children: [
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: Image.asset("assets/drimage.png"),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * .025),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ParentBookingDr()));
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Container(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: Text(
-                                      "Book",
-                                      style: GoogleFonts.jomhuria(fontSize: 20),
-                                    ),
-                                  ),
-                                  height: MediaQuery.of(context).size.height * .031,
-                                  width: MediaQuery.of(context).size.width * .1,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: Colors.blue)),
-                            ),
-                          ),
-                          SizedBox(width: MediaQuery.of(context).size.width * .050,),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, top: 10),
+                          child: Image.asset("assets/drimage.png"),
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * .025),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ParentBookingDr()));
+                                },
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: 8),
-                                  child: Text(
-                                    "Call",
-                                    style: GoogleFonts.jomhuria(fontSize: 20),
-                                  ),
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Container(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: Text(
+                                          "Book",
+                                          style: GoogleFonts.jomhuria(
+                                              fontSize: 20),
+                                        ),
+                                      ),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .031,
+                                      width: MediaQuery.of(context).size.width *
+                                          .1,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                          color: Colors.blue)),
                                 ),
-                                height: MediaQuery.of(context).size.height * .031,
-                                width: MediaQuery.of(context).size.width * .1,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.green[400])),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * .050,
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: Text(
+                                        "Call",
+                                        style:
+                                            GoogleFonts.jomhuria(fontSize: 20),
+                                      ),
+                                    ),
+                                    height: MediaQuery.of(context).size.height *
+                                        .031,
+                                    width:
+                                        MediaQuery.of(context).size.width * .1,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: Colors.green[400])),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ]),
+                        ),
+                      ]),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: Column(
@@ -164,73 +161,86 @@ class _ParentBookingState extends State<ParentBooking> {
                 ],
               ),
               decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  offset: Offset(0, 4),
-                  spreadRadius: 2,
-                  blurRadius: 3,
-
-                )],
-                borderRadius: BorderRadius.circular(10)
-              ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      offset: Offset(0, 4),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                    )
+                  ],
+                  borderRadius: BorderRadius.circular(10)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Container(
               child: Row(
                 children: [
-                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 10),
-                      child: Image.asset("assets/maledr.png"),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * .025),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10,bottom: 10),
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Container(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: Text(
-                                      "Book",
-                                      style: GoogleFonts.jomhuria(fontSize: 20),
-                                    ),
-                                  ),
-                                  height: MediaQuery.of(context).size.height * .031,
-                                  width: MediaQuery.of(context).size.width * .1,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.blue)),
-                            ),
-                          ),
-                          SizedBox(width: MediaQuery.of(context).size.width * .050,),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25, top: 10),
+                          child: Image.asset("assets/maledr.png"),
+                        ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * .025),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, bottom: 10),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {},
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: 8),
-                                  child: Text(
-                                    "Call",
-                                    style: GoogleFonts.jomhuria(fontSize: 20),
-                                  ),
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Container(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: Text(
+                                          "Book",
+                                          style: GoogleFonts.jomhuria(
+                                              fontSize: 20),
+                                        ),
+                                      ),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .031,
+                                      width: MediaQuery.of(context).size.width *
+                                          .1,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: Colors.blue)),
                                 ),
-                                height: MediaQuery.of(context).size.height * .031,
-                                width: MediaQuery.of(context).size.width * .1,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.green[400])),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * .050,
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: Text(
+                                        "Call",
+                                        style:
+                                            GoogleFonts.jomhuria(fontSize: 20),
+                                      ),
+                                    ),
+                                    height: MediaQuery.of(context).size.height *
+                                        .031,
+                                    width:
+                                        MediaQuery.of(context).size.width * .1,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        color: Colors.green[400])),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ]),
+                        ),
+                      ]),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: Column(
@@ -272,15 +282,15 @@ class _ParentBookingState extends State<ParentBooking> {
               ),
               decoration: BoxDecoration(
                   color: Colors.white,
-                  boxShadow: [BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    offset: Offset(0, 4),
-                    spreadRadius: 2,
-                    blurRadius: 3,
-
-                  )],
-                  borderRadius: BorderRadius.circular(10)
-              ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      offset: Offset(0, 4),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                    )
+                  ],
+                  borderRadius: BorderRadius.circular(10)),
             ),
           )
         ],

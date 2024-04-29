@@ -15,44 +15,27 @@ class _AdminParentState extends State<AdminParent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          elevation: 10,
+          shadowColor: Colors.black,
+          backgroundColor: Color.fromRGBO(117, 10, 100, 1),
+          toolbarHeight: 104,
+          title:
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 55),
+              child: Text("Parent",style: GoogleFonts.inriaSerif(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40),),
+            ),
+          )
+
+      ),
       body: Container(
         child: ListView(
           children: [
-            Container(
-              width: 360,
-              height: 124,
-              decoration: const BoxDecoration(
-                boxShadow: [
-                  BoxShadow(offset: Offset(0, 3),spreadRadius: 3,blurRadius: 2,color: Colors.black45)
-                ],
-                  shape: BoxShape.rectangle,
-                  color: Color.fromRGBO(113, 9, 115, 1)),
-              child: Center(
-                  child: Row(
-                children: [
-                  GestureDetector(onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdminHome()));
-                  },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Icon(Icons.arrow_back),
-                      )),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .250,
-                  ),
-                  Text(
-                    "Parent",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40),
-                  ),
-                ],
-              )),
-            ),
+
             Column(
               children: [
                 Row(
@@ -65,12 +48,14 @@ class _AdminParentState extends State<AdminParent> {
                         ),
                       ),
                     ),
+                    Column(
+                      crossAxisAlignment:CrossAxisAlignment.start,
+                      children: [ Text("Aswathi"),
+                      Text('Phone No:9047483821'),
+                      Text('aswathi@gmail.com',style: TextStyle(color: Colors.blue,fontSize: 13),)],),
+
                     const Padding(
-                      padding: EdgeInsets.only(left: 30.0),
-                      child: Text("Aswathi"),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 150.0),
+                      padding: EdgeInsets.only(left: 100.0),
                       child: Icon(
                         CupertinoIcons.delete,
                       ),

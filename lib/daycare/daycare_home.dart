@@ -1,6 +1,7 @@
 import 'package:demo/daycare/Datcare_parent.dart';
 import 'package:demo/daycare/daycare_activity.dart';
 import 'package:demo/daycare/daycare_children.dart';
+import 'package:demo/daycare/daycare_food.dart';
 import 'package:demo/daycare/daycare_staff.dart';
 import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/material.dart';
@@ -123,6 +124,24 @@ class _DaycareHomeState extends State<DaycareHome> {
                       ]
                   ),
                   child: Center(child: Text("Activity",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 40))),
+                ),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+              InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DaycareFood()));
+              },
+                child: Container(
+                  height: 72,width: 312,
+                  decoration:  BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(242, 215, 133, 1),
+                      boxShadow: [
+                        BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+                      ]
+                  ),
+                  child: Center(child: Text("Food Add",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 40))),
                 ),
               )
             ],

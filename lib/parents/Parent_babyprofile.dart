@@ -22,7 +22,7 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
 
             Positioned(
               left: 25, // Position the first image outside the container
-              top: 115,
+              top: 135,
               child: Container(
                 width: 367,
                 height: 167,
@@ -42,7 +42,7 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
                       padding: const EdgeInsets.only(left: 30, top: 40),
                       child: Column(
                         children: [
-                          Image.asset('assets/rectgirl.png'),
+                          Container(height: 75,width:60,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),image: DecorationImage(image: AssetImage('assets/rectgirl.png')))),
 
                           Text('Jeni',
                               style: GoogleFonts.inriaSerif(
@@ -150,7 +150,7 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
             //   child: Icon(Icons.arrow_back),
             // )),
             Padding(
-              padding: const EdgeInsets.only(left: 35),
+              padding: const EdgeInsets.only(left: 35,top: 20),
               child: Image.asset(
                 'assets/stckpic.png',
                 width: 350,

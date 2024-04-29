@@ -56,7 +56,7 @@ class _ChildRegisterState extends State<ChildRegister> {
             children: [
               TextFormField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(),floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelText: "Child Name",
                     labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey))
               ),
@@ -67,14 +67,14 @@ class _ChildRegisterState extends State<ChildRegister> {
                 maxLines: 3,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Address",
+                    labelText: "Address",floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey)),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .025,),
               TextFormField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(),floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelText: "Pincode",
                     labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey)),
               ),
@@ -151,14 +151,14 @@ class _ChildRegisterState extends State<ChildRegister> {
               SizedBox(height: MediaQuery.of(context).size.height * .025,),
               TextFormField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(),floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelText: "Blood Group",
                     labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey)),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .025,),
               TextFormField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(),floatingLabelBehavior: FloatingLabelBehavior.always,
                     labelText: "Parent's Occupation",
                     labelStyle: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.grey))
               ),

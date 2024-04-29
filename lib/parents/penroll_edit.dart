@@ -52,6 +52,7 @@ class _EnrollEditState extends State<EnrollEdit> {
                 child: Container(
                   height: 75,width: 65,
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
           
                       image: DecorationImage(
                         fit: BoxFit.cover,

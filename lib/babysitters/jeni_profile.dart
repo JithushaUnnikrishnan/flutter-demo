@@ -11,6 +11,7 @@ class ChildPage extends StatefulWidget {
 }
 
 class _ChildPageState extends State<ChildPage> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,12 +76,12 @@ class _ChildPageState extends State<ChildPage> {
                           onTap: () {},
                           child: Container(
                             decoration: BoxDecoration(
+                              boxShadow: [BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 3,color: Colors.black26)],
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.blue),
                             width: 75,
-                            height: 25,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
+                            height: 35,
+                            child: Center(
                               child: Text(
                                 'Upload',
                                 style: GoogleFonts.inriaSerif(
@@ -121,12 +122,12 @@ class _ChildPageState extends State<ChildPage> {
                           onTap: () {},
                           child: Container(
                             decoration: BoxDecoration(
+                                boxShadow: [BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 3,color: Colors.black26)],
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.blue),
                             width: 75,
-                            height: 25,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
+                            height: 35,
+                            child: Center(
                               child: Text(
                                 'Upload',
                                 style: GoogleFonts.inriaSerif(
@@ -167,12 +168,12 @@ class _ChildPageState extends State<ChildPage> {
                           onTap: () {},
                           child: Container(
                             decoration: BoxDecoration(
+                                boxShadow: [BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 3,color: Colors.black26)],
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.blue),
                             width: 75,
-                            height: 25,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
+                            height: 35,
+                            child: Center(
                               child: Text(
                                 'Upload',
                                 style: GoogleFonts.inriaSerif(
@@ -192,7 +193,7 @@ class _ChildPageState extends State<ChildPage> {
                 ),
                 Text(("Health Record"),style: GoogleFonts.inriaSerif(fontSize: 20),),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .060,
+                  height: MediaQuery.of(context).size.height * .040,
                 ),
                 Container(
                   height: 46,

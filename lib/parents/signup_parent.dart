@@ -26,7 +26,9 @@ class _ParentSignupState extends State<ParentSignup> {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height*.08,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .08,
+              ),
               TextFormField(
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
@@ -65,23 +67,21 @@ class _ParentSignupState extends State<ParentSignup> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SearchDaycare()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SearchDaycare()));
                 },
                 child: Container(
                   height: 60,
                   width: 300,
-                  child: Center(
-                    child: Text(
-                      "Register",
-                      style: GoogleFonts.inriaSerif(
-                        color: Colors.white,
-                        fontSize: 40,
-                      ),
+                  child: Text(
+                    "Register",
+                    style: GoogleFonts.inriaSerif(
+                      height: 1,
+                      color: Colors.white,
+                      fontSize: 40,
                     ),
                   ),
+                  alignment: Alignment.topCenter,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Color.fromRGBO(
