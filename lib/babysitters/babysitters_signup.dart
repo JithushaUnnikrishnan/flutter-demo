@@ -61,74 +61,11 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .035,),
-            Row(
-              children: [
-
-                Text("Date Of Birth  ",style:GoogleFonts.inriaSerif(fontSize: 20) ,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .002,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .04,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .002,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .04,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .002,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .002,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                SizedBox(width:MediaQuery.of(context).size.width * .002,),
-                Container(
-                  height: 28,width: 25,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-              ],
+            TextFormField(
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Daycare Name",
+                  labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .035,),
             TextFormField(
@@ -140,14 +77,14 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .035,),
-            TextFormField(
+            TextFormField(keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Id Proof Number",
                   labelStyle: TextStyle(color: Colors.grey)),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .035,),
-            TextFormField(
+            TextFormField(keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: "Phone Number",

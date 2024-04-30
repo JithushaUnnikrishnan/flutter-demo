@@ -15,7 +15,9 @@ import 'package:demo/babysitters/babysitters_login.dart';
 import 'package:demo/babysitters/babysitters_signup.dart';
 import 'package:demo/babysitters/bs_bottombutton.dart';
 import 'package:demo/babysitters/childprofileb.dart';
-import 'package:demo/babysitters/jeni_profile.dart';
+import 'package:demo/babysitters/healthrecordjeni.dart';
+import 'package:demo/babysitters/jeni_profiledaily.dart';
+import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
 import 'package:demo/daycare/Datcare_parent.dart';
 import 'package:demo/daycare/Daycare_childview.dart';
 import 'package:demo/daycare/daycare_activity.dart';
@@ -61,6 +63,8 @@ import 'package:demo/parents/pchildprofile.dart';
 import 'package:demo/parents/penroll_edit.dart';
 import 'package:demo/parents/searchdaycare.dart';
 import 'package:demo/parents/signup_parent.dart';
+import 'package:demo/trail.dart';
+import 'package:demo/trail2.dart';
 import 'package:flutter/material.dart';
 
 

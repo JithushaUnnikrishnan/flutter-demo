@@ -1,8 +1,10 @@
 import 'package:demo/babysitters/babysitter_activity.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:open_app_file/open_app_file.dart';
 
 class AddActivity extends StatefulWidget {
   const AddActivity({super.key});
@@ -12,6 +14,14 @@ class AddActivity extends StatefulWidget {
 }
 
 class _AddActivityState extends State<AddActivity> {
+  PlatformFile? file;
+  Future<void> picksinglefile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      file = result.files.first;
+      file == null ? false : OpenAppFile.open(file!.path.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,17 +44,18 @@ class _AddActivityState extends State<AddActivity> {
                   ),
                   filled: true,
                   fillColor: Colors.white,
-                  labelText: "Date",
+                  labelText: "Time",
                     labelStyle: TextStyle(color:  Colors.grey,)
                 ),
               ),
               SizedBox(height: 20,),
               TextFormField(
-                decoration: InputDecoration(
+
+                decoration: InputDecoration(suffixIcon: IconButton(onPressed: picksinglefile, icon: Icon(Icons.file_copy)),
                   border: OutlineInputBorder(),
                   filled: true,
                   fillColor: Colors.white,
-                  labelText: "Time",
+                  labelText: "Image",
                   labelStyle: TextStyle(color:  Colors.grey,)
                 ),
               ),
@@ -54,7 +65,7 @@ class _AddActivityState extends State<AddActivity> {
                   border: OutlineInputBorder(),
                   filled: true,
                   fillColor: Colors.white,
-                  labelText: "Activity",
+                  labelText: "Note",
                   labelStyle: TextStyle(color: Colors.grey)
                 ),
               ),

@@ -1,4 +1,6 @@
-import 'package:demo/babysitters/jeni_profile.dart';
+import 'package:demo/babysitters/bs_bottombutton.dart';
+import 'package:demo/babysitters/jeni_profiledaily.dart';
+import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +17,10 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomButton()));
+        }, icon: Icon(Icons.arrow_back)),
         title: Center(
             child: Text(
           "My Children",
@@ -32,7 +38,7 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  ChildPage()));
+                                builder: (context) =>  MychildrenHome()));
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: const Color.fromRGBO(215, 240, 62, 1),

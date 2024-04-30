@@ -35,36 +35,36 @@ class _AdminHomeState extends State<AdminHome> {
                 )),
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Color.fromRGBO(
-                      232, 196, 233, 1
-                  ),boxShadow: [
-                  BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                ]
-                ),
-                height: 104,
-                width: 320,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AdminParent()));
-                  },
-                  child: Text(
-                    "Parent",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding:
+            //       const EdgeInsets.only(left: 15, right: 15, top: 0, bottom: 0),
+            //   child: Container(
+            //     decoration: const BoxDecoration(
+            //       color: Color.fromRGBO(
+            //           232, 196, 233, 1
+            //       ),boxShadow: [
+            //       BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+            //     ]
+            //     ),
+            //     height: 104,
+            //     width: 320,
+            //     child: TextButton(
+            //       onPressed: () {
+            //         Navigator.push(
+            //             context,
+            //             MaterialPageRoute(
+            //                 builder: (context) => AdminParent()));
+            //       },
+            //       child: Text(
+            //         "Parent",
+            //         style: GoogleFonts.inriaSerif(
+            //             color: Colors.black,
+            //             fontSize: 40,
+            //             fontWeight: FontWeight.bold),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(
                   left: 15.0, right: 15, top: 25, bottom: 0),

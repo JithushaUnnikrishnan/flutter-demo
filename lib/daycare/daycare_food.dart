@@ -1,3 +1,4 @@
+import 'package:demo/daycare/daybottombutn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -286,6 +287,11 @@ class _DaycareFoodState extends State<DaycareFood> {
                  ),
                ),
              ),
+             SizedBox(height: 20,),
+             Center(child: ElevatedButton(onPressed: (){
+               Navigator.push(context, MaterialPageRoute(builder: (context)=>DayBottomButton()));
+             }, child: Text('Done',style: GoogleFonts.inriaSerif(color: Colors.white),),style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),)),
+             SizedBox(height: 30,),
            ],
          ),
        ),

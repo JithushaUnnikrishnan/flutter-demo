@@ -1,4 +1,5 @@
 import 'package:demo/daycare/Daycare_childview.dart';
+import 'package:demo/daycare/daybottombutn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,6 +15,10 @@ class _DaycareChildrenState extends State<DaycareChildren> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading:IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>DayBottomButton()));
+        }, icon: Icon(Icons.arrow_back)),
         backgroundColor: Color.fromRGBO(117, 10, 100, 1),
         toolbarHeight: 122,
         elevation: 6,

@@ -54,7 +54,7 @@ class _DaycareHomeState extends State<DaycareHome> {
           padding: const EdgeInsets.symmetric(horizontal: 60),
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.075),
               InkWell(onTap: (){
                 Navigator.push(
                     context,
@@ -87,7 +87,7 @@ class _DaycareHomeState extends State<DaycareHome> {
                         BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                       ]
                   ),
-                  child: Text("Parent Request",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 35)),
+                  child: Text("Children Request",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 33)),
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
@@ -136,7 +136,7 @@ class _DaycareHomeState extends State<DaycareHome> {
                 child: Container(
                   height: 72,width: 312,
                   decoration:  BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(242, 215, 133, 1),
+                      borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(255, 99, 130, 1),
                       boxShadow: [
                         BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                       ]

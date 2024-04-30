@@ -1,5 +1,6 @@
 import 'package:demo/parents/drBookingdatepicker.dart';
 import 'package:demo/parents/parent_bottombuton.dart';
+import 'package:demo/parents/parent_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,10 +17,14 @@ class _ParentBookingState extends State<ParentBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading:IconButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>PBottomButton()));
+        }, icon: Icon(Icons.arrow_back)),
           elevation: 20,
           shadowColor: Colors.black,
           backgroundColor: Color.fromRGBO(119, 164, 204, 1,),
           toolbarHeight: 104,
+          automaticallyImplyLeading: false,
           title: Container(
             child: Row(
               children: [

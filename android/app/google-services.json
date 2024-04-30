@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "17383665187",
+    "firebase_url": "https://tinytotscare-7f8e9-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tinytotscare-7f8e9",
+    "storage_bucket": "tinytotscare-7f8e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17383665187:android:36223ac23e4d1b2dc98b96",
+        "android_client_info": {
+          "package_name": "com.example.demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxf0yk-ULVKLkJn6oJxF_Ppk4K6LQdfbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

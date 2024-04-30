@@ -188,38 +188,9 @@ class _ChildPageState extends State<ChildPage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .060,
-                ),
-                Text(("Health Record"),style: GoogleFonts.inriaSerif(fontSize: 20),),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .040,
-                ),
-                Container(
-                  height: 46,
-                  width: 316,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 2,
-                          blurRadius: 3,
-                          offset: Offset(0, 4))
-                    ],
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                
 
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(CupertinoIcons.plus_circle_fill),
-                      ],
-                    ),
-                  ),
-                ),
+
               ],
             ),
           )
