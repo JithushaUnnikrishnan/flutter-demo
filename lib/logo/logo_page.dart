@@ -1,5 +1,6 @@
 import 'package:demo/admin/login_page.dart';
-import 'package:demo/logo/first_login.dart';
+import 'package:demo/logo/select_categoryfor%20reg.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,7 +63,7 @@ class _LogoPageState extends State<LogoPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => FirstLogin()));
+                        builder: (context) => SelectCategoryreg()));
               },
                   child: Text('Start' ,style: GoogleFonts.fruktur(fontSize: 45,fontWeight:FontWeight.bold),))),
             )

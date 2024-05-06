@@ -36,11 +36,13 @@ import 'package:demo/daycare/daycare_updated.dart';
 import 'package:demo/daycare/daycare_updatepage.dart';
 import 'package:demo/doctor/doctor_forgot.dart';
 import 'package:demo/doctor/doctor_home.dart';
-import 'package:demo/doctor/doctor_login.dart';
+// import 'package:demo/doctor/doctor_login.dart';
+import 'package:demo/doctor/drRequestpage.dart';
 import 'package:demo/doctor/dr_edit.dart';
 import 'package:demo/doctor/dr_profile.dart';
 import 'package:demo/doctor/login_doctor.dart';
 import 'package:demo/doctor/signup_doctor.dart';
+import 'package:demo/firebase_options.dart';
 import 'package:demo/logo/first_login.dart';
 import 'package:demo/logo/logo_page.dart';
 import 'package:demo/logo/select_categoryfor%20reg.dart';
@@ -65,10 +67,14 @@ import 'package:demo/parents/searchdaycare.dart';
 import 'package:demo/parents/signup_parent.dart';
 import 'package:demo/trail.dart';
 import 'package:demo/trail2.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -76,15 +82,13 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: LogoPage()
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: LogoPage());
   }
 }
-

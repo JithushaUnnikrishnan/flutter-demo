@@ -1,5 +1,5 @@
 import 'package:demo/daycare/daycare_login.dart';
-import 'package:demo/doctor/doctor_login.dart';
+// import 'package:demo/doctor/doctor_login.dart';
 import 'package:demo/doctor/login_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,7 +45,7 @@ class _DoctorForgotState extends State<DoctorForgot> {
               SizedBox(height: MediaQuery.of(context).size.height*.05,),
               Padding(
                 padding: const EdgeInsets.only(left: 20),
-                child: Text("Confirm Password",style: GoogleFonts.inriaSerif(fontSize: 20,),),
+                child: Text("Confirm Password",style: GoogleFonts.inriaSerif(fontSize: 20,)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20,top: 10,right: 20),

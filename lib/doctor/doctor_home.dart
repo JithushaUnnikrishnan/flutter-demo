@@ -107,16 +107,12 @@ class _DoctorHomeState extends State<DoctorHome> {
                     SizedBox(
                       width: 30,
                     ),
-                    Column(children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text('DR.SARAH',
+                        style: GoogleFonts.holtwoodOneSc(fontSize: 20)),
 
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text('DR.SARAH',
-                          style: GoogleFonts.holtwoodOneSc(fontSize: 20)),
-                      Text("Visiting Time"),
-                      Text("11:30pm-3:30pm"),
-                    ]),
                   ],
                 ),
               ),
@@ -124,72 +120,28 @@ class _DoctorHomeState extends State<DoctorHome> {
 
           ),
 
+Column(
+  children: [
+    Padding(
+      padding: const EdgeInsets.only(left: 100,top: 400),
+      child: InkWell(onTap: (){
 
-          Row(
-            children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 80,
-              vertical: 290,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-
-
-                Text("Name: Jeni"),
-                Text("Date: October/12/12"),
-              ],
-            ),
-          ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 290),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: (){},
-                      child: Container(
-                        height: 25,width: 80,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.4),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                offset: Offset(0, 2))
-                          ],
-                          borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(152, 183, 211, 1,),
-                        ),
-                        child: Center(child: Text("Approve",style: TextStyle(color: Colors.white),)),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    GestureDetector(
-                      onTap: (){},
-                   child:  Container(
-                      height: 25,
-                      width:80,
-                      child: Center(child: Text("Reject",style: TextStyle(color: Colors.white),)),
-                      decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.4),
-                            spreadRadius: 2,
-                            blurRadius: 2,
-                            offset: Offset(0, 2))
-                      ],
-                        borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(241, 70, 104, 1, )
-
-                      ),
-                    ),
-                    ),
-                    
-                  ],
-                ),
-
-              ),
-
-          ]
+      },
+        child: Container(
+          height: 105,
+          width: 185,
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(offset: Offset(1,2),spreadRadius: 2,blurRadius: 3,color: Colors.grey),
+          ],borderRadius: BorderRadius.circular(10), color: Color(0xFFDBDBF1),
         ),
+        child: Center(child: Text("Appointment\n    Requests",style: GoogleFonts.inriaSerif(fontSize: 20),)),
+        ),
+      ),
+
+    ),
+  ],
+)
+
 
         ],
       ),

@@ -1,8 +1,12 @@
+import 'package:demo/babysitters/babysitters_login.dart';
 import 'package:demo/babysitters/babysitters_signup.dart';
+import 'package:demo/daycare/daycare_login.dart';
 import 'package:demo/daycare/daycare_register.dart';
+import 'package:demo/doctor/login_doctor.dart';
 import 'package:demo/doctor/signup_doctor.dart';
 import 'package:demo/logo/first_login.dart';
 import 'package:demo/logo/logo_page.dart';
+import 'package:demo/parents/parent_login.dart';
 import 'package:demo/parents/signup_parent.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +28,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 20, 350, 0),
               child: InkWell(onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>FirstLogin()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>LogoPage()));
               },
                   child: Icon(Icons.arrow_back)),
             ),
@@ -62,7 +66,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => ParentSignup()));
+                            builder: (context) => ParentLogin()));
                   },
                   child: Text(
                     "Parent",
@@ -90,7 +94,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => BabysitterSignup()));
+                            builder: (context) => BabysitterLogin()));
                   },
                   child: Text(
                     "Babysitters",
@@ -116,7 +120,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                     onPressed: () {Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DoctorSignup()));
+                            builder: (context) => DoctorLogin()));
 
                     },
                     child: Text(
@@ -143,7 +147,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DaycareRegister()));
+                            builder: (context) => DaycareLogin()));
                   },
                   child: Text(
                     "Daycare",

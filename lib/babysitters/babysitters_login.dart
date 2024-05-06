@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/babysitters/babysitter_home.dart';
 import 'package:demo/babysitters/babysitters_forgotpaswrd.dart';
 import 'package:demo/babysitters/babysitters_signup.dart';
@@ -16,128 +17,153 @@ class BabysitterLogin extends StatefulWidget {
 }
 
 class _BabysitterLoginState extends State<BabysitterLogin> {
+  final formkey=GlobalKey<FormState>();
+  var email=TextEditingController();
+  var password=TextEditingController();
+  Future<dynamic>BabysitterLog() async {await FirebaseFirestore.instance.collection("Babysitters Login").add(
+      {
+        "Email":email.text,
+        "password":password.text
+      });
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => BottomButton()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: Center(child: Text("Login")),
-      // ),
+    return Form(key: formkey,
+      child: Scaffold(
+        // appBar: AppBar(
+        //   title: Center(child: Text("Login")),
+        // ),
 
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
-        child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
-          child: Container(
-            height:MediaQuery.of(context).size.height*.7,
-            width: MediaQuery.of(context).size.width*.9,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(50)),
-              image: DecorationImage(
-                image: AssetImage('assets/output.png'),
-                fit: BoxFit.fill,
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
+          child: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: Container(
+              height:MediaQuery.of(context).size.height*.7,
+              width: MediaQuery.of(context).size.width*.9,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                image: DecorationImage(
+                  image: AssetImage('assets/output.png'),
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            padding: const EdgeInsets.all(30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "Login",
-                      style: GoogleFonts.rubikGlitch(
-                        fontSize: 50,
-                        color: Colors.white,
+              padding: const EdgeInsets.all(30),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 10,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 60,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: "Email",
-                    filled: true,
-                    fillColor: Colors.grey[50],
-                    labelStyle: const TextStyle(color: Colors.grey),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      labelText: "Password",
-                      filled: true,
-                      fillColor: Colors.grey[50],
-                      labelStyle: const TextStyle(color: Colors.grey)),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: InkWell(onTap: (){
-                        Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => BabysForgot()));
-                      },
-                        child: Text(
-                          "Forgot password?",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                      Text(
+                        "Login",
+                        style: GoogleFonts.rubikGlitch(
+                          fontSize: 50,
+                          color: Colors.white,
                         ),
                       ),
-                    )),
-                  ],
-                ),
-                ElevatedButton(
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  TextFormField(
+                    controller: email,
+                    validator: (value){
+                      if (value!.isEmpty){
+                        return "Empty Email !";
+                      }
+                    },
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: "Email",
+                      filled: true,
+                      fillColor: Colors.grey[50],
+                      labelStyle: const TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    controller: password,
+                    validator: (value){
+                      if (value!.isEmpty){
+                        return "Empty Password !";
+                      }
+                    },
+                    decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: "Password",
+                        filled: true,
+                        fillColor: Colors.grey[50],
+                        labelStyle: const TextStyle(color: Colors.grey)),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: InkWell(onTap: (){
+                          Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => BabysForgot()));
+                        },
+                          child: Text(
+                            "Forgot password?",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      )),
+                    ],
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white),
+                      child: const Text(
+                        "Login",
+                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BottomButton()));
+                              builder: (context) => const BabysitterSignup()));
                     },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white),
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.transparent),
+                      mouseCursor:
+                          MaterialStateProperty.all(SystemMouseCursors.basic),
+                    ),
                     child: const Text(
-                      "Login",
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const BabysitterSignup()));
-                  },
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    mouseCursor:
-                        MaterialStateProperty.all(SystemMouseCursors.basic),
-                  ),
-                  child: const Text(
-                    "Create account?",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                )
-              ],
+                      "Create account?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),

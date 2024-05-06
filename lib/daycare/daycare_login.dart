@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/daycare/daybottombutn.dart';
 import 'package:demo/daycare/daycare_forgot.dart';
 import 'package:demo/daycare/daycare_register.dart';
@@ -12,127 +13,154 @@ class DaycareLogin extends StatefulWidget {
 }
 
 class _DaycareLoginState extends State<DaycareLogin> {
+  final formkey=GlobalKey<FormState>();
+  var email=TextEditingController();
+  var password=TextEditingController();
+  Future<dynamic>DaycareLog() async {await FirebaseFirestore.instance.collection("DaycareLogin").add(
+      {
+        "Email":email.text,
+        "Password":password.text
+      });
+
+  Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => DayBottomButton()));
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
-        child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
-          child: Container(
-            height:MediaQuery.of(context).size.height*.7,
-            width: MediaQuery.of(context).size.width*.9,
-            decoration: BoxDecoration(
-          
-              image: DecorationImage(
-          
-                image: AssetImage('assets/output.png',),fit: BoxFit.fill
-          
-          
+    return Form(key: formkey,
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
+          child: SingleChildScrollView(
+            physics: NeverScrollableScrollPhysics(),
+            child: Container(
+              height:MediaQuery.of(context).size.height*.7,
+              width: MediaQuery.of(context).size.width*.9,
+              decoration: BoxDecoration(
+
+                image: DecorationImage(
+
+                  image: AssetImage('assets/output.png',),fit: BoxFit.fill
+
+
+                ),
+                borderRadius: BorderRadius.circular(50),
               ),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            padding: const EdgeInsets.all(30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "Login",
-                      style: GoogleFonts.rubikGlitch(
-                        fontSize: 50,
-                        color: Colors.white,
+              padding: const EdgeInsets.all(30),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 10,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 60,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    labelText: "Email",
-                    filled: true,
-                    fillColor: Colors.grey[50],
-                    labelStyle: const TextStyle(color: Colors.grey),
+                      Text(
+                        "Login",
+                        style: GoogleFonts.rubikGlitch(
+                          fontSize: 50,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  TextFormField(
+                    controller: email,
+                    validator: (value){
+                      if (value!.isEmpty){
+                        return "Empty Email !";
+                      }
+                    },
+                    decoration: InputDecoration(
                       border: const OutlineInputBorder(),
-                      labelText: "Password",
+                      hintText: "Email",
                       filled: true,
                       fillColor: Colors.grey[50],
-                      labelStyle: const TextStyle(color: Colors.grey)),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: InkWell(onTap: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DaycareForgot()));
-                          },
-                            child: Text(
-                              "Forgot password?",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                      labelStyle: const TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    controller: password,
+                    validator: (value){
+                      if (value!.isEmpty){
+                        return "Empty Password !";
+                      }
+                    },
+                    decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: "Password",
+                        filled: true,
+                        fillColor: Colors.grey[50],
+                        labelStyle: const TextStyle(color: Colors.grey)),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: InkWell(onTap: (){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DaycareForgot()));
+                            },
+                              child: Text(
+                                "Forgot password?",
+                                style: TextStyle( color: Colors.black),
+                              ),
                             ),
-                          ),
-                        )),
-                  ],
-                ),
-                ElevatedButton(
+                          )),
+                    ],
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (formkey.currentState!.validate()){
+                        DaycareLog();}
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white),
+                      child: const Text(
+                        "Login",
+                      )),
+                 SizedBox(
+                    height: MediaQuery.of(context).size.height*.05,
+                  ),
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DayBottomButton()));
+                              builder: (context) => const DaycareRegister()));
                     },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white),
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateProperty.all(Colors.transparent),
+                      mouseCursor:
+                      MaterialStateProperty.all(SystemMouseCursors.basic),
+                    ),
                     child: const Text(
-                      "Login",
-                    )),
-                const SizedBox(
-                  height: 100,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const DaycareRegister()));
-                  },
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    mouseCursor:
-                    MaterialStateProperty.all(SystemMouseCursors.basic),
-                  ),
-                  child: const Text(
-                    "Create account?",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                )
-              ],
+                      "Create account?",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
