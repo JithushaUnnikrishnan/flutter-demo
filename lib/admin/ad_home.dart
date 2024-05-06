@@ -70,7 +70,7 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 25, bottom: 0),
               child: Container(
                 decoration:
-                    const BoxDecoration(color: Color.fromRGBO(255, 251, 148, 1),boxShadow: [
+                     BoxDecoration(color: Color.fromRGBO(255, 251, 148, 1),borderRadius: BorderRadius.circular(10),boxShadow: [
                       BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                     ]
                      ),
@@ -98,9 +98,10 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    const BoxDecoration(color: Color.fromRGBO(191, 210, 228, 1),boxShadow: [
+                     BoxDecoration(color: Color.fromRGBO(191, 210, 228, 1),boxShadow: [
                       BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                    ]),
+                    ],borderRadius: BorderRadius.circular(10),
+                    ),
                 height: 104,
                 width: 320,
                 child: TextButton(
@@ -124,7 +125,7 @@ class _AdminHomeState extends State<AdminHome> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                    const BoxDecoration(color: Color.fromRGBO(97, 237, 220, 1),boxShadow: [
+                     BoxDecoration(color: Color.fromRGBO(97, 237, 220, 1),borderRadius: BorderRadius.circular(10),boxShadow: [
                       BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                     ]),
                 height: 104,
@@ -160,20 +161,23 @@ class _AdminHomeState extends State<AdminHome> {
                   style: TextButton.styleFrom(
                     shadowColor: Colors.black,
                       elevation: 10,
-                      backgroundColor: const Color.fromRGBO(74, 203, 87, 1),
+                      backgroundColor: const Color.fromRGBO(236, 97, 97, 1),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30))),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Logout",
-                        style: GoogleFonts.inriaSerif(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Icon(Icons.exit_to_app,color: Colors.black,)
-                    ],
+                          borderRadius: BorderRadius.circular(20))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 3,bottom: 2),
+                    child: Row(
+                      children: [
+                        Text(
+                          "Logout",
+                          style: GoogleFonts.inriaSerif(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Icon(Icons.exit_to_app,color: Colors.black,)
+                      ],
+                    ),
                   ),
                 ),
               ),

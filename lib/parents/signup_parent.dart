@@ -27,25 +27,28 @@ class _ParentSignupState extends State<ParentSignup> {
       "Password": password.text,
     });
     print('done');
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SearchDaycare()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => ParentLogin()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(key: formkey,
       child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 116,
-          backgroundColor: Colors.white,
-          title: Center(child: Image.asset("assets/pregister.png")),
-        ),
+
         body: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
             child: Column(
               children: [
+                Container(
+                  width: 250,
+                  height: 150,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("assets/pregister.png"))),
+                ),
                 // SizedBox(
                 //   height: MediaQuery.of(context).size.height * .001,
                 // ),
@@ -60,7 +63,7 @@ class _ParentSignupState extends State<ParentSignup> {
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      labelText: "Parent Name",
+                      hintText: "Parent Name",
                       labelStyle: GoogleFonts.inriaSerif(
                           color: Colors.grey, fontSize: 20)),
                 ),
@@ -78,7 +81,7 @@ class _ParentSignupState extends State<ParentSignup> {
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      labelText: "Phone",
+                      hintText: "Phone",
                       labelStyle: GoogleFonts.inriaSerif(
                           color: Colors.grey, fontSize: 20)),
                 ),
@@ -96,7 +99,7 @@ class _ParentSignupState extends State<ParentSignup> {
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      labelText: "Email",
+                      hintText: "Email",
                       labelStyle: GoogleFonts.inriaSerif(
                           color: Colors.grey, fontSize: 20)),
                 ),
@@ -104,6 +107,7 @@ class _ParentSignupState extends State<ParentSignup> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 TextFormField(
+                  obscureText: true,
                   controller: password,
                   validator: (value){
                     if (value!.isEmpty){
@@ -114,7 +118,7 @@ class _ParentSignupState extends State<ParentSignup> {
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      labelText: "Password",
+                      hintText: "Password",
                       labelStyle: GoogleFonts.inriaSerif(
                           color: Colors.grey, fontSize: 20)),
                 ),

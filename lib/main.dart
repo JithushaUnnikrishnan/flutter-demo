@@ -43,7 +43,7 @@ import 'package:demo/doctor/dr_profile.dart';
 import 'package:demo/doctor/login_doctor.dart';
 import 'package:demo/doctor/signup_doctor.dart';
 import 'package:demo/firebase_options.dart';
-import 'package:demo/logo/first_login.dart';
+
 import 'package:demo/logo/logo_page.dart';
 import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:demo/parents/Parent_babyprofile.dart';
@@ -89,6 +89,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: LogoPage());
+        home: DaycareStaff());
   }
 }

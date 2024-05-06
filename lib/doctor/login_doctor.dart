@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/doctor/signup_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'doctor_bottombuton.dart';
 import 'doctor_forgot.dart';
@@ -17,14 +18,34 @@ class _DoctorLoginState extends State<DoctorLogin> {
   final formkey = GlobalKey<FormState>();
   var email = TextEditingController();
   var password = TextEditingController();
-  Future<dynamic>DoctorLog() async {await FirebaseFirestore.instance.collection("Doctpr Login").add(
-      {
-        "Email":email.text,
-        "Password":password.text
-      });
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>DBottomButton()));
+  String id="";
+  void DoctorLog() async {
+    final user = await FirebaseFirestore.instance
+        .collection('DoctorReg')
+        .where('email', isEqualTo: email.text)
+        .where('password', isEqualTo: password.text)
 
+        .get();
+    if (user.docs.isNotEmpty) {
+      id = user.docs[0].id;
+
+      SharedPreferences data = await SharedPreferences.getInstance();
+      data.setString('id', id);
+
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return DBottomButton();
+        },
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "Email and password invalid",
+            style: TextStyle(color: Colors.red),
+          )));
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -86,6 +107,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                     height: 30,
                   ),
                   TextFormField(
+                    obscureText: true,
                     controller: password,
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -116,7 +138,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                           alignment: Alignment.bottomRight,
                           child: Text(
                             "Forgot password?",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(),
                           ),
                         )),
                       ],

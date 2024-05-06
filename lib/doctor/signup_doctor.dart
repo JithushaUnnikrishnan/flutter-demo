@@ -24,6 +24,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
   var homeaddress = TextEditingController();
   var officeaddress = TextEditingController();
   var experience = TextEditingController();
+  var phone=TextEditingController();
 
   Future<dynamic> Doctoreg() async {
     await FirebaseFirestore.instance.collection("DoctorReg").add({
@@ -35,9 +36,11 @@ class _DoctorSignupState extends State<DoctorSignup> {
       "homeaddress": homeaddress.text,
       "officeaddress": officeaddress.text,
       "experience": experience.text,
+      "Phone":phone.text,
+      "status":0
     });
     print('successfully');
-    Navigator.push(
+    Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => DoctorLogin()));
   }
 
@@ -51,7 +54,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
             elevation: 10,
             shadowColor: Colors.black,
             title: Padding(
-              padding: const EdgeInsets.only(left: 157),
+              padding: const EdgeInsets.only(left: 100),
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Image.asset("assets/logo.png"),
@@ -102,6 +105,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                   height: 10,
                 ),
                 TextFormField(
+                  obscureText: true,
                   controller: password,
                   validator: (value){
                     if (value!.isEmpty){
@@ -111,6 +115,23 @@ class _DoctorSignupState extends State<DoctorSignup> {
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Password",
+                    labelStyle: TextStyle(color: Colors.grey),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.number,
+                  controller: phone,
+                  validator: (value){
+                    if (value!.isEmpty){
+                      return "Empty Phone !";
+                    }
+                  },
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Phone",
                     labelStyle: TextStyle(color: Colors.grey),
                   ),
                 ),

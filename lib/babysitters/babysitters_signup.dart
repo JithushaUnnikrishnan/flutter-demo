@@ -139,7 +139,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Qualification",
+                   hintText: "Qualification",
                     labelStyle: TextStyle(color: Colors.grey)),
               ),
               SizedBox(

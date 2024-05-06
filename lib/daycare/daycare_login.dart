@@ -4,6 +4,7 @@ import 'package:demo/daycare/daycare_forgot.dart';
 import 'package:demo/daycare/daycare_register.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DaycareLogin extends StatefulWidget {
   const DaycareLogin({super.key});
@@ -16,16 +17,32 @@ class _DaycareLoginState extends State<DaycareLogin> {
   final formkey=GlobalKey<FormState>();
   var email=TextEditingController();
   var password=TextEditingController();
-  Future<dynamic>DaycareLog() async {await FirebaseFirestore.instance.collection("DaycareLogin").add(
-      {
-        "Email":email.text,
-        "Password":password.text
-      });
+String id="";
+  void DayLog() async {
+    final user = await FirebaseFirestore.instance
+        .collection('DaycareRegister')
+        .where('Email', isEqualTo: email.text)
+        .where('Password', isEqualTo: password.text)
 
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => DayBottomButton()));
+        .get();
+    if (user.docs.isNotEmpty) {
+      id = user.docs[0].id;
+
+      SharedPreferences data = await SharedPreferences.getInstance();
+      data.setString('id', id);
+
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return DayBottomButton();
+        },
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "Email and password invalid",
+            style: TextStyle(color: Colors.red),
+          )));
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -128,7 +145,8 @@ class _DaycareLoginState extends State<DaycareLogin> {
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()){
-                        DaycareLog();}
+                          DayLog();
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,

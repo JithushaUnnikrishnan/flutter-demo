@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentLogin extends StatefulWidget {
   const ParentLogin({super.key});
@@ -19,15 +20,34 @@ class _ParentLoginState extends State<ParentLogin> {
   final formkey=GlobalKey<FormState>();
   var email=TextEditingController();
   var password=TextEditingController();
-  Future<dynamic>ParentLog() async {await FirebaseFirestore.instance.collection("Parent Login").add({
-    "Email":email.text,
-    "Password":password.text
-  });
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => SearchDaycare()));
+  String id="";
+  void ParentLog() async {
+    final user = await FirebaseFirestore.instance
+        .collection('ParentRegister')
+        .where('Email', isEqualTo: email.text)
+        .where('Password', isEqualTo: password.text)
+
+        .get();
+    if (user.docs.isNotEmpty) {
+      id = user.docs[0].id;
+
+      SharedPreferences data = await SharedPreferences.getInstance();
+      data.setString('id', id);
+
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return SearchDaycare();
+        },
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "Email and password invalid",
+            style: TextStyle(color: Colors.red),
+          )));
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(key: formkey,
@@ -88,6 +108,7 @@ class _ParentLoginState extends State<ParentLogin> {
                     height: 30,
                   ),
                   TextFormField(
+                    obscureText: true,
                     controller: password,
                     validator: (value){
                       if (value!.isEmpty){
@@ -117,7 +138,7 @@ class _ParentLoginState extends State<ParentLogin> {
                               alignment: Alignment.bottomRight,
                               child: Text(
                                 "Forgot password?",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(),
                               ),
                             )),
                       ],
@@ -126,7 +147,8 @@ class _ParentLoginState extends State<ParentLogin> {
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()){
-                       ParentLog();}
+                          ParentLog();
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,

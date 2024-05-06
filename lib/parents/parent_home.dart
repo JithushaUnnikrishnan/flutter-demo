@@ -37,12 +37,18 @@ class _ParentHomeState extends State<ParentHome> {
                       color: Colors.black45,
                       spreadRadius: 2,
                       blurRadius: 3),
-                ], borderRadius: BorderRadius.circular(10), color: Colors.black),
-                child: Center(
-                  child: Text(
-                    "Logout",
-                    style:
-                        GoogleFonts.inriaSerif(fontSize: 25, color: Colors.white),
+                ], borderRadius: BorderRadius.circular(10), color:Color(0xFFBD1010),),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5,bottom: 2),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Logout",
+                        style:
+                            GoogleFonts.inriaSerif(fontSize: 20, color: Colors.white),
+                      ),
+                      Icon(Icons.logout,color: Colors.white,)
+                    ],
                   ),
                 ),
               ),

@@ -4,7 +4,7 @@ import 'package:demo/daycare/daycare_login.dart';
 import 'package:demo/daycare/daycare_register.dart';
 import 'package:demo/doctor/login_doctor.dart';
 import 'package:demo/doctor/signup_doctor.dart';
-import 'package:demo/logo/first_login.dart';
+
 import 'package:demo/logo/logo_page.dart';
 import 'package:demo/parents/parent_login.dart';
 import 'package:demo/parents/signup_parent.dart';

@@ -12,15 +12,19 @@ class AdminLogin extends StatefulWidget {
 }
 
 class _AdminLoginState extends State<AdminLogin> {
+  Adlogin() {
+    if (email.text == 'admin@gmail.com' && password.text == '1234') {
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return AdminHome();
+        },
+      ));
+    }
+  }
   final formkey=GlobalKey<FormState>();
   var email=TextEditingController();
   var password=TextEditingController();
-  Future<dynamic>AdminLog() async {await FirebaseFirestore.instance.collection("Admin Login").add({
-    "Email":email.text,
-    "Password":password.text,
-  });Navigator.push(context,
-      MaterialPageRoute(builder: (context) => AdminHome()));
-  }
+
   @override
   Widget build(BuildContext context) {
     return Form(key: formkey,
@@ -80,6 +84,7 @@ class _AdminLoginState extends State<AdminLogin> {
                     height: 30,
                   ),
                   TextFormField(
+                    obscureText: true,
                     controller: password,
                     validator: (value){
                       if (value!.isEmpty){
@@ -111,7 +116,10 @@ class _AdminLoginState extends State<AdminLogin> {
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()){
-                        AdminLog();}
+
+                        Adlogin();
+
+                        }
 
                       },
                       style: ElevatedButton.styleFrom(
