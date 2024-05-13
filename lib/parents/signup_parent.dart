@@ -18,6 +18,7 @@ class _ParentSignupState extends State<ParentSignup> {
   var phone = TextEditingController();
   var email = TextEditingController();
   var password = TextEditingController();
+  String selectedvalue='';
 
   Future<dynamic> ParentReg() async {
     await FirebaseFirestore.instance.collection("ParentRegister").add({
@@ -36,143 +37,202 @@ class _ParentSignupState extends State<ParentSignup> {
     return Form(key: formkey,
       child: Scaffold(
 
-        body: SingleChildScrollView(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
+          child: ListView(
+            children: [
+              Container(
+                width: 250,
+                height: 150,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/pregister.png"))),
+              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * .001,
+              // ),
+              TextFormField(
+                controller: parentname,
+                validator: (value){
+                  if (value!.isEmpty){
+                    return "Empty Parent Name !";
+                  }
+                },
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Parent Name",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
 
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
-            child: Column(
-              children: [
-                Container(
-                  width: 250,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/pregister.png"))),
-                ),
-                // SizedBox(
-                //   height: MediaQuery.of(context).size.height * .001,
-                // ),
-                TextFormField(
-                  controller: parentname,
-                  validator: (value){
-                    if (value!.isEmpty){
-                      return "Empty Parent Name !";
-                    }
-                  },
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: "Parent Name",
-                      labelStyle: GoogleFonts.inriaSerif(
-                          color: Colors.grey, fontSize: 20)),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                TextFormField(
-                  controller: phone,
-                  validator: (value){
-                    if (value!.isEmpty){
-                      return "Empty Phone !";
-                    }
-                  },
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: "Phone",
-                      labelStyle: GoogleFonts.inriaSerif(
-                          color: Colors.grey, fontSize: 20)),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                TextFormField(
-                  controller: email,
-                  validator: (value){
-                    if (value!.isEmpty){
-                      return "Empty Email !";
-                    }
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: "Email",
-                      labelStyle: GoogleFonts.inriaSerif(
-                          color: Colors.grey, fontSize: 20)),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
-                TextFormField(
-                  obscureText: true,
-                  controller: password,
-                  validator: (value){
-                    if (value!.isEmpty){
-                      return "Empty Password !";
-                    }
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      hintText: "Password",
-                      labelStyle: GoogleFonts.inriaSerif(
-                          color: Colors.grey, fontSize: 20)),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.055,
-                ),
-                InkWell(
-                  onTap: () {
-                    if (formkey.currentState!.validate()){
-                    ParentReg();}
-                  },
-                  child: Container(
-                    height: 60,
-                    width: 300,
-                    child: Text(
-                      "Register",
-                      style: GoogleFonts.inriaSerif(
-                        height: 1,
-                        color: Colors.white,
-                        fontSize: 40,
-                      ),
+              TextFormField(
+                controller: phone,
+                validator: (value){
+                  if (value!.isEmpty){
+                    return "Empty Phone !";
+                  }
+                },
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Phone",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              TextFormField(
+                controller: email,
+                validator: (value){
+                  if (value!.isEmpty){
+                    return "Empty Email !";
+                  }
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Email",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              TextFormField(
+                obscureText: true,
+                controller: password,
+                validator: (value){
+                  if (value!.isEmpty){
+                    return "Empty Password !";
+                  }
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Password",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+              // Row(
+              //   children: [
+              //     StreamBuilder<QuerySnapshot>(
+              //       stream: FirebaseFirestore.instance
+              //           .collection('DaycareRegister')
+              //           .snapshots(),
+              //       builder: (context, snapshot) {
+              //         if (snapshot.connectionState ==
+              //             ConnectionState.waiting) {
+              //           return const SizedBox();
+              //         } else if (snapshot.hasError) {
+              //           return Text('Error: ${snapshot.error}');
+              //         } else {
+              //           List<String> tradeList = snapshot.data!.docs
+              //               .map((DocumentSnapshot document) =>
+              //               document['Username'].toString())
+              //               .toList();
+              //
+              //           return Padding(
+              //             padding: const EdgeInsets.all(8.0),
+              //             child: Container(
+              //               decoration: BoxDecoration(
+              //                   border:
+              //                   Border.all(color: Colors.black54),
+              //                   borderRadius:
+              //                   BorderRadius.circular(8)),
+              //               child: DropdownButton<String>(
+              //                 padding: const EdgeInsets.symmetric(
+              //                     horizontal: 20, vertical: 3),
+              //                 underline: const SizedBox(),
+              //                 borderRadius: BorderRadius.circular(10),
+              //                 hint: const Text(
+              //                     "choose your needed service"),
+              //                 value: selectedvalue,
+              //                 // Set initial value if needed
+              //                 onChanged: (String? newValue) {
+              //                   setState(() {
+              //                     selectedvalue = newValue!;
+              //                     print(selectedvalue);
+              //                   });
+              //                 },
+              //
+              //                 items: tradeList
+              //                     .map<DropdownMenuItem<String>>(
+              //                         (String value) =>
+              //                         DropdownMenuItem<String>(
+              //                           value: value,
+              //                           child: Text(value),
+              //                         ))
+              //                     .toList(),
+              //               ),
+              //             ),
+              //           );
+              //         }
+              //       },
+              //     ),
+              //     const SizedBox(
+              //       width: 20,
+              //     )
+              //   ],
+              // ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.055,
+              ),
+              InkWell(
+                onTap: () {
+                  if (formkey.currentState!.validate()){
+                  ParentReg();}
+                },
+                child: Container(
+                  height: 60,
+                  width: 300,
+                  child: Text(
+                    "Register",
+                    style: GoogleFonts.inriaSerif(
+                      height: 1,
+                      color: Colors.white,
+                      fontSize: 40,
                     ),
-                    alignment: Alignment.topCenter,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromRGBO(
-                          14,
-                          97,
-                          116,
-                          0.99,
-                        )),
                   ),
+                  alignment: Alignment.topCenter,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromRGBO(
+                        14,
+                        97,
+                        116,
+                        0.99,
+                      )),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text("Already have an account?",
-                      style: TextStyle(fontSize: 20)),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ParentLogin()));
-                      },
-                      child: Text(
-                        "Login",
-                        style: TextStyle(color: Colors.blueAccent, fontSize: 20),
-                      ))
-                ]),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text("Already have an account?",
+                    style: TextStyle(fontSize: 20)),
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ParentLogin()));
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(color: Colors.blueAccent, fontSize: 20),
+                    ))
+              ]),
 
-              ],
-            ),
+            ],
           ),
         ),
         backgroundColor: Colors.white,

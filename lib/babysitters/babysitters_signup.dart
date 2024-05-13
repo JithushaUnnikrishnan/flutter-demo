@@ -13,7 +13,9 @@ class BabysitterSignup extends StatefulWidget {
 }
 
 class _BabysitterSignupState extends State<BabysitterSignup> {
-  final formkey=GlobalKey<FormState>();
+  List<String> locationlist = ["male", "female", "other"];
+  String? selectedvalue;
+  final formkey = GlobalKey<FormState>();
   var name = TextEditingController();
   var email = TextEditingController();
   var password = TextEditingController();
@@ -23,26 +25,32 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
   var experience = TextEditingController();
   var idproofnumber = TextEditingController();
   var phonenumber = TextEditingController();
+  var gender = TextEditingController();
+  var whatsapp = TextEditingController();
 
   Future<dynamic> babysitterReg() async {
     await FirebaseFirestore.instance.collection("babysiiterReg").add({
-      "UserName":name.text,
-      "email":email.text,
-      "password":password.text,
-      "address":address.text,
-      "qualification":qualification.text,
-      "daycarename":Daycarename.text,
-      "experiance":experience.text,
-      "idproofnumber":idproofnumber.text,
-      "phonenumber":phonenumber.text
+      "UserName": name.text,
+      "email": email.text,
+      "password": password.text,
+      "address": address.text,
+      "qualification": qualification.text,
+      "daycarename": Daycarename.text,
+      "experiance": experience.text,
+      "idproofnumber": idproofnumber.text,
+      "phonenumber": phonenumber.text,
+      "whatsappNumber": whatsapp.text,
+      "gender":selectedvalue
     });
     print('done');
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>const BabysitterLogin()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => BabysitterLogin()));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(key: formkey,
+    return Form(
+      key: formkey,
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 90,
@@ -70,8 +78,8 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               TextFormField(
                 controller: name,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Name !";
                   }
                 },
@@ -85,14 +93,14 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               TextFormField(
                 controller: email,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Email !";
                   }
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                   hintText: "Email",
+                    hintText: "Email",
                     labelStyle: TextStyle(color: Colors.grey)),
               ),
               SizedBox(
@@ -100,8 +108,8 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               TextFormField(
                 controller: password,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Password !";
                   }
                 },
@@ -115,8 +123,8 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               TextFormField(
                 controller: address,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Address !";
                   }
                 },
@@ -131,30 +139,30 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                 height: MediaQuery.of(context).size.height * .035,
               ),
               TextFormField(
-                controller: qualification,
-                validator: (value){
-                  if (value!.isEmpty){
-                    return "Empty Qualification !";
+                controller: Daycarename,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Empty Daycare name !";
                   }
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                   hintText: "Qualification",
+                    hintText: "Daycare name",
                     labelStyle: TextStyle(color: Colors.grey)),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
               TextFormField(
-                controller: Daycarename,
-                validator: (value){
-                  if (value!.isEmpty){
-                    return "Empty Daycare !";
+                controller: qualification,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Empty Qualification !";
                   }
                 },
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Daycare Name",
+                    hintText: "Qualification",
                     labelStyle: TextStyle(color: Colors.grey)),
               ),
               SizedBox(
@@ -162,8 +170,8 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               TextFormField(
                 controller: experience,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Experience !";
                   }
                 },
@@ -171,16 +179,50 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                 maxLines: 5,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                   hintText: "Experience",
+                    hintText: "Experience",
                     labelStyle: TextStyle(color: Colors.grey)),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .035,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 380,
+                    height: 69,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: Colors.transparent,
+                        border: Border.all()),
+                    child: DropdownButton<String>(
+                        isExpanded: true,
+                        elevation: 0,
+                        // dropdownColor: Colors.grey.shade100,
+                        hint: const Text("Gender"),
+                        underline: const SizedBox(),
+                        value: selectedvalue,
+                        items: locationlist.map((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        onChanged: (newvalue) {
+                          setState(() {
+                            selectedvalue = newvalue;
+                            print(selectedvalue);
+                          });
+                        },
+                        padding: const EdgeInsets.symmetric(horizontal: 10)),
+                  ),
+                ],
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
               TextFormField(
                 controller: idproofnumber,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Id proof Number !";
                   }
                 },
@@ -195,8 +237,8 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               TextFormField(
                 controller: phonenumber,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Phone Number !";
                   }
                 },
@@ -207,15 +249,43 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   labelStyle: TextStyle(color: Colors.grey),
                 ),
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .035,
+              ),
+              TextFormField(
+                controller: whatsapp,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Empty Whatsapp Number !";
+                  }
+                },
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Whatsapp Number",
+                  labelStyle: TextStyle(color: Colors.grey),
+                ),
+              ),
               const SizedBox(
                 height: 30,
                 width: 120,
               ),
               ElevatedButton(
                 onPressed: () {
-                  if (formkey.currentState!.validate())
-                  babysitterReg();
 
+                  if (formkey.currentState!.validate()) {
+                    if (selectedvalue==null){
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text(
+                            "select Gender",
+                            style: TextStyle(color: Colors.red),
+                          )));
+
+                    }
+                    else {
+                      babysitterReg();
+                    }
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,

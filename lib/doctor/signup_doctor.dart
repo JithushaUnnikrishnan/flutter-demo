@@ -15,6 +15,8 @@ class DoctorSignup extends StatefulWidget {
 }
 
 class _DoctorSignupState extends State<DoctorSignup> {
+
+
   final formkey = GlobalKey<FormState>();
   var name = TextEditingController();
   var password = TextEditingController();
@@ -25,6 +27,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
   var officeaddress = TextEditingController();
   var experience = TextEditingController();
   var phone=TextEditingController();
+
 
   Future<dynamic> Doctoreg() async {
     await FirebaseFirestore.instance.collection("DoctorReg").add({
@@ -37,6 +40,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
       "officeaddress": officeaddress.text,
       "experience": experience.text,
       "Phone":phone.text,
+
       "status":0
     });
     print('successfully');
@@ -72,6 +76,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                   height: 10,
                 ),
                 TextFormField(
+
                   controller: name,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -84,6 +89,11 @@ class _DoctorSignupState extends State<DoctorSignup> {
                     labelStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+
+
                 SizedBox(
                   height: 10,
                 ),
@@ -135,6 +145,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                     labelStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
+
                 SizedBox(
                   height: 10,
                 ),
@@ -181,7 +192,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
 
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Home Address !",
+                    hintText: "Home Address ",
                     labelStyle: TextStyle(color: Colors.grey),
                   ),
                 ),

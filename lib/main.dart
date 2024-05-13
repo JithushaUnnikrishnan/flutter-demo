@@ -28,6 +28,7 @@ import 'package:demo/daycare/daycare_food.dart';
 import 'package:demo/daycare/daycare_home.dart';
 import 'package:demo/daycare/daycare_login.dart';
 import 'package:demo/daycare/daycare_parent%20viewpage.dart';
+import 'package:demo/daycare/daycare_profile.dart';
 import 'package:demo/daycare/daycare_register.dart';
 import 'package:demo/daycare/daycare_stafadd.dart';
 import 'package:demo/daycare/daycare_staff.dart';
@@ -89,6 +90,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: DaycareStaff());
+        home: ParentLogin());
   }
 }

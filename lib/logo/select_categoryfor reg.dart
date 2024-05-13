@@ -52,7 +52,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
               const EdgeInsets.only(left: 15, right: 15, top: 50, bottom: 0),
               child: Container(
                 decoration:  BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(10),
                     color: Color.fromRGBO(
                         232, 196, 233, 1
                     ),boxShadow: [
@@ -83,7 +83,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                   left: 15.0, right: 15, top: 25, bottom: 0),
               child: Container(
                 decoration:
-               BoxDecoration(borderRadius: BorderRadius.circular(25),color: Color.fromRGBO(255, 251, 148, 1),boxShadow: [
+               BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(255, 251, 148, 1),boxShadow: [
                   BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                 ]
                 ),
@@ -111,7 +111,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-               BoxDecoration(borderRadius: BorderRadius.circular(25),color: Color.fromRGBO(191, 210, 228, 1),boxShadow: [
+               BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(191, 210, 228, 1),boxShadow: [
                   BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                 ]),
                 height: 104,
@@ -137,7 +137,7 @@ class _SelectCategoryregState extends State<SelectCategoryreg> {
                   left: 15.0, right: 15, top: 35, bottom: 0),
               child: Container(
                 decoration:
-                 BoxDecoration(borderRadius: BorderRadius.circular(25),color: Color.fromRGBO(97, 237, 220, 1),boxShadow: [
+                 BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(97, 237, 220, 1),boxShadow: [
                   BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
                 ]),
                 height: 104,

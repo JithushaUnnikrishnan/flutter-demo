@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,50 +31,64 @@ class _AdminDaycareState extends State<AdminDaycare> {
               ),
             ),
           )),
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .03,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .10,
-                  height: MediaQuery.of(context).size.height * .10,
-                ),
-                Text(
-                  "Name:Little kids\nKottukara,\nnear Kondotty\npin:673637",
-                  style: GoogleFonts.inriaSerif(fontSize: 15),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .41,
-                ),
-                Icon(CupertinoIcons.delete)
-              ],
-            ),
-            Divider(),
-            Row(
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .10,
-                  height: MediaQuery.of(context).size.height * .10,
-                ),
-                Text(
-                  "Name:Tiny Care\nMavoor,\nnear Calicut\npin:673639",
-                  style: GoogleFonts.inriaSerif(fontSize: 15),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .41,
-                ),
-                Icon(CupertinoIcons.delete)
-              ],
-            ),
-            Divider(),
-          ],
-        ),
-      ),
+      body: FutureBuilder(
+          future:
+              FirebaseFirestore.instance.collection("DaycareRegister").get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Center(child: Text("Error:${snapshot.error}"));
+            }
+            final Daycare = snapshot.data?.docs ?? [];
+            return ListView.builder(
+              itemCount: Daycare.length,
+              itemBuilder: (context, index) {
+                return Column(
+
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .03,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * .10,
+                          height: MediaQuery.of(context).size.height * .10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              Daycare[index]['Username'],
+                              style: GoogleFonts.inriaSerif(fontSize: 15),
+                            ),Text(
+                              Daycare[index]['PreschoolAddress'],
+                              style: GoogleFonts.inriaSerif(fontSize: 15),
+                            ),Text(
+                              Daycare[index]['Phone'],
+                              style: GoogleFonts.inriaSerif(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * .2,
+                        ),
+                        IconButton(onPressed: (){
+                         setState(() {
+                           FirebaseFirestore.instance.collection("DaycareRegister").doc(Daycare[index].id).delete();
+                         });
+                        }, icon: Icon(CupertinoIcons.delete))
+                      ],
+                    ),
+                    Divider(),
+                  ],
+                );
+              },
+            );
+          }),
     );
   }
 }

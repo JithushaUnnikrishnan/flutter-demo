@@ -170,11 +170,12 @@ class _TeacherActivityState extends State<TeacherActivity> {
                             MaterialPageRoute(
                                 builder: (context) => AddActivity()));
                       },
-                      child: Text("Add Activity"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromRGBO(92, 11, 156, 1),
-                        foregroundColor: Colors.white,
-                        minimumSize: Size(267, 36),
+                      child: Text("Add Activity",style: GoogleFonts.ubuntu(color: Colors.white,fontWeight:FontWeight.bold),),
+                      style: ButtonStyle(
+                        minimumSize: MaterialStateProperty.all<Size>(
+                            Size(275, 50),),
+                          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF3FA035)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))
                       ),
                     ),
                   ],

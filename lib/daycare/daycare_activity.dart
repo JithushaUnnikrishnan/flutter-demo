@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/daycare/daycare_addactivity.dart';
 import 'package:demo/daycare/daycare_update.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,9 @@ class DaycareActivity extends StatefulWidget {
 }
 
 class _DaycareActivityState extends State<DaycareActivity> {
+
   int _itemcount = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -166,6 +169,7 @@ class EditCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextFormField(
+
                   decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,

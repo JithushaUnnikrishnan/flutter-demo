@@ -1,3 +1,4 @@
+import 'package:demo/babysitters/dailyTaskview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -188,8 +189,12 @@ class _ChildPageState extends State<ChildPage> {
                     ),
                   ),
                 ),
-                
 
+                SizedBox(height:MediaQuery.of(context).size.height*.44,),
+                Center(child: ElevatedButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>DailyTaskview()));
+                }, child: Text('Done',style: GoogleFonts.inriaSerif(fontSize:15,color: Colors.white)),style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,))
+                )
 
               ],
             ),

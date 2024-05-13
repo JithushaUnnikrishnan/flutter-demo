@@ -1,3 +1,4 @@
+import 'package:demo/daycare/DAycarefoodview.dart';
 import 'package:demo/daycare/Datcare_parent.dart';
 import 'package:demo/daycare/daycare_activity.dart';
 import 'package:demo/daycare/daycare_children.dart';
@@ -24,30 +25,34 @@ class _DaycareHomeState extends State<DaycareHome> {
         elevation: 10,
         shadowColor: Colors.black,
         shape: ContinuousRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
-
-        title: Row(
-          children: [
-            Text("My School",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 40)),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.06,),
-            InkWell(onTap: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SelectCategoryreg()));
-            },
-              child: Container(
-                decoration:BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(117, 10, 100, 1),
-                    boxShadow: [
-                      BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                    ]
-                ),
-                height: 50,width: 90,
-                child: Center(child: Text("Logout",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 20))),
-              ),
-            ),
-          ],
+        title: Padding(
+          padding: const EdgeInsets.only(left:50 ),
+          child: Text("My School",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 30)),
         ),
+
+        // title: Row(
+        //   children: [
+        //     Text("My School",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 40)),
+        //     SizedBox(width: MediaQuery.of(context).size.width * 0.06,),
+        //     InkWell(onTap: (){
+        //       Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //               builder: (context) => SelectCategoryreg()));
+        //     },
+        //       child: Container(
+        //         decoration:BoxDecoration(
+        //             borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(117, 10, 100, 1),
+        //             boxShadow: [
+        //               BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+        //             ]
+        //         ),
+        //         height: 50,width: 90,
+        //         child: Center(child: Text("Logout",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 20))),
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
       body: Container(
         child: Padding(
@@ -131,7 +136,7 @@ class _DaycareHomeState extends State<DaycareHome> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => DaycareFood()));
+                        builder: (context) => DaycareFoodview()));
               },
                 child: Container(
                   height: 72,width: 312,
@@ -143,7 +148,8 @@ class _DaycareHomeState extends State<DaycareHome> {
                   ),
                   child: Center(child: Text("Food Add",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 40))),
                 ),
-              )
+              ),
+
             ],
           ),
         ),

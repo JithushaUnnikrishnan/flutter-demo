@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo/daycare/dayEdit.dart';
+import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DaycareProfile extends StatefulWidget {
   const DaycareProfile({super.key});
@@ -10,110 +14,186 @@ class DaycareProfile extends StatefulWidget {
 }
 
 class _DaycareProfileState extends State<DaycareProfile> {
+  var ID;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      ID = spref.getString("id");
+    });
+    print("sharedPreference Data get");
+  }
+
+  DocumentSnapshot? Daycare;
+
+  Getfirebase() async {
+    Daycare = await FirebaseFirestore.instance
+        .collection("DaycareRegister")
+        .doc(ID)
+        .get();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Color.fromRGBO(117, 10, 100, 1),
-        toolbarHeight: 122,
-        elevation: 6,
-        shadowColor: Colors.grey,
-        shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
-        title: Center(
-          child: Text(
-            "Profile",
-            style: GoogleFonts.inriaSerif(
-              fontSize: 38,
-              color: Colors.white,
+    return FutureBuilder(
+      future: Getfirebase(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+              child: CircularProgressIndicator(
+            color: Colors.purple,
+          ));
+        }
+        if (snapshot.hasError) {
+          return Text("Error${snapshot.error}");
+        }
+        return Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Color.fromRGBO(117, 10, 100, 1),
+            toolbarHeight: 122,
+            elevation: 6,
+            shadowColor: Colors.grey,
+            shape: ContinuousRectangleBorder(
+                borderRadius:
+                    BorderRadius.only(bottomLeft: Radius.circular(80))),
+            title: Center(
+              child: Text(
+                "Profile",
+                style: GoogleFonts.inriaSerif(
+                  fontSize: 38,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 30),
-          child: Column(
-            children: [
-              SizedBox(height: MediaQuery.of(context).size.height*.03,),
-              Row(
+          body: Container(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Column(
                 children: [
-                  Icon(CupertinoIcons.building_2_fill),
-                  SizedBox(width: MediaQuery.of(context).size.width*.04,),
-                  Text('Name',
-                      style: GoogleFonts.inriaSerif(
-                        fontSize: 20,
-                      )),
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 42),
-                    child: Text('Littile Kids',style: GoogleFonts.inriaSerif(
-                      fontSize: 20,)),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
                   ),
-                  SizedBox(width: MediaQuery.of(context).size.width*.45,),
-                  Icon(Icons.edit),
+                  Row(
+                    children: [
+                      Icon(CupertinoIcons.building_2_fill),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .04,
+                      ),
+                      Text('Name',
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 20,
+                          )),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 250),
+                    child: Text(Daycare!["Username"],
+                        style: GoogleFonts.inriaSerif(
+                          fontSize: 20,
+                        )),
+                  ),
+                  Divider(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.report),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .04,
+                      ),
+                      Text('Address',
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 20,
+                          )),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 290),
+                    child: Text(Daycare!["PreschoolAddress"],
+                        style: GoogleFonts.inriaSerif(
+                          fontSize: 18,
+                        )),
+                  ),
+                  Divider(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .03,
+                  ),
+                  Row(
+                    children: [
+                      Icon(Icons.call),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * .04,
+                      ),
+                      Text('Phone',
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 20,
+                          )),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 260),
+                    child: Text(Daycare!["Phone"],
+                        style: GoogleFonts.inriaSerif(
+                          fontSize: 20,
+                        )),
+                  ),
+                  Divider(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30, top: 90),
+                    child: InkWell(onTap: (){
+                      Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DaycareEdit()));
+                    },
+                      child: Container(
+                        child: Center(
+                            child: Text("Edit Profile",
+                                style: GoogleFonts.ubuntu(
+                                    color: Colors.white, fontSize: 20))),
+                        height: MediaQuery.of(context).size.height * 0.07,
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xFF3FA035),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(right: 30, top: 20),
+                      child: InkWell(onTap: (){
+                        Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SelectCategoryreg()));
+                      },
+                        child: Container(
+                            child: Center(
+                                child: Text("Logout",
+                                    style: GoogleFonts.ubuntu(
+                                        color: Colors.white, fontSize: 20))),
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color(0xFFC65264),
+                            )),
+                      ))
                 ],
               ),
-
-              Divider(color: Colors.grey,indent: 40),
-              SizedBox(height: MediaQuery.of(context).size.height*.03,),
-
-              Row(
-                children: [
-                  Icon(Icons.report),
-                  SizedBox(width: MediaQuery.of(context).size.width*.04,),
-                  Text('About',
-                      style: GoogleFonts.inriaSerif(
-                        fontSize: 20,
-                      )),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 42),
-                child: Row(
-                  children: [
-                    Text('Always Available',style: GoogleFonts.inriaSerif(
-                      fontSize: 20,)),
-                    SizedBox(width: MediaQuery.of(context).size.width*.30,),
-                    Icon(Icons.edit),
-                  ],
-                ),
-              ),
-
-              Divider(color: Colors.grey,indent: 40),
-              SizedBox(height: MediaQuery.of(context).size.height*.03,),
-              Row(
-                children: [
-                  Icon(Icons.call),
-                  SizedBox(width: MediaQuery.of(context).size.width*.04,),
-                  Text('Phone',
-                      style: GoogleFonts.inriaSerif(
-                        fontSize: 20,
-                      )),
-                ],
-              ),
-
-
-              Padding(
-                padding: const EdgeInsets.only(left: 42),
-                child: Row(
-                  children: [
-                    Text('9048567321',style: GoogleFonts.inriaSerif(
-                      fontSize: 20,)),
-                    SizedBox(width: MediaQuery.of(context).size.width*.43,),
-                    Icon(Icons.edit)
-                  ],
-                ),
-              ),
-              Divider(color: Colors.grey,indent: 40,),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

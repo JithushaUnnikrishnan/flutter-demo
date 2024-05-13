@@ -1,3 +1,4 @@
+import 'package:demo/babysitters/healthrecordView.dart';
 import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +15,7 @@ class _HealthRecordState extends State<HealthRecord> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Column(
           children: [
             Row(
@@ -77,7 +79,7 @@ class _HealthRecordState extends State<HealthRecord> {
               ),
         SizedBox(height:MediaQuery.of(context).size.height*.034,),
               Center(child: ElevatedButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>MychildrenHome()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthView()));
               }, child: Text('Done',style: GoogleFonts.inriaSerif(fontSize:15,color: Colors.white)),style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,))
               ) ],
           ),

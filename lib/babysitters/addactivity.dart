@@ -26,7 +26,10 @@ class _AddActivityState extends State<AddActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(113, 42, 168, 1),
+      title: Padding(
+        padding: const EdgeInsets.only(left: 70),
+        child: Text("Add Activity",style: GoogleFonts.ubuntu( color: Color(0xFFC24A6B))),
+      ),
 
         toolbarHeight: 104,
       ),
@@ -97,7 +100,7 @@ class _AddActivityState extends State<AddActivity> {
           ),
         )
       ),
-      backgroundColor: Color.fromRGBO(245, 245, 245, 1,),
+
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo/daycare/DAycarefoodview.dart';
 import 'package:demo/daycare/daybottombutn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +12,21 @@ class DaycareFood extends StatefulWidget {
 }
 
 class _DaycareFoodState extends State<DaycareFood> {
+  var breakfast = TextEditingController();
+  var lunch = TextEditingController();
+  var snack = TextEditingController();
+
+
+
+  Future<dynamic> DAycarefd() async {
+    await FirebaseFirestore.instance.collection("DaycareFood").add({
+      "BreakFast": breakfast.text,
+      "Lunch": lunch.text,
+      "Snack":snack.text,
+
+    });
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>DaycareFoodview()));
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,11 +57,12 @@ class _DaycareFoodState extends State<DaycareFood> {
                fontSize: 20,),),
              Material(elevation: 4,shadowColor: Colors.black45,
                child: TextFormField(
+                 controller: breakfast,
                  decoration: InputDecoration(
                    border: OutlineInputBorder(
                      borderSide: BorderSide.none
                    ),
-                   labelText: "BreakFast",
+                   hintText: "BreakFast",
                    labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -53,12 +71,12 @@ class _DaycareFoodState extends State<DaycareFood> {
              Material(elevation: 4,
                shadowColor: Colors.black45,
                child: TextFormField(
-
+controller: lunch,
                  decoration: InputDecoration(
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
 
-                   ),labelText: "Lunch",
+                   ),hintText: "Lunch",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -66,13 +84,13 @@ class _DaycareFoodState extends State<DaycareFood> {
              SizedBox(height: MediaQuery.of(context).size.height*.02,),
              Material(elevation: 4,shadowColor: Colors.black45,
                child: TextFormField(
-
+controller: snack,
                  decoration: InputDecoration(
 
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
                    ),
-                     labelText: "Snack",
+                     hintText: "Snack",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -82,11 +100,12 @@ class _DaycareFoodState extends State<DaycareFood> {
                fontSize: 20,),),
              Material(elevation: 4,shadowColor: Colors.black45,
                child: TextFormField(
+                 controller: breakfast,
                  decoration: InputDecoration(
                      border: OutlineInputBorder(
                          borderSide: BorderSide.none
                      ),
-                     labelText: "BreakFast",
+                     hintText: "BreakFast",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20),
                  ),
                ),
@@ -100,7 +119,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
 
-                   ),labelText: "Lunch",
+                   ),hintText: "Lunch",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -114,7 +133,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
                    ),
-                     labelText: "Snack",
+                     hintText: "Snack",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -128,7 +147,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                      border: OutlineInputBorder(
                          borderSide: BorderSide.none
                      ),
-                     labelText: "BreakFast",
+                     hintText: "BreakFast",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -142,7 +161,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
 
-                   ),labelText: "Lunch",
+                   ),hintText: "Lunch",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -170,7 +189,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                      border: OutlineInputBorder(
                          borderSide: BorderSide.none
                      ),
-                     labelText: "BreakFast",
+                     hintText: "BreakFast",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -184,7 +203,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
 
-                   ),labelText: "Lunch",
+                   ),hintText: "Lunch",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -194,7 +213,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                child: TextFormField(
 
                  decoration: InputDecoration(
-                     labelText: "Snack",
+                   hintText: "Snack",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20),
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
@@ -212,7 +231,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                      border: OutlineInputBorder(
                          borderSide: BorderSide.none
                      ),
-                     labelText: "BreakFast",
+                     hintText: "BreakFast",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -223,7 +242,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                child: TextFormField(
 
                  decoration: InputDecoration(
-                     labelText: "Lunch",
+                   hintText: "Lunch",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20),
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
@@ -237,7 +256,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                child: TextFormField(
 
                  decoration: InputDecoration(
-                     labelText: "Snack",
+                   hintText: "Snack",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20),
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
@@ -254,7 +273,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                      border: OutlineInputBorder(
                          borderSide: BorderSide.none
                      ),
-                     labelText: "BreakFast",
+                     hintText: "BreakFast",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -268,7 +287,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
 
-                   ),labelText: "Lunch",
+                   ),hintText: "Lunch",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20)
                  ),
                ),
@@ -278,7 +297,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                child: TextFormField(
 
                  decoration: InputDecoration(
-                     labelText: "Snack",
+                   hintText: "Snack",
                      labelStyle: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20),
                    border: OutlineInputBorder(
                        borderSide: BorderSide.none
@@ -289,7 +308,7 @@ class _DaycareFoodState extends State<DaycareFood> {
              ),
              SizedBox(height: 20,),
              Center(child: ElevatedButton(onPressed: (){
-               Navigator.push(context, MaterialPageRoute(builder: (context)=>DayBottomButton()));
+              DAycarefd();
              }, child: Text('Done',style: GoogleFonts.inriaSerif(color: Colors.white),),style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),)),
              SizedBox(height: 30,),
            ],

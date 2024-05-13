@@ -29,47 +29,47 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                   image: DecorationImage(
                       image: AssetImage("assets/homebaby.png"),
                       fit: BoxFit.fill)),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SelectCategoryreg()));
-                        },
-                        child: Material(
-                          elevation: 4,
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            height: 35,
-                            width: 90,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            child: Row(
-                              children: [
-                                Text(
-                                  " Logout",
-                                  style: GoogleFonts.tinos(
-                                      color: Colors.black,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Icon(CupertinoIcons.square_arrow_right),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              // child: Column(
+              //   children: [
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.end,
+              //       children: [
+              //         InkWell(
+              //           onTap: () {
+              //             Navigator.push(
+              //                 context,
+              //                 MaterialPageRoute(
+              //                     builder: (context) => SelectCategoryreg()));
+              //           },
+              //           child: Material(
+              //             elevation: 4,
+              //             borderRadius: BorderRadius.circular(10),
+              //             child: Container(
+              //               height: 35,
+              //               width: 90,
+              //               decoration: BoxDecoration(
+              //                 borderRadius: BorderRadius.circular(10),
+              //                 color: Colors.white,
+              //               ),
+              //               child: Row(
+              //                 children: [
+              //                   Text(
+              //                     " Logout",
+              //                     style: GoogleFonts.tinos(
+              //                         color: Colors.black,
+              //                         fontSize: 15,
+              //                         fontWeight: FontWeight.bold),
+              //                   ),
+              //                   Icon(CupertinoIcons.square_arrow_right),
+              //                 ],
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ],
+              // ),
             ),
             SizedBox(
               height: 30,

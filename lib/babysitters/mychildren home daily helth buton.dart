@@ -1,4 +1,6 @@
 import 'package:demo/babysitters/childprofileb.dart';
+import 'package:demo/babysitters/dailyTaskview.dart';
+import 'package:demo/babysitters/healthrecordView.dart';
 import 'package:demo/babysitters/healthrecordjeni.dart';
 import 'package:demo/babysitters/jeni_profiledaily.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +54,7 @@ class _MychildrenHomeState extends State<MychildrenHome> {
           SizedBox(height:MediaQuery.of(context).size.height*.18),
           Center(
             child: InkWell(onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ChildPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>DailyTaskview()));
             },
               child: Container(
                 height: MediaQuery.of(context).size.height*.14,width: MediaQuery.of(context).size.width*.41,
@@ -72,7 +74,7 @@ class _MychildrenHomeState extends State<MychildrenHome> {
             SizedBox(height:MediaQuery.of(context).size.height*.17),
             Center(
               child: InkWell(onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthRecord()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HealthView()));
               },
                 child: Container(
                   height: MediaQuery.of(context).size.height*.14,width: MediaQuery.of(context).size.width*.41,
