@@ -13,12 +13,16 @@ class ParentSignup extends StatefulWidget {
 }
 
 class _ParentSignupState extends State<ParentSignup> {
-  final formkey=GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
   var parentname = TextEditingController();
   var phone = TextEditingController();
   var email = TextEditingController();
   var password = TextEditingController();
-  String selectedvalue='';
+  var DaycareName = TextEditingController();
+  var Dateofbirth=TextEditingController();
+  var ChildName=TextEditingController();
+  var Address=TextEditingController();
+  String? Select;
 
   Future<dynamic> ParentReg() async {
     await FirebaseFirestore.instance.collection("ParentRegister").add({
@@ -26,6 +30,10 @@ class _ParentSignupState extends State<ParentSignup> {
       "Phone": phone.text,
       "Email": email.text,
       "Password": password.text,
+      "Daycare name": Select,
+      "Child name":ChildName.text,
+      "Date of birth":Dateofbirth.text,
+      "Address":Address.text
     });
     print('done');
     Navigator.pushReplacement(
@@ -34,27 +42,27 @@ class _ParentSignupState extends State<ParentSignup> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(key: formkey,
+    return Form(
+      key: formkey,
       child: Scaffold(
-
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 37),
-          child: ListView(
-            children: [
-              Container(
-                width: 250,
-                height: 150,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/pregister.png"))),
-              ),
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height * .001,
-              // ),
-              TextFormField(
-                controller: parentname,
-                validator: (value){
-                  if (value!.isEmpty){
+        body: ListView(
+          children: [
+            Container(
+              width: 250,
+              height: 130,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/pregister.png"))),
+            ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * .001,
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
+                controller: ChildName,
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Parent Name !";
                   }
                 },
@@ -62,18 +70,21 @@ class _ParentSignupState extends State<ParentSignup> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    hintText: "Parent Name",
+                    hintText: "Child Name",
                     labelStyle: GoogleFonts.inriaSerif(
                         color: Colors.grey, fontSize: 20)),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
 
-              TextFormField(
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
                 controller: phone,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Phone !";
                   }
                 },
@@ -85,13 +96,16 @@ class _ParentSignupState extends State<ParentSignup> {
                     labelStyle: GoogleFonts.inriaSerif(
                         color: Colors.grey, fontSize: 20)),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              TextFormField(
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
                 controller: email,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Email !";
                   }
                 },
@@ -103,14 +117,17 @@ class _ParentSignupState extends State<ParentSignup> {
                     labelStyle: GoogleFonts.inriaSerif(
                         color: Colors.grey, fontSize: 20)),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              TextFormField(
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
                 obscureText: true,
                 controller: password,
-                validator: (value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Empty Password !";
                   }
                 },
@@ -122,84 +139,163 @@ class _ParentSignupState extends State<ParentSignup> {
                     labelStyle: GoogleFonts.inriaSerif(
                         color: Colors.grey, fontSize: 20)),
               ),
-              // Row(
-              //   children: [
-              //     StreamBuilder<QuerySnapshot>(
-              //       stream: FirebaseFirestore.instance
-              //           .collection('DaycareRegister')
-              //           .snapshots(),
-              //       builder: (context, snapshot) {
-              //         if (snapshot.connectionState ==
-              //             ConnectionState.waiting) {
-              //           return const SizedBox();
-              //         } else if (snapshot.hasError) {
-              //           return Text('Error: ${snapshot.error}');
-              //         } else {
-              //           List<String> tradeList = snapshot.data!.docs
-              //               .map((DocumentSnapshot document) =>
-              //               document['Username'].toString())
-              //               .toList();
-              //
-              //           return Padding(
-              //             padding: const EdgeInsets.all(8.0),
-              //             child: Container(
-              //               decoration: BoxDecoration(
-              //                   border:
-              //                   Border.all(color: Colors.black54),
-              //                   borderRadius:
-              //                   BorderRadius.circular(8)),
-              //               child: DropdownButton<String>(
-              //                 padding: const EdgeInsets.symmetric(
-              //                     horizontal: 20, vertical: 3),
-              //                 underline: const SizedBox(),
-              //                 borderRadius: BorderRadius.circular(10),
-              //                 hint: const Text(
-              //                     "choose your needed service"),
-              //                 value: selectedvalue,
-              //                 // Set initial value if needed
-              //                 onChanged: (String? newValue) {
-              //                   setState(() {
-              //                     selectedvalue = newValue!;
-              //                     print(selectedvalue);
-              //                   });
-              //                 },
-              //
-              //                 items: tradeList
-              //                     .map<DropdownMenuItem<String>>(
-              //                         (String value) =>
-              //                         DropdownMenuItem<String>(
-              //                           value: value,
-              //                           child: Text(value),
-              //                         ))
-              //                     .toList(),
-              //               ),
-              //             ),
-              //           );
-              //         }
-              //       },
-              //     ),
-              //     const SizedBox(
-              //       width: 20,
-              //     )
-              //   ],
-              // ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.055,
-              ),
-              InkWell(
-                onTap: () {
-                  if (formkey.currentState!.validate()){
-                  ParentReg();}
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
+                controller: Dateofbirth,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Empty Date Of birth !";
+                  }
                 },
+                keyboardType: TextInputType.datetime,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Date Of birth",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
+                controller: parentname,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Empty Parent Name !";
+                  }
+                },
+
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Parent Name",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 40, left: 20),
+              child: TextFormField(
+                minLines: 2,
+                maxLines: 2,
+                controller: Address,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Empty Address !";
+                  }
+                },
+                keyboardType: TextInputType.streetAddress,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    hintText: "Address",
+                    labelStyle: GoogleFonts.inriaSerif(
+                        color: Colors.grey, fontSize: 20)),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                StreamBuilder<QuerySnapshot>(
+                  stream: FirebaseFirestore.instance
+                      .collection('DaycareRegister')
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const SizedBox();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      List<String> tradeList = snapshot.data!.docs
+                          .map((DocumentSnapshot document) =>
+                              document['Username'].toString())
+                          .toList();
+
+                      return Container(
+                        width: 350,
+                        height: 60,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black54),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: DropdownButton<String>(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 3),
+                          underline: const SizedBox(),
+                          borderRadius: BorderRadius.circular(10),
+                          hint: Padding(
+                            padding: const EdgeInsets.only(right: 110),
+                            child: const Text("choose your Daycare "),
+                          ),
+                          value: Select,
+                          // Set initial value if needed
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              Select = newValue!;
+                              print(Select);
+                            });
+                          },
+
+                          items: tradeList
+                              .map<DropdownMenuItem<String>>(
+                                  (String value) => DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      ))
+                              .toList(),
+                        ),
+                      );
+                    }
+                  },
+                ),
+                const SizedBox(
+                  width: 20,
+                )
+              ],
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.055,
+            ),
+            InkWell(
+              onTap: () {
+                if (formkey.currentState!.validate()) {
+                  if (Select == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                      "select daycare",
+                      style: TextStyle(color: Colors.red),
+                    )));
+                  } else {
+                    ParentReg();
+                  }
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Container(
                   height: 60,
-                  width: 300,
-                  child: Text(
-                    "Register",
-                    style: GoogleFonts.inriaSerif(
-                      height: 1,
-                      color: Colors.white,
-                      fontSize: 40,
+                  child: Center(
+                    child: Text(
+                      "Register",
+                      style: GoogleFonts.inriaSerif(
+                        height: 1,
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                   alignment: Alignment.topCenter,
@@ -213,27 +309,34 @@ class _ParentSignupState extends State<ParentSignup> {
                       )),
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
-              ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text("Already have an account?",
-                    style: TextStyle(fontSize: 20)),
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ParentLogin()));
-                    },
-                    child: Text(
-                      "Login",
-                      style: TextStyle(color: Colors.blueAccent, fontSize: 20),
-                    ))
-              ]),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text("Already have an account?", style: TextStyle(fontSize: 15)),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ParentLogin()));
+                  },
+                  child: Text(
+                    "Login",
+                    style: TextStyle(
+                        color: Color.fromRGBO(
+                          14,
+                          97,
+                          116,
+                          0.99,
+                        ),
+                        fontSize: 16),
+                  ))
+            ]),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+          ],
 
-            ],
-          ),
         ),
         backgroundColor: Colors.white,
       ),

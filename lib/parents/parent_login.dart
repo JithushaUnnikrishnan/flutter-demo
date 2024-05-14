@@ -36,7 +36,7 @@ class _ParentLoginState extends State<ParentLogin> {
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
-          return SearchDaycare();
+          return PBottomButton();
         },
       ));
     } else {

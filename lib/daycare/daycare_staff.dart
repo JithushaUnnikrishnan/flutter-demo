@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/daycare/daybottombutn.dart';
 import 'package:demo/daycare/daycare_addview.dart';
 import 'package:demo/daycare/daycare_stafadd.dart';
 import 'package:demo/daycare/daycarestafview.dart';
+import 'package:demo/daycare/staffedit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,71 +50,63 @@ class _DaycareStaffState extends State<DaycareStaff> {
                 ),
               ],
             )),
-        body: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  width: 367,
-                  height: 67,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            offset: Offset(0, 3),
-                            spreadRadius: 2,
-                            blurRadius: 2,
-                            color: Colors.black45)
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color.fromRGBO(245, 245, 245, 1)),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * .05,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DaycareStafadd()));
+          },
+          child: Text("ADD"),
+        ),
+        body: FutureBuilder(
+          future:
+              FirebaseFirestore.instance.collection("Daycare AddStaff").get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Text("Error:${snapshot.error}");
+            }
+            final Staff = snapshot.data?.docs ?? [];
+            return ListView.builder(
+              itemCount: Staff.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {},
+                      child: Card(
+                        child: ListTile(
+                          title: Text(Staff[index]["Staff Name"],
+                              style: GoogleFonts.inriaSerif(
+                                  fontSize: 20, color: Colors.black)),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(Staff[index]["Qualification"], style: GoogleFonts.inriaSerif(
+                              )),
+                              Text(Staff[index]["Phone"],style: GoogleFonts.inriaSerif(
+                              )),
+                            ],
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>StaffEdit(id: Staff[index].id,)));
+                              }, icon: Icon(Icons.edit),),
+                              IconButton(onPressed: (){
+                                setState(() {
+                                  
+                                  FirebaseFirestore.instance.collection("Daycare AddStaff").doc(Staff[index].id).delete();
+                                });
+                              }, icon: Icon(CupertinoIcons.delete))
+                            ],
+                          )
+                        ),
                       ),
-                      Text("Rajesh",
-                          style: GoogleFonts.inriaSerif(
-                              fontSize: 30, color: Colors.black)),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * .3,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return DaycareStafview();
-                            },
-                          ));
-                        },
-                        child: Container(
-                            height: 40,
-                            width: 74,
-                            decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(0, 3),
-                                      spreadRadius: 2,
-                                      blurRadius: 2,
-                                      color: Colors.black45)
-                                ],
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.blue),
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                "View",
-                                style: GoogleFonts.inriaSerif(
-                                    fontSize: 20, color: Colors.white),
-                              ),
-                            )),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                    ));
+              },
             );
           },
         ));

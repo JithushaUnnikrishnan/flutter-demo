@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../logo/select_categoryfor reg.dart';
+
 
 class EnrollChild extends StatefulWidget {
   const EnrollChild({super.key});
@@ -35,7 +37,7 @@ class _EnrollChildState extends State<EnrollChild> {
 
   Getfirebase() async {
     Parentchildprofile = await FirebaseFirestore.instance
-        .collection("ChildRegister")
+        .collection("ParentRegister")
         .doc(ID)
         .get();
   }
@@ -111,25 +113,59 @@ class _EnrollChildState extends State<EnrollChild> {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height*.04,),
 
-                  Text("Name",style: TextStyle(color: Colors.grey),),
+                  Text("Child Name",style: TextStyle(color: Colors.grey),),
 
-                  Text("Jeni"),
+                  Text(Parentchildprofile!["Child name"]),
                   Divider(color: Colors.grey,endIndent: 20,),
                   SizedBox(height: MediaQuery.of(context).size.height*.01,),
                   Icon(Icons.home,color: Colors.grey,),
                   SizedBox(height: MediaQuery.of(context).size.height*.01,),
-                  Text("Palaparamba house \nMalappuram pin:673637"),
+                  Text(Parentchildprofile!["Address"]),
                   Divider(endIndent: 20,),
                   SizedBox(height: MediaQuery.of(context).size.height*.01,),
                   Icon(Icons.calendar_month_rounded,color: Colors.grey,),
                   SizedBox(height: MediaQuery.of(context).size.height*.01,),
-                  Text("06/12/2001"),
+                  Text(Parentchildprofile!["Date of birth"]),
                   Divider(endIndent: 20,),
                   SizedBox(height: MediaQuery.of(context).size.height*.01,),
-                  Text("Parent Occupation",style: TextStyle(color: Colors.grey),),
+                  Text("Parent Name",style: TextStyle(color: Colors.grey),),
                   SizedBox(height: MediaQuery.of(context).size.height*.01,),
-                  Text("Doctor"),
-                  Divider(endIndent: 20,)
+                  Text(Parentchildprofile!["Parent Name"]),
+                  Divider(endIndent: 20,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height* 0.1,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: InkWell(onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SelectCategoryreg()));
+                    },
+                      child: Container(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                              ),
+                              Text("Logout",
+                                  style: GoogleFonts.ubuntu(
+                                      color: Colors.white, fontSize: 20)),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.015,
+                              ),
+                              Icon(Icons.login_outlined,color: Colors.white,)
+                            ],
+                          ),
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color(0xFFC65264),
+                          )),
+                    ),
+                  ),
                 ],
               ),
             ),

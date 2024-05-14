@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'appointmentdr.dart';
+
 class DoctorHome extends StatefulWidget {
   const DoctorHome({super.key});
 
@@ -125,7 +127,7 @@ Column(
     Padding(
       padding: const EdgeInsets.only(left: 100,top: 400),
       child: InkWell(onTap: (){
-
+Navigator.push(context, MaterialPageRoute(builder: (context)=>DrAppointments()));
       },
         child: Container(
           height: 105,
@@ -134,7 +136,7 @@ Column(
             BoxShadow(offset: Offset(1,2),spreadRadius: 2,blurRadius: 3,color: Colors.grey),
           ],borderRadius: BorderRadius.circular(10), color: Color(0xFFDBDBF1),
         ),
-        child: Center(child: Text("Appointment\n    Requests",style: GoogleFonts.inriaSerif(fontSize: 20),)),
+        child: Center(child: Text("Appointments",style: GoogleFonts.inriaSerif(fontSize: 20),)),
         ),
       ),
 

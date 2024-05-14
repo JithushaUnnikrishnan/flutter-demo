@@ -14,11 +14,13 @@ class AdminLogin extends StatefulWidget {
 class _AdminLoginState extends State<AdminLogin> {
   Adlogin() {
     if (email.text == 'admin@gmail.com' && password.text == '1234') {
+      print("object");
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return AdminHome();
+          print("data");
         },
-      ));
+      ));print("done");
     }
   }
   final formkey=GlobalKey<FormState>();
@@ -115,9 +117,10 @@ class _AdminLoginState extends State<AdminLogin> {
                   // ),
                   ElevatedButton(
                       onPressed: () {
+                        Adlogin();
                         if (formkey.currentState!.validate()){
 
-                        Adlogin();
+
 
                         }
 

@@ -15,18 +15,11 @@ class _DailyTaskviewState extends State<DailyTaskview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-
-
-
-          title:
-
-            Padding(
-              padding: const EdgeInsets.only(left: 70),
-              child: Text("Daily Task",style: GoogleFonts.ubuntu( color: Color(0xFFC24A6B))),
-            ),
-
-
+        title: Padding(
+          padding: const EdgeInsets.only(left: 70),
+          child: Text("Daily Task",
+              style: GoogleFonts.ubuntu(color: Color(0xFFC24A6B))),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -34,60 +27,64 @@ class _DailyTaskviewState extends State<DailyTaskview> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height:MediaQuery.of(context).size.height*.05),
-              Text('Today',style: GoogleFonts.inriaSerif(color: Colors.grey,fontSize: 20),),
-              SizedBox(height:MediaQuery.of(context).size.height*.05),
+              SizedBox(height: MediaQuery.of(context).size.height * .05),
+              Text(
+                'Today',
+                style: GoogleFonts.inriaSerif(color: Colors.grey, fontSize: 20),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * .05),
               Row(
                 children: [
                   Text('Photo'),
-                  SizedBox(width:MediaQuery.of(context).size.width*.2),
+                  SizedBox(width: MediaQuery.of(context).size.width * .2),
                   Text('10:02am'),
-                  SizedBox(width:MediaQuery.of(context).size.width*.1),
+                  SizedBox(width: MediaQuery.of(context).size.width * .1),
                   Text('Photo'),
-                  SizedBox(width:MediaQuery.of(context).size.width*.15),
+                  SizedBox(width: MediaQuery.of(context).size.width * .15),
                   Text('11:02am'),
-
                 ],
               ),
               Row(
                 children: [
-                  Container(height: 115,width: 150,color: Colors.grey,
-                    child:Column(
+                  Container(
+                    height: 115,
+                    width: 150,
+                    color: Colors.grey,
+                    child: Column(
                       children: [
-                        SizedBox(height:MediaQuery.of(context).size.height*.002),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * .002),
                         Image.asset('assets/Image.png'),
-
                         Text('169kb'),
                       ],
                     ),
                   ),
-
-                  SizedBox(width:MediaQuery.of(context).size.width*.22),
-                  Container(height: 115,width: 150,
+                  SizedBox(width: MediaQuery.of(context).size.width * .22),
+                  Container(
+                    height: 115,
+                    width: 150,
                     color: Colors.grey,
-                    child:Column(
+                    child: Column(
                       children: [
-                        SizedBox(height:MediaQuery.of(context).size.height*.002),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * .002),
                         Image.asset('assets/Image.png'),
                         Text('169kb')
                       ],
                     ),
                   )
-
-
                 ],
               ),
-              SizedBox(height:MediaQuery.of(context).size.height*.43),
-
-
+              SizedBox(height: MediaQuery.of(context).size.height * .43),
               Padding(
-                  padding: const EdgeInsets.only(left:30,),
-                  child: InkWell(onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ChildPage()));
-                  },
+                  padding: const EdgeInsets.only(
+                    left: 30,
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ChildPage()));
+                    },
                     child: Container(
                         child: Center(
                             child: Text("Upload Task",
@@ -101,8 +98,6 @@ class _DailyTaskviewState extends State<DailyTaskview> {
                         )),
                   ))
             ],
-
-
           ),
         ),
       ),

@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EnrollEdit extends StatefulWidget {
   const EnrollEdit({super.key});
@@ -14,11 +16,44 @@ class EnrollEdit extends StatefulWidget {
 }
 
 class _EnrollEditState extends State<EnrollEdit> {
+
+  var ID;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      ID = spref.getString("id");
+    });
+    print("sharedPreference Data get");
+  }
+
   final formkey = GlobalKey<FormState>();
+  var childname=TextEditingController();
   var address = TextEditingController();
   var dob = TextEditingController();
-  var Name=TextEditingController();
-  var parentoccupation = TextEditingController();
+
+  var parentname = TextEditingController();
+  Future<dynamic> ChildEdit() async {
+    await FirebaseFirestore.instance
+        .collection("ParentRegister")
+        .doc(ID)
+        .update({
+
+      "Address":address.text,
+      "Date of birth":dob.text,
+      "Child name":childname.text,
+      "Parent Name":parentname.text
+    });
+    print("done");
+    setState(() {
+      Navigator.pop(context);
+    });
+  }
 
   final picker = ImagePicker();
 
@@ -84,12 +119,12 @@ class _EnrollEditState extends State<EnrollEdit> {
             child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Name",style: GoogleFonts.inriaSerif(fontSize: 16),),
+                    Text("Child name",style: GoogleFonts.inriaSerif(fontSize: 16),),
                     TextFormField(
-      controller: Name,
+      controller: childname,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return "Empty Name !";
+                          return "Empty Childname !";
                         }
                       },
 
@@ -128,12 +163,12 @@ class _EnrollEditState extends State<EnrollEdit> {
                               ),
                             ),
                             SizedBox(height: MediaQuery.of(context).size.height * .02,),
-                            Text("Parent's Occupation",style: GoogleFonts.inriaSerif(fontSize: 16),),
+                            Text("Parent Name",style: GoogleFonts.inriaSerif(fontSize: 16),),
                             TextFormField(
-                              controller: parentoccupation,
+                              controller: parentname,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return "Empty Parent Occupation !";
+                                  return "Empty Parent Name !";
                                 }
                               },
                               decoration: InputDecoration(
@@ -146,7 +181,10 @@ class _EnrollEditState extends State<EnrollEdit> {
                               child: InkWell(
                                 onTap: (){
                                   if (formkey.currentState!.validate()){
-                                  Navigator.pop(context);}
+                                   setState(() {
+                                     ChildEdit();
+                                   });
+                                  }
                                 },
                                 child: Container(
                                   child: Center(child: Text("Update",style: GoogleFonts.inriaSerif(fontSize: 20,color: Colors.white),)),

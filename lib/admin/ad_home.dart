@@ -149,37 +149,31 @@ class _AdminHomeState extends State<AdminHome> {
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 145.0, right: 145, top: 80, bottom: 0),
-              child: Container(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LogoPage()));
-                  },
-                  style: TextButton.styleFrom(
-                    shadowColor: Colors.black,
-                      elevation: 10,
-                      backgroundColor: const Color.fromRGBO(236, 97, 97, 1),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 3,bottom: 2),
+                left: 30,right:30,top: 80, bottom: 0),
+              child: InkWell(onTap: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => LogoPage()));
+              },
+                child: Container(
                     child: Row(
                       children: [
-                        Text(
-                          "Logout",
-                          style: GoogleFonts.inriaSerif(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(Icons.exit_to_app,color: Colors.black,)
+                        SizedBox(width: MediaQuery.of(context).size.width*.3,),
+                        Text("Logout",
+                            style: GoogleFonts.ubuntu(
+                                color: Colors.white, fontSize: 20)),
+                        SizedBox(width: MediaQuery.of(context).size.width*.01,),
+
+                        Icon(Icons.logout_outlined,color: Colors.white,)
                       ],
                     ),
-                  ),
-                ),
+                    height: MediaQuery.of(context).size.height * 0.07,
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xFFC65264),
+                    )),
               ),
             ),
           ],

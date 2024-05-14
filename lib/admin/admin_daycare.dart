@@ -74,7 +74,7 @@ class _AdminDaycareState extends State<AdminDaycare> {
                           ],
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * .2,
+                          width: MediaQuery.of(context).size.width * .65,
                         ),
                         IconButton(onPressed: (){
                          setState(() {

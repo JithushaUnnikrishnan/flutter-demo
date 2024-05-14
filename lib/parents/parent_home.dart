@@ -18,43 +18,44 @@ class _ParentHomeState extends State<ParentHome> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        title:Center(child: Text("Home",style: GoogleFonts.ubuntu( color: Color(0xFFC24A6B)))) ,
 
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: InkWell(onTap: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SelectCategoryreg()));
-            },
-              child: Container(
-                height: 50,
-                width: 105,
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                      offset: Offset(0, 3),
-                      color: Colors.black45,
-                      spreadRadius: 2,
-                      blurRadius: 3),
-                ], borderRadius: BorderRadius.circular(10), color:Color(0xFFBD1010),),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5,bottom: 2),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Logout",
-                        style:
-                            GoogleFonts.inriaSerif(fontSize: 20, color: Colors.white),
-                      ),
-                      Icon(Icons.logout,color: Colors.white,)
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 15),
+        //     child: InkWell(onTap: (){
+        //       Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //               builder: (context) => SelectCategoryreg()));
+        //     },
+        //       child: Container(
+        //         height: 50,
+        //         width: 105,
+        //         decoration: BoxDecoration(boxShadow: [
+        //           BoxShadow(
+        //               offset: Offset(0, 3),
+        //               color: Colors.black45,
+        //               spreadRadius: 2,
+        //               blurRadius: 3),
+        //         ], borderRadius: BorderRadius.circular(10), color:Color(0xFFBD1010),),
+        //         child: Padding(
+        //           padding: const EdgeInsets.only(left: 5,bottom: 2),
+        //           child: Row(
+        //             children: [
+        //               Text(
+        //                 "Logout",
+        //                 style:
+        //                     GoogleFonts.inriaSerif(fontSize: 20, color: Colors.white),
+        //               ),
+        //               Icon(Icons.logout,color: Colors.white,)
+        //             ],
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ],
       ),
       body: Container(
         width: double.infinity,

@@ -35,6 +35,7 @@ import 'package:demo/daycare/daycare_staff.dart';
 import 'package:demo/daycare/daycare_update.dart';
 import 'package:demo/daycare/daycare_updated.dart';
 import 'package:demo/daycare/daycare_updatepage.dart';
+import 'package:demo/doctor/appointmentdr.dart';
 import 'package:demo/doctor/doctor_forgot.dart';
 import 'package:demo/doctor/doctor_home.dart';
 // import 'package:demo/doctor/doctor_login.dart';
@@ -90,6 +91,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: ParentLogin());
+        home: LogoPage());
   }
 }

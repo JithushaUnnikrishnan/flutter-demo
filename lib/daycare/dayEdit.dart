@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'daybottombutn.dart';
+
 class DaycareEdit extends StatefulWidget {
   const DaycareEdit({super.key});
 
@@ -47,7 +49,7 @@ class _DaycareEditState extends State<DaycareEdit> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => DaycareProfile()));
+              builder: (context) => DayBottomButton()));
     });
   }
 
