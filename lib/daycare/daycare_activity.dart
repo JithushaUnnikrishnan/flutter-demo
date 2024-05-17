@@ -4,6 +4,7 @@ import 'package:demo/daycare/daycare_update.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'activityedit.dart';
 
@@ -52,14 +53,12 @@ class _DaycareActivityState extends State<DaycareActivity> {
             return ListView.builder(
               itemCount: activity.length,
               itemBuilder: (context, index) {
-
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Card(
-
                     color: Colors.red.shade50,
                     child: ListTile(
-
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -68,15 +67,21 @@ class _DaycareActivityState extends State<DaycareActivity> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>ActivityEdit(id: activity[index].id,)));
+                                        builder: (context) => ActivityEdit(
+                                              id: activity[index].id,
+                                            )));
                               },
                               icon: Icon(Icons.edit)),
-                          IconButton(onPressed: () {
-                            setState(() {
-
-                              FirebaseFirestore.instance.collection("DaycareActivity").doc(activity[index].id).delete();
-                            });
-                          }, icon: Icon(Icons.delete))
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  FirebaseFirestore.instance
+                                      .collection("DaycareActivity")
+                                      .doc(activity[index].id)
+                                      .delete();
+                                });
+                              },
+                              icon: Icon(Icons.delete))
                         ],
                       ),
                       subtitle: Column(
@@ -124,10 +129,22 @@ class EditCard extends StatefulWidget {
 }
 
 class _EditCardState extends State<EditCard> {
+  var ID;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      ID = spref.getString("id");
+    });
+    print("sharedPreference Data get");
+  }
   final formkey = GlobalKey<FormState>();
-
   var activty = TextEditingController();
-
   String select = '';
   String dateselect = '';
   final date = new DateTime.now();
@@ -137,9 +154,11 @@ class _EditCardState extends State<EditCard> {
     await FirebaseFirestore.instance.collection("DaycareActivity").add({
       "Activity_name": activty.text,
       'Time': time.format(context),
-      'date': DateFormat('dd/MM/yyyy').format(date)
+      'date': DateFormat('dd/MM/yyyy').format(date),
+      "Daycare id":ID,
     });
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DaycareActivity()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => DaycareActivity()));
   }
 
   @override

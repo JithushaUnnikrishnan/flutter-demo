@@ -27,6 +27,7 @@ class _DaycareRegisterState extends State<DaycareRegister> {
       "Email": email.text,
       "Password": password.text,
       "PreschoolAddress": PreschoolAddress.text
+
     });
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => DaycareLogin()));
