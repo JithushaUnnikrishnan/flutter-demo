@@ -77,33 +77,44 @@ class _DaycareStaffState extends State<DaycareStaff> {
                       onTap: () {},
                       child: Card(
                         child: ListTile(
-                          title: Text(Staff[index]["Staff Name"],
-                              style: GoogleFonts.inriaSerif(
-                                  fontSize: 20, color: Colors.black)),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(Staff[index]["Qualification"], style: GoogleFonts.inriaSerif(
-                              )),
-                              Text(Staff[index]["Phone"],style: GoogleFonts.inriaSerif(
-                              )),
-                            ],
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>StaffEdit(id: Staff[index].id,)));
-                              }, icon: Icon(Icons.edit),),
-                              IconButton(onPressed: (){
-                                setState(() {
-                                  
-                                  FirebaseFirestore.instance.collection("Daycare AddStaff").doc(Staff[index].id).delete();
-                                });
-                              }, icon: Icon(CupertinoIcons.delete))
-                            ],
-                          )
-                        ),
+                            title: Text(Staff[index]["Staff Name"],
+                                style: GoogleFonts.inriaSerif(
+                                    fontSize: 20, color: Colors.black)),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(Staff[index]["Qualification"],
+                                    style: GoogleFonts.inriaSerif()),
+                                Text(Staff[index]["Phone"],
+                                    style: GoogleFonts.inriaSerif()),
+                              ],
+                            ),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => StaffEdit(
+                                                  id: Staff[index].id,
+                                                )));
+                                  },
+                                  icon: Icon(Icons.edit),
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        FirebaseFirestore.instance
+                                            .collection("Daycare AddStaff")
+                                            .doc(Staff[index].id)
+                                            .delete();
+                                      });
+                                    },
+                                    icon: Icon(CupertinoIcons.delete))
+                              ],
+                            )),
                       ),
                     ));
               },

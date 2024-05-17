@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/doctor/doctor_bottombuton.dart';
 import 'package:demo/doctor/doctor_home.dart';
+
 // import 'package:demo/doctor/doctor_login.dart';
 import 'package:demo/doctor/login_doctor.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,8 +16,6 @@ class DoctorSignup extends StatefulWidget {
 }
 
 class _DoctorSignupState extends State<DoctorSignup> {
-
-
   final formkey = GlobalKey<FormState>();
   var name = TextEditingController();
   var password = TextEditingController();
@@ -26,8 +25,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
   var homeaddress = TextEditingController();
   var officeaddress = TextEditingController();
   var experience = TextEditingController();
-  var phone=TextEditingController();
-
+  var phone = TextEditingController();
 
   Future<dynamic> Doctoreg() async {
     await FirebaseFirestore.instance.collection("DoctorReg").add({
@@ -39,9 +37,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
       "homeaddress": homeaddress.text,
       "officeaddress": officeaddress.text,
       "experience": experience.text,
-      "Phone":phone.text,
-
-      "status":0
+      "Phone": phone.text,
+      "status": 0
     });
     print('successfully');
     Navigator.pushReplacement(
@@ -76,7 +73,6 @@ class _DoctorSignupState extends State<DoctorSignup> {
                   height: 10,
                 ),
                 TextFormField(
-
                   controller: name,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -92,15 +88,13 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 SizedBox(
                   height: 10,
                 ),
-
-
                 SizedBox(
                   height: 10,
                 ),
                 TextFormField(
                   controller: email,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Empty Email !";
                     }
                   },
@@ -117,8 +111,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 TextFormField(
                   obscureText: true,
                   controller: password,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Empty Password !";
                     }
                   },
@@ -134,8 +128,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 TextFormField(
                   keyboardType: TextInputType.number,
                   controller: phone,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Empty Phone !";
                     }
                   },
@@ -145,14 +139,13 @@ class _DoctorSignupState extends State<DoctorSignup> {
                     labelStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
-
                 SizedBox(
                   height: 10,
                 ),
                 TextFormField(
                   controller: qualification,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Empty Qualification !";
                     }
                   },
@@ -167,8 +160,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 ),
                 TextFormField(
                   controller: specialization,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return 'Empty Specialization !';
                     }
                   },
@@ -183,9 +176,11 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 ),
                 TextFormField(
                   controller: homeaddress,
-                  validator:(value){
-                    if (value!.isEmpty){return "Empty Homeaddress !";}
-                  } ,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Homeaddress !";
+                    }
+                  },
                   // keyboardType: TextInputType.streetAddress,
                   minLines: 5,
                   maxLines: 5,
@@ -201,8 +196,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 ),
                 TextFormField(
                   controller: officeaddress,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Empty Office Address !";
                     }
                   },
@@ -219,8 +214,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 ),
                 TextFormField(
                   controller: experience,
-                  validator: (value){
-                    if (value!.isEmpty){
+                  validator: (value) {
+                    if (value!.isEmpty) {
                       return "Empty Experiance !";
                     }
                   },

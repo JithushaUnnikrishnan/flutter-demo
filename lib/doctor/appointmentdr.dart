@@ -16,12 +16,12 @@ class _DrAppointmentsState extends State<DrAppointments> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(left:280),
+          padding: const EdgeInsets.only(left:230),
           child: InkWell(onTap: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>DoctorRequest()));
           },
             child: Text('Requests',
-                style: GoogleFonts.inter(fontSize: 18, color: Colors.white)),
+                style: GoogleFonts.inter(fontSize: 15, color: Colors.white)),
           ),
         ),
         toolbarHeight: MediaQuery.of(context).size.height * .15,

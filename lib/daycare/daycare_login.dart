@@ -17,6 +17,7 @@ class _DaycareLoginState extends State<DaycareLogin> {
   final formkey=GlobalKey<FormState>();
   var email=TextEditingController();
   var password=TextEditingController();
+  String name='';
 String id="";
   void DayLog() async {
     final user = await FirebaseFirestore.instance
@@ -27,9 +28,11 @@ String id="";
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
+      name=user.docs[0]["Username"];
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
+      data.setString("name", name);
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
@@ -42,6 +45,7 @@ String id="";
             "Email and password invalid",
             style: TextStyle(color: Colors.red),
           )));
+      print("done");
     }
   }
   @override

@@ -107,25 +107,9 @@ class _TeacherProfileState extends State<TeacherProfile> {
                   SizedBox(
                     height: 40,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: Row(
-                      children: [
-                        Icon(Icons.home),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * .02,
-                        ),
-                        Text(Babysitter!["address"]),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    indent: 10,
-                    endIndent: 10,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
+
+
+
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: Row(
@@ -138,6 +122,24 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       ],
                     ),
                   ),
+
+                  Divider(
+                    indent: 10,
+                    endIndent: 10,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                 Padding(
+                   padding: const EdgeInsets.only(left: 20.0),
+                   child: Row(
+                     children: [
+                       Icon(CupertinoIcons.home),
+                       SizedBox(width:MediaQuery.of(context).size.width * .02, ),
+                       Text(Babysitter!['Address']),
+                     ],
+                   ),
+                 ),
                   Divider(
                     indent: 10,
                     endIndent: 10,

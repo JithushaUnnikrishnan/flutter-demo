@@ -27,20 +27,21 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
   var phonenumber = TextEditingController();
   var gender = TextEditingController();
   var whatsapp = TextEditingController();
+  String? Select;
 
   Future<dynamic> babysitterReg() async {
     await FirebaseFirestore.instance.collection("babysiiterReg").add({
       "UserName": name.text,
       "email": email.text,
       "password": password.text,
-      "address": address.text,
+      "Address": address.text,
       "qualification": qualification.text,
-      "daycarename": Daycarename.text,
+      "daycarename": Select,
       "experiance": experience.text,
       "idproofnumber": idproofnumber.text,
       "phonenumber": phonenumber.text,
       "whatsappNumber": whatsapp.text,
-      "gender":selectedvalue
+      "gender": selectedvalue
     });
     print('done');
     Navigator.push(
@@ -76,111 +77,174 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .025,
               ),
-              TextFormField(
-                controller: name,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Name !";
-                  }
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Name",
-                    labelStyle: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: name,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Name !";
+                    }
+                  },
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Name",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: email,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Email !";
-                  }
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Email",
-                    labelStyle: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: email,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Email !";
+                    }
+                  },
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Email",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: password,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Password !";
-                  }
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Password",
-                    labelStyle: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: password,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Password !";
+                    }
+                  },
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Password",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: address,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Address !";
-                  }
-                },
-                minLines: 5,
-                maxLines: 5,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Address",
-                    labelStyle: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: address,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Address !";
+                    }
+                  },
+                  minLines: 3,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Address",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
+              ),
+
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .035,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: qualification,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Qualification !";
+                    }
+                  },
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Qualification",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: Daycarename,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Daycare name !";
-                  }
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Daycare name",
-                    labelStyle: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: experience,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Experience !";
+                    }
+                  },
+                  minLines: 3,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Experience",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: qualification,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Qualification !";
-                  }
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Qualification",
-                    labelStyle: TextStyle(color: Colors.grey)),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: idproofnumber,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Id proof Number !";
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Id Proof Number",
+                      labelStyle: TextStyle(color: Colors.grey)),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: experience,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Experience !";
-                  }
-                },
-                minLines: 5,
-                maxLines: 5,
-                decoration: const InputDecoration(
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: phonenumber,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Phone Number !";
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Experience",
-                    labelStyle: TextStyle(color: Colors.grey)),
+                    hintText: "Phone Number",
+                    labelStyle: TextStyle(color: Colors.grey),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .035,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: TextFormField(
+                  controller: whatsapp,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Empty Whatsapp Number !";
+                    }
+                  },
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Whatsapp Number",
+                    labelStyle: TextStyle(color: Colors.grey),
+                  ),
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
@@ -188,83 +252,98 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 380,
-                    height: 69,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        color: Colors.transparent,
-                        border: Border.all()),
-                    child: DropdownButton<String>(
-                        isExpanded: true,
-                        elevation: 0,
-                        // dropdownColor: Colors.grey.shade100,
-                        hint: const Text("Gender"),
-                        underline: const SizedBox(),
-                        value: selectedvalue,
-                        items: locationlist.map((String value) {
-                          return DropdownMenuItem<String>(
-                              value: value, child: Text(value));
-                        }).toList(),
-                        onChanged: (newvalue) {
-                          setState(() {
-                            selectedvalue = newvalue;
-                            print(selectedvalue);
-                          });
-                        },
-                        padding: const EdgeInsets.symmetric(horizontal: 10)),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Container(
+                      width: 360,
+                      height: 69,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: Colors.transparent,
+                          border: Border.all()),
+                      child: DropdownButton<String>(
+                          isExpanded: true,
+                          elevation: 0,
+                          // dropdownColor: Colors.grey.shade100,
+                          hint: const Text("Gender"),
+                          underline: const SizedBox(),
+                          value: selectedvalue,
+                          items: locationlist.map((String value) {
+                            return DropdownMenuItem<String>(
+                                value: value, child: Text(value));
+                          }).toList(),
+                          onChanged: (newvalue) {
+                            setState(() {
+                              selectedvalue = newvalue;
+                              print(selectedvalue);
+                            });
+                          },
+                          padding: const EdgeInsets.symmetric(horizontal: 10)),
+                    ),
                   ),
                 ],
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
-              TextFormField(
-                controller: idproofnumber,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Id proof Number !";
-                  }
-                },
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Id Proof Number",
-                    labelStyle: TextStyle(color: Colors.grey)),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .035,
-              ),
-              TextFormField(
-                controller: phonenumber,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Phone Number !";
-                  }
-                },
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Phone Number",
-                  labelStyle: TextStyle(color: Colors.grey),
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .035,
-              ),
-              TextFormField(
-                controller: whatsapp,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Empty Whatsapp Number !";
-                  }
-                },
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Whatsapp Number",
-                  labelStyle: TextStyle(color: Colors.grey),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection('DaycareRegister')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const SizedBox();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        List<String> tradeList = snapshot.data!.docs
+                            .map((DocumentSnapshot document) =>
+                            document['Username'].toString())
+                            .toList();
+
+                        return Container(
+                          width: 361,
+                          height: 69,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black54),
+                              borderRadius: BorderRadius.circular(8)),
+                          child: DropdownButton<String>(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 3),
+                            underline: const SizedBox(),
+                            borderRadius: BorderRadius.circular(10),
+                            hint: Padding(
+                              padding: const EdgeInsets.only(right: 110),
+                              child: const Text("choose your Daycare "),
+                            ),
+                            value: Select,
+                            // Set initial value if needed
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                Select = newValue!;
+                                print(Select);
+                              });
+                            },
+
+                            items: tradeList
+                                .map<DropdownMenuItem<String>>(
+                                    (String value) => DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                ))
+                                .toList(),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  )
+                ],
               ),
               const SizedBox(
                 height: 30,
@@ -272,17 +351,21 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               ),
               ElevatedButton(
                 onPressed: () {
-
                   if (formkey.currentState!.validate()) {
-                    if (selectedvalue==null){
+                    if (selectedvalue == null) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text(
-                            "select Gender",
-                            style: TextStyle(color: Colors.red),
-                          )));
-
+                        "select Gender",
+                        style: TextStyle(color: Colors.red),
+                      )));
                     }
-                    else {
+                    if (Select == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text(
+                        "select Daycare",
+                        style: TextStyle(color: Colors.red),
+                      )));
+                    } else {
                       babysitterReg();
                     }
                   }

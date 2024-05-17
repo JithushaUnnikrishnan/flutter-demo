@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'appointmentdr.dart';
+
 class DoctorRequest extends StatefulWidget {
   const DoctorRequest({super.key});
 
@@ -66,7 +68,10 @@ class _DoctorRequestState extends State<DoctorRequest> {
                       children: [
 
                         ElevatedButton(
-                            onPressed: () {}, child: Text("Approve"),style: ElevatedButton.styleFrom(
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>DrAppointments()));
+
+                            }, child: Text("Approve"),style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,shadowColor: Colors.grey,foregroundColor: Colors.white,elevation: 3
                         ),
 
