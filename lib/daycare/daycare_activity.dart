@@ -17,7 +17,20 @@ class DaycareActivity extends StatefulWidget {
 
 class _DaycareActivityState extends State<DaycareActivity> {
   int _itemcount = 0;
+  var Daycarename;
 
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Daycarename = spref.getString("name");
+    });
+    print("sharedPreference Data get");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +54,7 @@ class _DaycareActivityState extends State<DaycareActivity> {
         ),
         body: FutureBuilder(
           future:
-              FirebaseFirestore.instance.collection("DaycareActivity").get(),
+              FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo: Daycarename).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
@@ -129,7 +142,7 @@ class EditCard extends StatefulWidget {
 }
 
 class _EditCardState extends State<EditCard> {
-  var ID;
+  var Daycarename;
 
   void initState() {
     super.initState();
@@ -139,7 +152,7 @@ class _EditCardState extends State<EditCard> {
   Future<void> getData() async {
     SharedPreferences spref = await SharedPreferences.getInstance();
     setState(() {
-      ID = spref.getString("id");
+      Daycarename = spref.getString("name");
     });
     print("sharedPreference Data get");
   }
@@ -155,7 +168,7 @@ class _EditCardState extends State<EditCard> {
       "Activity_name": activty.text,
       'Time': time.format(context),
       'date': DateFormat('dd/MM/yyyy').format(date),
-      "Daycare id":ID,
+      "Daycare Name":Daycarename,
     });
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => DaycareActivity()));

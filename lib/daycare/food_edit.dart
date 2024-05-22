@@ -1,21 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo/daycare/DAycarefoodview.dart';
-import 'package:demo/daycare/daybottombutn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DaycareFood extends StatefulWidget {
-  const DaycareFood({super.key});
+import 'DAycarefoodview.dart';
 
+class FoodUpdate extends StatefulWidget {
+  const FoodUpdate({super.key});
 
   @override
-  State<DaycareFood> createState() => _DaycareFoodState();
+  State<FoodUpdate> createState() => _FoodUpdateState();
 }
 
-class _DaycareFoodState extends State<DaycareFood> {
+class _FoodUpdateState extends State<FoodUpdate> {
   var ID;
-  var Name;
 
   void initState() {
     super.initState();
@@ -26,7 +24,6 @@ class _DaycareFoodState extends State<DaycareFood> {
     SharedPreferences spref = await SharedPreferences.getInstance();
     setState(() {
       ID = spref.getString("id");
-      Name=spref.getString("name");
     });
     print("sharedPreference Data get");
   }
@@ -49,9 +46,8 @@ class _DaycareFoodState extends State<DaycareFood> {
   var sbreakfast = TextEditingController();
   var slunch = TextEditingController();
   var ssnack = TextEditingController();
-
-  Future<dynamic> DAycarefd() async {
-    await FirebaseFirestore.instance.collection("Daycarefoodadd").add({
+  Future<dynamic> Editfd() async {
+    await FirebaseFirestore.instance.collection("Daycarefoodadd").doc(ID).update({
       "MBreakFast": mbreakfast.text,
       "MLunch": mlunch.text,
       "MSnack": msnack.text,
@@ -70,18 +66,17 @@ class _DaycareFoodState extends State<DaycareFood> {
       "SBreakFast": sbreakfast.text,
       "SLunch": slunch.text,
       "SSnack": ssnack.text,
-      "daycare id":ID,
-      "Daycare Name":Name,
-    });
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DaycareFoodview()));
-  }
 
+    });
+
+
+
+  }
   @override
   Widget build(BuildContext context) {
-    return Form(key: formkey,
+    return Form(
+      key: formkey,
       child: Scaffold(
-
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(117, 10, 100, 1),
           toolbarHeight: 122,
@@ -506,18 +501,19 @@ class _DaycareFoodState extends State<DaycareFood> {
                 ),
                 Center(
                     child: ElevatedButton(
-                  onPressed: () {
-                    if (formkey.currentState!.validate()) {
-                      print("done");
-                      DAycarefd();
-                    }
-                  },
-                  child: Text(
-                    'Done',
-                    style: GoogleFonts.inriaSerif(color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                )),
+                      onPressed: () {
+                        if (formkey.currentState!.validate()) {
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DaycareFoodview()));
+                          print("done");
+
+                        }
+                      },
+                      child: Text(
+                        'Update',
+                        style: GoogleFonts.inriaSerif(color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                    )),
                 SizedBox(
                   height: 30,
                 ),

@@ -4,6 +4,7 @@ import 'package:demo/parents/searchdaycare.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentSignup extends StatefulWidget {
   const ParentSignup({super.key});
@@ -13,6 +14,7 @@ class ParentSignup extends StatefulWidget {
 }
 
 class _ParentSignupState extends State<ParentSignup> {
+
   final formkey = GlobalKey<FormState>();
   var parentname = TextEditingController();
   var phone = TextEditingController();
@@ -33,7 +35,10 @@ class _ParentSignupState extends State<ParentSignup> {
       "Daycare name": Select,
       "Child name":ChildName.text,
       "Date of birth":Dateofbirth.text,
-      "Address":Address.text
+      "Address":Address.text,
+
+
+
     });
     print('done');
     Navigator.pushReplacement(

@@ -15,7 +15,22 @@ class TeacherChildprofile extends StatefulWidget {
 }
 
 class _TeacherChildprofileState extends State<TeacherChildprofile> {
+  var Daycarename;
+ 
 
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Daycarename = spref.getString("Daycarename");
+     
+    });
+    print("sharedPreference Data get");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +50,7 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
         ),
       ),
       body: FutureBuilder(
-        future: FirebaseFirestore.instance.collection("ParentRegister").get(),
+        future: FirebaseFirestore.instance.collection("ParentRegister").where("Daycare name",isEqualTo:Daycarename ).get(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
@@ -61,7 +76,9 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                       SharedPreferences data =
                           await SharedPreferences.getInstance();
                       data.setString('Studentid', student[index].id);
+
                       print("shared preference get");
+
 
                       Navigator.push(
                           context,

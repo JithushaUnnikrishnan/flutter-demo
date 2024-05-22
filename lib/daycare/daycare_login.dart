@@ -28,11 +28,11 @@ String id="";
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
-      name=user.docs[0]["Username"];
+      name=user.docs[0]["Username"];//username is firebase fieldname-collection
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
-      data.setString("name", name);
+      data.setString("name", name);//green name data is stored
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {

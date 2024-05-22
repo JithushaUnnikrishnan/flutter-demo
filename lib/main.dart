@@ -20,6 +20,7 @@ import 'package:demo/babysitters/jeni_profiledaily.dart';
 import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
 import 'package:demo/daycare/Datcare_parent.dart';
 import 'package:demo/daycare/Daycare_childview.dart';
+import 'package:demo/daycare/daycaraefood%20editview.dart';
 import 'package:demo/daycare/daycare_activity.dart';
 import 'package:demo/daycare/daycare_addactivity.dart';
 import 'package:demo/daycare/daycare_addview.dart';
@@ -71,6 +72,9 @@ import 'package:demo/trail.dart';
 import 'package:demo/trail2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'daycare/DAycarefoodview.dart';
+import 'jithu.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

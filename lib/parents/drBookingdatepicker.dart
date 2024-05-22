@@ -17,20 +17,28 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Color.fromRGBO(
+        147,
+        180,
+        209,
+        1,
+      ),),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
           children: [
             Container(
-              child: Center(
-                  child: Text(
-                "Booking",
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold, fontSize: 20),
-              )),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 160),
+                child: Text(
+                                "Booking",
+                                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+              ),
               width: double.infinity,
-              height: 150,
+              height: 100,
               color: Color.fromRGBO(
                 147,
                 180,
@@ -39,7 +47,7 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
               ),
             ),
             Positioned(
-              top: 120,
+              top: 70,
               left: 50,
               child: Material(
                 elevation: 10,
@@ -81,13 +89,7 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
-              child: InkWell(onTap: (){
-                Navigator.pop(context);
-              },
-                  child: Icon(Icons.arrow_back)),
-            ),
+
             SingleChildScrollView(
                 physics: NeverScrollableScrollPhysics(),
                 child: Column(children: [
@@ -146,7 +148,7 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
                 ),
               ),
               SizedBox(
-                height: 150,
+                height: 100,
               ),
               InkWell(
                 onTap: () {

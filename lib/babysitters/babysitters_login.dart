@@ -21,19 +21,21 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
   var email = TextEditingController();
   var password = TextEditingController();
   String id = "";
+  String Daycarename = "";
+
   void BabyLog() async {
     final user = await FirebaseFirestore.instance
         .collection('babysiiterReg')
         .where('email', isEqualTo: email.text)
         .where('password', isEqualTo: password.text)
-
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
+      Daycarename = user.docs[0]["daycarename"];
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
-
+      data.setString("Daycarename", Daycarename);
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return BottomButton();
@@ -148,7 +150,8 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()) {
-                          BabyLog();}
+                          BabyLog();
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,

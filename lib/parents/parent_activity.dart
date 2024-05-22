@@ -22,8 +22,7 @@ List<Color> color = [
   Color(0XFFEBFAFE),
 ];
 class _ParentActivityState extends State<ParentActivity> {
-  var Id;
-
+  var Name;
 
   void initState() {
     super.initState();
@@ -33,7 +32,7 @@ class _ParentActivityState extends State<ParentActivity> {
   Future<void> getData() async {
     SharedPreferences spref = await SharedPreferences.getInstance();
     setState(() {
-      Id = spref.getString("id");
+      Name = spref.getString("Daycare name");
 
     });
     print("sharedPreference Data get");
@@ -65,7 +64,7 @@ class _ParentActivityState extends State<ParentActivity> {
         ]),
       ),
       body: FutureBuilder(
-        future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare id",isEqualTo:Id).get(),
+        future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:Name).get(),
         builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
@@ -107,7 +106,7 @@ class _ParentActivityState extends State<ParentActivity> {
                             style: GoogleFonts.inriaSerif(fontSize: 20),
                           ),
                           Text(
-                            "Time:10:00am",
+                           Healthrecord[index]["Time"],
                             style: GoogleFonts.inriaSerif(fontSize: 15),
                           ),
                         ],

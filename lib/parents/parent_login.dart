@@ -17,22 +17,26 @@ class ParentLogin extends StatefulWidget {
 }
 
 class _ParentLoginState extends State<ParentLogin> {
-  final formkey=GlobalKey<FormState>();
-  var email=TextEditingController();
-  var password=TextEditingController();
-  String id="";
+  final formkey = GlobalKey<FormState>();
+  var email = TextEditingController();
+  var password = TextEditingController();
+  String id = "";
+  String Name = "";
+
+
   void ParentLog() async {
     final user = await FirebaseFirestore.instance
         .collection('ParentRegister')
         .where('Email', isEqualTo: email.text)
         .where('Password', isEqualTo: password.text)
-
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
+      Name = user.docs[0]["Daycare name"];
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
+      data.setString("Daycare name", Name);
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
@@ -42,28 +46,29 @@ class _ParentLoginState extends State<ParentLogin> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
-            "Email and password invalid",
-            style: TextStyle(color: Colors.red),
-          )));
+        "Email and password invalid",
+        style: TextStyle(color: Colors.red),
+      )));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(key: formkey,
+    return Form(
+      key: formkey,
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
           child: SingleChildScrollView(
             physics: NeverScrollableScrollPhysics(),
             child: Container(
-              height:MediaQuery.of(context).size.height*.7,
-              width: MediaQuery.of(context).size.width*.9,
+              height: MediaQuery.of(context).size.height * .7,
+              width: MediaQuery.of(context).size.width * .9,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(50)),
                 image: DecorationImage(
                   image: AssetImage('assets/output.png'),
-                    fit: BoxFit.fill,
+                  fit: BoxFit.fill,
                 ),
               ),
               padding: const EdgeInsets.all(30),
@@ -78,7 +83,7 @@ class _ParentLoginState extends State<ParentLogin> {
                       ),
                       Text(
                         "Login",
-                        style:GoogleFonts.rubikGlitch(
+                        style: GoogleFonts.rubikGlitch(
                           fontSize: 50,
                           color: Colors.white,
                         ),
@@ -90,15 +95,15 @@ class _ParentLoginState extends State<ParentLogin> {
                   ),
                   TextFormField(
                     controller: email,
-                    validator: (value){
-                      if (value!.isEmpty){
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return "Empty email !";
                       }
                     },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
-                     hintText: "Email",
+                      hintText: "Email",
                       filled: true,
                       fillColor: Colors.grey[50],
                       labelStyle: const TextStyle(color: Colors.grey),
@@ -110,8 +115,8 @@ class _ParentLoginState extends State<ParentLogin> {
                   TextFormField(
                     obscureText: true,
                     controller: password,
-                    validator: (value){
-                      if (value!.isEmpty){
+                    validator: (value) {
+                      if (value!.isEmpty) {
                         return "Empty Password !";
                       }
                     },
@@ -125,28 +130,29 @@ class _ParentLoginState extends State<ParentLogin> {
                   const SizedBox(
                     height: 10,
                   ),
-                  InkWell(onTap: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ParentForgot()));
-                  },
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ParentForgot()));
+                    },
                     child: const Row(
                       children: [
                         Expanded(
                             child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: Text(
-                                "Forgot password?",
-                                style: TextStyle(),
-                              ),
-                            )),
+                          alignment: Alignment.bottomRight,
+                          child: Text(
+                            "Forgot password?",
+                            style: TextStyle(),
+                          ),
+                        )),
                       ],
                     ),
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        if (formkey.currentState!.validate()){
+                        if (formkey.currentState!.validate()) {
                           ParentLog();
                         }
                       },
@@ -156,8 +162,8 @@ class _ParentLoginState extends State<ParentLogin> {
                       child: const Text(
                         "Login",
                       )),
-                   SizedBox(
-                    height: MediaQuery.of(context).size.height*.05,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .05,
                   ),
                   TextButton(
                     onPressed: () {
@@ -167,9 +173,10 @@ class _ParentLoginState extends State<ParentLogin> {
                               builder: (context) => ParentSignup()));
                     },
                     style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
+                      overlayColor:
+                          MaterialStateProperty.all(Colors.transparent),
                       mouseCursor:
-                      MaterialStateProperty.all(SystemMouseCursors.basic),
+                          MaterialStateProperty.all(SystemMouseCursors.basic),
                     ),
                     child: const Text(
                       "Create account?",
