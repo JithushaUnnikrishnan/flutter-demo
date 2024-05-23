@@ -1,32 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'DAycarefoodview.dart';
 
 class FoodUpdate extends StatefulWidget {
-  const FoodUpdate({super.key});
-
+  const FoodUpdate({super.key, required this.id});
+final id;
   @override
   State<FoodUpdate> createState() => _FoodUpdateState();
 }
 
 class _FoodUpdateState extends State<FoodUpdate> {
-  var ID;
 
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future<void> getData() async {
-    SharedPreferences spref = await SharedPreferences.getInstance();
-    setState(() {
-      ID = spref.getString("id");
-    });
-    print("sharedPreference Data get");
-  }
   final formkey = GlobalKey<FormState>();
   var mbreakfast = TextEditingController();
   var mlunch = TextEditingController();
@@ -43,11 +31,11 @@ class _FoodUpdateState extends State<FoodUpdate> {
   var fbreakfast = TextEditingController();
   var flunch = TextEditingController();
   var fsnack = TextEditingController();
-  var sbreakfast = TextEditingController();
-  var slunch = TextEditingController();
-  var ssnack = TextEditingController();
+
+  final date = new DateTime.now();
+
   Future<dynamic> Editfd() async {
-    await FirebaseFirestore.instance.collection("Daycarefoodadd").doc(ID).update({
+    await FirebaseFirestore.instance.collection("Daycarefoodadd").doc(widget.id).update({
       "MBreakFast": mbreakfast.text,
       "MLunch": mlunch.text,
       "MSnack": msnack.text,
@@ -63,12 +51,13 @@ class _FoodUpdateState extends State<FoodUpdate> {
       "FBreakFast": fbreakfast.text,
       "FLunch": flunch.text,
       "FSnack": fsnack.text,
-      "SBreakFast": sbreakfast.text,
-      "SLunch": slunch.text,
-      "SSnack": ssnack.text,
+
+
+      'date': DateFormat('dd/MM/yyyy').format(date)
 
     });
-
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DaycareFoodview()));
+    print("done");
 
 
   }
@@ -292,7 +281,7 @@ class _FoodUpdateState extends State<FoodUpdate> {
                     },
                     decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
-                        labelText: "Snack",
+                        hintText: "Snack",
                         labelStyle: GoogleFonts.inriaSerif(
                             color: Colors.grey, fontSize: 20)),
                   ),
@@ -432,70 +421,7 @@ class _FoodUpdateState extends State<FoodUpdate> {
                     ),
                   ),
                 ),
-                Text(
-                  'Saturday',
-                  style: GoogleFonts.inriaSerif(
-                    fontSize: 20,
-                  ),
-                ),
-                Material(
-                  elevation: 4,
-                  shadowColor: Colors.black45,
-                  child: TextFormField(
-                    controller: sbreakfast,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Breakfast !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
-                        hintText: "BreakFast",
-                        labelStyle: GoogleFonts.inriaSerif(
-                            color: Colors.grey, fontSize: 20)),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .02,
-                ),
-                Material(
-                  elevation: 4,
-                  shadowColor: Colors.black45,
-                  child: TextFormField(
-                    controller: slunch,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Lunch !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
-                        hintText: "Lunch",
-                        labelStyle: GoogleFonts.inriaSerif(
-                            color: Colors.grey, fontSize: 20)),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .02,
-                ),
-                Material(
-                  elevation: 4,
-                  shadowColor: Colors.black45,
-                  child: TextFormField(
-                    controller: ssnack,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Snack !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Snack",
-                      labelStyle: GoogleFonts.inriaSerif(
-                          color: Colors.grey, fontSize: 20),
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
-                    ),
-                  ),
-                ),
+
                 SizedBox(
                   height: 20,
                 ),
@@ -503,9 +429,8 @@ class _FoodUpdateState extends State<FoodUpdate> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()) {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>DaycareFoodview()));
-                          print("done");
 
+                          Editfd();
                         }
                       },
                       child: Text(

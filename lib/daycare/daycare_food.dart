@@ -3,11 +3,11 @@ import 'package:demo/daycare/DAycarefoodview.dart';
 import 'package:demo/daycare/daybottombutn.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DaycareFood extends StatefulWidget {
   const DaycareFood({super.key});
-
 
   @override
   State<DaycareFood> createState() => _DaycareFoodState();
@@ -26,10 +26,11 @@ class _DaycareFoodState extends State<DaycareFood> {
     SharedPreferences spref = await SharedPreferences.getInstance();
     setState(() {
       ID = spref.getString("id");
-      Name=spref.getString("name");
+      Name = spref.getString("name");
     });
     print("sharedPreference Data get");
   }
+
   final formkey = GlobalKey<FormState>();
   var mbreakfast = TextEditingController();
   var mlunch = TextEditingController();
@@ -46,9 +47,9 @@ class _DaycareFoodState extends State<DaycareFood> {
   var fbreakfast = TextEditingController();
   var flunch = TextEditingController();
   var fsnack = TextEditingController();
-  var sbreakfast = TextEditingController();
-  var slunch = TextEditingController();
-  var ssnack = TextEditingController();
+
+  String dateselect = '';
+  final date = new DateTime.now();
 
   Future<dynamic> DAycarefd() async {
     await FirebaseFirestore.instance.collection("Daycarefoodadd").add({
@@ -67,11 +68,9 @@ class _DaycareFoodState extends State<DaycareFood> {
       "FBreakFast": fbreakfast.text,
       "FLunch": flunch.text,
       "FSnack": fsnack.text,
-      "SBreakFast": sbreakfast.text,
-      "SLunch": slunch.text,
-      "SSnack": ssnack.text,
-      "daycare id":ID,
-      "Daycare Name":Name,
+      "daycare id": ID,
+      "Daycare Name": Name,
+      'date': DateFormat('dd/MM/yyyy').format(date)
     });
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => DaycareFoodview()));
@@ -79,9 +78,9 @@ class _DaycareFoodState extends State<DaycareFood> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(key: formkey,
+    return Form(
+      key: formkey,
       child: Scaffold(
-
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(117, 10, 100, 1),
           toolbarHeight: 122,
@@ -98,7 +97,6 @@ class _DaycareFoodState extends State<DaycareFood> {
               ),
             ),
           ),
-
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -297,7 +295,7 @@ class _DaycareFoodState extends State<DaycareFood> {
                     },
                     decoration: InputDecoration(
                         border: OutlineInputBorder(borderSide: BorderSide.none),
-                        labelText: "Snack",
+                        hintText: "Snack",
                         labelStyle: GoogleFonts.inriaSerif(
                             color: Colors.grey, fontSize: 20)),
                   ),
@@ -424,70 +422,6 @@ class _DaycareFoodState extends State<DaycareFood> {
                   shadowColor: Colors.black45,
                   child: TextFormField(
                     controller: fsnack,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Snack !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                      hintText: "Snack",
-                      labelStyle: GoogleFonts.inriaSerif(
-                          color: Colors.grey, fontSize: 20),
-                      border: OutlineInputBorder(borderSide: BorderSide.none),
-                    ),
-                  ),
-                ),
-                Text(
-                  'Saturday',
-                  style: GoogleFonts.inriaSerif(
-                    fontSize: 20,
-                  ),
-                ),
-                Material(
-                  elevation: 4,
-                  shadowColor: Colors.black45,
-                  child: TextFormField(
-                    controller: sbreakfast,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Breakfast !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
-                        hintText: "BreakFast",
-                        labelStyle: GoogleFonts.inriaSerif(
-                            color: Colors.grey, fontSize: 20)),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .02,
-                ),
-                Material(
-                  elevation: 4,
-                  shadowColor: Colors.black45,
-                  child: TextFormField(
-                    controller: slunch,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Lunch !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
-                        hintText: "Lunch",
-                        labelStyle: GoogleFonts.inriaSerif(
-                            color: Colors.grey, fontSize: 20)),
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .02,
-                ),
-                Material(
-                  elevation: 4,
-                  shadowColor: Colors.black45,
-                  child: TextFormField(
-                    controller: ssnack,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return "Empty Snack !";

@@ -8,7 +8,7 @@ import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'daycaraefood editview.dart';
+
 
 class DaycareHome extends StatefulWidget {
   const DaycareHome({super.key});
@@ -116,7 +116,7 @@ class _DaycareHomeState extends State<DaycareHome> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => DaycareFood()));
+                        builder: (context) => DaycareFoodview()));
               },
                 child: Container(
                   height: 72,width: 312,

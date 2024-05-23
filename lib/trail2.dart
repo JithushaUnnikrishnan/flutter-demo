@@ -1,140 +1,52 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Foodtrail extends StatefulWidget {
-  const Foodtrail({super.key});
+class Picker extends StatefulWidget {
+  const Picker({Key? key}) : super(key: key);
 
   @override
-  State<Foodtrail> createState() => _FoodtrailState();
+  State<Picker> createState() => _PickerState();
 }
 
-class _FoodtrailState extends State<Foodtrail> {
+class _PickerState extends State<Picker> {
+  DateTime? _selectedDate;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.green,toolbarHeight: 100,),
-      body:ListView.builder(
-        itemCount: 2,
-        itemBuilder: (context, index,) {
-
-        return  SingleChildScrollView(
-          // color: Colors.grey.shade100,
-          // height: 900,width: double.infinity,
-          child: Column(
-            children: [
-Text("06/12/2024"),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Select Date and Time',
+              style: TextStyle(fontSize: 24),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                DateTime? datepick = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2025),
+                );
+                if (datepick != null) {
+                  setState(() {
+                    _selectedDate = datepick;
+                  });
+                }
+              },
+              child: Text('Date'),
+            ),
+            SizedBox(height: 20),
+            if (_selectedDate != null)
+            // Text("$_selectedDate"),
               Text(
-                "Monday",
-                style: TextStyle(color: Colors.black),
+                'Selected Date: ${_selectedDate!.day}-${_selectedDate!.month}-${_selectedDate!.year}',
+                style: TextStyle(fontSize: 18),
               ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sunrise,
-                  color: Colors.red.shade300,
-                ),
-                title: Text("Breakfast"),
-              ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sun_max,
-                  color: Colors.yellow.shade700,
-                ),
-                title: Text("Lunch"),
-              ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sunset_fill,
-                  color: Colors.orangeAccent,
-                ),
-                title: Text("Snack"),
-              ),
-              Text(
-                "Tuesday",
-                style: TextStyle(color: Colors.black),
-              ),
-              ListTile(
-                leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
-                title: Text("Breakfast"),
-              ),
-              ListTile(
-                leading:
-                Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
-                title: Text("Lunch"),
-              ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sunset_fill,
-                  color: Colors.deepOrange,
-                ),
-                title: Text("Snack"),
-              ),
-              Text(
-                "Wednesday",
-                style: TextStyle(color: Colors.black),
-              ),
-              ListTile(
-                leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
-                title: Text("Breakfast"),
-              ),
-              ListTile(
-                leading:
-                Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
-                title: Text("Lunch"),
-              ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sunset_fill,
-                  color: Colors.deepOrange,
-                ),
-                title: Text("Snack"),
-              ),
-              Text(
-                "Thursday",
-                style: TextStyle(color: Colors.black),
-              ),
-              ListTile(
-                leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
-                title: Text("Breakfast"),
-              ),
-              ListTile(
-                leading:
-                Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
-                title: Text("Lunch"),
-              ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sunset_fill,
-                  color: Colors.deepOrange,
-                ),
-                title: Text("Snack"),
-              ),
-              Text(
-                "Friday",
-                style: TextStyle(color: Colors.black),
-              ),
-              ListTile(
-                leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
-                title: Text("Breakfast"),
-              ),
-              ListTile(
-                leading:
-                Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
-                title: Text("Lunch"),
-              ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.sunset_fill,
-                  color: Colors.deepOrange,
-                ),
-                title: Text("Snack"),
-
-              ),
-              Divider(),
-            ],
-          ),
-        );
-      },)
-
+          ],
+        ),
+      ),
     );
   }
 }

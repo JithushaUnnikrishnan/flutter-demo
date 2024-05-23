@@ -88,77 +88,6 @@ class _ParentBookingState extends State<ParentBooking> {
                               SizedBox(
                                   height: MediaQuery.of(context).size.height *
                                       .025),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ParentBookingDr()));
-                                      },
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 15),
-                                        child: Container(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 5),
-                                              child: Text(
-                                                "Book",
-                                                style: GoogleFonts.jomhuria(
-                                                    fontSize: 20),
-                                              ),
-                                            ),
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                .031,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .1,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(4),
-                                                color: Colors.blue)),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          .050,
-                                    ),
-                                    InkWell(
-                                      onTap: () {},
-                                      child: Container(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 8),
-                                            child: Text(
-                                              "Call",
-                                              style: GoogleFonts.jomhuria(
-                                                  fontSize: 20),
-                                            ),
-                                          ),
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              .031,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .1,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              color: Colors.green[400])),
-                                    ),
-                                  ],
-                                ),
-                              ),
                             ]),
                         Padding(
                           padding: const EdgeInsets.only(left: 25),
@@ -203,6 +132,82 @@ class _ParentBookingState extends State<ParentBooking> {
                               SizedBox(
                                   height: MediaQuery.of(context).size.height *
                                       .021),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ParentBookingDr(
+                                                          id: Doctor[index].id,
+                                                        )));
+                                          },
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.all(10),
+                                            child: Container(
+                                                child: Center(
+                                                  child: Text(
+                                                    "BOOK",
+                                                    style: GoogleFonts.jomhuria(
+                                                        fontSize: 20,color:Colors.white ),
+                                                  ),
+                                                ),
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    .031,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .2,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                    color: Colors.blue)),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              .050,
+                                        ),
+                                        InkWell(
+                                          onTap: () {},
+                                          child: Container(
+                                              child: Center(
+                                                child: Text(
+                                                  "CALL",
+                                                  style: GoogleFonts.jomhuria(
+                                                      fontSize: 20,color: Colors.white),
+                                                ),
+                                              ),
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  .031,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .2,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: Colors.green[400])),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
                             ],
                           ),
                         ),
