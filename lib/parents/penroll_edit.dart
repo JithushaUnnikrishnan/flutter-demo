@@ -55,19 +55,19 @@ class _EnrollEditState extends State<EnrollEdit> {
     });
   }
 
-  final picker = ImagePicker();
-
-  File? _imageFile;
-
-  Future<void> getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      if (pickedFile != null) {
-        _imageFile = File(pickedFile.path);
-      }
-    });
-  }
+  // final picker = ImagePicker();
+  //
+  // File? _imageFile;
+  //
+  // Future<void> getImage() async {
+  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+  //
+  //   setState(() {
+  //     if (pickedFile != null) {
+  //       _imageFile = File(pickedFile.path);
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -89,30 +89,30 @@ class _EnrollEditState extends State<EnrollEdit> {
 
             child: Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 280, 600),
-                  child: Container(
-                    height: 75,width: 65,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: _imageFile != null
-                              ? FileImage(_imageFile!)
-                              : const AssetImage('assets/rectgirl.png')
-                          as ImageProvider<Object>,)
-                    ),
-                  ),
-                ),
-                Positioned(
-                    top: 57,
-                    left: 49,
-                    child: IconButton(
-                        onPressed: () async {
-                          await getImage();
-                        },
-                        icon: Icon(Icons.camera_alt_outlined))),
+                // Padding(
+                //   padding: const EdgeInsets.fromLTRB(10, 10, 280, 600),
+                //   child: Container(
+                //     height: 75,width: 65,
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(20),
+                //
+                //         image: DecorationImage(
+                //           fit: BoxFit.cover,
+                //           image: _imageFile != null
+                //               ? FileImage(_imageFile!)
+                //               : const AssetImage('assets/rectgirl.png')
+                //           as ImageProvider<Object>,)
+                //     ),
+                //   ),
+                // ),
+                // Positioned(
+                //     top: 57,
+                //     left: 49,
+                //     child: IconButton(
+                //         onPressed: () async {
+                //           await getImage();
+                //         },
+                //         icon: Icon(Icons.camera_alt_outlined))),
 
                   Padding(
             padding: const EdgeInsets.fromLTRB(10, 100, 10, 0),

@@ -36,6 +36,7 @@ class _ParentSignupState extends State<ParentSignup> {
       "Child name":ChildName.text,
       "Date of birth":Dateofbirth.text,
       "Address":Address.text,
+      "path":"1",
 
 
 
@@ -52,6 +53,7 @@ class _ParentSignupState extends State<ParentSignup> {
       child: Scaffold(
         body: ListView(
           children: [
+
             Container(
               width: 250,
               height: 130,

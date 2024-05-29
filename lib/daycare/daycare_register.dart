@@ -26,7 +26,8 @@ class _DaycareRegisterState extends State<DaycareRegister> {
       "Phone": phone.text,
       "Email": email.text,
       "Password": password.text,
-      "PreschoolAddress": PreschoolAddress.text
+      "PreschoolAddress": PreschoolAddress.text,
+      "path":"",
 
     });
     Navigator.push(

@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BabysitterFoodmenu extends StatefulWidget {
   const BabysitterFoodmenu({super.key});
@@ -9,260 +12,187 @@ class BabysitterFoodmenu extends StatefulWidget {
 }
 
 class _BabysitterFoodmenuState extends State<BabysitterFoodmenu> {
+  var Daycarename;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Daycarename = spref.getString("name");
+    });
+    print("sharedPreference Data get");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 100,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8,right: 10),
-            child: Container(
-              width: MediaQuery.of(context).size.width *.88,
-              height: MediaQuery.of(context).size.height*.055,
-              decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
-                child: Text('Plan',style: GoogleFonts.inriaSerif(fontSize: 20
-                ),),
-              ),
-            ),
-          )
-        ],
-      ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Row(
-                children: [
-                  SizedBox(width: 10,),
-                  Container(
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                    height: 50,width: 50,
-                    child: Column(
-                      children: [
-                        Text('MON'),
-                        Text('1')
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Container(
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                    height: 50,width: 50,
-                    child: Column(
-                      children: [
-                        Text('TUE'),
-                        Text('2')
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Container(
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                    height: 50,width: 50,
-                    child: Column(
-                      children: [
-                        Text('WED'),
-                        Text('3')
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Container(
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                    height: 50,width: 50,
-                    child: Column(
-                      children: [
-                        Text('THUR'),
-                        Text('4')
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Container(
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                    height: 50,width: 50,
-                    child: Column(
-                      children: [
-                        Text('FRI'),
-                        Text('5')
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Container(
-                    color: Color.fromRGBO(217, 217, 217, 1),
-                    height: 50,width: 50,
-                    child: Column(
-                      children: [
-                        Text('SAT'),
-                        Text('6')
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height:50,),
-            Row(
-              children: [
-                Container(
-                  width: 410,
-                  height: 40,
-                  color: Color.fromRGBO(217, 217, 217, 1),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                    child: Text('Monday'),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Row(
+        appBar: AppBar(
+
+          title:  Row(
+            children: [
+
+              // InkWell(onTap: (){
+              //   Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) => PBottomButton()));
+              // },
+              //   child: Icon(
+              //     Icons.arrow_back,
+              //     color: Colors.white,
+              //   ),
+              // ),
+              Image.asset('assets/food1.png'),
+              Text('Food',
+                  style: GoogleFonts.irishGrover(
+                      fontSize: 60,
+                      color: Color.fromRGBO(211, 134, 64, 1))),
+            ],
+
+          ),
+          backgroundColor: Color.fromRGBO(254, 231, 127, 1),toolbarHeight: 150,),
+        body:FutureBuilder(
+          future: FirebaseFirestore.instance.collection("Daycarefoodadd").where("Daycare Name",isEqualTo: Daycarename).get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Text("Error:${snapshot.error}");
+            }
+            final Food = snapshot.data?.docs ?? [];
+            return  ListView.builder(
+              itemCount: Food.length,
+              itemBuilder: (context, index,) {
+
+                return  SingleChildScrollView(
+                  // color: Colors.grey.shade100,
+                  // height: 900,width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
+                      Row(
                         children: [
-                          Text('BreakFast'),
-                        ],
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.23),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Mango Juice'),
-                          Text('Pancake'),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Row(
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
-                        children: [
-                          Text('Lunch'),
-                        ],
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Chicken Biriyani'),
-                          Text('Salad'),
+                          Text(Food[index]["date"]),
 
                         ],
-                      )
-                    ],
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Row(
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
-                        children: [
-                          Text('Evening Snack'),
-                        ],
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Horlicks'),
-                          Text('Biscuits',style: TextStyle(),),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(height:50,),
-            Row(
-              children: [
-                Container(
-                  width: 410,
-                  height: 40,
-                  color: Color.fromRGBO(217, 217, 217, 1),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                    child: Text('Tuesday'),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              child: Column(
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Row(
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
-                        children: [
-                          Text('BreakFast'),
-                        ],
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.23),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Milk'),
-                          Text('Bread Toest'),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Row(
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
-                        children: [
-                          Text('Lunch'),
-                        ],
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.3),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Curd Rice '),
-                          Text('Salad'),
 
-                        ],
-                      )
+                      Text(
+                        "Monday",
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunrise,
+                          color: Colors.red.shade300,
+                        ),
+                        title: Text(Food[index]["MBreakFast"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sun_max,
+                          color: Colors.yellow.shade700,
+                        ),
+                        title: Text(Food[index]["MLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.orangeAccent,
+                        ),
+                        title: Text(Food[index]["MSnack"]),
+                      ),
+                      Text(
+                        "Tuesday",
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["MBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["TuLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["TuSnack"]),
+                      ),
+                      Text(
+                        "Wednesday",
+                        style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["WBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["WLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["WSnack"]),
+                      ),
+                      Text(
+                        "Thursday",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["ThBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["ThLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["ThSnack"]),
+                      ),
+                      Text(
+                        "Friday",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["FBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["FLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["FSnack"]),
+
+                      ),
+                      Divider(),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Row(
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-                      Column(
-                        children: [
-                          Text('Evening Snack'),
-                        ],
-                      ),
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Boost'),
-                          Text('Banana',style: TextStyle(),),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
-
-          ],
+                );
+              },);
+          },
         )
     );
   }

@@ -41,7 +41,8 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
       "idproofnumber": idproofnumber.text,
       "phonenumber": phonenumber.text,
       "whatsappNumber": whatsapp.text,
-      "gender": selectedvalue
+      "gender": selectedvalue,
+      "path":"1",
     });
     print('done');
     Navigator.push(

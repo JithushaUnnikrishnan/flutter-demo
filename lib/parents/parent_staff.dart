@@ -47,49 +47,55 @@ class _ParentStaffState extends State<ParentStaff> {
                 left: 1,right:1,
                 child: Container(
 
-                  height: 450,
+                  height: 1000,
                   decoration: BoxDecoration(
                      borderRadius: BorderRadius.circular(65), color: Colors.white
 
 
                   ),
-              child: Column(
-                children: [
+              child: ListView.builder(
+                itemCount: 2,
+                itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height * .05),
 
-                  SizedBox(height: MediaQuery.of(context).size.height * .09),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      child: ListTile(
-                        leading: Image.asset('assets/stf1.png'),
-                        title: Text('Name:Dayana C',style: GoogleFonts.inriaSerif(fontSize: 15)),
-                        subtitle: Text('Phone:1234567890',style: GoogleFonts.inriaSerif(fontSize: 15),),
-                        trailing: Icon(Icons.call,color: Colors.green,size: 50,),
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black,),borderRadius: BorderRadius.circular(10)
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: MediaQuery.of(context).size.height * .05),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      child: ListTile(
-                        leading: Image.asset('assets/stf2.png'),
-                        title: Text('Name:Kiran S',style: GoogleFonts.inriaSerif(fontSize: 15)),
-                        subtitle: Text('Phone:1234567890',style: GoogleFonts.inriaSerif(fontSize: 15),),
-                        trailing: Icon(Icons.call,color: Colors.green,size: 50,),
-                      ),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black,),borderRadius: BorderRadius.circular(10)
+                    // SizedBox(height: MediaQuery.of(context).size.height * .09),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        child: ListTile(
+                          leading: Image.asset('assets/stf1.png'),
+                          title: Text('Name:Dayana C',style: GoogleFonts.inriaSerif(fontSize: 15)),
+                          subtitle: Text('Phone:1234567890',style: GoogleFonts.inriaSerif(fontSize: 15),),
+                          trailing: Icon(Icons.call,color: Colors.green,size: 50,),
+                        ),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,),borderRadius: BorderRadius.circular(10)
+                        ),
                       ),
                     ),
-                  ),
+
+                    // SizedBox(height: MediaQuery.of(context).size.height * .05),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //   child: Container(
+                    //     child: ListTile(
+                    //       leading: Image.asset('assets/stf2.png'),
+                    //       title: Text('Name:Kiran S',style: GoogleFonts.inriaSerif(fontSize: 15)),
+                    //       subtitle: Text('Phone:1234567890',style: GoogleFonts.inriaSerif(fontSize: 15),),
+                    //       trailing: Icon(Icons.call,color: Colors.green,size: 50,),
+                    //     ),
+                    //     decoration: BoxDecoration(
+                    //         border: Border.all(color: Colors.black,),borderRadius: BorderRadius.circular(10)
+                    //     ),
+                    //   ),
+                    // ),
 
 
-                ],
+                  ],
+                );
+              },
               ),
             ))
           ],

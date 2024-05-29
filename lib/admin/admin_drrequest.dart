@@ -51,62 +51,76 @@ class _AdmindrRequestState extends State<AdmindrRequest> {
                         Text(Admindr[index]["experience"], style: GoogleFonts.inriaSerif(fontSize: 15),)
                       ],),
 
-
-
+// SizedBox(width: MediaQuery.of(context).size.width*.03,),
+                  Spacer(),
+                    Row(children: [
+                      IconButton(onPressed: (){
+                        setState(() {
+                          FirebaseFirestore.instance.collection("DoctorReg").doc(Admindr[index].id).delete();
+                        });
+                        // setState(() {
+                        //   FirebaseFirestore.instance
+                        //       .collection("DoctorReg")
+                        //       .doc(Admindr[index].id)
+                        //       .update({"Status": 3});
+                        // });
+                      }, icon: Icon(Icons.delete))
+                    ],),
                   ],
                 ),
-                Row(
 
-                  children: [
-                    SizedBox(height: MediaQuery.of(context).size.height*.1,width: MediaQuery.of(context).size.width*.035,),
-                    Container(
-                      height: 36,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color.fromRGBO(
-                            233,
-                            23,
-                            23,
-                            1,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45)
-                          ]),
-
-                      child: Center(
-                          child: Text(
-                            "Reject",
-                            style: GoogleFonts.inriaSerif(
-                                fontSize: 20, color: Colors.white),
-                          )),
-                    ), SizedBox(
-                      width: MediaQuery.of(context).size.width * .0150,
-                    ),
-                    Container(
-                      height: 36,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue,
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45)
-                          ]),
-                      child: Center(
-                          child: Text(
-                            "Accept",
-                            style: GoogleFonts.inriaSerif(
-                                fontSize: 20, color: Colors.white),
-                          )),
-                    )],),
+                // Row(
+                //
+                //   children: [
+                //     SizedBox(height: MediaQuery.of(context).size.height*.1,width: MediaQuery.of(context).size.width*.035,),
+                //     Container(
+                //       height: 36,
+                //       width: 80,
+                //       decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(10),
+                //           color: Color.fromRGBO(
+                //             233,
+                //             23,
+                //             23,
+                //             1,
+                //           ),
+                //           boxShadow: [
+                //             BoxShadow(
+                //                 offset: Offset(0, 3),
+                //                 spreadRadius: 2,
+                //                 blurRadius: 2,
+                //                 color: Colors.black45)
+                //           ]),
+                //
+                //       child: Center(
+                //           child: Text(
+                //             "Reject",
+                //             style: GoogleFonts.inriaSerif(
+                //                 fontSize: 20, color: Colors.white),
+                //           )),
+                //     ), SizedBox(
+                //       width: MediaQuery.of(context).size.width * .0150,
+                //     ),
+                //     Container(
+                //       height: 36,
+                //       width: 80,
+                //       decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(10),
+                //           color: Colors.blue,
+                //           boxShadow: [
+                //             BoxShadow(
+                //                 offset: Offset(0, 3),
+                //                 spreadRadius: 2,
+                //                 blurRadius: 2,
+                //                 color: Colors.black45)
+                //           ]),
+                //       child: Center(
+                //           child: Text(
+                //             "Accept",
+                //             style: GoogleFonts.inriaSerif(
+                //                 fontSize: 20, color: Colors.white),
+                //           )),
+                //     )],),
                 Divider(thickness: 2,),
 
 

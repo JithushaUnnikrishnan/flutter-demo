@@ -40,7 +40,7 @@ class _AdminDoctorState extends State<AdminDoctor> {
                           builder: (context) => AdmindrRequest()));
                 },
                 child: Text(
-                  "Requests",
+                  "Doctor List",
                   style: GoogleFonts.inriaSerif(
                     fontSize: 20,
                     color: Colors.white,

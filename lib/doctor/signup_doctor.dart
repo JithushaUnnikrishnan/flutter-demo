@@ -40,6 +40,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
       "experience": experience.text,
       "Phone": phone.text,
       "status": 0,
+      "path":"1",
 
     });
     print('successfully');

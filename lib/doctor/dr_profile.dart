@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
 
 class DoctorProfile extends StatefulWidget {
   const DoctorProfile({super.key});
@@ -17,6 +19,60 @@ class DoctorProfile extends StatefulWidget {
 }
 
 class _DoctorProfileState extends State<DoctorProfile> {
+  PickedFile? _image;
+  Future<void> _getImage() async {
+    final pickedFile =
+    await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = PickedFile(pickedFile.path);
+        print("picked image");
+        update();
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+  Future<void> update() async {
+    try {
+      if (_image != null) {
+        final ref = firebase_storage.FirebaseStorage.instance
+            .ref()
+            .child('Dr_images')
+            .child(DateTime.now().millisecondsSinceEpoch.toString());
+        await ref.putFile(File(_image!.path));
+
+        final imageURL = await ref.getDownloadURL();
+
+        await FirebaseFirestore.instance
+            .collection('DoctorReg')
+            .doc(ID)
+            .update({
+          'path': imageURL,
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Profile updated successfully'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('No image selected'),
+          ),
+        );
+      }
+    } catch (e) {
+      print('Error updating profile: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Error updating profile'),
+        ),
+      );
+    }
+  }
   var ID;
 
   void initState() {
@@ -38,20 +94,6 @@ class _DoctorProfileState extends State<DoctorProfile> {
     Doctor =
         await FirebaseFirestore.instance.collection("DoctorReg").doc(ID).get();
     print("done");
-  }
-
-  final picker = ImagePicker();
-
-  File? _imageFile;
-
-  Future<void> getImage() async {
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      if (pickedFile != null) {
-        _imageFile = File(pickedFile.path);
-      }
-    });
   }
 
   @override
@@ -137,29 +179,41 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           child: Row(
                             children: [
                               Column(children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 5, top: 15),
-                                  child: Container(
-                                    height: 79,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: _imageFile != null
-                                              ? FileImage(_imageFile!)
-                                              : const AssetImage(
-                                                      'assets/drimage.png')
-                                                  as ImageProvider<Object>,
+                                Doctor!["path"] == "1"
+                                    ? Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 5, top: 15),
+                                        child: Container(
+                                          height: 79,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/m.png"))),
+                                          child: CircleAvatar(
+                                            radius: 50,
+                                            backgroundColor: Colors.transparent,
+                                          ),
+                                        ))
+                                    : Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 5, top: 15),
+                                        child: Container(
+                                          height: 79,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      Doctor!["path"]))),
+                                          child: CircleAvatar(
+                                            radius: 50,
+                                            backgroundColor: Colors.transparent,
+                                          ),
                                         )),
-                                    child: CircleAvatar(
-                                      radius: 50,
-                                      backgroundColor: Colors.transparent,
-                                    ),
-                                  ),
-                                ),
                               ]),
                               SizedBox(
                                 width: 30,
@@ -183,8 +237,10 @@ class _DoctorProfileState extends State<DoctorProfile> {
                     left: MediaQuery.of(context).size.width * .310,
                     child: Container(
                       child: IconButton(
-                        onPressed: () async {
-                          await getImage();
+                        onPressed: () {
+                          setState(() {
+                            _getImage();
+                          });
                         },
                         icon: Icon(Icons.camera_alt_outlined),
                       ),

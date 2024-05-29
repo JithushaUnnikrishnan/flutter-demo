@@ -104,19 +104,19 @@ class _BabysitterEditState extends State<BabysitterEdit> {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .02,
                         ),
-                        Container(
-                          height: 79,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: _imageFile != null
-                                    ? FileImage(_imageFile!)
-                                    : const AssetImage('assets/teacher.png')
-                                        as ImageProvider<Object>,
-                              )),
-                        ),
+                        // Container(
+                        //   height: 79,
+                        //   width: 50,
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(25),
+                        //       image: DecorationImage(
+                        //         fit: BoxFit.cover,
+                        //         image: _imageFile != null
+                        //             ? FileImage(_imageFile!)
+                        //             : const AssetImage('assets/teacher.png')
+                        //                 as ImageProvider<Object>,
+                        //       )),
+                        // ),
                       ]),
                 ),
                 Padding(
@@ -127,15 +127,15 @@ class _BabysitterEditState extends State<BabysitterEdit> {
                         color: Color(0xFFC24A6B), fontSize: 20),
                   ),
                 ),
-                Positioned(
-                    top: 50,
-                    left: 75,
-                    child: IconButton(
-                      onPressed: () async {
-                        await getImage();
-                      },
-                      icon: Icon(Icons.camera_alt_outlined),
-                    )),
+                // Positioned(
+                //     top: 50,
+                //     left: 75,
+                //     child: IconButton(
+                //       onPressed: () async {
+                //         await getImage();
+                //       },
+                //       icon: Icon(Icons.camera_alt_outlined),
+                //     )),
                 Column(
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * .12),
