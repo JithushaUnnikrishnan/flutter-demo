@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scroll_date_picker/scroll_date_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentBookingDr extends StatefulWidget {
   const ParentBookingDr({super.key, required this.id});
@@ -14,25 +15,41 @@ class ParentBookingDr extends StatefulWidget {
 }
 
 class _ParentBookingDrState extends State<ParentBookingDr> {
+
   DocumentSnapshot? Booking;
 
   Getfirebase() async {
-    Booking = await FirebaseFirestore.instance.collection("DoctorReg").doc(widget.id).get();
+    Booking = await FirebaseFirestore.instance
+        .collection("DoctorReg")
+        .doc(widget.id)
+        .get();
   }
+
   DateTime? _selectedDate;
+  var date;
+
   final formkey = GlobalKey<FormState>();
   var Name = TextEditingController();
   var Age = TextEditingController();
 
-  Future<dynamic> Drbooking() async {
-    await FirebaseFirestore.instance.collection("drbooking").add({
-      "Name": Name.text,
-      "Age": Age.text,
-      "date":_selectedDate.toString()
-    });
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SuccessPage()));
-  }
+  // Future<dynamic> Drbooking() async {
+  //   await FirebaseFirestore.instance.collection("drbooking").add({
+  //     "Name": Name.text,
+  //     "Age": Age.text,
+  //     "date": "1",
+  //     "drname": Booking!["Username"],
+  //     "Phone": Booking!["Phone"],
+  //     "Doctor Id":widget.id
+  //
+  //   });
+  //   Navigator.push(
+  //       context, MaterialPageRoute(builder: (context) => SuccessPage()));
+  // }
+
+  // _savedateFirestore(DateTime date) {
+  //   String formattedDate =
+  //       '${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year}';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -70,63 +87,72 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
                   1,
                 ),
               ),
-              FutureBuilder(future: Getfirebase(),
-               builder: (context, snapshot) {
-                 if (snapshot.connectionState == ConnectionState.waiting) {
-                   return Center(
-                       child: CircularProgressIndicator(
-                         color: Colors.purple,
-                       ));
-                 }
-                 if (snapshot.hasError) {
-                   return Text("Error${snapshot.error}");
-                 }
+              FutureBuilder(
+                future: Getfirebase(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                        child: CircularProgressIndicator(
+                      color: Colors.purple,
+                    ));
+                  }
+                  if (snapshot.hasError) {
+                    return Text("Error${snapshot.error}");
+                  }
 
-                 return  Positioned(
-                   top: 70,
-                   left: 50,
-                   child: Material(
-                     elevation: 10,
-                     child: Container(
-                       width: 312,
-                       height: 124,
-                       decoration: BoxDecoration(
-                         color: Colors.white,
-                         borderRadius: BorderRadius.circular(20),
-                       ),
-                       child: Row(
-                         children: [
-                           Column(children: [
-                             Padding(
-                               padding: const EdgeInsets.only(left: 20),
-                               child: CircleAvatar(
-                                 radius: 50,
-                                 backgroundColor: Colors.transparent,
-                                 child: Image.asset(
-                                   "assets/drimage.png",
-                                 ),
-                               ),
-                             ),
-                           ]),
-                           SizedBox(
-                             width: 30,
-                           ),
-                           Column(children: [
-                             SizedBox(
-                               height: 30,
-                             ),
-                             Text(Booking!["Username"],
-                                 style: GoogleFonts.holtwoodOneSc(fontSize: 20)),
-                             Text("Visiting Time"),
-                             Text("11:30pm-3:30pm"),
-                           ]),
-                         ],
-                       ),
-                     ),
-                   ),
-                 );
-               },
-
+                  return Positioned(
+                    top: 70,
+                    left: 50,
+                    child: Material(
+                      elevation: 10,
+                      child: Container(
+                        width: 312,
+                        height: 124,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          children: [
+                            Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: CircleAvatar(
+                                  radius: 50,
+                                  backgroundColor: Colors.transparent,
+                                  child: Image.asset(
+                                    "assets/drimage.png",
+                                  ),
+                                ),
+                              ),
+                            ]),
+                            SizedBox(
+                              width: 30,
+                            ),
+                            Column(children: [
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Text(Booking!["Username"],
+                                  style:
+                                      GoogleFonts.holtwoodOneSc(fontSize: 15)),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text("Phone:"),
+                                  Text(Booking!["Phone"]),
+                                ],
+                              ),
+                            ]),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
               SingleChildScrollView(
                   physics: NeverScrollableScrollPhysics(),
@@ -203,26 +229,95 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
                     SizedBox(
                       height: 100,
                     ),
-                    InkWell(
-                      onTap: () {
-                        if (formkey.currentState!.validate()) {
-                          Drbooking();
-                        }
-                      },
-                      child: Container(
-                        height: 45,
-                        width: 350,
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(152, 183, 211, 1),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                            child: Text(
-                          'Book Appointment',
-                          style: GoogleFonts.inriaSerif(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )),
-                      ),
-                    ),
+                    _selectedDate != null
+                        ? Container(
+                            height: 45,
+                            width: 350,
+                            decoration: BoxDecoration(
+                                color: Color.fromRGBO(152, 183, 211, 1),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: TextButton(
+                                onPressed: _selectedDate == null
+                                    ? null
+                                    : () async {
+                                        String formattedDate =
+                                            '${_selectedDate!.day.toString().padLeft(2, '0')}-${_selectedDate!.month.toString().padLeft(2, '0')}-${_selectedDate!.year}';
+
+                                        try {
+                                          await FirebaseFirestore.instance
+                                              .collection('drbooking')
+                                              .add({
+                                            "Name": Name.text,
+                                            "Age": Age.text,
+                                            "date": formattedDate,
+                                            "drname": Booking!["Username"],
+                                            "Phone": Booking!["Phone"],
+                                            "Doctor Id":widget.id,
+                                            "Status":0
+                                          });
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SuccessPage()));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(
+                                            'Booking  successfully at $formattedDate',
+                                            style:
+                                                TextStyle(color: Colors.green),
+                                          )));
+                                        } catch (e) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                                  content: Text(
+                                                      'Failed to save date: $e')));
+                                        }
+                                      },
+                                child: Text("Booking",
+                                    style: GoogleFonts.holtwoodOneSc(
+                                        fontSize: 15, color: Colors.black))),
+                          )
+                        : Text("Choose date")
+                    // InkWell(
+                    //   onTap: () {
+                    //     // if (formkey.currentState!.validate()) {
+                    //     _selectedDate == null
+                    //         ? null
+                    //         : () async {
+                    //             String formattedDate =
+                    //                 '${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year}';
+                    //
+                    //             try {
+                    //               await FirebaseFirestore.instance
+                    //                   .collection('dates')
+                    //                   .add({
+                    //                 'date': formattedDate,
+                    //               });
+                    //               print("object");
+                    //               ScaffoldMessenger.of(context).showSnackBar(
+                    //                   SnackBar(
+                    //                       content:
+                    //                           Text('Date saved successfully')));
+                    //             } catch (e) {
+                    //               ScaffoldMessenger.of(context).showSnackBar(
+                    //                   SnackBar(
+                    //                       content:
+                    //                           Text('Failed to save date: $e')));
+                    //             }
+                    //           };
+                    //   },
+                    //   // },
+                    //   child: Container(
+                    //     height: 45,
+                    //     width: 350,
+                    //     decoration: BoxDecoration(
+                    //         color: Color.fromRGBO(152, 183, 211, 1),
+                    //         borderRadius: BorderRadius.circular(10)),
+                    //     child: Center(
+                    //         child: Text(
+                    //       'Book Appointment',
+                    //       style: GoogleFonts.inriaSerif(
+                    //           fontSize: 20, fontWeight: FontWeight.bold),
+                    //     )),
+                    //   ),
+                    // ),
                   ]))
             ],
           ),

@@ -1,11 +1,14 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'appointmentdr.dart';
+import 'drRequestpage.dart';
 
 class DoctorHome extends StatefulWidget {
   const DoctorHome({super.key});
@@ -15,6 +18,28 @@ class DoctorHome extends StatefulWidget {
 }
 
 class _DoctorHomeState extends State<DoctorHome> {
+  var ID;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      ID = spref.getString("id");
+    });
+    print("sharedPreference Data get");
+  }
+
+  DocumentSnapshot? Doctorhome;
+
+  Getfirebase() async {
+    Doctorhome =
+    await FirebaseFirestore.instance.collection("DoctorReg").doc(ID).get();
+    print("done");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,54 +103,70 @@ class _DoctorHomeState extends State<DoctorHome> {
             ),
 
           ),
-          Positioned(
-            top: 120,
-            left: 40,
-            child: Material(
-              elevation: 10,
-              child: Container(
-                width: 312,
-                height: 124,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  children: [
-                    Column(children: [
+          FutureBuilder(
+            future:  Getfirebase(),
+              builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.purple,
+                    ));
+              }
+              if (snapshot.hasError) {
+                return Text("Error${snapshot.error}");
+              }
 
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: CircleAvatar(
+            return  Positioned(
+                top: 120,
+                left: 40,
+                child: Material(
+                  elevation: 10,
+                  child: Container(
+                    width: 312,
+                    height: 124,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: [
+                        Column(children: [
 
-                          radius: 50,
-                          backgroundColor: Colors.transparent,
-                          child: Image.asset(
-                            "assets/drimage.png",
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: CircleAvatar(
+
+                              radius: 50,
+                              backgroundColor: Colors.transparent,
+                              child: Image.asset(
+                                "assets/drimage.png",
+                              ),
+                            ),
                           ),
+                        ]),
+                        SizedBox(
+                          width: 30,
                         ),
-                      ),
-                    ]),
-                    SizedBox(
-                      width: 30,
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text('DR.SARAH',
-                        style: GoogleFonts.holtwoodOneSc(fontSize: 20)),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Text(Doctorhome!["Username"],
+                            style: GoogleFonts.holtwoodOneSc(fontSize: 15)),
 
-                  ],
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
+
+              );
+            },
 
           ),
 
 Column(
   children: [
     Padding(
-      padding: const EdgeInsets.only(left: 100,top: 400),
+      padding: const EdgeInsets.only(left: 100,top: 300),
       child: InkWell(onTap: (){
 Navigator.push(context, MaterialPageRoute(builder: (context)=>DrAppointments()));
       },
@@ -140,6 +181,22 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=>DrAppointments()))
         ),
       ),
 
+    ),
+    InkWell(onTap: (){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>DoctorRequest(id:ID)));
+    },
+      child: Padding(
+        padding: const EdgeInsets.only(left: 105,top: 50),
+        child: Container(
+          height: 105,
+          width: 185,
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(offset: Offset(1,2),spreadRadius: 2,blurRadius: 3,color: Colors.grey),
+          ],borderRadius: BorderRadius.circular(10), color: Color(0xFFDBDBF1),
+          ),
+          child: Center(child: Text("Requests",style: GoogleFonts.inriaSerif(fontSize: 20),)),
+        ),
+      ),
     ),
   ],
 )

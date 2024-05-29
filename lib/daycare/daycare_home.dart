@@ -57,24 +57,24 @@ class _DaycareHomeState extends State<DaycareHome> {
                   child: Center(child: Text("My Staff",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 40))),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
-              InkWell(onTap: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DaycareParent()));
-              },
-                child: Container(
-                  height: 72,width: 312,
-                  decoration:  BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(205, 242, 199, 1),
-                      boxShadow: [
-                        BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                      ]
-                  ),
-                  child: Text("Children Request",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 33)),
-                ),
-              ),
+              // SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
+              // InkWell(onTap: (){
+              //   Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) => DaycareParent()));
+              // },
+              //   child: Container(
+              //     height: 72,width: 312,
+              //     decoration:  BoxDecoration(
+              //         borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(205, 242, 199, 1),
+              //         boxShadow: [
+              //           BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
+              //         ]
+              //     ),
+              //     child: Text("Children Request",style: GoogleFonts.inriaSerif(color: Colors.black,fontSize: 33)),
+              //   ),
+              // ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
               InkWell(onTap: (){
                 Navigator.push(

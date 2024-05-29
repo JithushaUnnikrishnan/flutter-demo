@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/parents/parent_bottombuton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentFood extends StatefulWidget {
   const ParentFood({super.key});
@@ -10,482 +13,189 @@ class ParentFood extends StatefulWidget {
 }
 
 class _ParentFoodState extends State<ParentFood> {
+  var Daycarename;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Daycarename = spref.getString("name");
+    });
+    print("sharedPreference Data get");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.only(bottomLeft: Radius.circular(80)),
-                color: Color.fromRGBO(254, 231, 127, 1),
-              ),
-              height: 257,width: 410,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 110,left: 15),
-                child: Row(
-                  children: [
+        appBar: AppBar(
 
-                    InkWell(onTap: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PBottomButton()));
-                    },
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Image.asset('assets/food1.png'),
-                    Text('Food',
-                        style: GoogleFonts.irishGrover(
-                            fontSize: 60,
-                            color: Color.fromRGBO(211, 134, 64, 1))),
-                  ],
+          title:  Row(
+            children: [
 
-                ),
-              ),
+              // InkWell(onTap: (){
+              //   Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) => PBottomButton()));
+              // },
+              //   child: Icon(
+              //     Icons.arrow_back,
+              //     color: Colors.white,
+              //   ),
+              // ),
+              Image.asset('assets/food1.png'),
+              Text('Food',
+                  style: GoogleFonts.irishGrover(
+                      fontSize: 60,
+                      color: Color.fromRGBO(211, 134, 64, 1))),
+            ],
 
-            ),
+          ),
+          backgroundColor: Color.fromRGBO(254, 231, 127, 1),toolbarHeight: 150,),
+        body:FutureBuilder(
+          future: FirebaseFirestore.instance.collection("Daycarefoodadd").where("Daycare Name",isEqualTo: Daycarename).get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Text("Error:${snapshot.error}");
+            }
+            final Food = snapshot.data?.docs ?? [];
+            return  ListView.builder(
+              itemCount: Food.length,
+              itemBuilder: (context, index,) {
 
-            Positioned(
-                left: 15,
-                top: 160,
-                child: SingleChildScrollView(
+                return  SingleChildScrollView(
+                  // color: Colors.grey.shade100,
+                  // height: 900,width: double.infinity,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                          height: MediaQuery.of(context).size.height * .800,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45,
-                              )
-                            ],
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10)),
-                          width: MediaQuery.of(context).size.width * .930,
-                          child: Column(
+                      Row(
+                        children: [
+                          Text(Food[index]["date"]),
 
-                            children: [
-                              SizedBox(
-                                width:
-                                MediaQuery.of(context).size.width * .055,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15,top: 60),),
-                                  Text('Monday',
-                                      style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold)),
-                                ],
-                              ),
-                              Row(children: [
-                                SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * .045,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey)),
-                                  height: 65,
-                                  width: 105,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text('oats,milk'),
-                                      Text('banana'),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(width: MediaQuery.of(context).size.width*.045
-                                  ,),
-                                Container(
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                  height: 65,width: 105,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text('Brown rice,'),
-                                      Text('rasam&curd'),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(width: MediaQuery.of(context).size.width*.045
-                                  ,),
-                                Container(
-                                  decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                  height: 65,width: 105,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text('Long cut'),
-                                      Text('apples'),
-                                    ],
-                                  ),
-                                )
-                              ]),
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * .01,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),),
-                                  Text('Tuesday',style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold)),
-                                ],
-                              ),
-                              Row(
-                                children: [
+                        ],
+                      ),
 
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('oats,milk'),
-                                        Text('banana'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Brown rice,'),
-                                        Text('rasam&curd'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Long cut     '),
-                                        Text('banana piece'),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * .015,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: Text('Wednesday',style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold)),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('oats,milk'),
-                                        Text('banana'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Brown rice,'),
-                                        Text('rasam&curd'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Egg & Milk'),
-                                        Text('apples'),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * .015,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),),
-                                  Text('Thursday',style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('oats,milk'),
-                                        Text('banana'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Brown rice,'),
-                                        Text('rasam&curd'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('banana  with'),
-                                        Text('peanut butter'),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * .015,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                      Text(
+                        "Monday",
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunrise,
+                          color: Colors.red.shade300,
+                        ),
+                        title: Text(Food[index]["MBreakFast"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sun_max,
+                          color: Colors.yellow.shade700,
+                        ),
+                        title: Text(Food[index]["MLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.orangeAccent,
+                        ),
+                        title: Text(Food[index]["MSnack"]),
+                      ),
+                      Text(
+                        "Tuesday",
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["MBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["TuLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["TuSnack"]),
+                      ),
+                      Text(
+                        "Wednesday",
+                        style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["WBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["WLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["WSnack"]),
+                      ),
+                      Text(
+                        "Thursday",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["ThBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["ThLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["ThSnack"]),
+                      ),
+                      Text(
+                        "Friday",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      ListTile(
+                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        title: Text(Food[index]["FBreakFast"]),
+                      ),
+                      ListTile(
+                        leading:
+                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        title: Text(Food[index]["FLunch"]),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          CupertinoIcons.sunset_fill,
+                          color: Colors.deepOrange,
+                        ),
+                        title: Text(Food[index]["FSnack"]),
 
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),),
-                                  Text('Friday',style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('oats,milk'),
-                                        Text('banana'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Brown rice,'),
-                                        Text('rasam&curd'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Egg & Milk'),
-                                        Text('apples'),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height:
-                                MediaQuery.of(context).size.height * .015,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),),
-                                  Text('Saturday',style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('oats,milk'),
-                                        Text('banana'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('Brown rice,'),
-                                        Text('rasam&curd'),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: MediaQuery.of(context).size.width*.045
-                                    ,),
-                                  Container(
-                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-                                    height: 65,width: 105,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('juice&fruits'),
-                                        Text('milk'),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-
-
-                            ],
-                          )),
-                      SizedBox(
-                        height: 80,
-                      )
+                      ),
+                      Divider(),
                     ],
                   ),
-                )),
-            Positioned(
-                left: 38,
-                top: 135,
-                child: Row(
-                  children: [
-                    Container(
-                        height: MediaQuery.of(context).size.height * .050,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45
-                            )
-                          ],
-                            color: Color.fromRGBO(242, 215, 133, 1),
-                            borderRadius: BorderRadius.circular(10), ),
-                        width: MediaQuery.of(context).size.width * .250,
-                      child: Center(child: Text('Breakfast', style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold))),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .03,
-                    ),
-                    Container(
-                        height: MediaQuery.of(context).size.height * .050,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  offset: Offset(0, 3),
-                                  spreadRadius: 2,
-                                  blurRadius: 2,
-                                  color: Colors.black45
-                              )
-                            ],
-                            color: Color.fromRGBO(242, 215, 133, 1,),
-                            borderRadius: BorderRadius.circular(10)),
-                        width: MediaQuery.of(context).size.width * .250,
-                      child: Center(child: Text('Lunch', style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold))),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .03,
-                    ),
-                    Container(
-                        height: MediaQuery.of(context).size.height * .050,
-                        decoration: BoxDecoration(
-                            color: Color.fromRGBO(242, 215, 133, 1,),
-                            boxShadow: [
-                              BoxShadow(
-                                offset: Offset(0, 3),
-                                spreadRadius: 2,
-                                blurRadius: 2,
-                                color: Colors.black45
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(10)),
-                        width: MediaQuery.of(context).size.width * .250,
-child: Center(child: Text('Snack', style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold))),
-                    ),
-                  ],
-                )),
-          ],
-        ),
-      ),
+                );
+              },);
+          },
+        )
+
     );
   }
 }

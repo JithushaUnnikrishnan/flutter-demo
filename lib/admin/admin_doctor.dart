@@ -12,6 +12,7 @@ class AdminDoctor extends StatefulWidget {
 }
 
 class _AdminDoctorState extends State<AdminDoctor> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +50,7 @@ class _AdminDoctorState extends State<AdminDoctor> {
             ],
           ))),
       body: FutureBuilder(
-          future: FirebaseFirestore.instance.collection("DoctorReg").get(),
+          future: FirebaseFirestore.instance.collection("DoctorReg").where("status",isEqualTo: 0).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
@@ -94,17 +95,85 @@ class _AdminDoctorState extends State<AdminDoctor> {
                             Text(Doctor[index]["officeaddress"],),
                             Text(Doctor[index]["qualification"],),
                             Text(Doctor[index]["specialization"],),
-                            Text(Doctor[index]["experience"],)
+                            Text(Doctor[index]["experience"],),
+                            Row(
+mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(height: MediaQuery.of(context).size.height*.1,width: MediaQuery.of(context).size.width*.035,),
+                                InkWell(onTap: (){
+                                  setState(() {
+                                    FirebaseFirestore.instance.collection("DoctorReg").doc(Doctor[index].id).update({
+                                      "status":2
+                                    });
+                                  });
+                                },
+                                  child: Container(
+                                    height: 36,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Color.fromRGBO(
+                                          233,
+                                          23,
+                                          23,
+                                          1,
+                                        ),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              offset: Offset(0, 3),
+                                              spreadRadius: 2,
+                                              blurRadius: 2,
+                                              color: Colors.black45)
+                                        ]),
+
+                                    child: Center(
+                                        child: Text(
+                                          "Reject",
+                                          style: GoogleFonts.inriaSerif(
+                                              fontSize: 20, color: Colors.white),
+                                        )),
+                                  ),
+                                ), SizedBox(
+                                  width: MediaQuery.of(context).size.width * .0150,
+                                ),
+                                InkWell(onTap: (){
+                                  setState(() {
+                                    FirebaseFirestore.instance.collection("DoctorReg").doc(Doctor[index].id).update({
+                                      "status":1
+                                  });
+                                  });
+                                },
+                                  child: Container(
+                                    height: 36,
+                                    width: 80,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.blue,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              offset: Offset(0, 3),
+                                              spreadRadius: 2,
+                                              blurRadius: 2,
+                                              color: Colors.black45)
+                                        ]),
+                                    child: Center(
+                                        child: Text(
+                                          "Accept",
+                                          style: GoogleFonts.inriaSerif(
+                                              fontSize: 20, color: Colors.white),
+                                        )),
+                                  ),
+                                )],),
                           ],
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * .50,
-                        ),
-                       IconButton(onPressed: (){
-                         setState(() {
-                           FirebaseFirestore.instance.collection("DoctorReg").doc(Doctor[index].id).delete();
-                         });
-                       }, icon:  Icon(CupertinoIcons.delete))
+                        // SizedBox(
+                        //   width: MediaQuery.of(context).size.width * .30,
+                        // ),
+                       // IconButton(onPressed: (){
+                       //   setState(() {
+                       //     FirebaseFirestore.instance.collection("DoctorReg").doc(Doctor[index].id).delete();
+                       //   });
+                       // }, icon:  Icon(CupertinoIcons.delete))
                       ],
                     ),
                     Divider(

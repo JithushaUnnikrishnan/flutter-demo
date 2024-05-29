@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/daycare/Daycare_childview.dart';
 import 'package:demo/daycare/daybottombutn.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -71,39 +72,52 @@ class _DaycareChildrenState extends State<DaycareChildren> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5, vertical: 5),
                   child: Card(
+
                     child: ListTile(
                         leading: Text(child[index]['Child name'],
                             style:
                             GoogleFonts.inriaSerif(fontSize: 20,
                             color: Colors.black)),
-                    trailing: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DaycareChildview(id:child[index].id)));
-                      },
-                      child: Container(
-                          height: 40,
-                          width: 74,
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    offset: Offset(0, 3),
-                                    spreadRadius: 2,
-                                    blurRadius: 2,
-                                    color: Colors.black45)
-                              ],
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.blue),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "View",
-                              style: GoogleFonts.inriaSerif(
-                                  fontSize: 20, color: Colors.white),
-                            ),
-                          )),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DaycareChildview(id:child[index].id)));
+                          },
+                          child: Container(
+                              height: 35,
+                              width: 70,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                        offset: Offset(0, 2),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        color: Colors.black45)
+                                  ],
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.blue),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "View",
+                                  style: GoogleFonts.inriaSerif(
+                                      fontSize: 15, color: Colors.white),
+                                ),
+                              )),
+                        ),
+SizedBox(width: 15,),
+                        IconButton(onPressed: (){
+                          setState(() {
+                            FirebaseFirestore.instance.collection("ParentRegister").doc(child[index].id).delete();
+                          });
+                        }, icon: Icon(CupertinoIcons.delete)),
+
+                      ],
                     ),
                   ),
                 ),);

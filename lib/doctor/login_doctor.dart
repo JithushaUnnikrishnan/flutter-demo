@@ -19,18 +19,21 @@ class _DoctorLoginState extends State<DoctorLogin> {
   var email = TextEditingController();
   var password = TextEditingController();
   String id="";
+
   void DoctorLog() async {
     final user = await FirebaseFirestore.instance
         .collection('DoctorReg')
         .where('email', isEqualTo: email.text)
-        .where('password', isEqualTo: password.text)
+        .where('password', isEqualTo: password.text).where("status",isEqualTo: 1)
 
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
 
+
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
+
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {

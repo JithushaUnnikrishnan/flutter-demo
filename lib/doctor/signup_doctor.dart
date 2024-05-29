@@ -27,6 +27,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
   var experience = TextEditingController();
   var phone = TextEditingController();
 
+
   Future<dynamic> Doctoreg() async {
     await FirebaseFirestore.instance.collection("DoctorReg").add({
       "Username": name.text,
@@ -38,7 +39,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
       "officeaddress": officeaddress.text,
       "experience": experience.text,
       "Phone": phone.text,
-      "status": 0
+      "status": 0,
+
     });
     print('successfully');
     Navigator.pushReplacement(
@@ -165,13 +167,13 @@ class _DoctorSignupState extends State<DoctorSignup> {
                       return 'Empty Specialization !';
                     }
                   },
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Specialization",
                     labelStyle: TextStyle(color: Colors.grey),
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 10,
                 ),
                 TextFormField(
@@ -230,6 +232,7 @@ class _DoctorSignupState extends State<DoctorSignup> {
                 const SizedBox(
                   height: 10,
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
                   child: TextButton(

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,87 +18,100 @@ class _AdmindrRequestState extends State<AdmindrRequest> {
        child: Text('Requests',style: GoogleFonts.ubuntu( color: Color(0xFFC24A6B)),),
      ),),
 
-      body: ListView.builder(
-        itemCount: 2,
-        itemBuilder: (context, index) {
-        return Column(children: [
+      body: FutureBuilder(
+        future: FirebaseFirestore.instance.collection("DoctorReg").get(),
+        builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.purple,
+                ));
+          }
+          if (snapshot.hasError) {
+            return Text("Error${snapshot.error}");
+          }
+          final Admindr = snapshot.data?.docs ?? [];
+          return  ListView.builder(
+            itemCount: Admindr.length,
+            itemBuilder: (context, index) {
+              return Column(children: [
 
-          SizedBox(height: MediaQuery.of(context).size.height*.03,),
-          Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * .035,
-              ),Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [ Text(
-                  "Dr.Deepak",
-                  style: GoogleFonts.inriaSerif(fontSize: 20),
+                SizedBox(height: MediaQuery.of(context).size.height*.03,),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .035,
+                    ),Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [ Text(
+                        Admindr[index]["Username"],
+                        style: GoogleFonts.inriaSerif(fontSize: 20),
+                      ),
+                        Text(Admindr[index]["specialization"], style: GoogleFonts.inriaSerif(fontSize: 15),),
+                        Text(Admindr[index]["experience"], style: GoogleFonts.inriaSerif(fontSize: 15),)
+                      ],),
+
+
+
+                  ],
                 ),
-                  Text('pediatrician', style: GoogleFonts.inriaSerif(fontSize: 15),),
-                  Text('4 year Experiance in pediatric cardiology ', style: GoogleFonts.inriaSerif(fontSize: 15),)
-                ],),
+                Row(
 
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height*.1,width: MediaQuery.of(context).size.width*.035,),
+                    Container(
+                      height: 36,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color.fromRGBO(
+                            233,
+                            23,
+                            23,
+                            1,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                offset: Offset(0, 3),
+                                spreadRadius: 2,
+                                blurRadius: 2,
+                                color: Colors.black45)
+                          ]),
 
-
-            ],
-          ),
-          Row(
-
-            children: [
-              SizedBox(height: MediaQuery.of(context).size.height*.1,width: MediaQuery.of(context).size.width*.035,),
-              Container(
-                height: 36,
-                width: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromRGBO(
-                      233,
-                      23,
-                      23,
-                      1,
+                      child: Center(
+                          child: Text(
+                            "Reject",
+                            style: GoogleFonts.inriaSerif(
+                                fontSize: 20, color: Colors.white),
+                          )),
+                    ), SizedBox(
+                      width: MediaQuery.of(context).size.width * .0150,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(0, 3),
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          color: Colors.black45)
-                    ]),
-
-                child: Center(
-                    child: Text(
-                      "Reject",
-                      style: GoogleFonts.inriaSerif(
-                          fontSize: 20, color: Colors.white),
-                    )),
-              ), SizedBox(
-                width: MediaQuery.of(context).size.width * .0150,
-              ),
-              Container(
-                height: 36,
-                width: 80,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blue,
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(0, 3),
-                          spreadRadius: 2,
-                          blurRadius: 2,
-                          color: Colors.black45)
-                    ]),
-                child: Center(
-                    child: Text(
-                      "Accept",
-                      style: GoogleFonts.inriaSerif(
-                          fontSize: 20, color: Colors.white),
-                    )),
-              )],),
-          Divider(thickness: 2,),
+                    Container(
+                      height: 36,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue,
+                          boxShadow: [
+                            BoxShadow(
+                                offset: Offset(0, 3),
+                                spreadRadius: 2,
+                                blurRadius: 2,
+                                color: Colors.black45)
+                          ]),
+                      child: Center(
+                          child: Text(
+                            "Accept",
+                            style: GoogleFonts.inriaSerif(
+                                fontSize: 20, color: Colors.white),
+                          )),
+                    )],),
+                Divider(thickness: 2,),
 
 
-        ],);
-      },
+              ],);
+            },
 
 
 
@@ -106,6 +120,9 @@ class _AdmindrRequestState extends State<AdmindrRequest> {
 
 
 
+
+          );
+        },
 
       ),
     );
