@@ -133,14 +133,14 @@ class _DoctorHomeState extends State<DoctorHome> {
                         Column(children: [
 
                           Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: CircleAvatar(
-
-                              radius: 50,
-                              backgroundColor: Colors.transparent,
-                              child: Image.asset(
-                                "assets/drimage.png",
-                              ),
+                            padding: const EdgeInsets.only(left: 20,top: 20),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * .09,
+                                width: MediaQuery.of(context).size.width * .15,
+                              decoration: BoxDecoration(borderRadius:BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: NetworkImage( Doctorhome!["path"],))),
+                              // child: Image.network(
+                              //   Doctorhome!["path"],
+                              // ),
                             ),
                           ),
                         ]),

@@ -14,16 +14,15 @@ class ParentSignup extends StatefulWidget {
 }
 
 class _ParentSignupState extends State<ParentSignup> {
-
   final formkey = GlobalKey<FormState>();
   var parentname = TextEditingController();
   var phone = TextEditingController();
   var email = TextEditingController();
   var password = TextEditingController();
   var DaycareName = TextEditingController();
-  var Dateofbirth=TextEditingController();
-  var ChildName=TextEditingController();
-  var Address=TextEditingController();
+  var Dateofbirth = TextEditingController();
+  var ChildName = TextEditingController();
+  var Address = TextEditingController();
   String? Select;
 
   Future<dynamic> ParentReg() async {
@@ -33,13 +32,11 @@ class _ParentSignupState extends State<ParentSignup> {
       "Email": email.text,
       "Password": password.text,
       "Daycare name": Select,
-      "Child name":ChildName.text,
-      "Date of birth":Dateofbirth.text,
-      "Address":Address.text,
-      "path":"1",
-
-
-
+      "Child name": ChildName.text,
+      "Date of birth": Dateofbirth.text,
+      "Address": Address.text,
+      "path":
+          "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     });
     print('done');
     Navigator.pushReplacement(
@@ -53,7 +50,6 @@ class _ParentSignupState extends State<ParentSignup> {
       child: Scaffold(
         body: ListView(
           children: [
-
             Container(
               width: 250,
               height: 130,
@@ -180,7 +176,6 @@ class _ParentSignupState extends State<ParentSignup> {
                     return "Empty Parent Name !";
                   }
                 },
-
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -343,7 +338,6 @@ class _ParentSignupState extends State<ParentSignup> {
               height: MediaQuery.of(context).size.height * 0.05,
             ),
           ],
-
         ),
         backgroundColor: Colors.white,
       ),

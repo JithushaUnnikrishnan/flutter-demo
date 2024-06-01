@@ -14,7 +14,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../logo/select_categoryfor reg.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
-
 class TeacherProfile extends StatefulWidget {
   const TeacherProfile({super.key});
 
@@ -24,9 +23,10 @@ class TeacherProfile extends StatefulWidget {
 
 class _TeacherProfileState extends State<TeacherProfile> {
   PickedFile? _image;
+
   Future<void> _getImage() async {
     final pickedFile =
-    await ImagePicker().pickImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {
@@ -78,6 +78,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
       );
     }
   }
+
   var id;
 
   void initState() {
@@ -124,23 +125,27 @@ class _TeacherProfileState extends State<TeacherProfile> {
                   child: Column(
                     children: [
                       ListTile(
-
-                        leading:
-                        Babysitter!["path"]=="1"?
-                        Container(
-                          child: Image.asset(
-                            "assets/m.png",
-                            height: 49,
-                            width: 35,
-                          ),
-                        )
-                            :Container(
-                          child: Image.network(
-                            Babysitter!["path"],
-                            height: 49,
-                            width: 35,
-                          ),
-                        ),
+                        leading: Babysitter!["path"] == "1"
+                            ? Container(
+                          height: MediaQuery.of(context).size.height * .09,
+                            width: MediaQuery.of(context).size.width * .15,
+decoration: BoxDecoration(borderRadius:BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: AssetImage("assets/m.png"))),
+                                // child: Image.asset(
+                                //   "assets/m.png",
+                                //   height: MediaQuery.of(context).size.height * .09,
+                                //   width: MediaQuery.of(context).size.width * .15,
+                                // ),
+                              )
+                            : Container(
+                          height: MediaQuery.of(context).size.height * .09,
+                            width: MediaQuery.of(context).size.width * .15,
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: NetworkImage(Babysitter!["path"],))),
+                                // child: Image.network(
+                                //   Babysitter!["path"],
+                                //   height: MediaQuery.of(context).size.height * .09,
+                                //   width: MediaQuery.of(context).size.width * .15,
+                                // ),
+                              ),
                         trailing: InkWell(
                           onTap: () {
                             Navigator.push(
@@ -185,9 +190,6 @@ class _TeacherProfileState extends State<TeacherProfile> {
                       SizedBox(
                         height: 40,
                       ),
-
-
-
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: Row(
@@ -200,7 +202,6 @@ class _TeacherProfileState extends State<TeacherProfile> {
                           ],
                         ),
                       ),
-
                       Divider(
                         indent: 10,
                         endIndent: 10,
@@ -213,7 +214,9 @@ class _TeacherProfileState extends State<TeacherProfile> {
                         child: Row(
                           children: [
                             Icon(CupertinoIcons.home),
-                            SizedBox(width:MediaQuery.of(context).size.width * .02, ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * .02,
+                            ),
                             Text(Babysitter!['Address']),
                           ],
                         ),
@@ -301,13 +304,16 @@ class _TeacherProfileState extends State<TeacherProfile> {
                         indent: 10,
                         endIndent: 10,
                       ),
-                      SizedBox( height: MediaQuery.of(context).size.height*.2,),
-                      InkWell(onTap: (){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SelectCategoryreg()));
-                      },
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * .2,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SelectCategoryreg()));
+                        },
                         child: Container(
                             child: Center(
                                 child: Text("Logout",
@@ -320,13 +326,12 @@ class _TeacherProfileState extends State<TeacherProfile> {
                               color: Color(0xFFC65264),
                             )),
                       ),
-
                     ],
                   ),
                 ),
                 Positioned(
-                    top: 35,
-                    left: 30,
+                    top: 45,
+                    left: 50,
                     child: IconButton(
                         onPressed: () {
                           setState(() {
@@ -335,7 +340,6 @@ class _TeacherProfileState extends State<TeacherProfile> {
                         },
                         icon: Icon(Icons.camera_alt_outlined))),
               ],
-
             ),
           ),
         );

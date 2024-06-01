@@ -64,10 +64,15 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
             itemBuilder: (context, index) {
               return Card(
                 child: ListTile(
-                  leading: Image(
-                    image: AssetImage("assets/kid.png"),
-                    height: 92,
-                    width: 60,
+                  leading: Container(
+                    height: MediaQuery.of(context).size.height * .09,
+                    width: MediaQuery.of(context).size.width * .15,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: NetworkImage(student[index]["path"]))),
+                    // child: Image(
+                    //   image: NetworkImage(student[index]["path"]),
+                    //   height: 92,
+                    //   width: 60,
+                    // ),
                   ),
                   title: Text(student[index]["Child name"]),
                   subtitle: Text(student[index]["Phone"]),

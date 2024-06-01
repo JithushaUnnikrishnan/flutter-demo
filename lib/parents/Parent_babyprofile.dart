@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:demo/parents/parent_dailytask.dart';
 import 'package:demo/parents/parent_healthrecord.dart';
 import 'package:demo/parents/parent_home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ParentBabyprofile extends StatefulWidget {
   const ParentBabyprofile({super.key});
@@ -13,6 +15,30 @@ class ParentBabyprofile extends StatefulWidget {
 }
 
 class _ParentBabyprofileState extends State<ParentBabyprofile> {
+  var ID;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      ID = spref.getString("id");
+    });
+    print("sharedPreference Data get");
+  }
+
+  DocumentSnapshot? mychild;
+
+  Getfirebase() async {
+    mychild = await FirebaseFirestore.instance
+        .collection("ParentRegister")
+        .doc(ID)
+        .get();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,67 +46,83 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
         child: Stack(
           children: [
 
-            Positioned(
-              left: 25, // Position the first image outside the container
-              top: 135,
-              child: Container(
-                width: 367,
-                height: 167,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                        offset: Offset(0, 3),
-                        spreadRadius: 2,
-                        blurRadius: 2,
-                        color: Colors.black45)
-                  ],
-                  color: Colors.white,
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30, top: 40),
-                      child: Column(
-                        children: [
-                          Container(height: 75,width:60,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),image: DecorationImage(image: AssetImage('assets/rectgirl.png')))),
-
-                          Text('Jeni',
-                              style: GoogleFonts.inriaSerif(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
-                          Text('Female',
-                              style: GoogleFonts.inriaSerif(
-                                  fontSize: 15, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
+            FutureBuilder(
+              future:  Getfirebase(),
+              builder:  (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.purple,
+                      ));
+                }
+                if (snapshot.hasError) {
+                  return Text("Error${snapshot.error}");
+                }
+                return  Positioned(
+                  left: 25, // Position the first image outside the container
+                  top: 135,
+                  child: Container(
+                    width: 367,
+                    height: 167,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            offset: Offset(0, 3),
+                            spreadRadius: 2,
+                            blurRadius: 2,
+                            color: Colors.black45)
+                      ],
+                      color: Colors.white,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50, top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('My Child',
-                              style: GoogleFonts.inknutAntiqua(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              )),
-                          SizedBox(
-                              height: MediaQuery.of(context).size.height * .03),
-                          Text('Blood Group  A+',
-                              style: GoogleFonts.inriaSerif(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              )),
-                          Text('06/12/2021',
-                              style: GoogleFonts.inriaSerif(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              )),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30, top: 40),
+                          child: Column(
+                            children: [
+                              Container( height: MediaQuery.of(context).size.height * .09,
+                      width: MediaQuery.of(context).size.width * .15,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: DecorationImage( fit: BoxFit.fill,image: NetworkImage(mychild!["path"]) ))),
+
+                              Text(mychild!["Child name"],
+                                  style: GoogleFonts.inriaSerif(
+                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                              Text(mychild!["Date of birth"],
+                                  style: GoogleFonts.inriaSerif(
+                                      fontSize: 15, fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 50, top: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('My Child',
+                                  style: GoogleFonts.inknutAntiqua(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height * .03),
+                              Text(mychild!["Address"],
+                                  style: GoogleFonts.inriaSerif(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              Text(mychild!["Phone"],
+                                  style: GoogleFonts.inriaSerif(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+
             ),
 
             Padding(

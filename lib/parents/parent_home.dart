@@ -2,6 +2,7 @@ import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:demo/parents/parent_dr.dart';
 import 'package:demo/parents/parent_food.dart';
 import 'package:demo/parents/parent_staff.dart';
+import 'package:demo/parents/tab%20bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -133,7 +134,7 @@ class _ParentHomeState extends State<ParentHome> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ParentBooking()));
+                      builder: (context) => Tabbar()));
             },
               child: Container(
                 decoration: BoxDecoration(

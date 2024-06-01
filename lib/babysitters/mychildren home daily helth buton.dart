@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/babysitters/childprofileb.dart';
 import 'package:demo/babysitters/dailyTaskview.dart';
 import 'package:demo/babysitters/healthrecordView.dart';
@@ -5,6 +6,7 @@ import 'package:demo/babysitters/healthrecordjeni.dart';
 import 'package:demo/babysitters/jeni_profiledaily.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MychildrenHome extends StatefulWidget {
   const MychildrenHome({super.key});
@@ -14,6 +16,29 @@ class MychildrenHome extends StatefulWidget {
 }
 
 class _MychildrenHomeState extends State<MychildrenHome> {
+  var ID;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      ID = spref.getString("id");
+    });
+    print("sharedPreference Data get");
+  }
+
+  DocumentSnapshot? childprofile;
+
+  Getfirebase() async {
+    childprofile = await FirebaseFirestore.instance
+        .collection("ParentRegister")
+        .doc(ID)
+        .get();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,30 +53,42 @@ class _MychildrenHomeState extends State<MychildrenHome> {
             },
             icon: Icon(Icons.arrow_back)),
         toolbarHeight: 100,
-        title: Column(
-          children: [
-            Row(
+        title: FutureBuilder(
+          future: Getfirebase(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.hasError) {
+              return Text("Error:${snapshot.error}");
+            }
+            return  Column(
               children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  child: Image.asset('assets/girl.png'),
+                Row(
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      child: Image.asset('assets/girl.png'),
+                    ),
+                    Expanded(
+                      child: ListTile(
+                        title: Text(
+                          'Jeni',
+                          style: GoogleFonts.inriaSerif(fontSize: 20),
+                        ),
+                        subtitle: Text(
+                          'Female',
+                          style: GoogleFonts.inriaSerif(fontSize: 20),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-                Expanded(
-                  child: ListTile(
-                    title: Text(
-                      'Jeni',
-                      style: GoogleFonts.inriaSerif(fontSize: 20),
-                    ),
-                    subtitle: Text(
-                      'Female',
-                      style: GoogleFonts.inriaSerif(fontSize: 20),
-                    ),
-                  ),
-                )
               ],
-            ),
-          ],
+            );
+          },
+
         ),
       ),
       body: Container(
@@ -63,7 +100,7 @@ class _MychildrenHomeState extends State<MychildrenHome> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => DailyTaskview()));
+                      MaterialPageRoute(builder: (context) => VideoListPage()));
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * .14,

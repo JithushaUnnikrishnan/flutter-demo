@@ -184,35 +184,35 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                         padding: const EdgeInsets.only(
                                             left: 5, top: 15),
                                         child: Container(
-                                          height: 79,
-                                          width: 100,
+                                          height: MediaQuery.of(context).size.height * .09,
+                                            width: MediaQuery.of(context).size.width * .15,
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
-                                              image: DecorationImage(
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(fit: BoxFit.fill,
                                                   image: AssetImage(
                                                       "assets/m.png"))),
-                                          child: CircleAvatar(
-                                            radius: 50,
-                                            backgroundColor: Colors.transparent,
-                                          ),
+                                          // child: CircleAvatar(
+                                          //   radius: 50,
+                                          //   backgroundColor: Colors.transparent,
+                                          // ),
                                         ))
                                     : Padding(
                                         padding: const EdgeInsets.only(
                                             left: 5, top: 15),
                                         child: Container(
-                                          height: 79,
-                                          width: 100,
+                                          height: MediaQuery.of(context).size.height * .09,
+                                            width: MediaQuery.of(context).size.width * .15,
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(100),
-                                              image: DecorationImage(
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(fit: BoxFit.fill,
                                                   image: NetworkImage(
                                                       Doctor!["path"]))),
-                                          child: CircleAvatar(
-                                            radius: 50,
-                                            backgroundColor: Colors.transparent,
-                                          ),
+                                          // child: CircleAvatar(
+                                          //   radius: 50,
+                                          //   backgroundColor: Colors.transparent,
+                                          // ),
                                         )),
                               ]),
                               SizedBox(
@@ -233,8 +233,8 @@ class _DoctorProfileState extends State<DoctorProfile> {
                         ),
                       )),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * .210,
-                    left: MediaQuery.of(context).size.width * .310,
+                    top: MediaQuery.of(context).size.height * .21,
+                    left: MediaQuery.of(context).size.width * .23,
                     child: Container(
                       child: IconButton(
                         onPressed: () {

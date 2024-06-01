@@ -102,35 +102,35 @@ class _BabysitterHomeState extends State<BabysitterHome> {
                   )),
                 ),
                 Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Container(
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TeacherActivity()));
-                      },
-                      child: Text(
-                        "Activity",
-                        style: GoogleFonts.inriaSerif(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 20),
-                          backgroundColor: Color.fromRGBO(211, 134, 64, 1),
-                          minimumSize: Size(150, 100),
-                          elevation: 10,
-                          shadowColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(28))),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 20),
+                //   child: Container(
+                //     child: TextButton(
+                //       onPressed: () {
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) => TeacherActivity()));
+                //       },
+                //       child: Text(
+                //         "Activity",
+                //         style: GoogleFonts.inriaSerif(
+                //             color: Colors.black,
+                //             fontWeight: FontWeight.bold,
+                //             fontSize: 20),
+                //       ),
+                //       style: ElevatedButton.styleFrom(
+                //           padding: EdgeInsets.symmetric(
+                //               horizontal: 40, vertical: 20),
+                //           backgroundColor: Color.fromRGBO(211, 134, 64, 1),
+                //           minimumSize: Size(150, 100),
+                //           elevation: 10,
+                //           shadowColor: Colors.black,
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(28))),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             Column(

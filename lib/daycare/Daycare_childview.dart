@@ -75,7 +75,7 @@ class _DaycareChildviewState extends State<DaycareChildview> {
                             ]),
                         height: 100,
                         width: 100,
-                        child: Image.asset('assets/rectgirl.png')),
+                        child: Image.network(childview!['path'])),
                   )),
               Padding(
                 padding: const EdgeInsets.only(top: 250, left: 5),

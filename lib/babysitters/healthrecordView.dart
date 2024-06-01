@@ -55,14 +55,14 @@ class _HealthViewState extends State<HealthView> {
               automaticallyImplyLeading: false,
               title: Row(
                 children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MychildrenHome()));
-                      },
-                      child: Icon(Icons.arrow_back)),
+                  // InkWell(
+                  //     onTap: () {
+                  //       Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) => MychildrenHome()));
+                  //     },
+                  //     child: Icon(Icons.arrow_back)),
                   Padding(
                     padding: const EdgeInsets.only(left: 70),
                     child: Text("Health Record",

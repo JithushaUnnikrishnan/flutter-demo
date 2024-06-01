@@ -63,6 +63,7 @@ import 'package:demo/parents/pchildprofile.dart';
 import 'package:demo/parents/penroll_edit.dart';
 import 'package:demo/parents/searchdaycare.dart';
 import 'package:demo/parents/signup_parent.dart';
+import 'package:demo/parents/tab%20bar.dart';
 import 'package:demo/trail.dart';
 import 'package:demo/trail2.dart';
 import 'package:firebase_core/firebase_core.dart';

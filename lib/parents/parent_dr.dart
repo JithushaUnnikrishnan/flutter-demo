@@ -5,6 +5,7 @@ import 'package:demo/parents/parent_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ParentBooking extends StatefulWidget {
   const ParentBooking({super.key});
@@ -30,44 +31,44 @@ class _ParentBookingState extends State<ParentBooking> {
         }
         final Doctor = snapshot.data?.docs ?? [];
         return Scaffold(
-            appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PBottomButton()));
-                    },
-                    icon: Icon(Icons.arrow_back)),
-                elevation: 20,
-                shadowColor: Colors.black,
-                backgroundColor: Color.fromRGBO(
-                  119,
-                  164,
-                  204,
-                  1,
-                ),
-                toolbarHeight: 154,
-                automaticallyImplyLeading: false,
-                title: Container(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset("assets/drpic.png"),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * .05,
-                          ),
-                          Text(
-                            "DOCTOR",
-                            style: GoogleFonts.irishGrover(
-                                fontSize: 40, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )),
+            // appBar: AppBar(
+            //     leading: IconButton(
+            //         onPressed: () {
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                   builder: (context) => PBottomButton()));
+            //         },
+            //         icon: Icon(Icons.arrow_back)),
+            //     elevation: 20,
+            //     shadowColor: Colors.black,
+            //     backgroundColor: Color.fromRGBO(
+            //       119,
+            //       164,
+            //       204,
+            //       1,
+            //     ),
+            //     toolbarHeight: 154,
+            //     automaticallyImplyLeading: false,
+            //     title: Container(
+            //       child: Column(
+            //         children: [
+            //           Row(
+            //             children: [
+            //               Image.asset("assets/drpic.png"),
+            //               SizedBox(
+            //                 width: MediaQuery.of(context).size.width * .05,
+            //               ),
+            //               Text(
+            //                 "DOCTOR",
+            //                 style: GoogleFonts.irishGrover(
+            //                     fontSize: 40, color: Colors.white),
+            //               ),
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //     )),
             body: ListView.builder(
               itemCount: Doctor.length,
               itemBuilder: (context, index) {
@@ -83,7 +84,10 @@ class _ParentBookingState extends State<ParentBooking> {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 10, top: 10),
-                                child: Image.asset("assets/drimage.png"),
+                                child: Container(
+                                    height: 100,
+                                    width:120,
+                                    child: Image.network(Doctor[index]["path"])),
                               ),
                               SizedBox(
                                   height: MediaQuery.of(context).size.height *
@@ -102,23 +106,23 @@ class _ParentBookingState extends State<ParentBooking> {
                                 Doctor[index]["specialization"],
                                 style: GoogleFonts.inter(fontSize: 16),
                               ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 15,
-                                  ),
-                                  Icon(Icons.star,
-                                      color: Colors.yellow, size: 15),
-                                  Icon(Icons.star,
-                                      color: Colors.yellow, size: 15),
-                                  Icon(Icons.star,
-                                      color: Colors.yellow, size: 15),
-                                  Icon(Icons.star,
-                                      color: Colors.yellow, size: 15),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     Icon(
+                              //       Icons.star,
+                              //       color: Colors.yellow,
+                              //       size: 15,
+                              //     ),
+                              //     Icon(Icons.star,
+                              //         color: Colors.yellow, size: 15),
+                              //     Icon(Icons.star,
+                              //         color: Colors.yellow, size: 15),
+                              //     Icon(Icons.star,
+                              //         color: Colors.yellow, size: 15),
+                              //     Icon(Icons.star,
+                              //         color: Colors.yellow, size: 15),
+                              //   ],
+                              // ),
                               Text(Doctor[index]["specialization"],
                                   style: GoogleFonts.inter(fontSize: 16)),
                               Text(Doctor[index]["experience"],
@@ -181,7 +185,15 @@ class _ParentBookingState extends State<ParentBooking> {
                                               .050,
                                         ),
                                         InkWell(
-                                          onTap: () {},
+                                          onTap: () async {
+                                            final Phone=Doctor[index]["Phone"];
+                                            final url = 'tel:$Phone';
+                                            if (await canLaunch(url)) {
+                                            await launch(url);
+                                            } else {
+                                            throw 'Could not launch $url';
+                                            }
+                                          },
                                           child: Container(
                                               child: Center(
                                                 child: Text(
