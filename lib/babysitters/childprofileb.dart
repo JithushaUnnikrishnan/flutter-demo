@@ -88,7 +88,7 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MychildrenHome()));
+                              builder: (context) => MychildrenHome(id:student[index].id)));
                     },
                     child: Container(
                       height: 36,

@@ -14,6 +14,8 @@ class ParentSignup extends StatefulWidget {
 }
 
 class _ParentSignupState extends State<ParentSignup> {
+  List<String> locationlist = ["male", "female", "other"];
+  String? selectedvalue;
   final formkey = GlobalKey<FormState>();
   var parentname = TextEditingController();
   var phone = TextEditingController();
@@ -35,6 +37,7 @@ class _ParentSignupState extends State<ParentSignup> {
       "Child name": ChildName.text,
       "Date of birth": Dateofbirth.text,
       "Address": Address.text,
+      "gender": selectedvalue,
       "path":
           "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     });
@@ -206,6 +209,43 @@ class _ParentSignupState extends State<ParentSignup> {
                     labelStyle: GoogleFonts.inriaSerif(
                         color: Colors.grey, fontSize: 20)),
               ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 15),
+                  child: Container(
+                    width: 360,
+                    height: 69,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: Colors.transparent,
+                        border: Border.all()),
+                    child: DropdownButton<String>(
+                        isExpanded: true,
+                        elevation: 0,
+                        // dropdownColor: Colors.grey.shade100,
+                        hint: const Text("Gender"),
+                        underline: const SizedBox(),
+                        value: selectedvalue,
+                        items: locationlist.map((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        onChanged: (newvalue) {
+                          setState(() {
+                            selectedvalue = newvalue;
+                            print(selectedvalue);
+                          });
+                        },
+                        padding: const EdgeInsets.symmetric(horizontal: 10)),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,

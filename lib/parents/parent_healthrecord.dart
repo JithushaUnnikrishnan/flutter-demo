@@ -68,6 +68,7 @@ class _Parent_healthRecordState extends State<Parent_healthRecord> {
                 child: Column(
 
                   children: [
+                    Row(children: [Text("Date:"),Text(health[index]["date"])],),
                     Row(
 
                       children: [
@@ -117,9 +118,7 @@ class _Parent_healthRecordState extends State<Parent_healthRecord> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .30,
-                    ),
+
                     // Row(
                     //   mainAxisAlignment: MainAxisAlignment.center,
                     //   children: [
@@ -153,6 +152,8 @@ class _Parent_healthRecordState extends State<Parent_healthRecord> {
                     //     ),
                     //   ],
                     // )
+                    Divider(),
+                    
                   ],
                 ),
               );

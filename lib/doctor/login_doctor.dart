@@ -134,18 +134,18 @@ class _DoctorLoginState extends State<DoctorLogin> {
                           MaterialPageRoute(
                               builder: (context) => DoctorForgot()));
                     },
-                    child: const Row(
-                      children: [
-                        Expanded(
-                            child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "Forgot password?",
-                            style: TextStyle(),
-                          ),
-                        )),
-                      ],
-                    ),
+                    // child: const Row(
+                    //   children: [
+                    //     Expanded(
+                    //         child: Align(
+                    //       alignment: Alignment.bottomRight,
+                    //       child: Text(
+                    //         "Forgot password?",
+                    //         style: TextStyle(),
+                    //       ),
+                    //     )),
+                    //   ],
+                    // ),
                   ),
                   ElevatedButton(
                       onPressed: () {

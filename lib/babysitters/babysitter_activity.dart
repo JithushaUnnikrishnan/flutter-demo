@@ -1,190 +1,134 @@
-// import 'package:demo/babysitters/addactivity.dart';
-// import 'package:demo/babysitters/babysitter_home.dart';
-// import 'package:demo/babysitters/bs_bottombutton.dart';
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-//
-// class TeacherActivity extends StatefulWidget {
-//   const TeacherActivity({super.key});
-//
-//   @override
-//   State<TeacherActivity> createState() => _TeacherActivityState();
-// }
-//
-// class _TeacherActivityState extends State<TeacherActivity> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         leading: Container(
-//           child: InkWell(onTap: (){
-//             Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (context) => BottomButton()));
-//           },
-//               child: Icon(CupertinoIcons.arrow_left)),
-//         ),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.only(left: 18.0),
-//         child: Container(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Text(
-//                 "Students",
-//                 style: GoogleFonts.roboto(
-//                     fontSize: 12, fontWeight: FontWeight.normal),
-//               ),
-//               Row(
-//                 children: [
-//                   Column(
-//                     children: [
-//                       Padding(
-//                         padding: const EdgeInsets.only(top: 20),
-//                         child: Image.asset(
-//                           "assets/girl.png",
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                   SizedBox(
-//                     width: 5,
-//                   ),
-//                   Column(
-//                     children: [
-//                       Padding(
-//                         padding: const EdgeInsets.only(top: 20.0),
-//                         child: Image.asset(
-//                           "assets/child2.png",
-//                           height: 60.5,
-//                           width: 50,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//               Container(
-//                 decoration: BoxDecoration(boxShadow: [
-//                   BoxShadow(
-//                       color: Colors.grey,
-//                       blurRadius: 5,
-//                       spreadRadius: 1,
-//                       offset: Offset(0, 12))
-//                 ]),
-//               ),
-//               Divider(
-//                 color: Colors.grey,
-//                 thickness: 1,
-//                 endIndent: 20,
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.all(15.0),
-//                 child: Row(
-//                   children: [
-//                     Text("Time  :"),
-//                     Text(
-//                       "Today,2:55pm",
-//                       style: TextStyle(color: Colors.purple),
-//                     ),
-//                     Spacer(),
-//                     Icon(
-//                       CupertinoIcons.pen,
-//                     )
-//                   ],
-//                 ),
-//               ),
-//               Container(
-//                 decoration: BoxDecoration(boxShadow: [
-//                   BoxShadow(
-//                       color: Colors.grey,
-//                       blurRadius: 4,
-//                       spreadRadius: 1,
-//                       offset: Offset(0, 12))
-//                 ]),
-//               ),
-//               Divider(
-//                 color: Colors.grey,
-//                 thickness: 1,
-//                 endIndent: 20,
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Row(
-//                   children: [
-//                     Text(
-//                       "Photo",
-//                       style: TextStyle(fontWeight: FontWeight.bold),
-//                     ),
-//                     Spacer(),
-//                     Padding(
-//                       padding: const EdgeInsets.only(right: 8.0),
-//                       child: Icon(
-//                         CupertinoIcons.delete,
-//                         color: Colors.grey,
-//                       ),
-//                     )
-//                   ],
-//                 ),
-//               ),
-//               Image.asset(
-//                 "assets/photo1.png",
-//                 height: 250,
-//                 width: 380,
-//               ),
-//               Text(
-//                 "Note",
-//                 style: TextStyle(fontWeight: FontWeight.bold),
-//               ),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//               Text("They are playing together"),
-//               Container(
-//                 decoration: BoxDecoration(boxShadow: [
-//                   BoxShadow(
-//                       color: Colors.grey,
-//                       blurRadius: 4,
-//                       spreadRadius: 1,
-//                       offset: Offset(0, 12))
-//                 ]),
-//               ),
-//               Divider(
-//                 color: Colors.grey,
-//                 thickness: 1,
-//                 endIndent: 20,
-//               ),
-//               Spacer(),
-//               Padding(
-//                 padding: const EdgeInsets.only(bottom: 38.0),
-//                 child: Row(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   children: [
-//                     ElevatedButton(
-//                       onPressed: () {
-//                         Navigator.push(
-//                             context,
-//                             MaterialPageRoute(
-//                                 builder: (context) => AddActivity()));
-//                       },
-//                       child: Text("Add Activity",style: GoogleFonts.ubuntu(color: Colors.white,fontWeight:FontWeight.bold),),
-//                       style: ButtonStyle(
-//                         minimumSize: MaterialStateProperty.all<Size>(
-//                             Size(275, 50),),
-//                           backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF3FA035)),
-//                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class TeacherActivity extends StatefulWidget {
+  const TeacherActivity({super.key});
+
+  @override
+  State<TeacherActivity> createState() => _TeacherActivityState();
+}
+
+List<Color> color = [
+  Color(0XFFE9EAF4),
+  Color(0XFFFFEEEA),
+  Color(0XFFCDF2E0),
+  Color(0XFFF4EEE1),
+  Color(0XFFEBFAFE),
+  Color(0XFFE9EAF4),
+  Color(0XFFFFEEEA),
+  Color(0XFFCDF2E0),
+  Color(0XFFF4EEE1),
+  Color(0XFFEBFAFE),
+];
+class _TeacherActivityState extends State<TeacherActivity> {
+  var Name;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Name = spref.getString("Daycare name");
+
+    });
+    print("sharedPreference Data get");
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Color.fromRGBO(66, 135, 156, 1),
+            toolbarHeight: 122,
+            elevation: 6,
+            shadowColor: Colors.grey,
+            shape: ContinuousRectangleBorder(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
+            title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .25,
+              ),
+              Text(
+                "ACTIVITY",
+                style: GoogleFonts.inriaSerif(
+                    fontSize: 38, color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .05,
+              ),
+            ]),
+          ),
+          body: FutureBuilder(
+            future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:Name).get(),
+            builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator();
+              }
+              if (snapshot.hasError) {
+                return Text("Error:${snapshot.error}");
+              }
+              final Healthrecord = snapshot.data?.docs ?? [];
+              return ListView.builder(
+                itemCount:Healthrecord.length,
+                itemBuilder: (context, index) {
+                  return  Container(
+
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .030,
+                        ),
+                        Container(
+                          height: 82,
+                          width: 316,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                  offset: Offset(0, 3),
+                                  spreadRadius: 2,
+                                  blurRadius: 2,
+                                  color: Colors.black45)
+                            ],
+                            color: color[index],
+
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                Healthrecord[index]["Activity_name"],
+                                style: GoogleFonts.inriaSerif(fontSize: 20),
+                              ),
+                              Text(
+                                Healthrecord[index]["Time"],
+                                style: GoogleFonts.inriaSerif(fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .050,
+                        ),
+
+
+                      ],
+                    ),
+                  );
+                },
+
+              );
+            },
+
+          ),
+        );
+
+  }
+}

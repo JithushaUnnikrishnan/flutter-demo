@@ -131,26 +131,26 @@ class _ParentLoginState extends State<ParentLogin> {
                   const SizedBox(
                     height: 10,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ParentForgot()));
-                    },
-                    child: const Row(
-                      children: [
-                        Expanded(
-                            child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "Forgot password?",
-                            style: TextStyle(),
-                          ),
-                        )),
-                      ],
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => ParentForgot()));
+                  //   },
+                  //   child: const Row(
+                  //     children: [
+                  //       Expanded(
+                  //           child: Align(
+                  //         alignment: Alignment.bottomRight,
+                  //         child: Text(
+                  //           "Forgot password?",
+                  //           style: TextStyle(),
+                  //         ),
+                  //       )),
+                  //     ],
+                  //   ),
+                  // ),
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()) {

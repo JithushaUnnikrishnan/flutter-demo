@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/babysitters/healthrecordjeni.dart';
 import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scroll_date_picker/scroll_date_picker.dart';
@@ -81,9 +82,26 @@ class _HealthViewState extends State<HealthView> {
             itemCount: health.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(left: 50, top: 30, right: 50),
+                padding: const EdgeInsets.only(left: 50, top: 20, right: 50),
                 child: Column(
                   children: [
+                    Row(children: [
+                      Row(
+                        children: [
+                          Text("Date: "),
+                          Text( health[index]["date"],)
+                        ],
+                      ),Spacer(),
+                      IconButton(onPressed: (){
+                        setState(() {
+                          FirebaseFirestore.instance
+                              .collection("healthrecord add")
+                              .doc(health[index].id)
+                              .delete();
+                        });
+                      }, icon: Icon(CupertinoIcons.delete))
+                    ],),
+                    SizedBox(height: MediaQuery.of(context).size.height*.02,),
                     Row(
                       children: [
                         Column(

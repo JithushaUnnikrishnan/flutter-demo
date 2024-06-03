@@ -23,6 +23,7 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
   String id = "";
   String Daycarename = "";
 
+
   void BabyLog() async {
     final user = await FirebaseFirestore.instance
         .collection('babysiiterReg')
@@ -32,6 +33,7 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
       Daycarename = user.docs[0]["daycarename"];
+
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
@@ -127,26 +129,26 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BabysForgot()));
-                          },
-                          child: Text(
-                            "Forgot password?",
-                            style: TextStyle(),
-                          ),
-                        ),
-                      )),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //         child: Align(
+                  //       alignment: Alignment.bottomRight,
+                  //       child: InkWell(
+                  //         onTap: () {
+                  //           Navigator.push(
+                  //               context,
+                  //               MaterialPageRoute(
+                  //                   builder: (context) => BabysForgot()));
+                  //         },
+                  //         child: Text(
+                  //           "Forgot password?",
+                  //           style: TextStyle(),
+                  //         ),
+                  //       ),
+                  //     )),
+                  //   ],
+                  // ),
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()) {

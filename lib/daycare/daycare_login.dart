@@ -127,25 +127,25 @@ String id="";
                   const SizedBox(
                     height: 5,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                          child: Align(
-                            alignment: Alignment.bottomRight,
-                            child: InkWell(onTap: (){
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DaycareForgot()));
-                            },
-                              child: Text(
-                                "Forgot password?",
-                                style: TextStyle( color: Colors.black),
-                              ),
-                            ),
-                          )),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //         child: Align(
+                  //           alignment: Alignment.bottomRight,
+                  //           child: InkWell(onTap: (){
+                  //             Navigator.push(
+                  //                 context,
+                  //                 MaterialPageRoute(
+                  //                     builder: (context) => DaycareForgot()));
+                  //           },
+                  //             child: Text(
+                  //               "Forgot password?",
+                  //               style: TextStyle( color: Colors.black),
+                  //             ),
+                  //           ),
+                  //         )),
+                  //   ],
+                  // ),
                   ElevatedButton(
                       onPressed: () {
                         if (formkey.currentState!.validate()){
