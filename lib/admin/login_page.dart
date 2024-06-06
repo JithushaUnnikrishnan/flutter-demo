@@ -68,6 +68,7 @@ class _AdminLoginState extends State<AdminLogin> {
                     height: 60,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: email,
                     validator: (value){
                       if (value!.isEmpty){

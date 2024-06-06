@@ -15,7 +15,7 @@ class _AdmindrRequestState extends State<AdmindrRequest> {
     return Scaffold(
      appBar: AppBar(title: Padding(
        padding: const EdgeInsets.only(left: 90),
-       child: Text('Requests',style: GoogleFonts.ubuntu( color: Color(0xFFC24A6B)),),
+       child: Text('Doctors',style: GoogleFonts.ubuntu( color: Color(0xFFC24A6B)),),
      ),),
 
       body: FutureBuilder(

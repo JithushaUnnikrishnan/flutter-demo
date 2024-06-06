@@ -121,6 +121,7 @@ class _SuccessPageState extends State<SuccessPage> {
                                     children: [
                                       Text("Age:"),
                                       Text(bookingsuc[index]["Age"]),
+                                      Text(" year")
                                     ],
                                   ),
                                   Text(bookingsuc[index]["date"]),

@@ -72,7 +72,7 @@ class _DaycareFoodState extends State<DaycareFood> {
       "Daycare Name": Name,
       'date': DateFormat('dd/MM/yyyy').format(date)
     });
-    Navigator.push(
+    Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => DaycareFoodview()));
   }
 

@@ -120,8 +120,8 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
                                 child: CircleAvatar(
                                   radius: 50,
                                   backgroundColor: Colors.transparent,
-                                  child: Image.asset(
-                                    "assets/drimage.png",
+                                  child: Image.network(
+                                    Booking!["path"],
                                   ),
                                 ),
                               ),
@@ -214,6 +214,7 @@ class _ParentBookingDrState extends State<ParentBookingDr> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextFormField(
+                        keyboardType: TextInputType.datetime,
                         controller: Age,
                         validator: (value) {
                           if (value!.isEmpty) {

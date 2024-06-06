@@ -93,7 +93,7 @@ class _DaycareProfileState extends State<DaycareProfile> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 250),
+                    padding: const EdgeInsets.only(right: 208),
                     child: Text(Daycare!["Username"],
                         style: GoogleFonts.inriaSerif(
                           fontSize: 20,
@@ -116,7 +116,7 @@ class _DaycareProfileState extends State<DaycareProfile> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 290),
+                    padding: const EdgeInsets.only(right: 225),
                     child: Text(Daycare!["PreschoolAddress"],
                         style: GoogleFonts.inriaSerif(
                           fontSize: 18,
@@ -139,7 +139,7 @@ class _DaycareProfileState extends State<DaycareProfile> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 260),
+                    padding: const EdgeInsets.only(right: 200),
                     child: Text(Daycare!["Phone"],
                         style: GoogleFonts.inriaSerif(
                           fontSize: 20,

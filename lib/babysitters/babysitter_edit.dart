@@ -39,7 +39,7 @@ class _BabysitterEditState extends State<BabysitterEdit> {
   final formkey = GlobalKey<FormState>();
   var Name = TextEditingController();
   var Address = TextEditingController();
-  var DaycareName = TextEditingController();
+
   var Qualification = TextEditingController();
   var Experience = TextEditingController();
   var PhoneNumber = TextEditingController();
@@ -53,14 +53,14 @@ class _BabysitterEditState extends State<BabysitterEdit> {
       "UserName": Name.text,
       "address": Address.text,
       "qualification": Qualification.text,
-      "daycarename": DaycareName.text,
+
       "experiance": Experience.text,
       "phonenumber": PhoneNumber.text,
       "whatsappNumber": whatsappnumber.text,
     });
     print('Edit successfully');
     setState(() {
-      Navigator.of(context).pop(context);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>TeacherProfile()));
     });
   }
 
@@ -189,30 +189,30 @@ class _BabysitterEditState extends State<BabysitterEdit> {
                             fillColor: Colors.white),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 10),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Daycare Name"),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextFormField(
-                        controller: DaycareName,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Empty Daycare Name !";
-                          }
-                        },
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.white),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 20.0, top: 10),
+                    //   child: Row(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Text("Daycare Name"),
+                    //     ],
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                    //   child: TextFormField(
+                    //     controller: DaycareName,
+                    //     validator: (value) {
+                    //       if (value!.isEmpty) {
+                    //         return "Empty Daycare Name !";
+                    //       }
+                    //     },
+                    //     decoration: InputDecoration(
+                    //         border: OutlineInputBorder(),
+                    //         filled: true,
+                    //         fillColor: Colors.white),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(left: 20.0, top: 10),
                       child: Row(
@@ -275,6 +275,7 @@ class _BabysitterEditState extends State<BabysitterEdit> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextFormField(
+                        keyboardType: TextInputType.number,
                         controller: PhoneNumber,
                         validator: (value) {
                           if (value!.isEmpty) {
@@ -299,6 +300,7 @@ class _BabysitterEditState extends State<BabysitterEdit> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextFormField(
+                        keyboardType: TextInputType.number,
                         controller: whatsappnumber,
                         validator: (value) {
                           if (value!.isEmpty) {

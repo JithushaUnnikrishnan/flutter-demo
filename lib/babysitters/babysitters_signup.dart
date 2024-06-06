@@ -100,6 +100,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   controller: email,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -214,6 +215,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: TextFormField(
+
                   controller: phonenumber,
                   validator: (value) {
                     if (value!.isEmpty) {

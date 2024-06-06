@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo/babysitters/childprofileb.dart';
+import 'package:demo/babysitters/Mychildernphoto.dart';
 import 'package:demo/babysitters/dailyTaskview.dart';
 import 'package:demo/babysitters/healthrecordView.dart';
 import 'package:demo/babysitters/healthrecordjeni.dart';
@@ -67,10 +67,15 @@ class _MychildrenHomeState extends State<MychildrenHome> {
               children: [
                 Row(
                   children: [
+                    // CircleAvatar(
+                    //   radius: 25,
+                    //   backgroundImage:NetworkImage( childprofile!["path"],),
+                    // ),
                     Container(
                       width: 50,
                       height: 50,
-                      child: Image.network(childprofile!["path"]),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: NetworkImage(childprofile!["path"]))),
+                      // child: Image.network(childprofile!["path"]),
                     ),
                     Expanded(
                       child: ListTile(

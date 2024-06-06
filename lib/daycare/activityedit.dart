@@ -31,7 +31,7 @@ class _ActivityEditState extends State<ActivityEdit> {
       'date': DateFormat('dd/MM/yyyy').format(date)
     });
     print('done');
-    Navigator.push(
+    Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => DaycareActivity()));
   }
 
@@ -52,7 +52,7 @@ class _ActivityEditState extends State<ActivityEdit> {
                   },
                   child: Icon(Icons.arrow_back)),
               SizedBox(
-                width: MediaQuery.of(context).size.width * .05,
+                width: MediaQuery.of(context).size.width * .35,
               ),
               Text("Edit", style: GoogleFonts.ubuntu(color: Color(0xFFC24A6B))),
             ],

@@ -92,6 +92,7 @@ String id="";
                     height: 60,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: email,
                     validator: (value){
                       if (value!.isEmpty){

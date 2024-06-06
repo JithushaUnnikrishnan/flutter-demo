@@ -62,6 +62,7 @@ class _StaffEditState extends State<StaffEdit> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: phone,
                   validator: (value) {
                     if (value!.isEmpty) {

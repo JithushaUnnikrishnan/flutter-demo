@@ -94,6 +94,7 @@ class _BabysitterLoginState extends State<BabysitterLogin> {
                     height: 60,
                   ),
                   TextFormField(
+                    keyboardType: TextInputType.emailAddress,
                     controller: email,
                     validator: (value) {
                       if (value!.isEmpty) {

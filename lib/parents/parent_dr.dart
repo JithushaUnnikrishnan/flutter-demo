@@ -31,44 +31,7 @@ class _ParentBookingState extends State<ParentBooking> {
         }
         final Doctor = snapshot.data?.docs ?? [];
         return Scaffold(
-            // appBar: AppBar(
-            //     leading: IconButton(
-            //         onPressed: () {
-            //           Navigator.push(
-            //               context,
-            //               MaterialPageRoute(
-            //                   builder: (context) => PBottomButton()));
-            //         },
-            //         icon: Icon(Icons.arrow_back)),
-            //     elevation: 20,
-            //     shadowColor: Colors.black,
-            //     backgroundColor: Color.fromRGBO(
-            //       119,
-            //       164,
-            //       204,
-            //       1,
-            //     ),
-            //     toolbarHeight: 154,
-            //     automaticallyImplyLeading: false,
-            //     title: Container(
-            //       child: Column(
-            //         children: [
-            //           Row(
-            //             children: [
-            //               Image.asset("assets/drpic.png"),
-            //               SizedBox(
-            //                 width: MediaQuery.of(context).size.width * .05,
-            //               ),
-            //               Text(
-            //                 "DOCTOR",
-            //                 style: GoogleFonts.irishGrover(
-            //                     fontSize: 40, color: Colors.white),
-            //               ),
-            //             ],
-            //           ),
-            //         ],
-            //       ),
-            //     )),
+
             body: ListView.builder(
               itemCount: Doctor.length,
               itemBuilder: (context, index) {
@@ -100,7 +63,7 @@ class _ParentBookingState extends State<ParentBooking> {
                             children: [
                               Text(
                                 Doctor[index]["Username"],
-                                style: GoogleFonts.holtwoodOneSc(fontSize: 20),
+                                style: GoogleFonts.holtwoodOneSc(fontSize: 15),
                               ),
                               Text(
                                 Doctor[index]["specialization"],

@@ -22,13 +22,14 @@ class _DaycareHomeState extends State<DaycareHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: 122,
         backgroundColor: Color.fromRGBO(117, 10, 100, 1),
         elevation: 10,
         shadowColor: Colors.black,
         shape: ContinuousRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
         title: Padding(
-          padding: const EdgeInsets.only(left:50 ),
+          padding: const EdgeInsets.only(left:100 ),
           child: Text("My School",style: GoogleFonts.inriaSerif(color: Colors.white,fontSize: 30)),
         ),
 

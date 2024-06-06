@@ -42,7 +42,7 @@ class _DoctorEditState extends State<DoctorEdit> {
       "homeaddress": homeaddress.text,
       "officeaddress": officeaddress.text,
       "experience": experience.text,
-      "status": 0
+
     });
     print('Edit successfully');
     setState(() {
@@ -112,8 +112,8 @@ class _DoctorEditState extends State<DoctorEdit> {
                           return "Empty Specialization !";
                         }
                       },
-                      minLines: 4,
-                      maxLines: 5,
+                      minLines: 2,
+                      maxLines: 2,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     ),
                     SizedBox(
@@ -127,8 +127,8 @@ class _DoctorEditState extends State<DoctorEdit> {
                           return "Empty Home Address !";
                         }
                       },
-                      minLines: 4,
-                      maxLines: 5,
+                      minLines: 2,
+                      maxLines: 2,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     ),
                     SizedBox(
@@ -142,8 +142,8 @@ class _DoctorEditState extends State<DoctorEdit> {
                           return "Empty Office Address !";
                         }
                       },
-                      minLines: 4,
-                      maxLines: 5,
+                      minLines: 2,
+                      maxLines: 2,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     ),
                     SizedBox(
@@ -157,8 +157,8 @@ class _DoctorEditState extends State<DoctorEdit> {
                           return "Empty Experience !";
                         }
                       },
-                      minLines: 4,
-                      maxLines: 5,
+                      minLines: 2,
+                      maxLines: 2,
                       decoration: InputDecoration(border: OutlineInputBorder()),
                     ),
                     SizedBox(

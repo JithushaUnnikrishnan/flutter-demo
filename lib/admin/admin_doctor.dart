@@ -25,11 +25,11 @@ class _AdminDoctorState extends State<AdminDoctor> {
               child: Row(
             children: [
               Text(
-                "Doctor",
+                "Requests",
                 style: GoogleFonts.inriaSerif(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 40),
+                    fontSize: 30),
               ),
               Spacer(),
               TextButton(
@@ -69,19 +69,22 @@ class _AdminDoctorState extends State<AdminDoctor> {
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .03,
                           height: MediaQuery.of(context).size.height * .2,
+                        ), CircleAvatar(
+                          radius: 50,
+                          backgroundImage:NetworkImage( Doctor[index]["path"],) ,
                         ),
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "assets/drimage.png",
-                                ),
-                                fit: BoxFit.cover,
-                              )),
-                        ),
+                        // Container(
+                        //   width: 100,
+                        //   height: 100,
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(30),
+                        //       image: DecorationImage(
+                        //         image: AssetImage(
+                        //           "assets/drimage.png",
+                        //         ),
+                        //         fit: BoxFit.cover,
+                        //       )),
+                        // ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .045,
                         ),

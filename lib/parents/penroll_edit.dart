@@ -115,7 +115,7 @@ class _EnrollEditState extends State<EnrollEdit> {
                 //         icon: Icon(Icons.camera_alt_outlined))),
 
                   Padding(
-            padding: const EdgeInsets.fromLTRB(10, 100, 10, 0),
+            padding: const EdgeInsets.fromLTRB(10, 50, 10, 0),
             child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -142,8 +142,8 @@ class _EnrollEditState extends State<EnrollEdit> {
                           return "Empty address !";
                         }
                       },
-                      maxLines: 4,
-                      minLines: 4,
+                      maxLines: 2,
+                      minLines: 2,
                       decoration: InputDecoration(
 
                         border: OutlineInputBorder(),

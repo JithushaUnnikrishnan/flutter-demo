@@ -23,7 +23,7 @@ class _DaycareStafaddState extends State<DaycareStafadd> {
         "Email":email.text,
         "Qualification":qualification.text
       });
-  Navigator.push(
+  Navigator.pushReplacement(
       context,
       MaterialPageRoute(
           builder: (context) => DaycareStaff()));
@@ -55,6 +55,7 @@ class _DaycareStafaddState extends State<DaycareStafadd> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: phone,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -68,6 +69,7 @@ class _DaycareStafaddState extends State<DaycareStafadd> {
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
                 TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   controller: email,
                   validator: (value) {
                     if (value!.isEmpty) {

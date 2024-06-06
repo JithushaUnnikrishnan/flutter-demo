@@ -46,7 +46,7 @@ class _DaycareEditState extends State<DaycareEdit> {
     });
     print('Edit successfully');
     setState(() {
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => DayBottomButton()));
@@ -109,6 +109,7 @@ class _DaycareEditState extends State<DaycareEdit> {
                   height: MediaQuery.of(context).size.height * .02,
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.number,
                   controller: phone,
                   validator: (value) {
                     if (value!.isEmpty) {

@@ -50,47 +50,57 @@ class _AdminStaffState extends State<AdminStaff> {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Container(
-                            child: const Image(
-                              image: AssetImage("assets/babysitters.png"),
+                          padding: const EdgeInsets.only(left: 10),
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundImage:NetworkImage( Babysitter[index]["path"],) ,
+                          ),
+                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.all(5.0),
+                        //   child: Container(
+                        //     child:  Image(
+                        //       image: NetworkImage( Babysitter[index]["path"],),
+                        //     ),
+                        //   ),
+                        // ),
+                        SizedBox(
+                          width: 150,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Babysitter[index]["UserName"],
+                                  style: GoogleFonts.inriaSerif(fontSize: 20),
+                                ),
+                                Text(
+                                  Babysitter[index]["daycarename"],
+                                  style: GoogleFonts.inriaSerif(fontSize: 15),
+                                ),
+                                Text(
+                                  Babysitter[index]["Address"],
+                                  style: GoogleFonts.inriaSerif(fontSize: 15),
+                                ),
+                                Text(
+                                  Babysitter[index]["experiance"],
+                                  style: GoogleFonts.inriaSerif(fontSize: 15),
+                                ),
+                                Text(
+                                  Babysitter[index]["qualification"],
+                                  style: GoogleFonts.inriaSerif(fontSize: 15),
+                                ),
+                                Text(
+                                  Babysitter[index]["phonenumber"],
+                                  style: GoogleFonts.inriaSerif(fontSize: 15),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: 150,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                Babysitter[index]["UserName"],
-                                style: GoogleFonts.inriaSerif(fontSize: 20),
-                              ),
-                              Text(
-                                Babysitter[index]["daycarename"],
-                                style: GoogleFonts.inriaSerif(fontSize: 15),
-                              ),
-                              Text(
-                                Babysitter[index]["address"],
-                                style: GoogleFonts.inriaSerif(fontSize: 15),
-                              ),
-                              Text(
-                                Babysitter[index]["experiance"],
-                                style: GoogleFonts.inriaSerif(fontSize: 15),
-                              ),
-                              Text(
-                                Babysitter[index]["qualification"],
-                                style: GoogleFonts.inriaSerif(fontSize: 15),
-                              ),
-                              Text(
-                                Babysitter[index]["phonenumber"],
-                                style: GoogleFonts.inriaSerif(fontSize: 15),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * .28,
+                          width: MediaQuery.of(context).size.width * .25,
                         ),
                         IconButton(onPressed: (){
                           setState(() {

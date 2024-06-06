@@ -217,7 +217,7 @@ decoration: BoxDecoration(borderRadius:BorderRadius.circular(10),image: Decorati
                             SizedBox(
                               width: MediaQuery.of(context).size.width * .02,
                             ),
-                            Text(Babysitter!['Address']),
+                            Text(Babysitter!['address']),
                           ],
                         ),
                       ),

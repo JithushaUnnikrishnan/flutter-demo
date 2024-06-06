@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/babysitters/healthrecordView.dart';
-import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
+// import 'package:demo/babysitters/mychildren%20home%20daily%20helth%20buton.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -48,7 +48,7 @@ class _HealthRecordState extends State<HealthRecord> {
       'date': DateFormat('dd/MM/yyyy').format(date),
     });
     print("done");
-    Navigator.push(
+    Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => HealthView()));
   }
 

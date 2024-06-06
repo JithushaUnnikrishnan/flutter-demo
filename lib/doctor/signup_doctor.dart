@@ -186,8 +186,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                     }
                   },
                   // keyboardType: TextInputType.streetAddress,
-                  minLines: 5,
-                  maxLines: 5,
+                  minLines: 2,
+                  maxLines: 2,
 
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -205,8 +205,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                       return "Empty Office Address !";
                     }
                   },
-                  minLines: 5,
-                  maxLines: 5,
+                  minLines: 2,
+                  maxLines: 2,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Office Address",
@@ -223,8 +223,8 @@ class _DoctorSignupState extends State<DoctorSignup> {
                       return "Empty Experiance !";
                     }
                   },
-                  minLines: 5,
-                  maxLines: 5,
+                  minLines: 2,
+                  maxLines: 2,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Experiance",

@@ -69,6 +69,7 @@ class _DaycareRegisterState extends State<DaycareRegister> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.phone,
                   controller: phone,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -86,6 +87,7 @@ class _DaycareRegisterState extends State<DaycareRegister> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   controller: email,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -103,6 +105,7 @@ class _DaycareRegisterState extends State<DaycareRegister> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 TextFormField(
+                  obscureText: true,
                   controller: password,
                   validator: (value){
                     if (value!.isEmpty){
@@ -120,6 +123,7 @@ class _DaycareRegisterState extends State<DaycareRegister> {
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 TextFormField(
+
                   controller: PreschoolAddress,
                   validator: (value) {
                     if (value!.isEmpty) {
