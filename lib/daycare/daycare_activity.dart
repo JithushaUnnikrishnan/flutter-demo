@@ -55,7 +55,9 @@ class _DaycareActivityState extends State<DaycareActivity> {
               FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo: Daycarename).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Color(0xFF750A64),
+              ));
             }
             if (snapshot.hasError) {
               return Text("Error:${snapshot.error}");
@@ -121,7 +123,7 @@ class _DaycareActivityState extends State<DaycareActivity> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
+            Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => EditCard()));
             setState(() {
               _itemcount++; // Increase item count on FAB press

@@ -58,7 +58,7 @@ class _DaycareEditState extends State<DaycareEdit> {
     return Form(key: formkey,
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+
           backgroundColor: Color.fromRGBO(117, 10, 100, 1),
           toolbarHeight: 122,
           elevation: 6,

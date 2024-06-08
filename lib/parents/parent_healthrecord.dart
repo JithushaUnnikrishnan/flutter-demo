@@ -35,7 +35,7 @@ class _Parent_healthRecordState extends State<Parent_healthRecord> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
-                color: Colors.purple,
+                color: Color(0xFF0E6174),
               ));
         }
         if (snapshot.hasError) {

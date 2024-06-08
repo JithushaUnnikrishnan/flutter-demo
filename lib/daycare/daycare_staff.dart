@@ -6,6 +6,7 @@ import 'package:demo/daycare/staffedit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DaycareStaff extends StatefulWidget {
   const DaycareStaff({super.key});
@@ -15,40 +16,54 @@ class DaycareStaff extends StatefulWidget {
 }
 
 class _DaycareStaffState extends State<DaycareStaff> {
+  var name;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      name = spref.getString("name");
+    });
+    print("sharedPreference Data get");
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Color.fromRGBO(117, 10, 100, 1),
-            toolbarHeight: 122,
-            elevation: 6,
-            shadowColor: Colors.grey,
-            shape: ContinuousRectangleBorder(
-                borderRadius:
-                    BorderRadius.only(bottomLeft: Radius.circular(80))),
-            title: Row(
-              children: [
-                InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DayBottomButton()));
-                    },
-                    child: Icon(Icons.arrow_back)),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .1,
-                ),
-                Text(
-                  "My Staff",
-                  style: GoogleFonts.inriaSerif(
-                    fontSize: 38,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            )),
+        // appBar: AppBar(
+        //     automaticallyImplyLeading: false,
+        //     backgroundColor: Color.fromRGBO(117, 10, 100, 1),
+        //     toolbarHeight: 122,
+        //     elevation: 6,
+        //     shadowColor: Colors.grey,
+        //     shape: ContinuousRectangleBorder(
+        //         borderRadius:
+        //             BorderRadius.only(bottomLeft: Radius.circular(80))),
+        //     title: Row(
+        //       children: [
+        //         InkWell(
+        //             onTap: () {
+        //               Navigator.push(
+        //                   context,
+        //                   MaterialPageRoute(
+        //                       builder: (context) => DayBottomButton()));
+        //             },
+        //             child: Icon(Icons.arrow_back)),
+        //         SizedBox(
+        //           width: MediaQuery.of(context).size.width * .1,
+        //         ),
+        //         Text(
+        //           "My Staff",
+        //           style: GoogleFonts.inriaSerif(
+        //             fontSize: 38,
+        //             color: Colors.white,
+        //           ),
+        //         ),
+        //       ],
+        //     )),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(context,
@@ -58,10 +73,12 @@ class _DaycareStaffState extends State<DaycareStaff> {
         ),
         body: FutureBuilder(
           future:
-              FirebaseFirestore.instance.collection("Daycare AddStaff").get(),
+              FirebaseFirestore.instance.collection("Daycare AddStaff").where("Daycare Name",isEqualTo: name).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Color(0xFF750A64),
+              ));
             }
             if (snapshot.hasError) {
               return Text("Error:${snapshot.error}");

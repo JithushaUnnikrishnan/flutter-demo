@@ -23,7 +23,7 @@ List<Color> color = [
   Color(0XFFEBFAFE),
 ];
 class _TeacherActivityState extends State<TeacherActivity> {
-  var Name;
+  var Daycarename;
 
   void initState() {
     super.initState();
@@ -33,7 +33,7 @@ class _TeacherActivityState extends State<TeacherActivity> {
   Future<void> getData() async {
     SharedPreferences spref = await SharedPreferences.getInstance();
     setState(() {
-      Name = spref.getString("Daycare name");
+      Daycarename = spref.getString("Daycare name");
 
     });
     print("sharedPreference Data get");
@@ -43,7 +43,7 @@ class _TeacherActivityState extends State<TeacherActivity> {
     return Scaffold(
 
           appBar: AppBar(
-            automaticallyImplyLeading: false,
+
             backgroundColor: Color.fromRGBO(66, 135, 156, 1),
             toolbarHeight: 122,
             elevation: 6,
@@ -53,7 +53,7 @@ class _TeacherActivityState extends State<TeacherActivity> {
             title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
 
               SizedBox(
-                width: MediaQuery.of(context).size.width * .25,
+                width: MediaQuery.of(context).size.width * .15,
               ),
               Text(
                 "ACTIVITY",
@@ -66,10 +66,12 @@ class _TeacherActivityState extends State<TeacherActivity> {
             ]),
           ),
           body: FutureBuilder(
-            future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:Name).get(),
+            future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:Daycarename).get(),
             builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator(
+                  color: Color(0xFF0E6174),
+                ));
               }
               if (snapshot.hasError) {
                 return Text("Error:${snapshot.error}");

@@ -23,8 +23,12 @@ class TeacherProfile extends StatefulWidget {
 
 class _TeacherProfileState extends State<TeacherProfile> {
   PickedFile? _image;
+  bool isloading = false;
 
   Future<void> _getImage() async {
+    setState(() {
+      isloading = true;
+    });
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -62,6 +66,9 @@ class _TeacherProfileState extends State<TeacherProfile> {
             content: Text('Profile updated successfully'),
           ),
         );
+        setState(() {
+          isloading = false;
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -125,26 +132,21 @@ class _TeacherProfileState extends State<TeacherProfile> {
                   child: Column(
                     children: [
                       ListTile(
-                        leading: Babysitter!["path"] == "1"
-                            ? Container(
-                          height: MediaQuery.of(context).size.height * .09,
-                            width: MediaQuery.of(context).size.width * .15,
-decoration: BoxDecoration(borderRadius:BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: AssetImage("assets/m.png"))),
-                                // child: Image.asset(
-                                //   "assets/m.png",
-                                //   height: MediaQuery.of(context).size.height * .09,
-                                //   width: MediaQuery.of(context).size.width * .15,
-                                // ),
+                        leading: isloading
+                            ? CircularProgressIndicator(
+                                color: Color(0xFFC65264),
                               )
                             : Container(
-                          height: MediaQuery.of(context).size.height * .09,
-                            width: MediaQuery.of(context).size.width * .15,
-                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),image: DecorationImage(fit: BoxFit.fill,image: NetworkImage(Babysitter!["path"],))),
-                                // child: Image.network(
-                                //   Babysitter!["path"],
-                                //   height: MediaQuery.of(context).size.height * .09,
-                                //   width: MediaQuery.of(context).size.width * .15,
-                                // ),
+                                height:
+                                    MediaQuery.of(context).size.height * .09,
+                                width: MediaQuery.of(context).size.width * .15,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill,
+                                        image: NetworkImage(
+                                          Babysitter!["path"],
+                                        ))),
                               ),
                         trailing: InkWell(
                           onTap: () {
@@ -217,7 +219,7 @@ decoration: BoxDecoration(borderRadius:BorderRadius.circular(10),image: Decorati
                             SizedBox(
                               width: MediaQuery.of(context).size.width * .02,
                             ),
-                            Text(Babysitter!['address']),
+                            Text(Babysitter!['Address']),
                           ],
                         ),
                       ),

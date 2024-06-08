@@ -36,7 +36,9 @@ class _AdminStaffState extends State<AdminStaff> {
           future: FirebaseFirestore.instance.collection("babysiiterReg").get(),
           builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
             if (snapshot.connectionState==ConnectionState.waiting){
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Colors.yellow,
+              ));
             }
             if(snapshot.hasError){
               return Center(child: Text("Error:${snapshot.error}"));

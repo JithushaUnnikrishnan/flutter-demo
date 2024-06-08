@@ -79,6 +79,7 @@ class _HealthRecordState extends State<HealthRecord> {
                   style: GoogleFonts.inriaSerif(fontSize: 20),
                 ),
                 TextFormField(
+
                   controller: height,
                   validator: (value) {
                     if (value!.isEmpty) {

@@ -4,6 +4,7 @@ import 'package:demo/daycare/daycare_activity.dart';
 import 'package:demo/daycare/daycare_children.dart';
 import 'package:demo/daycare/daycare_food.dart';
 import 'package:demo/daycare/daycare_staff.dart';
+import 'package:demo/daycare/tabbardaycare.dart';
 import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,7 +46,7 @@ class _DaycareHomeState extends State<DaycareHome> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => DaycareStaff()));
+                        builder: (context) => DaycareTabbar()));
               },
                 child: Container(
                   height: 72,width: 312,

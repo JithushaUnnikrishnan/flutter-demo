@@ -154,7 +154,7 @@ class _ParentStaffState extends State<ParentStaff> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
-            color: Colors.purple,
+            color: Color(0xFFEE364A),
           ));
         }
         if (snapshot.hasError) {

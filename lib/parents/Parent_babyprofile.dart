@@ -51,7 +51,7 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
                       child: CircularProgressIndicator(
-                    color: Colors.purple,
+                    color: Color(0xFF0E6174),
                   ));
                 }
                 if (snapshot.hasError) {
@@ -101,32 +101,36 @@ class _ParentBabyprofileState extends State<ParentBabyprofile> {
                             ],
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: MediaQuery.of(context).size.height*.02,),
-                            Text('My Child',
-                                style: GoogleFonts.inknutAntiqua(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                            SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * .03),
-                            SizedBox(
-                              width: 190,
-                              child: Text(mychild!["Address"],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: MediaQuery.of(context).size.height*.02,),
+
+                              Text('My Child',
+                                  style: GoogleFonts.inknutAntiqua(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * .03),
+                              SizedBox(
+                                width: 190,
+                                child: Text(mychild!["Address"],
+                                    style: GoogleFonts.inriaSerif(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                              ),
+                              Text(mychild!["Phone"],
                                   style: GoogleFonts.inriaSerif(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                   )),
-                            ),
-                            Text(mychild!["Phone"],
-                                style: GoogleFonts.inriaSerif(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                )),
-                          ],
+                            ],
+                          ),
                         )
                       ],
                     ),

@@ -67,7 +67,11 @@ class _ParentActivityState extends State<ParentActivity> {
         future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:Name).get(),
         builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(
+                color: Color(0xFFF0E6174),
+              ),
+            );
           }
           if (snapshot.hasError) {
             return Text("Error:${snapshot.error}");

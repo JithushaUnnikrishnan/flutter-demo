@@ -36,7 +36,9 @@ class _AdminDaycareState extends State<AdminDaycare> {
               FirebaseFirestore.instance.collection("DaycareRegister").get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Colors.green,
+              ));
             }
             if (snapshot.hasError) {
               return Center(child: Text("Error:${snapshot.error}"));
@@ -74,7 +76,7 @@ class _AdminDaycareState extends State<AdminDaycare> {
                           ],
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * .65,
+                          width: MediaQuery.of(context).size.width * .1,
                         ),
                         IconButton(onPressed: (){
                          setState(() {

@@ -84,13 +84,13 @@ class _DoctorHomeState extends State<DoctorHome> {
                           ),
                           Text(
                             "Logout",
-                            style: TextStyle(
+                            style: TextStyle(color: Colors.white,
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           ),
                           Icon(
                             Icons.logout,
-                            size: 30,
-                            color: Colors.black,
+                            size: 20,
+                            color: Colors.white,
                           ),
                         ],
                       ),
@@ -109,7 +109,7 @@ class _DoctorHomeState extends State<DoctorHome> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                     child: CircularProgressIndicator(
-                      color: Colors.purple,
+                      color: Color(0xFF93B4D1),
                     ));
               }
               if (snapshot.hasError) {

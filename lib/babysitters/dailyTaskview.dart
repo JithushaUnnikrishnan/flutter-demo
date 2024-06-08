@@ -185,8 +185,11 @@ class _VideoListPageState extends State<VideoListPage> {
   }
 
   bool _isLoading = false;
+  String dateselect = '';
+  final date = new DateTime.now();
 
   Future<void> _pickAndUploadVideo() async {
+
     setState(() {
       _isLoading = true;
     });
@@ -211,6 +214,7 @@ class _VideoListPageState extends State<VideoListPage> {
           'uploaded_at': Timestamp.now(),
           "StudentId": Stid,
           "Teacherid": ID,
+          'date': DateFormat('dd/MM/yyyy').format(date),
           // 'date': DateFormat('dd/MM/yyyy').format(date),
         });
 
@@ -272,7 +276,7 @@ class _VideoListPageState extends State<VideoListPage> {
 
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("",style: TextStyle(fontSize: 12),),
+                              child: Text(video['date'],style: TextStyle(fontSize: 12),),
                             ),
                             SizedBox(width: 10,),
                           ],),

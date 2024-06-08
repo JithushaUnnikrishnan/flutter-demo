@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/daycare/daycare_staff.dart';
+import 'package:demo/daycare/tabbardaycare.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DaycareStafadd extends StatefulWidget {
   const DaycareStafadd({super.key});
@@ -11,22 +13,40 @@ class DaycareStafadd extends StatefulWidget {
 }
 
 class _DaycareStafaddState extends State<DaycareStafadd> {
+  var name;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      name = spref.getString("name");
+    });
+    print("sharedPreference Data get");
+  }
   final formkey = GlobalKey<FormState>();
   var staffname=TextEditingController();
   var phone=TextEditingController();
   var email=TextEditingController();
   var qualification=TextEditingController();
+
   Future<dynamic>DayAddStaff() async {await FirebaseFirestore.instance.collection("Daycare AddStaff").add(
       {
         "Staff Name":staffname.text,
         "Phone":phone.text,
         "Email":email.text,
-        "Qualification":qualification.text
+        "Qualification":qualification.text,
+        "Daycare Name":name
+
+
       });
   Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-          builder: (context) => DaycareStaff()));
+          builder: (context) => DaycareTabbar()));
   }
   @override
   Widget build(BuildContext context) {
@@ -109,7 +129,7 @@ class _DaycareStafaddState extends State<DaycareStafadd> {
                       ),
                     ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(14, 97, 116, 0.99,)
+                        borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(117, 10, 100, 1,)
                     ),
                   ),
                 ),

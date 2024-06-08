@@ -58,7 +58,9 @@ class _BabysitterFoodmenuState extends State<BabysitterFoodmenu> {
           future: FirebaseFirestore.instance.collection("Daycarefoodadd").where("Daycare Name",isEqualTo: Daycarename).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Color(0xFFE5C535),
+              ));
             }
             if (snapshot.hasError) {
               return Text("Error:${snapshot.error}");
@@ -72,7 +74,7 @@ class _BabysitterFoodmenuState extends State<BabysitterFoodmenu> {
                   // color: Colors.grey.shade100,
                   // height: 900,width: double.infinity,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
                         children: [
@@ -148,7 +150,7 @@ class _BabysitterFoodmenuState extends State<BabysitterFoodmenu> {
                       ),
                       Text(
                         "Thursday",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
                       ),
                       ListTile(
                         leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
@@ -168,7 +170,7 @@ class _BabysitterFoodmenuState extends State<BabysitterFoodmenu> {
                       ),
                       Text(
                         "Friday",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
                       ),
                       ListTile(
                         leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),

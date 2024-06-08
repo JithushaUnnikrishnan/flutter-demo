@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo/daycare/tabbardaycare.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,7 +33,7 @@ class _StaffEditState extends State<StaffEdit> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DaycareStaff()));
+            builder: (context) => DaycareTabbar()));
   }
 
   @override
@@ -104,7 +105,7 @@ class _StaffEditState extends State<StaffEdit> {
                       ),
                     ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(14, 97, 116, 0.99,)
+                        borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(117, 10, 100, 1,)
                     ),
                   ),
                 ),

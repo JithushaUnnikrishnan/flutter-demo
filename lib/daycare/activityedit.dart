@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import 'daycare_activity.dart';
+import 'daycare_home.dart';
 
 class ActivityEdit extends StatefulWidget {
   const ActivityEdit({super.key, required this.id});
@@ -48,7 +49,7 @@ class _ActivityEditState extends State<ActivityEdit> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DaycareActivity()));
+                            builder: (context) => DaycareHome()));
                   },
                   child: Icon(Icons.arrow_back)),
               SizedBox(

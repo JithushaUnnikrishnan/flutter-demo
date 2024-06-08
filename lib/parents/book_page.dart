@@ -29,7 +29,7 @@ class _SuccessPageState extends State<SuccessPage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
                 child: CircularProgressIndicator(
-              color: Colors.purple,
+              color: Color(0xFF93B4D1),
             ));
           }
           if (snapshot.hasError) {

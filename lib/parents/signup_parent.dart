@@ -130,6 +130,7 @@ class _ParentSignupState extends State<ParentSignup> {
             Padding(
               padding: const EdgeInsets.only(right: 40, left: 20),
               child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 obscureText: true,
                 controller: password,
                 validator: (value) {
@@ -137,7 +138,7 @@ class _ParentSignupState extends State<ParentSignup> {
                     return "Empty Password !";
                   }
                 },
-                keyboardType: TextInputType.emailAddress,
+
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),

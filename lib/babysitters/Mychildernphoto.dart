@@ -55,7 +55,9 @@ class _TeacherChildprofileState extends State<TeacherChildprofile> {
         future: FirebaseFirestore.instance.collection("ParentRegister").where("Daycare name",isEqualTo:Daycarename ).get(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator(
+              color: Color(0xFF0E6174),
+            ));
           }
           if (snapshot.hasError) {
             return Text("Error:${snapshot.error}");

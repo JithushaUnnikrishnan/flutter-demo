@@ -20,7 +20,11 @@ class DoctorProfile extends StatefulWidget {
 
 class _DoctorProfileState extends State<DoctorProfile> {
   PickedFile? _image;
+  bool isloading = false;
   Future<void> _getImage() async {
+    setState(() {
+      isloading = true;
+    });
     final pickedFile =
     await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -57,6 +61,9 @@ class _DoctorProfileState extends State<DoctorProfile> {
             content: Text('Profile updated successfully'),
           ),
         );
+        setState(() {
+          isloading = false;
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -104,7 +111,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
-            color: Colors.purple,
+            color: Color(0xFF93B4D1),
           ));
         }
         if (snapshot.hasError) {
@@ -179,24 +186,28 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           child: Row(
                             children: [
                               Column(children: [
-                                Doctor!["path"] == "1"
-                                    ? Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 5, top: 15),
-                                        child: Container(
-                                          height: MediaQuery.of(context).size.height * .09,
-                                            width: MediaQuery.of(context).size.width * .15,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: DecorationImage(fit: BoxFit.fill,
-                                                  image: AssetImage(
-                                                      "assets/m.png"))),
-                                          // child: CircleAvatar(
-                                          //   radius: 50,
-                                          //   backgroundColor: Colors.transparent,
-                                          // ),
-                                        ))
+                                // Doctor!["path"] == "1"
+                                //     ? Padding(
+                                //         padding: const EdgeInsets.only(
+                                //             left: 5, top: 15),
+                                //         child: Container(
+                                //           height: MediaQuery.of(context).size.height * .09,
+                                //             width: MediaQuery.of(context).size.width * .15,
+                                //           decoration: BoxDecoration(
+                                //               borderRadius:
+                                //                   BorderRadius.circular(10),
+                                //               image: DecorationImage(fit: BoxFit.fill,
+                                //                   image: AssetImage(
+                                //                       "assets/m.png"))),
+                                //           // child: CircleAvatar(
+                                //           //   radius: 50,
+                                //           //   backgroundColor: Colors.transparent,
+                                //           // ),
+                                //         ))
+                                isloading
+                                    ? CircularProgressIndicator(
+                                  color: Color(0xFF93B4D1),
+                                )
                                     : Padding(
                                         padding: const EdgeInsets.only(
                                             left: 5, top: 15),

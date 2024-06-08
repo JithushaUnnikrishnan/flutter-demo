@@ -57,7 +57,7 @@ class _HealthViewState extends State<HealthView> {
         final health = snapshot.data?.docs ?? [];
         return Scaffold(
           appBar: AppBar(
-              automaticallyImplyLeading: false,
+
               title: Row(
                 children: [
                   // InkWell(

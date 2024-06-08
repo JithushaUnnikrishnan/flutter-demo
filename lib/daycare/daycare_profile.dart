@@ -82,22 +82,26 @@ class _DaycareProfileState extends State<DaycareProfile> {
                   ),
                   Row(
                     children: [
-                      Icon(CupertinoIcons.building_2_fill),
+                      Icon(CupertinoIcons.building_2_fill,color: Colors.grey,),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * .04,
                       ),
                       Text('Name',
-                          style: GoogleFonts.inriaSerif(
+                          style: GoogleFonts.inriaSerif(color: Colors.grey,
                             fontSize: 20,
                           )),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 208),
-                    child: Text(Daycare!["Username"],
-                        style: GoogleFonts.inriaSerif(
-                          fontSize: 20,
-                        )),
+                    padding: const EdgeInsets.only(top: 15),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .9,
+
+                      child: Text(Daycare!["Username"],
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 20,
+                          )),
+                    ),
                   ),
                   Divider(),
                   SizedBox(
@@ -105,22 +109,28 @@ class _DaycareProfileState extends State<DaycareProfile> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.report),
+                      Icon(Icons.report,color: Colors.grey,),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * .04,
                       ),
                       Text('Address',
-                          style: GoogleFonts.inriaSerif(
+                          style: GoogleFonts.inriaSerif(color: Colors.grey,
                             fontSize: 20,
                           )),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 225),
-                    child: Text(Daycare!["PreschoolAddress"],
-                        style: GoogleFonts.inriaSerif(
-                          fontSize: 18,
-                        )),
+                    padding: const EdgeInsets.only(top: 15),
+
+
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .9,
+
+                      child: Text(Daycare!["PreschoolAddress"],
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 18,
+                          )),
+                    ),
                   ),
                   Divider(),
                   SizedBox(
@@ -128,22 +138,24 @@ class _DaycareProfileState extends State<DaycareProfile> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.call),
+                      Icon(Icons.call,color: Colors.grey,),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * .04,
                       ),
                       Text('Phone',
-                          style: GoogleFonts.inriaSerif(
+                          style: GoogleFonts.inriaSerif(color: Colors.grey,
                             fontSize: 20,
                           )),
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 200),
-                    child: Text(Daycare!["Phone"],
-                        style: GoogleFonts.inriaSerif(
-                          fontSize: 20,
-                        )),
+                    padding: const EdgeInsets.only(top: 15),
+                    child: SizedBox( width: MediaQuery.of(context).size.width * .9,
+                      child: Text(Daycare!["Phone"],
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 20,
+                          )),
+                    ),
                   ),
                   Divider(),
                   Padding(

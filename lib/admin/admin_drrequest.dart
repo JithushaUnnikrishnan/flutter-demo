@@ -23,8 +23,10 @@ class _AdmindrRequestState extends State<AdmindrRequest> {
         builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
-                child: CircularProgressIndicator(
-                  color: Colors.purple,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.blue,
+                  ),
                 ));
           }
           if (snapshot.hasError) {

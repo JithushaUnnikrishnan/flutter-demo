@@ -59,7 +59,9 @@ class _ParentFoodState extends State<ParentFood> {
           future: FirebaseFirestore.instance.collection("Daycarefoodadd").where("Daycare Name",isEqualTo: Daycarename).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Color(0xFFFEE77F),
+              ));
             }
             if (snapshot.hasError) {
               return Text("Error:${snapshot.error}");
@@ -73,7 +75,7 @@ class _ParentFoodState extends State<ParentFood> {
                   // color: Colors.grey.shade100,
                   // height: 900,width: double.infinity,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Row(
                         children: [
@@ -149,7 +151,7 @@ class _ParentFoodState extends State<ParentFood> {
                       ),
                       Text(
                         "Thursday",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
                       ),
                       ListTile(
                         leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
@@ -169,7 +171,7 @@ class _ParentFoodState extends State<ParentFood> {
                       ),
                       Text(
                         "Friday",
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
                       ),
                       ListTile(
                         leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),

@@ -53,7 +53,9 @@ class _AdminDoctorState extends State<AdminDoctor> {
           future: FirebaseFirestore.instance.collection("DoctorReg").where("status",isEqualTo: 0).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Colors.blue,
+              ));
             }
             if (snapshot.hasError) {
               return Center(child: Text("Error:${snapshot.error}"));

@@ -23,7 +23,7 @@ class _ParentBookingState extends State<ParentBooking> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
-            color: Colors.purple,
+            color: Color(0xFF93B4D1),
           ));
         }
         if (snapshot.hasError) {
@@ -58,72 +58,113 @@ class _ParentBookingState extends State<ParentBooking> {
                             ]),
                         Padding(
                           padding: const EdgeInsets.only(left: 25),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                Doctor[index]["Username"],
-                                style: GoogleFonts.holtwoodOneSc(fontSize: 15),
-                              ),
-                              Text(
-                                Doctor[index]["specialization"],
-                                style: GoogleFonts.inter(fontSize: 16),
-                              ),
-                              // Row(
-                              //   children: [
-                              //     Icon(
-                              //       Icons.star,
-                              //       color: Colors.yellow,
-                              //       size: 15,
-                              //     ),
-                              //     Icon(Icons.star,
-                              //         color: Colors.yellow, size: 15),
-                              //     Icon(Icons.star,
-                              //         color: Colors.yellow, size: 15),
-                              //     Icon(Icons.star,
-                              //         color: Colors.yellow, size: 15),
-                              //     Icon(Icons.star,
-                              //         color: Colors.yellow, size: 15),
-                              //   ],
-                              // ),
-                              Text(Doctor[index]["specialization"],
-                                  style: GoogleFonts.inter(fontSize: 16)),
-                              Text(Doctor[index]["experience"],
-                                  style: GoogleFonts.inter(fontSize: 16)),
-                              Text(Doctor[index]["officeaddress"],
-                                  style: GoogleFonts.inter(fontSize: 16)),
-                              Text(Doctor[index]["homeaddress"],
-                                  style: GoogleFonts.inter(fontSize: 16)),
-                              Text(Doctor[index]["Phone"],
-                                  style: GoogleFonts.inter(fontSize: 16)),
-                              SizedBox(
-                                  height: MediaQuery.of(context).size.height *
-                                      .021),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ParentBookingDr(
-                                                          id: Doctor[index].id,
-                                                        )));
-                                          },
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.all(10),
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width*.5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Doctor[index]["Username"],
+                                  style: GoogleFonts.holtwoodOneSc(fontSize: 15),
+                                ),
+                                Text(
+                                  Doctor[index]["specialization"],
+                                  style: GoogleFonts.inter(fontSize: 16),
+                                ),
+                                // Row(
+                                //   children: [
+                                //     Icon(
+                                //       Icons.star,
+                                //       color: Colors.yellow,
+                                //       size: 15,
+                                //     ),
+                                //     Icon(Icons.star,
+                                //         color: Colors.yellow, size: 15),
+                                //     Icon(Icons.star,
+                                //         color: Colors.yellow, size: 15),
+                                //     Icon(Icons.star,
+                                //         color: Colors.yellow, size: 15),
+                                //     Icon(Icons.star,
+                                //         color: Colors.yellow, size: 15),
+                                //   ],
+                                // ),
+                                Text(Doctor[index]["specialization"],
+                                    style: GoogleFonts.inter(fontSize: 16)),
+                                Text(Doctor[index]["experience"],
+                                    style: GoogleFonts.inter(fontSize: 16)),
+                                Text(Doctor[index]["officeaddress"],
+                                    style: GoogleFonts.inter(fontSize: 16)),
+                                Text(Doctor[index]["homeaddress"],
+                                    style: GoogleFonts.inter(fontSize: 16)),
+                                Text(Doctor[index]["Phone"],
+                                    style: GoogleFonts.inter(fontSize: 16)),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        .021),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ParentBookingDr(
+                                                            id: Doctor[index].id,
+                                                          )));
+                                            },
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10),
+                                              child: Container(
+                                                  child: Center(
+                                                    child: Text(
+                                                      "BOOK",
+                                                      style: GoogleFonts.jomhuria(
+                                                          fontSize: 20,color:Colors.white ),
+                                                    ),
+                                                  ),
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      .031,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      .2,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4),
+                                                      color: Colors.blue)),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .01,
+                                          ),
+                                          InkWell(
+                                            onTap: () async {
+                                              final Phone=Doctor[index]["Phone"];
+                                              final url = 'tel:$Phone';
+                                              if (await canLaunch(url)) {
+                                              await launch(url);
+                                              } else {
+                                              throw 'Could not launch $url';
+                                              }
+                                            },
                                             child: Container(
                                                 child: Center(
                                                   child: Text(
-                                                    "BOOK",
+                                                    "CALL",
                                                     style: GoogleFonts.jomhuria(
-                                                        fontSize: 20,color:Colors.white ),
+                                                        fontSize: 20,color: Colors.white),
                                                   ),
                                                 ),
                                                 height: MediaQuery.of(context)
@@ -136,54 +177,16 @@ class _ParentBookingState extends State<ParentBooking> {
                                                     .2,
                                                 decoration: BoxDecoration(
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            4),
-                                                    color: Colors.blue)),
+                                                        BorderRadius.circular(5),
+                                                    color: Colors.green[400])),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .050,
-                                        ),
-                                        InkWell(
-                                          onTap: () async {
-                                            final Phone=Doctor[index]["Phone"];
-                                            final url = 'tel:$Phone';
-                                            if (await canLaunch(url)) {
-                                            await launch(url);
-                                            } else {
-                                            throw 'Could not launch $url';
-                                            }
-                                          },
-                                          child: Container(
-                                              child: Center(
-                                                child: Text(
-                                                  "CALL",
-                                                  style: GoogleFonts.jomhuria(
-                                                      fontSize: 20,color: Colors.white),
-                                                ),
-                                              ),
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  .031,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  .2,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(5),
-                                                  color: Colors.green[400])),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],

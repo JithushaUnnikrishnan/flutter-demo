@@ -20,7 +20,11 @@ class EnrollChild extends StatefulWidget {
 
 class _EnrollChildState extends State<EnrollChild> {
   PickedFile? _image;
+  bool isloading = false;
   Future<void> _getImage() async {
+    setState(() {
+      isloading = true;
+    });
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
@@ -58,6 +62,9 @@ class _EnrollChildState extends State<EnrollChild> {
             content: Text('Profile updated successfully'),
           ),
         );
+        setState(() {
+          isloading = false;
+        });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -107,7 +114,7 @@ class _EnrollChildState extends State<EnrollChild> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
-            color: Colors.purple,
+            color: Color(0xFF0E6174),
           ));
         }
         if (snapshot.hasError) {
@@ -169,16 +176,20 @@ class _EnrollChildState extends State<EnrollChild> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * .02,
                       ),
-                      Parentchildprofile!["path"] == '1'
-                          ? Container(
-                              height: MediaQuery.of(context).size.height * .09,
-                              width: MediaQuery.of(context).size.width * .15,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/m.png"),
-                                      fit: BoxFit.fill)),
-                            )
+                      // Parentchildprofile!["path"] == '1'
+                      //     ? Container(
+                      //         height: MediaQuery.of(context).size.height * .09,
+                      //         width: MediaQuery.of(context).size.width * .15,
+                      //         decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(10),
+                      //             image: DecorationImage(
+                      //                 image: AssetImage("assets/m.png"),
+                      //                 fit: BoxFit.fill)),
+                      //       )
+                      isloading
+                          ? CircularProgressIndicator(
+                        color: Color(0xFFC65264),
+                      )
                           : Container(
                               height: MediaQuery.of(context).size.height * .09,
                               width: MediaQuery.of(context).size.width * .15,
@@ -240,9 +251,9 @@ class _EnrollChildState extends State<EnrollChild> {
                         height: MediaQuery.of(context).size.height * .01,
                       ),
                       Text(Parentchildprofile!["Parent Name"]),
-                      Divider(
-                        endIndent: 20,
-                      ),
+                      // Divider(
+                      //   endIndent: 20,
+                      // ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.1,
                       ),

@@ -59,7 +59,9 @@ class _DaycareChildrenState extends State<DaycareChildren> {
           future: FirebaseFirestore.instance.collection('ParentRegister').where("Daycare name",isEqualTo:name).get(),
           builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return Center(child: CircularProgressIndicator(
+                color: Color(0xFF750A64),
+              ));
             }
             if (snapshot.hasError) {
               return Text("Error:${snapshot.error}");
