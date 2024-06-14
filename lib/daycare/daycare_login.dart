@@ -69,7 +69,7 @@ String id="";
                 ),
                 borderRadius: BorderRadius.circular(50),
               ),
-              padding: const EdgeInsets.all(30),
+
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -88,46 +88,46 @@ String id="";
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: email,
-                    validator: (value){
-                      if (value!.isEmpty){
-                        return "Empty Email !";
-                      }
-                    },
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      hintText: "Email",
-                      filled: true,
-                      fillColor: Colors.grey[50],
-                      labelStyle: const TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    controller: password,
-                    validator: (value){
-                      if (value!.isEmpty){
-                        return "Empty Password !";
-                      }
-                    },
-                    decoration: InputDecoration(
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: email,
+                      validator: (value){
+                        if (value!.isEmpty){
+                          return "Empty Email !";
+                        }
+                      },
+                      decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        hintText: "Password",
+                        hintText: "Email",
                         filled: true,
                         fillColor: Colors.grey[50],
-                        labelStyle: const TextStyle(color: Colors.grey)),
+                        labelStyle: const TextStyle(color: Colors.grey),
+                      ),
+                    ),
                   ),
-                  const SizedBox(
-                    height: 5,
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: password,
+                      validator: (value){
+                        if (value!.isEmpty){
+                          return "Empty Password !";
+                        }
+                      },
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          hintText: "Password",
+                          filled: true,
+                          fillColor: Colors.grey[50],
+                          labelStyle: const TextStyle(color: Colors.grey)),
+                    ),
                   ),
+
                   // Row(
                   //   children: [
                   //     Expanded(
@@ -147,39 +147,45 @@ String id="";
                   //         )),
                   //   ],
                   // ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (formkey.currentState!.validate()){
-                          DayLog();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          foregroundColor: Colors.white),
-                      child: const Text(
-                        "Login",
-                      )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (formkey.currentState!.validate()){
+                            DayLog();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                        child: const Text(
+                          "Login",
+                        )),
+                  ),
                  SizedBox(
                     height: MediaQuery.of(context).size.height*.05,
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const DaycareRegister()));
-                    },
-                    style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                      mouseCursor:
-                      MaterialStateProperty.all(SystemMouseCursors.basic),
-                    ),
-                    child: const Text(
-                      "Create account?",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 170),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DaycareRegister()));
+                      },
+                      style: ButtonStyle(
+                        overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        mouseCursor:
+                        MaterialStateProperty.all(SystemMouseCursors.basic),
+                      ),
+                      child: Text(
+                        "Create account?",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
                     ),
                   )
                 ],

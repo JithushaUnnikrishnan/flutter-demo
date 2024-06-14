@@ -23,7 +23,7 @@ List<Color> color = [
   Color(0XFFEBFAFE),
 ];
 class _TeacherActivityState extends State<TeacherActivity> {
-  var Daycarename;
+  var name;
 
   void initState() {
     super.initState();
@@ -33,8 +33,7 @@ class _TeacherActivityState extends State<TeacherActivity> {
   Future<void> getData() async {
     SharedPreferences spref = await SharedPreferences.getInstance();
     setState(() {
-      Daycarename = spref.getString("Daycare name");
-
+      name = spref.getString("name");
     });
     print("sharedPreference Data get");
   }
@@ -66,7 +65,7 @@ class _TeacherActivityState extends State<TeacherActivity> {
             ]),
           ),
           body: FutureBuilder(
-            future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:Daycarename).get(),
+            future: FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo:name).get(),
             builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator(

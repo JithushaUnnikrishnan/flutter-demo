@@ -72,7 +72,7 @@ class _ParentLoginState extends State<ParentLogin> {
                   fit: BoxFit.fill,
                 ),
               ),
-              padding: const EdgeInsets.all(30),
+
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -91,46 +91,46 @@ class _ParentLoginState extends State<ParentLogin> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  TextFormField(
-                    controller: email,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty email !";
-                      }
-                    },
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      hintText: "Email",
-                      filled: true,
-                      fillColor: Colors.grey[50],
-                      labelStyle: const TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    controller: password,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Password !";
-                      }
-                    },
-                    decoration: InputDecoration(
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      controller: email,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Empty email !";
+                        }
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        hintText: "Password",
+                        hintText: "Email",
                         filled: true,
                         fillColor: Colors.grey[50],
-                        labelStyle: const TextStyle(color: Colors.grey)),
+                        labelStyle:  TextStyle(color: Colors.grey),
+                      ),
+                    ),
                   ),
-                  const SizedBox(
-                    height: 10,
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: password,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Empty Password !";
+                        }
+                      },
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          hintText: "Password",
+                          filled: true,
+                          fillColor: Colors.grey[50],
+                          labelStyle:  TextStyle(color: Colors.grey)),
+                    ),
                   ),
+
                   // InkWell(
                   //   onTap: () {
                   //     Navigator.push(
@@ -151,40 +151,44 @@ class _ParentLoginState extends State<ParentLogin> {
                   //     ],
                   //   ),
                   // ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (formkey.currentState!.validate()) {
-                          ParentLog();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          foregroundColor: Colors.white),
-                      child: const Text(
-                        "Login",
-                      )),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * .05,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 70),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (formkey.currentState!.validate()) {
+                            ParentLog();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                        child:  Text(
+                          "Login",
+                        )),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ParentSignup()));
-                    },
-                    style: ButtonStyle(
-                      overlayColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                      mouseCursor:
-                          MaterialStateProperty.all(SystemMouseCursors.basic),
-                    ),
-                    child: const Text(
-                      "Create account?",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 160),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ParentSignup()));
+                      },
+                      style: ButtonStyle(
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        mouseCursor:
+                            MaterialStateProperty.all(SystemMouseCursors.basic),
+                      ),
+                      child: const Text(
+                        "Create account?",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
                     ),
                   )
                 ],

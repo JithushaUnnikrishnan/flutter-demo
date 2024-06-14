@@ -68,7 +68,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                   fit: BoxFit.fill,
                 ),
               ),
-              padding: const EdgeInsets.all(30),
+
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -87,46 +87,46 @@ class _DoctorLoginState extends State<DoctorLogin> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: email,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Email!";
-                      }
-                    },
-                    decoration: InputDecoration(
-                      border: const OutlineInputBorder(),
-                      hintText: "Email",
-                      filled: true,
-                      fillColor: Colors.grey[50],
-                      labelStyle: const TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    controller: password,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Empty Password !";
-                      }
-                    },
-                    decoration: InputDecoration(
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: email,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Empty Email!";
+                        }
+                      },
+                      decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        hintText: "Password",
+                        hintText: "Email",
                         filled: true,
                         fillColor: Colors.grey[50],
-                        labelStyle: const TextStyle(color: Colors.grey)),
+                        labelStyle: const TextStyle(color: Colors.grey),
+                      ),
+                    ),
                   ),
-                  const SizedBox(
-                    height: 10,
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: password,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Empty Password !";
+                        }
+                      },
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          hintText: "Password",
+                          filled: true,
+                          fillColor: Colors.grey[50],
+                          labelStyle: const TextStyle(color: Colors.grey)),
+                    ),
                   ),
+
                   // InkWell(
                   //   onTap: () {
                   //     Navigator.push(
@@ -147,40 +147,44 @@ class _DoctorLoginState extends State<DoctorLogin> {
                   //     ],
                   //   ),
                   // ),
-                  ElevatedButton(
-                      onPressed: () {
-                        if (formkey.currentState!.validate()) {
-                         DoctorLog();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          foregroundColor: Colors.white),
-                      child: const Text(
-                        "Login",
-                      )),
-                  const SizedBox(
-                    height: 20,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (formkey.currentState!.validate()) {
+                           DoctorLog();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white),
+                        child: const Text(
+                          "Login",
+                        )),
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DoctorSignup()));
-                    },
-                    style: ButtonStyle(
-                      overlayColor:
-                          MaterialStateProperty.all(Colors.transparent),
-                      mouseCursor:
-                          MaterialStateProperty.all(SystemMouseCursors.basic),
-                    ),
-                    child: const Text(
-                      "Create account?",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 170),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DoctorSignup()));
+                      },
+                      style: ButtonStyle(
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        mouseCursor:
+                            MaterialStateProperty.all(SystemMouseCursors.basic),
+                      ),
+                      child: const Text(
+                        "Create account?",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
                     ),
                   )
                 ],

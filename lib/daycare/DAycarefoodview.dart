@@ -36,14 +36,29 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Food",style: TextStyle(color: Colors.white),),
-          backgroundColor: Color.fromRGBO(117, 10, 100, 1),toolbarHeight: 100,),
-        floatingActionButton: FloatingActionButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>DaycareFood()));},child: Text("Add"),),
-        body:FutureBuilder(
-          future: FirebaseFirestore.instance.collection("Daycarefoodadd").where("Daycare Name",isEqualTo: Daycarename).get(),
-          builder: (context, AsyncSnapshot<QuerySnapshot>snapshot) {
+          title: Text(
+            "Food",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromRGBO(117, 10, 100, 1),
+          toolbarHeight: 100,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => DaycareFood()));
+          },
+          child: Text("Add"),
+        ),
+        body: FutureBuilder(
+          future: FirebaseFirestore.instance
+              .collection("Daycarefoodadd")
+              .where("Daycare Name", isEqualTo: Daycarename)
+              .get(),
+          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator(
+              return Center(
+                  child: CircularProgressIndicator(
                 color: Color(0xFF750A64),
               ));
             }
@@ -51,11 +66,13 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
               return Text("Error:${snapshot.error}");
             }
             final Food = snapshot.data?.docs ?? [];
-            return  ListView.builder(
+            return ListView.builder(
               itemCount: Food.length,
-              itemBuilder: (context, index,) {
-
-                return  SingleChildScrollView(
+              itemBuilder: (
+                context,
+                index,
+              ) {
+                return SingleChildScrollView(
                   // color: Colors.grey.shade100,
                   // height: 900,width: double.infinity,
                   child: Column(
@@ -64,16 +81,31 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                       Row(
                         children: [
                           Text(Food[index]["date"]),
-                          IconButton(onPressed: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>FoodUpdate(id:Food[index].id)));}, icon: Icon(Icons.edit)),
-                          IconButton(onPressed: (){setState(() {
-                            FirebaseFirestore.instance.collection("Daycarefoodadd").doc(Food[index].id).delete();
-                          });}, icon: Icon(Icons.delete)),
+                          IconButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            FoodUpdate(id: Food[index].id)));
+                              },
+                              icon: Icon(Icons.edit)),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  FirebaseFirestore.instance
+                                      .collection("Daycarefoodadd")
+                                      .doc(Food[index].id)
+                                      .delete();
+                                });
+                              },
+                              icon: Icon(Icons.delete)),
                         ],
                       ),
-
                       Text(
                         "Monday",
-                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       ListTile(
                         leading: Icon(
@@ -98,15 +130,17 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                       ),
                       Text(
                         "Tuesday",
-                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       ListTile(
-                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        leading: Icon(CupertinoIcons.sunrise,
+                            color: Colors.red.shade300),
                         title: Text(Food[index]["MBreakFast"]),
                       ),
                       ListTile(
-                        leading:
-                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        leading: Icon(CupertinoIcons.sun_max,
+                            color: Colors.yellow.shade700),
                         title: Text(Food[index]["TuLunch"]),
                       ),
                       ListTile(
@@ -118,15 +152,17 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                       ),
                       Text(
                         "Wednesday",
-                        style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       ListTile(
-                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        leading: Icon(CupertinoIcons.sunrise,
+                            color: Colors.red.shade300),
                         title: Text(Food[index]["WBreakFast"]),
                       ),
                       ListTile(
-                        leading:
-                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        leading: Icon(CupertinoIcons.sun_max,
+                            color: Colors.yellow.shade700),
                         title: Text(Food[index]["WLunch"]),
                       ),
                       ListTile(
@@ -138,15 +174,17 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                       ),
                       Text(
                         "Thursday",
-                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       ListTile(
-                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        leading: Icon(CupertinoIcons.sunrise,
+                            color: Colors.red.shade300),
                         title: Text(Food[index]["ThBreakFast"]),
                       ),
                       ListTile(
-                        leading:
-                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        leading: Icon(CupertinoIcons.sun_max,
+                            color: Colors.yellow.shade700),
                         title: Text(Food[index]["ThLunch"]),
                       ),
                       ListTile(
@@ -158,15 +196,17 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                       ),
                       Text(
                         "Friday",
-                        style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                       ListTile(
-                        leading: Icon(CupertinoIcons.sunrise, color: Colors.red.shade300),
+                        leading: Icon(CupertinoIcons.sunrise,
+                            color: Colors.red.shade300),
                         title: Text(Food[index]["FBreakFast"]),
                       ),
                       ListTile(
-                        leading:
-                        Icon(CupertinoIcons.sun_max, color: Colors.yellow.shade700),
+                        leading: Icon(CupertinoIcons.sun_max,
+                            color: Colors.yellow.shade700),
                         title: Text(Food[index]["FLunch"]),
                       ),
                       ListTile(
@@ -175,16 +215,14 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                           color: Colors.deepOrange,
                         ),
                         title: Text(Food[index]["FSnack"]),
-
                       ),
                       Divider(),
                     ],
                   ),
                 );
-              },);
+              },
+            );
           },
-        )
-
-    );
+        ));
   }
 }

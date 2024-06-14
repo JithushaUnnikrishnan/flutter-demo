@@ -19,7 +19,7 @@ class _AdmindrRequestState extends State<AdmindrRequest> {
      ),),
 
       body: FutureBuilder(
-        future: FirebaseFirestore.instance.collection("DoctorReg").get(),
+        future: FirebaseFirestore.instance.collection("DoctorReg").where("status",isEqualTo: 1).get(),
         builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
