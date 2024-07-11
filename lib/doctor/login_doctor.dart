@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo/doctor/signup_doctor.dart';
+import 'package:demo/daycare/signup_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +24,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
     final user = await FirebaseFirestore.instance
         .collection('DoctorReg')
         .where('email', isEqualTo: email.text)
-        .where('password', isEqualTo: password.text).where("status",isEqualTo: 1)
+        .where('password', isEqualTo: password.text)
 
         .get();
     if (user.docs.isNotEmpty) {
@@ -163,30 +163,30 @@ class _DoctorLoginState extends State<DoctorLogin> {
                         )),
                   ),
 
-                  Padding(
-                    padding: const EdgeInsets.only(top: 170),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DoctorSignup()));
-                      },
-                      style: ButtonStyle(
-                        overlayColor:
-                            MaterialStateProperty.all(Colors.transparent),
-                        mouseCursor:
-                            MaterialStateProperty.all(SystemMouseCursors.basic),
-                      ),
-                      child: const Text(
-                        "Create account?",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ),
-                  )
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 170),
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) => DoctorSignup()));
+                  //     },
+                  //     style: ButtonStyle(
+                  //       overlayColor:
+                  //           MaterialStateProperty.all(Colors.transparent),
+                  //       mouseCursor:
+                  //           MaterialStateProperty.all(SystemMouseCursors.basic),
+                  //     ),
+                  //     child: const Text(
+                  //       "Create account?",
+                  //       style: TextStyle(
+                  //           color: Colors.black,
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 20),
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ),

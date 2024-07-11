@@ -26,6 +26,22 @@ class _DaycareEditState extends State<DaycareEdit> {
     setState(() {
       ID = spref.getString("id");
     });
+
+    DocumentSnapshot docSnapshot = await FirebaseFirestore.instance
+        .collection("DaycareRegister")
+        .doc(ID)
+        .get();
+
+
+    if (docSnapshot.exists) {
+      var data = docSnapshot.data() as Map<String, dynamic>;
+      setState(() {
+        preschoolname.text = data['Username'] ?? '';
+        phone.text = data['Phone'] ?? '';
+        PreschoolAddress.text = data['PreschoolAddress'] ?? '';
+
+      });
+    }
     print("sharedPreference Data get");
   }
 

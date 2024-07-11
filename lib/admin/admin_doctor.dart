@@ -133,7 +133,13 @@ class _AdminDoctorState extends State<AdminDoctor> {
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * .01),
-                            ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.blue,foregroundColor: Colors.white,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.blue,
+                                    foregroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
                                 onPressed: () {
                                   Navigator.push(
                                       context,

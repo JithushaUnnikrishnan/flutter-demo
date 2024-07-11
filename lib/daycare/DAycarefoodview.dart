@@ -31,11 +31,41 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
     });
     print("sharedPreference Data get");
   }
+  void showDeleteDialog(BuildContext context, String docId) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirm Deletion"),
+          content: Text("Are you sure you want to delete this  week menu?"),
+          actions: [
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                FirebaseFirestore.instance
+                    .collection("Daycarefoodadd")
+                    .doc(docId)
+                    .delete();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+
           title: Text(
             "Food",
             style: TextStyle(color: Colors.white),
@@ -50,11 +80,11 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
           },
           child: Text("Add"),
         ),
-        body: FutureBuilder(
-          future: FirebaseFirestore.instance
+        body: StreamBuilder(
+          stream: FirebaseFirestore.instance
               .collection("Daycarefoodadd")
               .where("Daycare Name", isEqualTo: Daycarename)
-              .get(),
+              .snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
@@ -92,12 +122,7 @@ class _DaycareFoodviewState extends State<DaycareFoodview> {
                               icon: Icon(Icons.edit)),
                           IconButton(
                               onPressed: () {
-                                setState(() {
-                                  FirebaseFirestore.instance
-                                      .collection("Daycarefoodadd")
-                                      .doc(Food[index].id)
-                                      .delete();
-                                });
+                                showDeleteDialog(context, Food[index].id);
                               },
                               icon: Icon(Icons.delete)),
                         ],

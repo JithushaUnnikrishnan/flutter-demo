@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../logo/logo_page.dart';
+
 class DaycareProfile extends StatefulWidget {
   const DaycareProfile({super.key});
 
@@ -186,7 +188,7 @@ class _DaycareProfileState extends State<DaycareProfile> {
                         Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SelectCategoryreg()));
+                                          builder: (context) => LogoPage()));
                       },
                         child: Container(
                             child: Center(

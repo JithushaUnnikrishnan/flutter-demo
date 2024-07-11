@@ -4,6 +4,8 @@ import 'package:demo/logo/select_categoryfor%20reg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'common login.dart';
+
 class LogoPage extends StatefulWidget {
   const LogoPage({super.key});
 
@@ -27,24 +29,8 @@ class _LogoPageState extends State<LogoPage> {
         child: Column(
 
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .0250,
-            ),
 
-            Padding(
-              padding: const EdgeInsets.only(left: 250),
-              child: GestureDetector(onTap: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AdminLogin()));
-              },
-                child: Text(
-                  "Admin",
-                  style: GoogleFonts.inriaSerif(fontSize: 20,fontWeight:FontWeight.bold),
-                ),
-              ),
-            ),
+
             SizedBox(
               height: MediaQuery.of(context).size.height * .0250,
             ),

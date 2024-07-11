@@ -14,25 +14,25 @@ class DaycareLogin extends StatefulWidget {
 }
 
 class _DaycareLoginState extends State<DaycareLogin> {
-  final formkey=GlobalKey<FormState>();
-  var email=TextEditingController();
-  var password=TextEditingController();
-  String name='';
-String id="";
+  final formkey = GlobalKey<FormState>();
+  var email = TextEditingController();
+  var password = TextEditingController();
+  String name = '';
+  String id = "";
+
   void DayLog() async {
     final user = await FirebaseFirestore.instance
         .collection('DaycareRegister')
         .where('Email', isEqualTo: email.text)
         .where('Password', isEqualTo: password.text)
-
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
-      name=user.docs[0]["Username"];//username is firebase fieldname-collection
+      name = user.docs[0]["Username"]; //username is firebase fieldname-collection
 
       SharedPreferences data = await SharedPreferences.getInstance();
       data.setString('id', id);
-      data.setString("name", name);//green name data is stored
+      data.setString("name", name); //green name data is stored
 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
@@ -48,148 +48,154 @@ String id="";
       print("done");
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    return Form(key: formkey,
+    return Form(
+      key: formkey,
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
-          child: SingleChildScrollView(
-            physics: NeverScrollableScrollPhysics(),
-            child: Container(
-              height:MediaQuery.of(context).size.height*.7,
-              width: MediaQuery.of(context).size.width*.9,
-              decoration: BoxDecoration(
-
-                image: DecorationImage(
-
-                  image: AssetImage('assets/output.png',),fit: BoxFit.fill
-
-
-                ),
-                borderRadius: BorderRadius.circular(50),
-              ),
-
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Login",
-                        style: GoogleFonts.rubikGlitch(
-                          fontSize: 50,
-                          color: Colors.white,
-                        ),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF6DD5FA), Color(0xFF2980B9)],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.9),
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                        offset: Offset(0, 5),
                       ),
                     ],
                   ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: email,
-                      validator: (value){
-                        if (value!.isEmpty){
-                          return "Empty Email !";
-                        }
-                      },
-                      decoration: InputDecoration(
-                        border: const OutlineInputBorder(),
-                        hintText: "Email",
-                        filled: true,
-                        fillColor: Colors.grey[50],
-                        labelStyle: const TextStyle(color: Colors.grey),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Login",
+                        style: GoogleFonts.poppins(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[900],
+                        ),
                       ),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextFormField(
-                      obscureText: true,
-                      controller: password,
-                      validator: (value){
-                        if (value!.isEmpty){
-                          return "Empty Password !";
-                        }
-                      },
-                      decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
-                          hintText: "Password",
+                      const SizedBox(height: 30),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: email,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please enter your email";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           filled: true,
-                          fillColor: Colors.grey[50],
-                          labelStyle: const TextStyle(color: Colors.grey)),
-                    ),
-                  ),
+                          fillColor: Colors.grey[100],
+                          hintText: "Email",
+                          contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        obscureText: true,
+                        controller: password,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please enter your password";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[100],
+                          hintText: "Password",
+                          contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                        ),
+                      ),
+                      const SizedBox(height: 40),
+                      // Align(
+                      //   alignment: Alignment.centerRight,
+                      //   child: TextButton(
+                      //     onPressed: () {
+                      //       Navigator.push(context, MaterialPageRoute(
+                      //         builder: (context) => DaycareForgot(),
+                      //       ));
+                      //     },
+                      //     child: Text(
+                      //       "Forgot Password?",
+                      //       style: TextStyle(color: Colors.blue[900]),
+                      //     ),
+                      //   ),
+                      // ),
 
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //         child: Align(
-                  //           alignment: Alignment.bottomRight,
-                  //           child: InkWell(onTap: (){
-                  //             Navigator.push(
-                  //                 context,
-                  //                 MaterialPageRoute(
-                  //                     builder: (context) => DaycareForgot()));
-                  //           },
-                  //             child: Text(
-                  //               "Forgot password?",
-                  //               style: TextStyle( color: Colors.black),
-                  //             ),
-                  //           ),
-                  //         )),
-                  //   ],
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: ElevatedButton(
+                      ElevatedButton(
                         onPressed: () {
-                          if (formkey.currentState!.validate()){
+                          if (formkey.currentState!.validate()) {
                             DayLog();
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            foregroundColor: Colors.white),
-                        child: const Text(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                          backgroundColor: Colors.blue[900],
+                        ),
+                        child: Text(
                           "Login",
-                        )),
-                  ),
-                 SizedBox(
-                    height: MediaQuery.of(context).size.height*.05,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 170),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const DaycareRegister()));
-                      },
-                      style: ButtonStyle(
-                        overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        mouseCursor:
-                        MaterialStateProperty.all(SystemMouseCursors.basic),
-                      ),
-                      child: Text(
-                        "Create account?",
-                        style: TextStyle(
-                            color: Colors.black,
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                          ),
+                        ),
                       ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 40),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DaycareRegister()));
+                  },
+                  style: ButtonStyle(
+                    overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    mouseCursor: MaterialStateProperty.all(SystemMouseCursors.basic),
+                  ),
+                  child: Text(
+                    "Create account?",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ),

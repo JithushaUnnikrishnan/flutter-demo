@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo/admin/ad_home.dart';
+import 'package:demo/admin/tabbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../parents/tab bar.dart';
 
 class AdminLogin extends StatefulWidget {
   const AdminLogin({super.key});
@@ -17,7 +20,7 @@ class _AdminLoginState extends State<AdminLogin> {
       print("object");
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
-          return AdminHome();
+          return AdTabbar();
           print("data");
         },
       ));print("done");

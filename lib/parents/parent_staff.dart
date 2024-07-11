@@ -135,6 +135,7 @@ import 'package:demo/parents/parent_bottombuton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -146,10 +147,24 @@ class ParentStaff extends StatefulWidget {
 }
 
 class _ParentStaffState extends State<ParentStaff> {
+  var Daycarename;
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Daycarename = spref.getString("name");
+    });
+    print("sharedPreference Data get");
+  }
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: FirebaseFirestore.instance.collection("babysiiterReg").get(),
+      future: FirebaseFirestore.instance.collection("babysiiterReg").where("daycarename",isEqualTo: Daycarename).get(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(

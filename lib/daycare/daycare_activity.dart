@@ -29,6 +29,35 @@ class _DaycareActivityState extends State<DaycareActivity> {
     });
     print("sharedPreference Data get");
   }
+  void showDeleteDialog(BuildContext context, String docId) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Confirm Deletion"),
+          content: Text("Are you sure you want to delete this Activity?"),
+          actions: [
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                FirebaseFirestore.instance
+                    .collection("DaycareActivity")
+                    .doc(docId)
+                    .delete();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +79,9 @@ class _DaycareActivityState extends State<DaycareActivity> {
             ),
           ),
         ),
-        body: FutureBuilder(
-          future:
-              FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo: Daycarename).get(),
+        body: StreamBuilder(
+          stream:
+              FirebaseFirestore.instance.collection("DaycareActivity").where("Daycare Name",isEqualTo: Daycarename).snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator(
@@ -87,12 +116,7 @@ class _DaycareActivityState extends State<DaycareActivity> {
                               icon: Icon(Icons.edit)),
                           IconButton(
                               onPressed: () {
-                                setState(() {
-                                  FirebaseFirestore.instance
-                                      .collection("DaycareActivity")
-                                      .doc(activity[index].id)
-                                      .delete();
-                                });
+                                showDeleteDialog(context, activity[index].id);
                               },
                               icon: Icon(Icons.delete))
                         ],

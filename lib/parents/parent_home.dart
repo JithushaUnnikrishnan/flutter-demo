@@ -62,8 +62,9 @@ class _ParentHomeState extends State<ParentHome> {
         width: double.infinity,
         height: double.infinity,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox( height: MediaQuery.of(context).size.height * .055,),
+            // SizedBox( height: MediaQuery.of(context).size.height * .055,),
             InkWell(onTap: (){
               Navigator.push(
                   context,
@@ -81,7 +82,7 @@ class _ParentHomeState extends State<ParentHome> {
                           spreadRadius: 2,
                           blurRadius: 3)
                     ]),
-                height: MediaQuery.of(context).size.height * .20,
+                height: MediaQuery.of(context).size.height * .16,
                 width: MediaQuery.of(context).size.width * .90,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +97,7 @@ class _ParentHomeState extends State<ParentHome> {
                 ),
               ),
             ),
-            SizedBox( height: MediaQuery.of(context).size.height * .045,),
+            // SizedBox( height: MediaQuery.of(context).size.height * .03,),
             InkWell(onTap: (){
               Navigator.push(
                   context,
@@ -114,7 +115,7 @@ class _ParentHomeState extends State<ParentHome> {
                           spreadRadius: 2,
                           blurRadius: 3)
                     ]),
-                height: MediaQuery.of(context).size.height * .20,
+                height: MediaQuery.of(context).size.height * .16,
                 width: MediaQuery.of(context).size.width * .90,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -129,7 +130,7 @@ class _ParentHomeState extends State<ParentHome> {
                 ),
               ),
             ),
-            SizedBox( height: MediaQuery.of(context).size.height * .0450,),
+            // SizedBox( height: MediaQuery.of(context).size.height * .0450,),
             InkWell(onTap: (){
               Navigator.push(
                   context,
@@ -147,7 +148,7 @@ class _ParentHomeState extends State<ParentHome> {
                           spreadRadius: 2,
                           blurRadius: 3)
                     ]),
-                height: MediaQuery.of(context).size.height * .20,
+                height: MediaQuery.of(context).size.height * .160,
                 width: MediaQuery.of(context).size.width * .90,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

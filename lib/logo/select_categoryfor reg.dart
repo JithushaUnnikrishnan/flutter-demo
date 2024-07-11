@@ -1,197 +1,139 @@
 import 'package:demo/babysitters/babysitters_login.dart';
-import 'package:demo/babysitters/babysitters_signup.dart';
-import 'package:demo/daycare/daycare_login.dart';
-import 'package:demo/daycare/daycare_register.dart';
 import 'package:demo/doctor/login_doctor.dart';
-import 'package:demo/doctor/signup_doctor.dart';
-
-import 'package:demo/logo/logo_page.dart';
-import 'package:demo/parents/parent_login.dart';
-import 'package:demo/parents/signup_parent.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../admin/login_page.dart';
+import '../daycare/daycare_login.dart';
+import '../daycare/daycare_register.dart';
+import '../logo/logo_page.dart';
+import '../parents/parent_login.dart';
+import '../parents/signup_parent.dart';
+
 class SelectCategoryreg extends StatefulWidget {
-  const SelectCategoryreg({super.key});
+  const SelectCategoryreg({Key? key}) : super(key: key);
 
   @override
-  State<SelectCategoryreg> createState() => _SelectCategoryregState();
+  _SelectCategoryregState createState() => _SelectCategoryregState();
 }
 
 class _SelectCategoryregState extends State<SelectCategoryreg> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ListView(
+      backgroundColor: Color(0xFFE2EBF0),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 350, 0),
-              child: InkWell(onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LogoPage()));
-              },
-                  child: Icon(Icons.arrow_back)),
+            SizedBox(height: 20),
+            Text(
+              "Select UserType",
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500,
+                fontSize: 25,
+                color: Colors.black87,
+              ),
+              textAlign: TextAlign.center,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 80),
-              child: Container(
+            SizedBox(height: 30),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                children: [
+                  buildCategoryCard("Parent", Color(0xFF6ED2F8), ParentLogin(),
+                      Icons.person),
+                  buildCategoryCard("Daycare", Color(0xFFFFA726),
+                      DaycareLogin(), Icons.child_care),
+                  buildCategoryCard("Teacher",Color(0xFF7FFFD4), BabysitterLogin(),
+                      Icons.school),
+                  buildCategoryCard("Doctor", Color(0xFFD8BFD8), DoctorLogin(),
+                      Icons.medical_services),
+                ],
+              ),
 
-                // width: 194,
-                // height: 44,
-                // decoration:
-                // const BoxDecoration(color: Color.fromRGBO(172, 227, 239, 1)),
-                child:  Center(
-                    child: Text(
-                      "Select Category",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    )),
-              ),
             ),
-            Padding(
-              padding:
-              const EdgeInsets.only(left: 15, right: 15, top: 50, bottom: 0),
-              child: Container(
-                decoration:  BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                    color: Color.fromRGBO(
-                        232, 196, 233, 1
-                    ),boxShadow: [
-                  BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                ]
-                ),
-                height: 104,
-                width: 320,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ParentLogin()));
-                  },
+            Align(
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AdminLogin()));
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  decoration: BoxDecoration(
+                    color:Color(0xFF4682B4),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      bottomLeft: Radius.circular(30),
+                    ),
+                  ),
                   child: Text(
-                    "Parent",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
+                    "Admin",
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15, top: 25, bottom: 0),
-              child: Container(
-                decoration:
-               BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(255, 251, 148, 1),boxShadow: [
-                  BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                ]
-                ),
-                height: 104,
-                width: 320,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BabysitterLogin()));
-                  },
-                  child: Text(
-                    "Babysitters",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15, top: 35, bottom: 0),
-              child: Container(
-                decoration:
-               BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(191, 210, 228, 1),boxShadow: [
-                  BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                ]),
-                height: 104,
-                width: 320,
-                child: TextButton(
-                    onPressed: () {Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DoctorLogin()));
-
-                    },
-                    child: Text(
-                      "Doctors",
-                      style: GoogleFonts.inriaSerif(
-                          color: Colors.black,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold),
-                    )),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15, top: 35, bottom: 0),
-              child: Container(
-                decoration:
-                 BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color.fromRGBO(97, 237, 220, 1),boxShadow: [
-                  BoxShadow(offset: Offset(0, 3),spreadRadius: 2,blurRadius: 2,color: Colors.black45)
-                ]),
-                height: 104,
-                width: 320,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DaycareLogin()));
-                  },
-                  child: Text(
-                    "Daycare",
-                    style: GoogleFonts.inriaSerif(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.only(
-            //       left: 145.0, right: 145, top: 80, bottom: 0),
-            //   child: Container(
-            //     child: TextButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //                 builder: (context) => LogoPage()));
-            //       },
-            //       style: TextButton.styleFrom(
-            //           shadowColor: Colors.black,
-            //           elevation: 10,
-            //           backgroundColor: const Color.fromRGBO(74, 203, 87, 1),
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(30))),
-            //       child: Row(
-            //         children: [
-            //           Text(
-            //             "Logout",
-            //             style: GoogleFonts.inriaSerif(
-            //                 color: Colors.black,
-            //                 fontSize: 20,
-            //                 fontWeight: FontWeight.bold),
-            //           ),
-            //           Icon(Icons.exit_to_app,color: Colors.black,)
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildCategoryCard(
+      String text, Color color, Widget targetPage, IconData icon) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => targetPage));
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        elevation: 5,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              colors: [color.withOpacity(0.8), color],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 50, color: Colors.white),
+              SizedBox(height: 10),
+              Text(
+                text,
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

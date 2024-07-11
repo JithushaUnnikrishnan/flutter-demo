@@ -42,8 +42,7 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
       "phonenumber": phonenumber.text,
       "whatsappNumber": whatsapp.text,
       "gender": selectedvalue,
-      "path":    "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
-
+      "path": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
     });
     print('done');
     Navigator.push(
@@ -85,8 +84,9 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: name,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Name !";
+                      return "Empty Name!";
                     }
+                    return null;
                   },
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -104,8 +104,13 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: email,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Email !";
+                      return "Empty Email!";
                     }
+                    if (!RegExp(r"^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
+                        .hasMatch(value)) {
+                      return "Invalid Email Format!";
+                    }
+                    return null;
                   },
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -122,8 +127,9 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: password,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Password !";
+                      return "Empty Password!";
                     }
+                    return null;
                   },
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -140,8 +146,9 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: address,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Address !";
+                      return "Empty Address!";
                     }
+                    return null;
                   },
                   minLines: 3,
                   maxLines: 3,
@@ -151,7 +158,6 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                       labelStyle: TextStyle(color: Colors.grey)),
                 ),
               ),
-
               SizedBox(
                 height: MediaQuery.of(context).size.height * .035,
               ),
@@ -161,8 +167,9 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: qualification,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Qualification !";
+                      return "Empty Qualification!";
                     }
+                    return null;
                   },
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -179,8 +186,9 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: experience,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Experience !";
+                      return "Empty Experience!";
                     }
+                    return null;
                   },
                   minLines: 3,
                   maxLines: 3,
@@ -199,8 +207,9 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: idproofnumber,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Id proof Number !";
+                      return "Empty Id proof Number!";
                     }
+                    return null;
                   },
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
@@ -215,12 +224,15 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: TextFormField(
-
                   controller: phonenumber,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Phone Number !";
+                      return "Empty Phone Number!";
                     }
+                    if (!RegExp(r"^\d{10}$").hasMatch(value)) {
+                      return "Invalid Phone Number!";
+                    }
+                    return null;
                   },
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
@@ -239,8 +251,12 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                   controller: whatsapp,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty Whatsapp Number !";
+                      return "Empty Whatsapp Number!";
                     }
+                    if (!RegExp(r"^\d{10}$").hasMatch(value)) {
+                      return "Invalid Whatsapp Number!";
+                    }
+                    return null;
                   },
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
@@ -331,7 +347,6 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                                 print(Select);
                               });
                             },
-
                             items: tradeList
                                 .map<DropdownMenuItem<String>>(
                                     (String value) => DropdownMenuItem<String>(
@@ -359,16 +374,16 @@ class _BabysitterSignupState extends State<BabysitterSignup> {
                     if (selectedvalue == null) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text(
-                        "select Gender",
-                        style: TextStyle(color: Colors.red),
-                      )));
+                            "select Gender",
+                            style: TextStyle(color: Colors.red),
+                          )));
                     }
                     if (Select == null) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text(
-                        "select Daycare",
-                        style: TextStyle(color: Colors.red),
-                      )));
+                            "select Daycare",
+                            style: TextStyle(color: Colors.red),
+                          )));
                     } else {
                       babysitterReg();
                     }

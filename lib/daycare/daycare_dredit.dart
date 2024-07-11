@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class DoctorEdit extends StatefulWidget {
-  const DoctorEdit({super.key});
+import 'daycare_drviewpage.dart';
+
+class daycareDoctorEdit extends StatefulWidget {
+  const daycareDoctorEdit({super.key});
 
   @override
-  State<DoctorEdit> createState() => _DoctorEditState();
+  State<daycareDoctorEdit> createState() => _daycareDoctorEditState();
 }
 
-class _DoctorEditState extends State<DoctorEdit> {
+class _daycareDoctorEditState extends State<daycareDoctorEdit> {
   var ID;
 
   void initState() {
@@ -51,7 +53,7 @@ class _DoctorEditState extends State<DoctorEdit> {
   var officeaddress = TextEditingController();
   var experience = TextEditingController();
 
-  Future<dynamic> drEdit() async {
+  Future<dynamic> drEditt() async {
     await FirebaseFirestore.instance.collection("DoctorReg").doc(ID).update({
       "Username": Name.text,
       "qualification": qualification.text,
@@ -62,9 +64,9 @@ class _DoctorEditState extends State<DoctorEdit> {
 
     });
     print('Edit successfully');
-    setState(() {
-      Navigator.of(context).pop(context);
-    });
+    // setState(() {
+    //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Drview()));
+    // });
 
   }
 
@@ -185,7 +187,7 @@ class _DoctorEditState extends State<DoctorEdit> {
                       onTap: () {
                         if (formkey.currentState!.validate()) {
                           setState(() {
-                            drEdit();
+                            // drEditt();
                           });
                         }
                       },
@@ -198,10 +200,10 @@ class _DoctorEditState extends State<DoctorEdit> {
                               color: Colors.blue),
                           child: Center(
                               child: Text(
-                            "Update",
-                            style: GoogleFonts.inriaSerif(
-                                fontSize: 20, color: Colors.white),
-                          )),
+                                "Update",
+                                style: GoogleFonts.inriaSerif(
+                                    fontSize: 20, color: Colors.white),
+                              )),
                         ),
                       ),
                     ),

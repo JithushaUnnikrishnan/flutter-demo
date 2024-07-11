@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -84,6 +85,12 @@ class _ParentDailytaskState extends State<ParentDailytask> {
                           width: 20,
                         ),
                         Text(video['name']),
+                        IconButton(onPressed: (){setState(() {
+                          FirebaseFirestore.instance
+                              .collection("videos")
+                              .doc(videos[index].id)
+                              .delete();
+                        });}, icon: Icon(CupertinoIcons.delete))
                       ],
                     ))),
                 onTap: () {

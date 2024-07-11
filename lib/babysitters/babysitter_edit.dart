@@ -33,6 +33,23 @@ class _BabysitterEditState extends State<BabysitterEdit> {
     setState(() {
       ID = spref.getString("id");
     });
+    DocumentSnapshot docSnapshot = await FirebaseFirestore.instance
+        .collection("babysiiterReg")
+        .doc(ID)
+        .get();
+
+    if (docSnapshot.exists) {
+      var data = docSnapshot.data() as Map<String, dynamic>;
+      setState(() {
+        Name.text = data['UserName'] ?? '';
+        Address.text = data['Address'] ?? '';
+        Qualification.text = data['qualification'] ?? '';
+        Experience.text = data['experiance'] ?? '';
+        PhoneNumber.text = data['phonenumber'] ?? '';
+        whatsappnumber.text = data['whatsappNumber'] ?? '';
+
+      });
+    }
     print("sharedPreference Data get");
   }
 
@@ -53,14 +70,15 @@ class _BabysitterEditState extends State<BabysitterEdit> {
       "UserName": Name.text,
       "address": Address.text,
       "qualification": Qualification.text,
-
       "experiance": Experience.text,
       "phonenumber": PhoneNumber.text,
       "whatsappNumber": whatsappnumber.text,
     });
     print('Edit successfully');
+
     setState(() {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>TeacherProfile()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => TeacherProfile()));
     });
   }
 

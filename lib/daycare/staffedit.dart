@@ -33,7 +33,7 @@ class _StaffEditState extends State<StaffEdit> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DaycareTabbar()));
+            builder: (context) => DaycareStaff()));
   }
 
   @override

@@ -168,7 +168,7 @@ class _ParentLoginState extends State<ParentLogin> {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 160),
+                    padding: const EdgeInsets.only(top: 140),
                     child: TextButton(
                       onPressed: () {
                         Navigator.push(

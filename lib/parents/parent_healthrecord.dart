@@ -68,7 +68,12 @@ class _Parent_healthRecordState extends State<Parent_healthRecord> {
                 child: Column(
 
                   children: [
-                    Row(children: [Text("Date:"),Text(health[index]["date"])],),
+                    Row(children: [Text("Date:"),Text(health[index]["date"]),IconButton(onPressed: (){setState(() {
+                      FirebaseFirestore.instance
+                          .collection("healthrecord add")
+                          .doc(health[index].id)
+                          .delete();
+                    });}, icon: Icon(CupertinoIcons.delete))],),
                     Row(
 
                       children: [

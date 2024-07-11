@@ -36,6 +36,7 @@ class _DrAppointmentsState extends State<DrAppointments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Appointments",style: GoogleFonts.poppins(fontSize: 25,color: Colors.white),),
         toolbarHeight: MediaQuery.of(context).size.height * .15,
         backgroundColor: Color.fromRGBO(
           147,

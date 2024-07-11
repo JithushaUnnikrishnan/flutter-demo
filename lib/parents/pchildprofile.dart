@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../logo/logo_page.dart';
 import '../logo/select_categoryfor reg.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
@@ -264,7 +265,7 @@ class _EnrollChildState extends State<EnrollChild> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SelectCategoryreg()));
+                                    builder: (context) => LogoPage()));
                           },
                           child: Container(
                               child: Row(

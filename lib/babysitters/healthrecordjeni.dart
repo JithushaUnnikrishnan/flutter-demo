@@ -47,6 +47,7 @@ class _HealthRecordState extends State<HealthRecord> {
       "Teacherid": ID,
       'date': DateFormat('dd/MM/yyyy').format(date),
     });
+
     print("done");
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => HealthView()));
@@ -58,6 +59,8 @@ class _HealthRecordState extends State<HealthRecord> {
       key: formkey,
       child: Scaffold(
         appBar: AppBar(
+
+
           title: Padding(
             padding: const EdgeInsets.only(left: 50),
             child: Text("Health Record",
@@ -65,7 +68,7 @@ class _HealthRecordState extends State<HealthRecord> {
           ),
         ),
         body: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
